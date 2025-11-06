@@ -2,6 +2,7 @@ import { Car, Plane, Bus, MapPin } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/Reveal";
 import { PremiumBadge } from "@/components/PremiumBadge";
+import { MiniMap } from "@/components/MiniMap";
 
 const transportOptions = [
   {
@@ -65,6 +66,13 @@ export const HowToGet = () => {
             );
           })}
         </div>
+
+        <Reveal variant="fade-up" delay={280} className="mt-16">
+          <div className="relative mx-auto max-w-5xl">
+            <MiniMap />
+            <div className="pointer-events-none absolute inset-x-0 -bottom-6 mx-auto h-16 w-3/4 rounded-full bg-primary/10 blur-3xl" />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
