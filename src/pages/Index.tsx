@@ -10,6 +10,9 @@ import { Events } from "@/components/Events";
 import { Recommendations } from "@/components/Recommendations";
 import { Footer } from "@/components/Footer";
 import { ToursExplorer } from "@/components/ToursExplorer";
+import { TourShowcase } from "@/components/TourShowcase";
+import { FaqSection } from "@/components/FaqSection";
+import { ContactCard } from "@/components/ContactCard";
 
 const Index = () => {
   return (
@@ -19,12 +22,15 @@ const Index = () => {
         <Hero />
         <Events />
         <ToursExplorer />
+        <TourShowcase />
         <FeaturedCarousel />
         <Hotels />
         <Restaurants />
         <FeaturedPlaces />
         <Activities />
         <HowToGet />
+        <FaqSection />
+        <ContactCard />
         <Recommendations />
       </main>
       <Footer />
