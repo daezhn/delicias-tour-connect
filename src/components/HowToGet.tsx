@@ -1,5 +1,7 @@
 import { Car, Plane, Bus, MapPin } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Reveal } from "@/components/Reveal";
+import { PremiumBadge } from "@/components/PremiumBadge";
 
 const transportOptions = [
   {
@@ -32,31 +34,34 @@ export const HowToGet = () => {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <Reveal variant="fade-up" className="text-center mb-12 space-y-4">
+          <PremiumBadge icon={<MapPin className="h-3 w-3" />} label="Cómo llegar" className="mx-auto" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             ¿Cómo Llegar a Delicias?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Todas las rutas te llevan a descubrir nuestra hermosa ciudad
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {transportOptions.map((option, index) => {
             const Icon = option.icon;
             return (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <CardTitle>{option.title}</CardTitle>
-                  <CardDescription>{option.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{option.details}</p>
-                </CardContent>
-              </Card>
+              <Reveal key={option.title} delay={index * 120}>
+                <Card className="text-center border border-transparent bg-gradient-to-b from-white to-muted/40 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl">
+                  <CardHeader>
+                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow shadow-primary/30 transition-transform duration-500 hover:scale-105">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <CardTitle className="text-xl">{option.title}</CardTitle>
+                    <CardDescription>{option.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{option.details}</p>
+                  </CardContent>
+                </Card>
+              </Reveal>
             );
           })}
         </div>
