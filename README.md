@@ -1,73 +1,33 @@
-# Welcome to your Lovable project
+# Delicias Tour Connect
 
-## Project info
+Sitio promocional para la iniciativa turística de Delicias, Chihuahua. Presenta atractivos, eventos, hospedaje y experiencias gastronómicas de la región, así como una vista especial para tótems informativos.
 
-**URL**: https://lovable.dev/projects/11c58b06-94c8-412c-8bc1-232c8a615e6c
+## Requisitos
 
-## How can I edit this code?
+- Node.js 18+
+- npm 9+
 
-There are several ways of editing your application.
+## Scripts disponibles
 
-**Use Lovable**
+| Comando | Descripción |
+|---------|-------------|
+| `npm install` | Instala dependencias |
+| `npm run dev` | Inicia el entorno de desarrollo (Vite) |
+| `npm run build` | Genera el build de producción |
+| `npm run preview` | Sirve localmente el build generado |
+| `npm run lint` | Ejecuta ESLint |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/11c58b06-94c8-412c-8bc1-232c8a615e6c) and start prompting.
+## Estructura relevante
 
-Changes made via Lovable will be committed automatically to this repo.
+- `src/pages` – páginas principales (`Index`, `Atractivos`, `Pantalla`, etc.).
+- `src/components` – componentes compartidos de UI.
+- `public/images` – imágenes del sitio (hero, atractivos, gastronomía).
+- `public/Video` y `public/pantalla` – videos utilizados en la web y en la vista para tótem.
 
-**Use your preferred IDE**
+## Despliegue
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+El proyecto usa Vite, por lo que basta con generar el build (`npm run build`) y servir el contenido de `dist` en cualquier hosting estático (Vercel, Netlify, S3, etc.). Para rutas internas se incluye un `vercel.json` con fallback al `index.html`.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Créditos
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/11c58b06-94c8-412c-8bc1-232c8a615e6c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Proyecto administrado por IDEA Delicias. Contribuciones y mejoras son bienvenidas mediante issues o pull requests. 🎉

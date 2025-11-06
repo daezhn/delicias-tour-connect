@@ -51,7 +51,7 @@ export const FeaturedCarousel = () => {
               poster="/images/hero-delicias-2.jpg"
               onError={() => setHasVideo(false)}
             >
-              <source src="/Video/turismoDelicias.mp4" type="video/mp4" />
+              <source src="/Video/turismodel.mp4" type="video/mp4" />
               Tu navegador no soporta reproducción de video.
             </video>
           ) : (
