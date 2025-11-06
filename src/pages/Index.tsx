@@ -9,6 +9,7 @@ import { HowToGet } from "@/components/HowToGet";
 import { Events } from "@/components/Events";
 import { Recommendations } from "@/components/Recommendations";
 import { Footer } from "@/components/Footer";
+import { ToursExplorer } from "@/components/ToursExplorer";
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <main id="inicio">
         <Hero />
         <Events />
+        <ToursExplorer />
         <FeaturedCarousel />
         <Hotels />
         <Restaurants />
