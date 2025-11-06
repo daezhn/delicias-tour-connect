@@ -12,7 +12,7 @@ const transportOptions = [
     icon: Car,
     title: "En Auto",
     description: "Carretera Federal 45",
-    details: "Desde Chihuahua: 1 hora | Desde Cd. Juárez: 3 horas"
+    details: "Desde Chihuahua: 1 hora | Desde Cd. Juárez: 5 horas"
   },
   {
     icon: Bus,
