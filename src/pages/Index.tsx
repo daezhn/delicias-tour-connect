@@ -17,6 +17,7 @@ const Index = () => {
       <Navigation />
       <main id="inicio">
         <Hero />
+        <Events />
         <MonthlyAgenda />
         <FeaturedCarousel />
         <Hotels />
@@ -24,7 +25,6 @@ const Index = () => {
         <FeaturedPlaces />
         <Activities />
         <HowToGet />
-        <Events />
         <Recommendations />
       </main>
       <Footer />

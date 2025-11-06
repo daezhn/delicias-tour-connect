@@ -1,68 +1,87 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-const restaurants = [
+const foodCategories = [
   {
-    name: "El Mesón de Delicias",
-    image: "/images/restaurant-1.jpg",
-    cuisine: "Cocina Regional",
-    description: "Platillos tradicionales chihuahuenses"
+    title: "Comer y Pasarla Bien",
+    image: "/images/food-category-1.jpg",
+    description: "Restaurantes para disfrutar en familia y amigos"
   },
   {
-    name: "La Casona del Chef",
-    image: "/images/restaurant-2.jpg",
-    cuisine: "Cocina Contemporánea",
-    description: "Fusión de sabores locales e internacionales"
+    title: "Comida Rápida",
+    image: "/images/food-category-2.jpg",
+    description: "Opciones rápidas y deliciosas"
   },
   {
-    name: "Tacos Don Beto",
-    image: "/images/restaurant-3.jpg",
-    cuisine: "Antojitos Mexicanos",
-    description: "Los mejores tacos y quesadillas de la ciudad"
+    title: "Para los Exigentes",
+    image: "/images/food-category-3.jpg",
+    description: "Alta cocina y experiencias gourmet"
   },
   {
-    name: "Asadero El Ranchero",
-    image: "/images/restaurant-4.jpg",
-    cuisine: "Cortes y Parrilla",
-    description: "Carnes selectas al carbón estilo norteño"
+    title: "Un Snack",
+    image: "/images/food-category-4.jpg",
+    description: "Cafeterías, antojitos y bocadillos"
   }
 ];
 
 export const Restaurants = () => {
-  return (
-    <section className="py-16 bg-muted/20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            ¿Qué Voy a Comer?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Descubre los sabores auténticos de Delicias en estos restaurantes
-          </p>
-        </div>
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {restaurants.map((restaurant, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={restaurant.image}
-                  alt={restaurant.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                  {restaurant.cuisine}
+  return (
+    <>
+      <section className="py-16 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              ¿Qué Voy a Comer?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Explora las opciones gastronómicas de Delicias por categoría
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {foodCategories.map((category, index) => (
+              <Card 
+                key={index} 
+                className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+                onClick={() => setSelectedImage(category.image)}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-xl font-bold mb-1">{category.title}</h3>
+                    <p className="text-sm text-white/90">{category.description}</p>
+                  </div>
                 </div>
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">{restaurant.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{restaurant.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+                <CardHeader>
+                  <CardTitle className="text-center text-sm text-muted-foreground">
+                    Click para ver la lista completa
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Lista de restaurantes"
+              className="w-full h-full object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
