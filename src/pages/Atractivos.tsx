@@ -1,11 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { attractions } from "@/data/attractions";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const Atractivos = () => {
   return (
@@ -61,47 +62,18 @@ const Atractivos = () => {
                 <Card
                   key={place.id}
                   id={`atractivo-${place.id}`}
-                  className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow"
+                  className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative aspect-[4/5] flex items-center justify-center overflow-hidden bg-black">
                     <img
                       src={place.image}
                       alt={place.name}
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                      className={cn(
+                        "max-h-full max-w-full object-contain transition-transform duration-300",
+                        place.imageClass,
+                      )}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                    <Badge className="absolute left-4 top-4 bg-primary/90 text-white">{place.category}</Badge>
                   </div>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-2xl font-bold text-foreground">{place.name}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{place.description}</p>
-                    </div>
-
-                    {place.location && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <MapPin className="h-4 w-4 text-primary" />
-                        <span>{place.location}</span>
-                      </div>
-                    )}
-
-                    {place.schedule && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4 text-primary" />
-                        <span>{place.schedule}</span>
-                      </div>
-                    )}
-
-                    {place.highlights && place.highlights.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {place.highlights.map((item) => (
-                          <Badge key={item} variant="outline" className="border-primary/30 text-primary">
-                            {item}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                  </CardContent>
                 </Card>
               ))}
             </div>

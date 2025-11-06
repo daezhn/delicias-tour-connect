@@ -1,10 +1,12 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { attractions } from "@/data/attractions";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
-const featuredPlaces = attractions.slice(0, 4);
+const featuredIds = [1, 4, 6, 5];
+const featuredPlaces = featuredIds
+  .map((id) => attractions.find((place) => place.id === id))
+  .filter((place): place is NonNullable<typeof place> => Boolean(place));
 
 export const FeaturedPlaces = () => {
   return (
@@ -21,58 +23,37 @@ export const FeaturedPlaces = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredPlaces.map((place, index) => (
-            <Card 
-              key={place.id} 
+            <Card
+              key={place.id}
               className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={place.image}
-                  alt={place.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    {place.category}
-                  </span>
+              <Link
+                to={`/Atractivos#atractivo-${place.id}`}
+                className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <div className="relative aspect-[3/4] flex items-center justify-center overflow-hidden bg-black">
+                  <img
+                    src={place.image}
+                    alt={place.name}
+                    className={cn(
+                      "max-h-full max-w-full object-contain transition-transform duration-300",
+                      place.imageClass,
+                    )}
+                  />
                 </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-2 mb-2">
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {place.name}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground mb-4 line-clamp-2">
-                  {place.description}
-                </p>
-                <Button
-                  asChild
-                  variant="ghost"
-                  className="w-full justify-between group/btn hover:bg-primary/10 hover:text-primary"
-                >
-                  <Link to={`/Atractivos#atractivo-${place.id}`}>
-                    Ver mas
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </CardContent>
+              </Link>
             </Card>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="px-8 border-primary text-primary hover:bg-primary hover:text-white"
+          <Link
+            to="/Atractivos"
+            className="inline-flex items-center gap-2 rounded-full border border-primary px-8 py-3 text-lg font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            <Link to="/Atractivos">Ver Todos los Atractivos</Link>
-          </Button>
+            Ver Todos los Atractivos
+          </Link>
         </div>
       </div>
     </section>
