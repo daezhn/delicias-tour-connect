@@ -63,7 +63,7 @@ export const FeaturedPlaces = () => {
 
         <Reveal variant="fade-up" delay={200} className="text-center mt-12">
           <Link
-            to="/Atractivos"
+            to="/Atractivos#inicio"
             className="inline-flex items-center gap-2 rounded-full border border-primary px-8 py-3 text-lg font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             {copy.button}
