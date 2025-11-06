@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const events = [
   {
@@ -81,9 +80,6 @@ export const Events = () => {
                     <span>{event.location}</span>
                   </div>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  Más Información
-                </Button>
               </CardContent>
             </Card>
           ))}

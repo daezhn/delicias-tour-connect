@@ -5,7 +5,7 @@ export const Hero = () => {
     <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60 z-10" />
       <img
-        src="/images/hero-delicias-1.jpg"
+        src="/images/hero-delicias.jpg"
         alt="Delicias, Chihuahua"
         className="w-full h-full object-cover"
       />
@@ -25,18 +25,20 @@ export const Hero = () => {
             Descubre la belleza y el encanto de Delicias, Chihuahua
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              asChild
+              size="lg"
               className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white font-semibold"
             >
-              Explorar Destinos
+              <a href="#atractivos">Explorar Destinos</a>
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
               className="text-lg px-8 py-6 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
             >
-              Ver Eventos
+              <a href="#eventos">Ver Eventos</a>
             </Button>
           </div>
         </div>

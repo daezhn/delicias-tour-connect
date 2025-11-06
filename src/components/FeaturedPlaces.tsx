@@ -1,37 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { attractions } from "@/data/attractions";
+import { Link } from "react-router-dom";
 
-const places = [
-  {
-    id: 1,
-    name: "Torre del Reloj",
-    category: "Patrimonio Histórico",
-    image: "/images/torre-reloj.jpg",
-    description: "Icónico símbolo de Delicias, punto de encuentro y corazón de la ciudad."
-  },
-  {
-    id: 2,
-    name: "Parque Central",
-    category: "Espacios Recreativos",
-    image: "/images/parque-central.jpg",
-    description: "Espacio verde ideal para pasear, disfrutar en familia y eventos culturales."
-  },
-  {
-    id: 3,
-    name: "Museo del Desierto Chihuahuense",
-    category: "Cultura",
-    image: "/images/museo.jpg",
-    description: "Descubre la historia y biodiversidad única del desierto chihuahuense."
-  },
-  {
-    id: 4,
-    name: "Teatro de la Ciudad",
-    category: "Arte y Cultura",
-    image: "/images/teatro.jpg",
-    description: "Disfruta de presentaciones artísticas, obras de teatro y eventos culturales."
-  }
-];
+const featuredPlaces = attractions.slice(0, 4);
 
 export const FeaturedPlaces = () => {
   return (
@@ -47,7 +20,7 @@ export const FeaturedPlaces = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {places.map((place, index) => (
+          {featuredPlaces.map((place, index) => (
             <Card 
               key={place.id} 
               className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in"
@@ -76,12 +49,15 @@ export const FeaturedPlaces = () => {
                 <p className="text-muted-foreground mb-4 line-clamp-2">
                   {place.description}
                 </p>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  asChild
+                  variant="ghost"
                   className="w-full justify-between group/btn hover:bg-primary/10 hover:text-primary"
                 >
-                  Ver más
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  <Link to={`/Atractivos#atractivo-${place.id}`}>
+                    Ver mas
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -89,8 +65,13 @@ export const FeaturedPlaces = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="px-8 border-primary text-primary hover:bg-primary hover:text-white">
-            Ver Todos los Atractivos
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="px-8 border-primary text-primary hover:bg-primary hover:text-white"
+          >
+            <Link to="/Atractivos">Ver Todos los Atractivos</Link>
           </Button>
         </div>
       </div>

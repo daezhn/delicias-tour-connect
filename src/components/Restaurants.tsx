@@ -5,22 +5,22 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 const foodCategories = [
   {
     title: "Comer y Pasarla Bien",
-    image: "/images/food-category-1.jpg",
+    image: "/images/comerbien.png",
     description: "Restaurantes para disfrutar en familia y amigos"
   },
   {
     title: "Comida Rápida",
-    image: "/images/food-category-2.jpg",
+    image: "/images/comidarapida.png",
     description: "Opciones rápidas y deliciosas"
   },
   {
     title: "Para los Exigentes",
-    image: "/images/food-category-3.jpg",
+    image: "/images/exigentes.png",
     description: "Alta cocina y experiencias gourmet"
   },
   {
     title: "Un Snack",
-    image: "/images/food-category-4.jpg",
+    image: "/images/snack.png",
     description: "Cafeterías, antojitos y bocadillos"
   }
 ];
@@ -71,13 +71,13 @@ export const Restaurants = () => {
         </div>
       </section>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="w-[90vw] md:w-auto md:max-w-5xl max-h-[90vh] p-0 border-none bg-transparent shadow-none place-items-center">
           {selectedImage && (
             <img
               src={selectedImage}
               alt="Lista de restaurantes"
-              className="w-full h-full object-contain"
+              className="block w-full md:w-auto max-h-[85vh] object-contain rounded-lg"
             />
           )}
         </DialogContent>

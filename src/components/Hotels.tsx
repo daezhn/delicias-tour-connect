@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
 const hotelImages = [
   "/images/hotel-1.jpg",
@@ -40,8 +40,8 @@ export const Hotels = () => {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto relative">
-          <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="max-w-md md:max-w-5xl mx-auto relative">
+          <div className="relative aspect-[3/4] md:aspect-[16/9] md:min-h-[420px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
             {hotelImages.map((image, index) => (
               <div
                 key={index}
@@ -59,20 +59,35 @@ export const Hotels = () => {
 
             <button
               onClick={prevSlide}
-              className="absolute top-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              className="md:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
               aria-label="Previous hotel"
             >
               <ChevronUp className="w-6 h-6 text-white" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
               aria-label="Next hotel"
             >
               <ChevronDown className="w-6 h-6 text-white" />
             </button>
 
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-2">
+            <button
+              onClick={prevSlide}
+              className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 hover:bg-white rounded-full p-4 shadow-lg transition-all"
+              aria-label="Previous hotel desktop"
+            >
+              <ChevronLeft className="w-6 h-6 text-primary" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 hover:bg-white rounded-full p-4 shadow-lg transition-all"
+              aria-label="Next hotel desktop"
+            >
+              <ChevronRight className="w-6 h-6 text-primary" />
+            </button>
+
+            <div className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-2">
               {hotelImages.map((_, index) => (
                 <button
                   key={index}
@@ -86,7 +101,34 @@ export const Hotels = () => {
                 />
               ))}
             </div>
+
+            <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-30 items-center gap-3">
+              {hotelImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex
+                      ? "bg-primary w-12"
+                      : "bg-white/60 hover:bg-white/80 w-6"
+                  }`}
+                  aria-label={`Go to hotel ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="https://www.google.com/maps/search/hoteles+en+delicias+chihuahua/@28.2122512,-105.4975832,14z/data=!3m1!4b1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Ver hoteles en el mapa
+            <ArrowUpRight className="h-5 w-5" />
+          </a>
         </div>
       </div>
     </section>

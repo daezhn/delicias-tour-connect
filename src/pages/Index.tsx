@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { MonthlyAgenda } from "@/components/MonthlyAgenda";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { Hotels } from "@/components/Hotels";
 import { Restaurants } from "@/components/Restaurants";
@@ -18,7 +17,6 @@ const Index = () => {
       <main id="inicio">
         <Hero />
         <Events />
-        <MonthlyAgenda />
         <FeaturedCarousel />
         <Hotels />
         <Restaurants />
