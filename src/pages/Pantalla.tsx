@@ -42,6 +42,7 @@ const Pantalla = () => {
         autoPlay
         muted
         playsInline
+        preload="metadata"
         src={videoSources[currentIndex]}
         onEnded={handleEnded}
       >

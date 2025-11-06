@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 const hotelImages = [
   "/images/hotel-1.jpg",
@@ -12,6 +14,9 @@ const hotelImages = [
 
 export const Hotels = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { locale } = useLocale();
+  const copy = getTranslations(locale);
+  const hotelsCopy = copy.sections.hotels;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,11 +38,13 @@ export const Hotels = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Dónde Hospedarse
+            {hotelsCopy.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Hoteles confortables en Delicias y la región
-          </p>
+          {hotelsCopy.intro && (
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {hotelsCopy.intro}
+            </p>
+          )}
         </div>
 
         <div className="max-w-md md:max-w-5xl mx-auto relative">
@@ -53,6 +60,8 @@ export const Hotels = () => {
                   src={image}
                   alt={`Hotel en Delicias ${index + 1}`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -126,7 +135,7 @@ export const Hotels = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            Ver hoteles en el mapa
+            {copy.buttons.mapHotels}
             <ArrowUpRight className="h-5 w-5" />
           </a>
         </div>

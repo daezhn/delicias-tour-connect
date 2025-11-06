@@ -96,6 +96,11 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
 }
 
 @layer components {

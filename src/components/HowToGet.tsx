@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Reveal } from "@/components/Reveal";
 import { PremiumBadge } from "@/components/PremiumBadge";
 import { MiniMap } from "@/components/MiniMap";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 const transportOptions = [
   {
@@ -32,17 +34,22 @@ const transportOptions = [
 ];
 
 export const HowToGet = () => {
+  const { locale } = useLocale();
+  const copy = getTranslations(locale).sections.howToGet;
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="text-center mb-12 space-y-4">
-          <PremiumBadge icon={<MapPin className="h-3 w-3" />} label="Cómo llegar" className="mx-auto" />
+          <PremiumBadge icon={<MapPin className="h-3 w-3" />} label={copy.badgeLabel ?? ""} className="mx-auto" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            ¿Cómo Llegar a Delicias?
+            {copy.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Todas las rutas te llevan a descubrir nuestra hermosa ciudad
-          </p>
+          {copy.intro && (
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {copy.intro}
+            </p>
+          )}
         </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">

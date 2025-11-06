@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 export const FeaturedCarousel = () => {
+  const { locale } = useLocale();
+  const copy = getTranslations(locale).sections.featuredCarousel;
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [hasVideo, setHasVideo] = useState(true);
 
@@ -47,6 +51,7 @@ export const FeaturedCarousel = () => {
               loop
               muted
               playsInline
+              preload="metadata"
               autoPlay
               poster="/images/hero-delicias-2.jpg"
               onError={() => setHasVideo(false)}
@@ -59,14 +64,18 @@ export const FeaturedCarousel = () => {
               src="/images/hero-delicias-2.jpg"
               alt="Descubre Delicias"
               className="w-full h-full max-h-[640px] object-cover"
+              loading="lazy"
+              decoding="async"
             />
           )}
         </div>
         <div className="mt-8 max-w-3xl mx-auto text-center md:text-left text-muted-foreground">
-          <h2 className="text-3xl md:text-5xl font-bold mb-3 text-foreground">Descubre Delicias</h2>
-          <p className="text-lg md:text-xl">
-            Vive la experiencia turística a través de un recorrido visual por la ciudad y sus alrededores.
-          </p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-3 text-foreground">{copy.title}</h2>
+          {copy.description && (
+            <p className="text-lg md:text-xl">
+              {copy.description}
+            </p>
+          )}
         </div>
       </div>
     </section>

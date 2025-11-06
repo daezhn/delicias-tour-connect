@@ -2,6 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { FadeImage } from "@/components/FadeImage";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 const events = [
   {
@@ -34,16 +36,21 @@ const events = [
 ];
 
 export const Events = () => {
+  const { locale } = useLocale();
+  const copy = getTranslations(locale).sections.events;
+
   return (
     <section id="eventos" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Próximos <span className="text-primary">Eventos</span>
+            {copy.title} <span className="text-primary">{copy.highlight}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            No te pierdas las festividades y eventos especiales que tenemos preparados
-          </p>
+          {copy.intro && (
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {copy.intro}
+            </p>
+          )}
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

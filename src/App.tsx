@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Atractivos from "./pages/Atractivos";
 import Pantalla from "./pages/Pantalla";
+import { LocaleProvider } from "@/hooks/use-locale";
 
 const queryClient = new QueryClient();
 
@@ -15,15 +16,17 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/Atractivos" element={<Atractivos />} />
-          <Route path="/Pantalla" element={<Pantalla />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <LocaleProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/Atractivos" element={<Atractivos />} />
+            <Route path="/Pantalla" element={<Pantalla />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </LocaleProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

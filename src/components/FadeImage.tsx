@@ -38,6 +38,8 @@ export const FadeImage = ({
           failed && "opacity-0",
           className,
         )}
+        loading={props.loading ?? "lazy"}
+        decoding="async"
       />
       {failed && (
         <div className="absolute inset-0 flex items-center justify-center bg-muted text-sm text-muted-foreground">

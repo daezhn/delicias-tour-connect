@@ -1,6 +1,13 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 export const Footer = () => {
+  const { locale } = useLocale();
+  const translations = getTranslations(locale);
+  const copy = translations.footer;
+  const navCopy = translations.nav;
+
   return (
     <footer id="contacto" className="bg-foreground text-white py-12">
       <div className="container mx-auto px-4">
@@ -13,28 +20,28 @@ export const Footer = () => {
               </div>
               <div>
                 <h3 className="font-bold text-lg">IDEA Delicias</h3>
-                <p className="text-xs text-white/70">Turismo y Cultura</p>
+                <p className="text-xs text-white/70">{copy.motto}</p>
               </div>
             </div>
             <p className="text-sm text-white/70">
-              Instituto de Desarrollo y Atención al Turismo de Delicias, Chihuahua
+              {copy.aboutDescription}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+            <h4 className="font-bold text-lg mb-4">{copy.quickLinksTitle}</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><a href="#inicio" className="hover:text-primary transition-colors">Inicio</a></li>
-              <li><a href="#atractivos" className="hover:text-primary transition-colors">Atractivos</a></li>
-              <li><a href="#actividades" className="hover:text-primary transition-colors">Actividades</a></li>
-              <li><a href="#eventos" className="hover:text-primary transition-colors">Eventos</a></li>
+              <li><a href="#inicio" className="hover:text-primary transition-colors">{navCopy.inicio}</a></li>
+              <li><a href="#atractivos" className="hover:text-primary transition-colors">{navCopy.atractivos}</a></li>
+              <li><a href="#actividades" className="hover:text-primary transition-colors">{navCopy.actividades}</a></li>
+              <li><a href="#eventos" className="hover:text-primary transition-colors">{navCopy.eventos}</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Contacto</h4>
+            <h4 className="font-bold text-lg mb-4">{copy.contactTitle}</h4>
             <ul className="space-y-3 text-sm text-white/70">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-1 text-primary" />
@@ -53,7 +60,7 @@ export const Footer = () => {
 
           {/* Social Media */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Síguenos</h4>
+            <h4 className="font-bold text-lg mb-4">{copy.followTitle}</h4>
             <div className="flex gap-3">
               <a 
                 href="#" 
@@ -81,8 +88,8 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70">
-          <p>© 2025 IDEA Delicias. Todos los derechos reservados.</p>
-          <p className="mt-2">Instituto de Desarrollo y Atención al Turismo - Gobierno Municipal de Delicias</p>
+          <p>© 2025 IDEA Delicias. {copy.rights}</p>
+          <p className="mt-2">{copy.govt}</p>
         </div>
       </div>
     </footer>

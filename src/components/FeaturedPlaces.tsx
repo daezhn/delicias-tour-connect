@@ -3,6 +3,8 @@ import { attractions } from "@/data/attractions";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
+import { useLocale } from "@/hooks/use-locale";
+import { getTranslations } from "@/lib/i18n";
 
 const featuredIds = [1, 4, 6, 5];
 const featuredPlaces = featuredIds
@@ -10,16 +12,21 @@ const featuredPlaces = featuredIds
   .filter((place): place is NonNullable<typeof place> => Boolean(place));
 
 export const FeaturedPlaces = () => {
+  const { locale } = useLocale();
+  const copy = getTranslations(locale).sections.featuredPlaces;
+
   return (
     <section id="atractivos" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Atractivos <span className="text-primary">Destacados</span>
+            {copy.title} <span className="text-primary">{copy.highlight}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Descubre los lugares más emblemáticos y experiencias únicas que Delicias tiene para ofrecerte
-          </p>
+          {copy.intro && (
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {copy.intro}
+            </p>
+          )}
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -40,6 +47,8 @@ export const FeaturedPlaces = () => {
                         "max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110",
                         place.imageClass,
                       )}
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute bottom-6 left-4 right-4 text-center text-sm font-semibold uppercase tracking-[0.4em] text-white/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -57,7 +66,7 @@ export const FeaturedPlaces = () => {
             to="/Atractivos"
             className="inline-flex items-center gap-2 rounded-full border border-primary px-8 py-3 text-lg font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            Ver Todos los Atractivos
+            {copy.button}
           </Link>
         </Reveal>
       </div>
