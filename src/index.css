@@ -97,3 +97,46 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    transition-property: opacity, transform, filter;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal[data-reveal-variant="fade-down"] {
+    transform: translate3d(0, -32px, 0);
+  }
+
+  .reveal[data-reveal-variant="fade-left"] {
+    transform: translate3d(32px, 0, 0);
+  }
+
+  .reveal[data-reveal-variant="fade-right"] {
+    transform: translate3d(-32px, 0, 0);
+  }
+
+  .reveal[data-reveal-variant="fade-in"] {
+    transform: translate3d(0, 0, 0);
+    filter: blur(6px);
+  }
+
+  .reveal[data-reveal-state="visible"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@layer utilities {
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.05);
+    }
+    to {
+      transform: scale(1.15);
+    }
+  }
+}
