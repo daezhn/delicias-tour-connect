@@ -32,7 +32,7 @@ export const ContactCard = () => {
   };
 
   return (
-    <section className="py-16 bg-muted/40" id="contacto">
+    <section className="py-16" id="contacto">
       <div className="container mx-auto px-4">
         <Card className="max-w-3xl mx-auto shadow-lg">
           <CardContent className="space-y-6 p-6">

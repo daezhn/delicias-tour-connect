@@ -31,7 +31,7 @@ const faqItems = [
 export const FaqSection = () => {
   const { locale } = useLocale();
   return (
-    <section className="py-16 bg-background" id="faq">
+    <section className="py-16" id="faq">
       <div className="container mx-auto px-4">
         <div className="mb-8 text-center">
           <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">

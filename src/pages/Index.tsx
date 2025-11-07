@@ -16,22 +16,48 @@ import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-section-white">
       <Navigation />
-      <main id="inicio">
-        <Hero />
-        <Events />
-        <ToursExplorer />
-        <AvailabilityCalendar />
-        <FeaturedCarousel />
-        <Hotels />
-        <Restaurants />
-        <FeaturedPlaces />
-        <Activities />
-        <HowToGet />
-        <FaqSection />
-        <ContactCard />
-        <Recommendations />
+      <main id="inicio" className="space-y-0">
+        <section className="bg-section-dark">
+          <Hero />
+        </section>
+        <section className="bg-section-blue">
+          <Events />
+        </section>
+        <section className="bg-section-orange">
+          <ToursExplorer />
+        </section>
+        <section className="bg-section-white">
+          <AvailabilityCalendar />
+        </section>
+        <section className="bg-section-white-black">
+          <FeaturedCarousel />
+        </section>
+        <section className="bg-section-blue">
+          <Hotels />
+        </section>
+        <section className="bg-section-orange">
+          <Restaurants />
+        </section>
+        <section className="bg-section-white">
+          <FeaturedPlaces />
+        </section>
+        <section className="bg-section-navy">
+          <Activities />
+        </section>
+        <section className="bg-section-orange">
+          <HowToGet />
+        </section>
+        <section className="bg-section-white">
+          <FaqSection />
+        </section>
+        <section className="bg-section-white-black">
+          <ContactCard />
+        </section>
+        <section className="bg-section-navy">
+          <Recommendations />
+        </section>
       </main>
       <Footer />
     </div>

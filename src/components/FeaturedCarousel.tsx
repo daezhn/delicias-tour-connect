@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 import { FadeImage } from "@/components/FadeImage";
 
 const galleryImages = [
@@ -25,42 +25,97 @@ const galleryImages = [
 ];
 
 export const FeaturedCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const total = galleryImages.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % total);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % total);
+  };
+
+  const goTo = (index: number) => setCurrentIndex(index);
+  const getImage = (offset: number) =>
+    galleryImages[(currentIndex + offset + total) % total];
+
   return (
-    <section className="py-10 bg-gradient-to-b from-background via-muted/10 to-background">
+    <section className="py-10">
       <div className="container mx-auto px-4">
-        <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/5 via-white/2 to-transparent p-4 md:p-6 shadow-[0_20px_90px_-35px_rgba(15,23,42,0.9)]">
-          <div className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.5em] text-primary/70">
-            <span className="h-px flex-1 bg-primary/40" />
-            <span>Delicias Foto Tour</span>
-            <span className="h-px flex-1 bg-primary/40" />
+        <div className="rounded-[32px] border border-primary/30 bg-gradient-to-b from-white/5 to-white/0 p-6 md:p-12 shadow-[0_20px_80px_-40px_rgba(15,23,42,0.8)]">
+          <div className="flex flex-col items-center gap-2 text-center">
+            <p className="text-xs uppercase tracking-[0.6em] text-primary/70">
+              Delicias Foto Tour
+            </p>
           </div>
-          <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 [column-fill:balance]">
-            {galleryImages.map((image) => (
-              <figure
-                key={image.src}
-                className={cn(
-                  "group mb-4 break-inside-avoid overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-black/30 via-black/10 to-black/40 shadow-lg transition duration-500 hover:-translate-y-1 hover:shadow-2xl"
-                )}
+
+          <div className="mt-8 flex flex-col items-center gap-6">
+            <div className="relative flex w-full max-w-6xl items-center justify-center gap-6">
+              {[ -1, 0, 1 ].map((offset) => {
+                const image = getImage(offset);
+                const isActive = offset === 0;
+                return (
+                  <button
+                    key={`${image.src}-${offset}`}
+                    onClick={() => {
+                      if (isActive) return;
+                      setCurrentIndex((prev) => (prev + offset + total) % total);
+                    }}
+                    aria-label={isActive ? "Foto actual" : "Cambiar imagen"}
+                    className={`relative overflow-hidden rounded-[32px] transition-all duration-500 ${
+                      isActive
+                        ? "h-[540px] w-[78%] shadow-2xl"
+                        : "h-[260px] w-[14%] opacity-50 hover:opacity-90"
+                    }`}
+                    style={{ transform: isActive ? "scale(1)" : "scale(0.75)" }}
+                  >
+                    <FadeImage
+                      src={image.src}
+                      alt={image.alt}
+                      containerClassName="h-full w-full"
+                      className="h-full w-full object-cover"
+                      loading={isActive ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </button>
+                );
+              })}
+              <button
+                onClick={prev}
+                className="absolute left-0 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.4em] text-foreground backdrop-blur hover:bg-white/30 md:block"
+                aria-label="Anterior"
               >
-                <div className="relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/70 opacity-30 transition duration-500 group-hover:opacity-80" />
-                  <span className="absolute inset-[4%] rounded-[20px] border border-white/20 opacity-0 transition duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[rgba(255,166,94,0.35)] via-transparent to-[rgba(56,189,248,0.35)] opacity-70 group-hover:opacity-90 transition duration-500" />
-                  <FadeImage
-                    src={image.src}
-                    alt={image.alt}
-                    containerClassName="h-full w-full"
-                    className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.08] group-hover:rotate-[0.5deg]"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                    <div className="absolute inset-[12%] rounded-[26px] border border-white/30 blur-sm animate-pulse-glow" />
-                  </div>
-                </div>
-              </figure>
-            ))}
+                ←
+              </button>
+              <button
+                onClick={next}
+                className="absolute right-0 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.4em] text-foreground backdrop-blur hover:bg-white/30 md:block"
+                aria-label="Siguiente"
+              >
+                →
+              </button>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={image.src}
+                  onClick={() => goTo(index)}
+                  className={`h-2 w-2 rounded-full transition ${
+                    index === currentIndex ? "w-8 bg-primary" : "bg-muted-foreground/40 hover:bg-primary/60"
+                  }`}
+                  aria-label={`Ir a imagen ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

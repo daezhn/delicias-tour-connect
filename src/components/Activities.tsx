@@ -42,7 +42,7 @@ export const Activities = () => {
   const copy = getTranslations(locale).sections.activities;
 
   return (
-    <section id="actividades" className="py-20 bg-background">
+    <section id="actividades" className="py-20">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

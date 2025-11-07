@@ -186,4 +186,28 @@ All colors MUST be HSL.
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .bg-section-dark {
+    background: linear-gradient(180deg, rgba(3, 7, 18, 0.02) 0%, rgba(3, 7, 18, 0.12) 100%);
+  }
+
+  .bg-section-blue {
+    background: linear-gradient(180deg, rgba(15, 60, 138, 0.02) 0%, rgba(15, 60, 138, 0.12) 100%);
+  }
+
+  .bg-section-orange {
+    background: linear-gradient(180deg, rgba(255, 176, 117, 0.03) 0%, rgba(255, 176, 117, 0.15) 100%);
+  }
+
+  .bg-section-white {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(247, 249, 252, 0.9) 100%);
+  }
+
+  .bg-section-white-black {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(0, 0, 0, 0.08) 100%);
+  }
+
+  .bg-section-navy {
+    background: linear-gradient(180deg, rgba(13, 27, 42, 0.02) 0%, rgba(13, 27, 42, 0.12) 100%);
+  }
 }

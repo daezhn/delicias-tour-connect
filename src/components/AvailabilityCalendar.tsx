@@ -53,7 +53,7 @@ export const AvailabilityCalendar = () => {
     : locale === "es" ? "Consultar calendario" : "View calendar";
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background via-muted/30 to-background">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.6em] text-primary/70">

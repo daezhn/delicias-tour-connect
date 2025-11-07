@@ -69,7 +69,7 @@ export const ToursExplorer = () => {
   }, [category, search, minPrice, maxPrice, duration, date]);
 
   return (
-    <section className="py-20 bg-muted/20" id="tours">
+    <section className="py-20" id="tours">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="mb-12 text-center">
           <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">
