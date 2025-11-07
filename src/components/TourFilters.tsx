@@ -7,11 +7,14 @@ interface TourFiltersProps {
   minPrice: string;
   maxPrice: string;
   duration: string;
+  date: string;
+  availableDates: string[];
   onSearch: (value: string) => void;
   onCategory: (value: string) => void;
   onMinPrice: (value: string) => void;
   onMaxPrice: (value: string) => void;
   onDuration: (value: string) => void;
+  onDate: (value: string) => void;
 }
 
 const durationOptions = [
@@ -27,11 +30,14 @@ export const TourFilters = ({
   minPrice,
   maxPrice,
   duration,
+  date,
+  availableDates,
   onSearch,
   onCategory,
   onMinPrice,
   onMaxPrice,
   onDuration,
+  onDate,
 }: TourFiltersProps) => {
   const { locale } = useLocale();
 
@@ -99,6 +105,22 @@ export const TourFilters = ({
           {durationOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {label(opt.es, opt.en)}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="flex flex-col gap-2 text-sm font-semibold text-muted-foreground">
+        {label("Fecha disponible", "Available date")}
+        <select
+          value={date}
+          onChange={(e) => onDate(e.target.value)}
+          className="rounded-full border border-input bg-background px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <option value="">{label("Cualquiera", "Any")}</option>
+          {availableDates.map((d) => (
+            <option key={d} value={d}>
+              {d}
             </option>
           ))}
         </select>

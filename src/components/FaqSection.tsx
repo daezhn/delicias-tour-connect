@@ -6,8 +6,8 @@ const faqItems = [
     id: "faq-1",
     question: { es: "¿Cómo reservo un tour?", en: "How do I book a tour?" },
     answer: {
-      es: "Pronto habilitaremos la compra directa. Mientras tanto puedes escribirnos vía WhatsApp o correo.",
-      en: "Direct booking will be available soon. For now contact us via WhatsApp or email.",
+      es: "Escríbenos por WhatsApp o correo y un asesor confirmará la disponibilidad y el proceso de pago.",
+      en: "Contact us via WhatsApp or email and our team will confirm availability and payment steps.",
     },
   },
   {

@@ -8,6 +8,7 @@ import { MapPin, Clock, DollarSign, Star } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
+import { TourMap } from "@/components/TourMap";
 
 export const ToursExplorer = () => {
   const { locale } = useLocale();
@@ -17,7 +18,14 @@ export const ToursExplorer = () => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [duration, setDuration] = useState("");
+  const [date, setDate] = useState("");
   const [selected, setSelected] = useState<(typeof tours)[number] | null>(null);
+
+  const availableDates = useMemo(() => {
+    const dates = new Set<string>();
+    tours.forEach((tour) => tour.nextDates.forEach((d) => dates.add(d)));
+    return Array.from(dates);
+  }, []);
 
   const filtered = useMemo(() => {
     return tours.filter((tour) => {
@@ -32,9 +40,10 @@ export const ToursExplorer = () => {
         (!minPrice || tour.price >= Number(minPrice)) &&
         (!maxPrice || tour.price <= Number(maxPrice));
       const matchesDuration = duration ? tour.durationHours <= Number(duration) : true;
-      return matchesCategory && matchesSearch && matchesPrice && matchesDuration;
+      const matchesDate = date ? tour.nextDates.includes(date) : true;
+      return matchesCategory && matchesSearch && matchesPrice && matchesDuration && matchesDate;
     });
-  }, [category, search, minPrice, maxPrice, duration]);
+  }, [category, search, minPrice, maxPrice, duration, date]);
 
   return (
     <section className="py-20 bg-muted/20" id="tours">
@@ -59,11 +68,14 @@ export const ToursExplorer = () => {
           minPrice={minPrice}
           maxPrice={maxPrice}
           duration={duration}
+          date={date}
+          availableDates={availableDates}
           onSearch={setSearch}
           onCategory={setCategory}
           onMinPrice={setMinPrice}
           onMaxPrice={setMaxPrice}
           onDuration={setDuration}
+          onDate={setDate}
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -167,20 +179,23 @@ export const ToursExplorer = () => {
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-xl bg-muted/50 p-4 text-sm text-muted-foreground">
-                      <p className="flex items-center gap-2 text-foreground font-semibold">
-                        <MapPin className="h-4 w-4 text-primary" /> {locale === "es" ? "Ubicación" : "Location"}
-                      </p>
-                      <p>{selected.location.lat.toFixed(3)}, {selected.location.lng.toFixed(3)}</p>
-                      <Button asChild variant="outline" className="mt-3 w-full">
-                        <a
-                          href={`https://www.google.com/maps/search/?api=1&query=${selected.location.lat},${selected.location.lng}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {locale === "es" ? "Ver en Maps" : "Open in Maps"}
-                        </a>
-                      </Button>
+                    <div className="space-y-3">
+                      <div className="rounded-xl bg-muted/50 p-4 text-sm text-muted-foreground">
+                        <p className="flex items-center gap-2 text-foreground font-semibold">
+                          <MapPin className="h-4 w-4 text-primary" /> {locale === "es" ? "Ubicación" : "Location"}
+                        </p>
+                        <p>{selected.location.lat.toFixed(3)}, {selected.location.lng.toFixed(3)}</p>
+                        <Button asChild variant="outline" className="mt-3 w-full">
+                          <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${selected.location.lat},${selected.location.lng}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {locale === "es" ? "Ver en Maps" : "Open in Maps"}
+                          </a>
+                        </Button>
+                      </div>
+                      <TourMap position={selected.location} label={selected.title[locale]} />
                     </div>
                   </div>
                 </div>
