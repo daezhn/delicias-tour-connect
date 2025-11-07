@@ -105,7 +105,7 @@ Los assets en `public` se sirven tal cual, así que no requieren importación ex
 
 ## 8. App instalable (PWA)
 
-- **Manifest:** `public/manifest.webmanifest`. Ajusta `name`, `short_name`, colores, idioma (`lang`) y los íconos. Usa imágenes cuadradas (192px/512px) alojadas en `public/images`.
+- **Manifest:** `public/manifest.webmanifest`. Ajusta `name`, `short_name`, colores, idioma (`lang`) y los íconos (por defecto `public/icons/app-icon-192.png` y `app-icon-512.png`).
 - **Service Worker:** `public/sw.js`. Aquí se define qué rutas se cachean (`ASSETS`) y cómo responder sin conexión. Agrega archivos o cambia la estrategia según tus necesidades.
 - **Registro:** `src/main.tsx` registra el Service Worker solo en producción (`import.meta.env.PROD`). Si necesitas probar en desarrollo, temporalmente elimina esa condición.
 - **Metadatos `<head>`:** `index.html` contiene `link rel="manifest"`, `theme-color` y `apple-touch-icon`. Actualiza estos valores si cambias branding o colores del sistema.
