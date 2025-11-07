@@ -5,7 +5,26 @@ import { getTickerEvents, useClock } from "@/utils/pantalla";
 import { format } from "date-fns";
 import { es, enUS } from "date-fns/locale";
 
-const videoSources = ["/pantalla/test1.mp4", "/pantalla/test2.mp4"];
+type MediaItem =
+  | { type: "video"; src: string }
+  | { type: "image"; src: string; alt: string; duration?: number };
+
+const mediaItems: MediaItem[] = [
+  { type: "video", src: "/pantalla/test1.mp4" },
+  { type: "video", src: "/pantalla/test2.mp4" },
+  {
+    type: "image",
+    src: "/images/flyer1.jpg",
+    alt: "Flyer promocional 1",
+    duration: 15_000
+  },
+  {
+    type: "image",
+    src: "/images/flyer2.jpg",
+    alt: "Flyer promocional 2",
+    duration: 15_000
+  }
+];
 
 const Pantalla = () => {
   const { locale } = useLocale();
@@ -13,8 +32,18 @@ const Pantalla = () => {
   const now = useClock(15_000);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const currentMedia = mediaItems[currentIndex];
 
   useEffect(() => {
+    if (currentMedia.type !== "video") {
+      const previousVideo = videoRef.current;
+      if (previousVideo) {
+        previousVideo.pause();
+        previousVideo.currentTime = 0;
+      }
+      return;
+    }
+
     const videoEl = videoRef.current;
     if (!videoEl) return;
     videoEl.currentTime = 0;
@@ -36,11 +65,25 @@ const Pantalla = () => {
       videoEl.addEventListener("loadeddata", onLoadedData);
       return () => videoEl.removeEventListener("loadeddata", onLoadedData);
     }
-  }, [currentIndex]);
+  }, [currentMedia]);
+
+  const advanceMedia = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+  }, []);
+
+  useEffect(() => {
+    if (currentMedia.type !== "image") return;
+
+    const timeout = setTimeout(
+      advanceMedia,
+      currentMedia.duration ?? 10_000
+    );
+    return () => clearTimeout(timeout);
+  }, [advanceMedia, currentMedia]);
 
   const handleEnded = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % videoSources.length);
-  }, []);
+    advanceMedia();
+  }, [advanceMedia]);
 
   const formatterLocale = locale === "es" ? es : enUS;
   const formattedTime = format(now, "HH:mm", { locale: formatterLocale });
@@ -48,18 +91,26 @@ const Pantalla = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        playsInline
-        preload="metadata"
-        src={videoSources[currentIndex]}
-        onEnded={handleEnded}
-      >
-        Tu navegador no soporta video.
-      </video>
+      {currentMedia.type === "video" ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          src={currentMedia.src}
+          onEnded={handleEnded}
+        >
+          Tu navegador no soporta video.
+        </video>
+      ) : (
+        <img
+          src={currentMedia.src}
+          alt={currentMedia.alt}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
       <div className="absolute inset-x-0 top-0 flex justify-between bg-gradient-to-b from-black/70 to-transparent px-8 py-6 text-white">
         <div className="space-y-1">
           <p className="text-sm uppercase tracking-[0.4em] text-white/60">
