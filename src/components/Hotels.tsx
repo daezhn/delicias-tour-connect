@@ -4,12 +4,11 @@ import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 
 const hotelImages = [
-  "/images/hotel-1.jpg",
-  "/images/hotel-2.jpg",
-  "/images/hotel-3.jpg",
-  "/images/hotel-4.jpg",
-  "/images/hotel-5.jpg",
-  "/images/hotel-6.jpg",
+  "/images/hoteles/1.jpg",
+  "/images/hoteles/2.jpg",
+  "/images/hoteles/3.jpg",
+  "/images/hoteles/4.jpg",
+  "/images/hoteles/5.jpg",
 ];
 
 export const Hotels = () => {
