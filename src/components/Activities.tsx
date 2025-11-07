@@ -63,7 +63,7 @@ export const Activities = () => {
                 <Card 
                   className="group relative h-full overflow-hidden border border-transparent bg-gradient-to-br from-white to-muted/50 shadow-md transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-xl"
                 >
-                  <CardContent className="relative z-10 p-6">
+                  <CardContent className="relative z-10 p-6 text-center flex flex-col items-center">
                     <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-lg shadow-primary/30 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                       <Icon className="w-8 h-8 text-white" />
                     </div>

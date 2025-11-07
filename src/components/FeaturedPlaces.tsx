@@ -33,7 +33,7 @@ export const FeaturedPlaces = () => {
           {featuredPlaces.map((place, index) => (
             <Reveal key={place.id} delay={index * 140} className="h-full">
               <Card
-                className="group h-full overflow-hidden border-0 bg-gradient-to-br from-black via-black/95 to-black shadow-xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                className="group h-full overflow-hidden border-0 bg-gradient-to-br from-[#1f242f] via-[#2c3140] to-[#1b1e26] shadow-xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <Link
                   to={`/Atractivos#atractivo-${place.id}`}
@@ -50,10 +50,6 @@ export const FeaturedPlaces = () => {
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <div className="absolute bottom-6 left-4 right-4 text-center text-sm font-semibold uppercase tracking-[0.4em] text-white/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                      {place.name}
-                    </div>
                   </div>
                 </Link>
               </Card>

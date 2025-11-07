@@ -62,17 +62,27 @@ const Atractivos = () => {
                 <Card
                   key={place.id}
                   id={`atractivo-${place.id}`}
-                  className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow"
+                  className="group overflow-hidden border-0 bg-gradient-to-br from-[#1f242f] via-[#2c3140] to-[#1b1e26] shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
                 >
-                  <div className="relative aspect-[4/5] flex items-center justify-center overflow-hidden bg-black">
+                  <div className="relative aspect-[4/5] flex flex-col items-center justify-center overflow-hidden">
                     <img
                       src={place.image}
                       alt={place.name}
                       className={cn(
-                        "max-h-full max-w-full object-contain transition-transform duration-300",
+                        "max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105",
                         place.imageClass,
                       )}
+                      loading="lazy"
+                      decoding="async"
                     />
+                  </div>
+                  <div className="px-5 pb-6 pt-5 text-center">
+                    <span className="inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.4em] text-primary">
+                      {place.category}
+                    </span>
+                    <p className="mt-4 text-xl font-semibold text-white tracking-wide">
+                      {place.name}
+                    </p>
                   </div>
                 </Card>
               ))}

@@ -16,13 +16,13 @@ const mediaItems: MediaItem[] = [
     type: "image",
     src: "/images/flyer1.jpg",
     alt: "Flyer promocional 1",
-    duration: 15_000
+    duration: 45_000
   },
   {
     type: "image",
     src: "/images/flyer2.jpg",
     alt: "Flyer promocional 2",
-    duration: 15_000
+    duration: 45_000
   }
 ];
 
