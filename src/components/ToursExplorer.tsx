@@ -4,11 +4,34 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TourFilters } from "@/components/TourFilters";
 import { Reveal } from "@/components/Reveal";
-import { MapPin, Clock, DollarSign, Star } from "lucide-react";
+import { MapPin, Clock, DollarSign, Star, Tag } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 import { TourMap } from "@/components/TourMap";
+
+const specialOffers = [
+  {
+    id: "combo-cultural",
+    title: { es: "Combo Cultural + Degustación", en: "Cultural Combo + Tasting" },
+    description: {
+      es: "Incluye entrada a 2 museos, guía especializado y degustación regional.",
+      en: "Includes access to 2 museums, expert guide and regional tasting."
+    },
+    price: { es: "Desde $480 MXN", en: "From $480 MXN" },
+    note: { es: "Precio por persona, cupo limitado", en: "Per person, limited seats" }
+  },
+  {
+    id: "sunset-pack",
+    title: { es: "Sunset Pack Presa Las Vírgenes", en: "Las Vírgenes Sunset Pack" },
+    description: {
+      es: "Transporte, picnic al atardecer y fotos aéreas incluidas.",
+      en: "Transport, sunset picnic and aerial photos included."
+    },
+    price: { es: "2x1 los viernes", en: "2-for-1 on Fridays" },
+    note: { es: "Reservación anticipada requerida", en: "Advance booking required" }
+  }
+];
 
 export const ToursExplorer = () => {
   const { locale } = useLocale();
@@ -77,6 +100,39 @@ export const ToursExplorer = () => {
           onDuration={setDuration}
           onDate={setDate}
         />
+
+        <Reveal variant="fade-up" delay={80} className="mt-6">
+          <div className="rounded-xl border border-primary/10 bg-white/90 shadow-md shadow-primary/10 p-4">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.4em] text-primary/80">
+              <Tag className="h-4 w-4" />
+              <span>{locale === "es" ? "Promociones especiales" : "Special offers"}</span>
+              <span className="text-muted-foreground/80 normal-case tracking-normal text-[11px]">
+                {locale === "es"
+                  ? "Mantén visibles tus combos sin desplazar los tours."
+                  : "Keep combos visible without pushing tours away."}
+              </span>
+            </div>
+            <div className="mt-3 flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {specialOffers.map((offer) => (
+                <Card
+                  key={offer.id}
+                  className="min-w-[240px] flex-1 border border-primary/20 bg-primary/5 shadow-sm"
+                >
+                  <CardContent className="space-y-1.5 p-3">
+                    <p className="text-sm font-semibold text-primary">{offer.title[locale]}</p>
+                    <p className="text-xs text-muted-foreground">{offer.description[locale]}</p>
+                    <div className="flex items-center justify-between text-[13px] font-semibold text-foreground">
+                      <span>{offer.price[locale]}</span>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/70">
+                        {offer.note[locale]}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((tour, index) => (
