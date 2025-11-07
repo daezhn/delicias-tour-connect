@@ -14,6 +14,9 @@ export const Hero = () => {
         src="/images/hero-delicias.jpg"
         alt="Delicias, Chihuahua"
         className="w-full h-full object-cover scale-105 animate-[hero-zoom_20s_ease-in-out_infinite_alternate]"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 z-20 flex items-center justify-center">
         <div className="text-center text-white px-4 max-w-5xl space-y-6">

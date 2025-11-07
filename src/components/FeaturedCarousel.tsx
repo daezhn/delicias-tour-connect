@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { FadeImage } from "@/components/FadeImage";
 
 const galleryImages = [
   { src: "/images/Galería/1.jpg", alt: "Plaza central en Delicias" },
@@ -46,10 +47,11 @@ export const FeaturedCarousel = () => {
                   <span className="absolute inset-[4%] rounded-[20px] border border-white/20 opacity-0 transition duration-500 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-br from-[rgba(255,166,94,0.35)] via-transparent to-[rgba(56,189,248,0.35)] opacity-70 group-hover:opacity-90 transition duration-500" />
-                  <img
+                  <FadeImage
                     src={image.src}
                     alt={image.alt}
-                    className="block w-full object-cover transition duration-700 ease-out group-hover:scale-[1.08] group-hover:rotate-[0.5deg]"
+                    containerClassName="h-full w-full"
+                    className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.08] group-hover:rotate-[0.5deg]"
                     loading="lazy"
                     decoding="async"
                   />
