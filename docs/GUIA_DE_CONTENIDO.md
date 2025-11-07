@@ -103,7 +103,18 @@ Los assets en `public` se sirven tal cual, así que no requieren importación ex
 
 ---
 
-## 8. Estilos y temas
+## 8. App instalable (PWA)
+
+- **Manifest:** `public/manifest.webmanifest`. Ajusta `name`, `short_name`, colores, idioma (`lang`) y los íconos. Usa imágenes cuadradas (192px/512px) alojadas en `public/images`.
+- **Service Worker:** `public/sw.js`. Aquí se define qué rutas se cachean (`ASSETS`) y cómo responder sin conexión. Agrega archivos o cambia la estrategia según tus necesidades.
+- **Registro:** `src/main.tsx` registra el Service Worker solo en producción (`import.meta.env.PROD`). Si necesitas probar en desarrollo, temporalmente elimina esa condición.
+- **Metadatos `<head>`:** `index.html` contiene `link rel="manifest"`, `theme-color` y `apple-touch-icon`. Actualiza estos valores si cambias branding o colores del sistema.
+- **Instalación:** En Android (Chrome) aparecerá “Añadir a pantalla principal”; en iOS, usa el botón compartir → “Añadir a Inicio”. Ambos leen la info del manifest y del icono de Apple.
+- Para funcionalidades avanzadas (push notifications, sincronización en segundo plano) expande `sw.js` y maneja permisos desde React.
+
+---
+
+## 9. Estilos y temas
 
 - Tailwind se configura en `tailwind.config.ts`.
 - Estilos globales: `src/index.css` y `src/App.css`.
@@ -111,11 +122,10 @@ Los assets en `public` se sirven tal cual, así que no requieren importación ex
 
 ---
 
-## 9. Flujo sugerido para editar contenido
+## 10. Flujo sugerido para editar contenido
 
 1. **Localiza la sección** usando la tabla de la sección 4.
 2. **Actualiza textos** en `src/lib/i18n.ts` si deben existir en ambos idiomas. Si es un copy único (ej. preguntas de FAQ), edítalo directo en el componente.
 3. **Modifica imágenes o videos** colocando los archivos en `public/...` y actualizando la ruta en el componente o datos correspondientes.
 4. **Guarda y revisa** con `npm run dev`.
 5. **Construye** con `npm run build` antes de desplegar para asegurar que no haya errores de TypeScript o archivos faltantes.
-

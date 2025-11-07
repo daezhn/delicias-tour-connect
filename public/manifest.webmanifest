@@ -1,0 +1,25 @@
+{
+  "name": "Delicias Tour Connect",
+  "short_name": "IDEA Delicias",
+  "description": "Descubre atractivos, eventos y experiencias turísticas en Delicias, Chihuahua.",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "es",
+  "scope": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/images/Logo_IDEA.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/Logo_IDEA.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
