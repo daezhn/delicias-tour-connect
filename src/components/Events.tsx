@@ -3,27 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { FadeImage } from "@/components/FadeImage";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
-
-const novemberEvents = [
-  {
-    id: 1,
-    label: "Miércoles 5 de noviembre",
-    image: "/images/noviembre/miercoles5.jpg",
-    alt: "Cartel de eventos para el miércoles 5 de noviembre"
-  },
-  {
-    id: 2,
-    label: "Jueves 6 de noviembre",
-    image: "/images/noviembre/jueves6.jpg",
-    alt: "Cartel de eventos para el jueves 6 de noviembre"
-  },
-  {
-    id: 3,
-    label: "Viernes 7 de noviembre",
-    image: "/images/noviembre/viernes7.jpg",
-    alt: "Cartel de eventos para el viernes 7 de noviembre"
-  }
-];
+import { upcomingEvents } from "@/data/upcoming-events";
 
 export const Events = () => {
   const { locale } = useLocale();
@@ -48,7 +28,7 @@ export const Events = () => {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {novemberEvents.map((event, index) => (
+          {upcomingEvents.map((event, index) => (
             <Reveal key={event.id} variant="fade-up" delay={index * 140}>
               <Card className="group overflow-hidden border-0 shadow-lg transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl">
                 <div className="relative aspect-[3/4] overflow-hidden">

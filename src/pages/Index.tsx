@@ -12,6 +12,7 @@ import { Footer } from "@/components/Footer";
 import { ToursExplorer } from "@/components/ToursExplorer";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCard } from "@/components/ContactCard";
+import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
         <Hero />
         <Events />
         <ToursExplorer />
+        <AvailabilityCalendar />
         <FeaturedCarousel />
         <Hotels />
         <Restaurants />
