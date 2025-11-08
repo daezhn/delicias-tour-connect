@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.visitadelicias.www.twa",
+      "sha256_cert_fingerprints": [
+        "35:4B:CC:2D:3A:E5:97:62:CA:21:B0:FF:BA:92:E4:A9:E8:84:25:D7:53:34:64:91:47:C8:02:0E:F1:7A:63:C1"
+      ]
+    }
+  }
+]
