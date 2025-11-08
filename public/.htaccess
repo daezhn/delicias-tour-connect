@@ -1,0 +1,23 @@
+Options -Indexes
+
+<IfModule mod_autoindex.c>
+  IndexIgnore *
+</IfModule>
+
+# Deny access to common source directories if ever exposed.
+RewriteEngine On
+RewriteRule ^(src|node_modules|docs|scripts|config)/ - [F,L,NC]
+
+# Block direct download of source maps or TypeScript files.
+<FilesMatch "\.(ts|tsx|map)$">
+  Require all denied
+</FilesMatch>
+
+# Prevent leakage of hidden files such as .env or .git artifacts.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>
