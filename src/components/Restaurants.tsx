@@ -31,14 +31,14 @@ export const Restaurants = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { locale } = useLocale();
   const copy = getTranslations(locale).sections.restaurants;
-  const script = locale === "es" ? "Sabores para cada antojo" : "Flavors for every craving";
+  const script = locale === "es" ? "Sabores que exploran" : "Flavors that explore";
 
   return (
     <>
       <div className="space-y-8">
-        <div className="space-y-3">
+        <div className="space-y-2">
           <p className="font-script text-2xl text-secondary/80">{script}</p>
-          <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">{copy.title}</p>
+          <h2 className="text-3xl font-extrabold tracking-tight">{copy.title}</h2>
           {copy.intro && <p className="max-w-xl text-sm text-muted-foreground">{copy.intro}</p>}
         </div>
 
@@ -46,25 +46,25 @@ export const Restaurants = () => {
           {foodCategories.map((category) => (
             <Card
               key={category.title}
-              className="overflow-hidden border border-black/5 bg-white shadow-[0_15px_35px_rgba(4,18,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_25px_45px_rgba(4,18,42,0.12)] cursor-pointer"
+              className="overflow-hidden border border-black/5 bg-white/95 shadow-[0_15px_30px_rgba(4,18,42,0.08)] transition hover:shadow-[0_25px_45px_rgba(4,18,42,0.14)] cursor-pointer"
               onClick={() => setSelectedImage(category.image)}
             >
               <div className="relative h-56 overflow-hidden">
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                  <p className="text-[11px] uppercase tracking-[0.4em] text-white/70">{category.description}</p>
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
+                  <p className="text-xs tracking-wide text-white/70">{category.description}</p>
+                  <h3 className="text-xl font-bold">{category.title}</h3>
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-center text-xs uppercase tracking-[0.35em] text-muted-foreground">
+                <CardTitle className="text-center text-xs tracking-wide text-muted-foreground">
                   {copy.cardCta}
                 </CardTitle>
               </CardHeader>

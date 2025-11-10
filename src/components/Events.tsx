@@ -9,7 +9,7 @@ import { upcomingEvents } from "@/data/upcoming-events";
 export const Events = () => {
   const { locale } = useLocale();
   const copy = getTranslations(locale).sections.events;
-  const script = locale === "es" ? "Agenda viva del desierto" : "Living desert lineup";
+  const script = locale === "es" ? "La ciudad en vivo" : "City live now";
   const note =
     locale === "es"
       ? "Consulta el cartel para más información."
@@ -17,14 +17,12 @@ export const Events = () => {
 
   return (
     <div className="space-y-10">
-      <Reveal variant="fade-up" className="space-y-3 text-left">
+      <Reveal variant="fade-up" className="space-y-2 text-left">
         <p className="font-script text-2xl text-secondary/80">{script}</p>
-        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
-          {copy.title} · {copy.highlight}
-        </p>
-        {copy.intro && (
-          <p className="max-w-2xl text-lg text-foreground/80">{copy.intro}</p>
-        )}
+        <h2 className="text-3xl font-extrabold tracking-tight text-foreground">
+          {copy.title} <span className="text-primary">{copy.highlight}</span>
+        </h2>
+        {copy.intro && <p className="max-w-2xl text-base text-muted-foreground">{copy.intro}</p>}
       </Reveal>
 
       <div className="space-y-6">
@@ -36,7 +34,7 @@ export const Events = () => {
 
           return (
             <Reveal key={event.id} variant="fade-up" delay={index * 80}>
-              <article className="flex flex-col gap-4 rounded-[32px] border border-black/5 bg-white/90 p-4 shadow-[0_25px_45px_rgba(4,18,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_55px_rgba(4,18,42,0.12)] md:flex-row md:items-stretch">
+              <article className="flex flex-col gap-4 overflow-hidden rounded-[28px] border border-black/5 bg-white/95 p-4 shadow-[0_18px_40px_rgba(4,18,42,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_28px_55px_rgba(4,18,42,0.12)] md:flex-row md:items-stretch">
                 <div className="overflow-hidden rounded-3xl md:max-w-[320px]">
                   <img
                     src={event.image}
@@ -46,19 +44,19 @@ export const Events = () => {
                     decoding="async"
                   />
                 </div>
-                <div className="flex flex-1 flex-col justify-between gap-4 px-2 py-1">
+                  <div className="flex flex-1 flex-col justify-between gap-4 px-2 py-1">
                   <div>
-                    <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">{weekday}</p>
-                    <h3 className="mt-2 text-2xl font-bold text-foreground">{event.label}</h3>
+                    <p className="text-xs tracking-wide text-secondary/80">{weekday}</p>
+                    <h3 className="mt-1 text-2xl font-extrabold text-foreground">{event.label}</h3>
                     <p className="mt-2 text-sm text-muted-foreground">{formatted}</p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-primary">
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold tracking-wide text-primary">
                       {note}
                     </span>
                     <a
                       href="#eventos"
-                      className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-secondary"
+                      className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-secondary"
                     >
                       {locale === "es" ? "Ver evento" : "View event"} <ArrowUpRight className="h-4 w-4" />
                     </a>

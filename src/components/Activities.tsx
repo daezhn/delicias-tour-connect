@@ -43,11 +43,11 @@ export const Activities = () => {
     <div className="space-y-6">
       <div className="space-y-2">
         <p className="font-script text-2xl text-secondary/80">
-          {locale === "es" ? "Actividades & conexión" : "Activities & connection"}
+          {locale === "es" ? "Actividades que te mueven" : "Activities that move you"}
         </p>
-        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
-          {copy.title} · {copy.highlight}
-        </p>
+        <h2 className="text-3xl font-extrabold tracking-tight">
+          {copy.title} <span className="text-primary">{copy.highlight}</span>
+        </h2>
         {copy.intro && <p className="text-sm text-muted-foreground max-w-2xl">{copy.intro}</p>}
       </div>
 
@@ -57,13 +57,13 @@ export const Activities = () => {
           return (
             <article
               key={activity.title}
-              className="flex items-start gap-4 rounded-[24px] border border-black/5 bg-white p-4 shadow-[0_15px_35px_rgba(4,18,42,0.08)]"
+              className="flex items-start gap-4 rounded-[24px] border border-black/5 bg-white/95 p-4 shadow-[0_15px_30px_rgba(4,18,42,0.08)] hover:shadow-[0_20px_40px_rgba(4,18,42,0.12)] transition"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                 <Icon className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground">{activity.title}</h3>
+                <h3 className="text-lg font-bold text-foreground">{activity.title}</h3>
                 <p className="text-sm text-muted-foreground">{activity.description}</p>
               </div>
             </article>

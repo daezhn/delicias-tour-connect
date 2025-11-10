@@ -16,7 +16,7 @@ export const Hotels = () => {
   const { locale } = useLocale();
   const translations = getTranslations(locale);
   const hotelsCopy = translations.sections.hotels;
-  const script = locale === "es" ? "Sueña en la capital del desierto" : "Dream in the desert capital";
+  const script = locale === "es" ? "Sueña distinto" : "Dream differently";
 
   useEffect(() => {
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % hotelImages.length), 4500);
@@ -28,15 +28,15 @@ export const Hotels = () => {
 
   return (
     <div className="space-y-6">
-      <div className="space-y-3">
+      <div className="space-y-2">
         <p className="font-script text-2xl text-secondary/80">{script}</p>
-        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">{hotelsCopy.title}</p>
+        <h2 className="text-3xl font-extrabold tracking-tight">{hotelsCopy.title}</h2>
         {hotelsCopy.intro && (
           <p className="max-w-xl text-sm text-muted-foreground">{hotelsCopy.intro}</p>
         )}
       </div>
 
-      <div className="rounded-[32px] border border-black/5 bg-white p-6 shadow-[0_25px_55px_rgba(4,18,42,0.1)]">
+  <div className="rounded-[28px] border border-black/5 bg-white/95 p-6 shadow-[0_18px_45px_rgba(4,18,42,0.08)]">
         <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
             {hotelImages.map((image, i) => (
@@ -65,6 +65,7 @@ export const Hotels = () => {
             >
               <ChevronRight className="h-5 w-5 text-primary" />
             </button>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
           </div>
 
           <div className="flex flex-col justify-between gap-6">
@@ -89,7 +90,7 @@ export const Hotels = () => {
               href="https://www.google.com/maps/search/hoteles+en+delicias+chihuahua/@28.2122512,-105.4975832,14z/data=!3m1!4b1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_15px_35px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_12px_30px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
             >
               {translations.buttons.mapHotels}
               <ArrowUpRight className="h-4 w-4" />

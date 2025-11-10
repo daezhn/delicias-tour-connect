@@ -10,10 +10,6 @@ export const Navigation = () => {
   const { locale, setLocale } = useLocale();
   const navCopy = getTranslations(locale).nav;
   const ctaLabel = locale === "es" ? "Planear visita" : "Plan trip";
-  const topMessage =
-    locale === "es"
-      ? "Delicias, capital del desierto · Turismo & Cultura"
-      : "Delicias, desert capital · Tourism & Culture";
 
   const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: `#${key}` }));
 
@@ -21,10 +17,7 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="hidden md:block bg-[#04122a] text-center text-[11px] uppercase tracking-[0.5em] text-white/75">
-        <div className="mx-auto max-w-6xl py-2">{topMessage}</div>
-      </div>
-      <div className="border-b border-black/5 bg-white/95 shadow-[0_15px_45px_rgba(6,69,173,0.08)] backdrop-blur">
+      <div className="border-b border-black/5 bg-white/90 shadow-[0_10px_30px_rgba(4,18,42,0.08)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="#inicio" className="flex items-center gap-3 py-4">
             <img src="/images/Logo_IDEA.png" alt="IDEA Delicias" className="h-14 w-auto" />
@@ -41,7 +34,7 @@ export const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/70 transition hover:text-secondary"
+                className="rounded-full px-4 py-2 text-sm font-medium tracking-wide text-foreground/80 transition hover:text-secondary"
               >
                 {item.label}
               </a>
@@ -58,10 +51,10 @@ export const Navigation = () => {
               {locale === "es" ? "ES" : "EN"}
             </button>
             <a
-              href="#contacto"
-              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_10px_30px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
+              href="#tours"
+              className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
             >
-              {ctaLabel}
+              {locale === "es" ? "Explorar" : "Explore"}
             </a>
           </div>
 
@@ -93,18 +86,18 @@ export const Navigation = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="rounded-2xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-foreground hover:bg-black/5"
+                  className="rounded-2xl px-4 py-3 text-base font-medium tracking-wide text-foreground hover:bg-black/5"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
               <a
-                href="#contacto"
+                href="#tours"
                 onClick={() => setOpen(false)}
-                className="mt-1 inline-flex items-center justify-center rounded-2xl bg-primary px-4 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white"
+                className="mt-1 inline-flex items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
               >
-                {ctaLabel}
+                {locale === "es" ? "Explorar" : "Explore"}
               </a>
             </div>
           </div>
