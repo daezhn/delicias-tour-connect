@@ -13,50 +13,74 @@ import { ToursExplorer } from "@/components/ToursExplorer";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCard } from "@/components/ContactCard";
 import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
+import { CitySubdomains } from "@/components/CitySubdomains";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-section-white">
+    <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
-      <main id="inicio" className="space-y-0">
-        <section className="bg-section-dark">
-          <Hero />
+      <main id="inicio" className="space-y-0 pt-[90px]">
+        <Hero />
+
+        <CitySubdomains />
+
+        <section id="eventos" className="bg-[#fdf9f6] py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-[1.4fr,0.8fr]">
+            <Events />
+            <AvailabilityCalendar compact />
+          </div>
         </section>
-        <section className="bg-section-blue">
-          <Events />
+
+        <section id="tours" className="bg-white py-20">
+          <div className="mx-auto max-w-6xl space-y-12 px-4">
+            <div className="space-y-2">
+              <p className="font-script text-2xl text-secondary/80">Explora · planea · llega</p>
+              <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
+                Tours destacados y cómo llegar
+              </p>
+            </div>
+            <ToursExplorer />
+            <div className="grid gap-8 lg:grid-cols-[1fr,0.9fr]">
+              <HowToGet />
+              <Recommendations />
+            </div>
+          </div>
         </section>
-        <section className="bg-section-orange">
-          <ToursExplorer />
+
+        <section className="bg-[#fff7ef] py-20" id="stay-dine">
+          <div className="mx-auto max-w-6xl space-y-10 px-4">
+            <div className="space-y-2 text-center">
+              <p className="font-script text-2xl text-secondary/80">Sueña & saborea</p>
+              <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
+                Hospedaje boutique · Guías gastronómicas
+              </p>
+            </div>
+            <div className="grid gap-12 lg:grid-cols-2">
+              <div id="hoteles">
+                <Hotels />
+              </div>
+              <div id="restaurantes">
+                <Restaurants />
+              </div>
+            </div>
+          </div>
         </section>
-        <section className="bg-section-white">
-          <AvailabilityCalendar />
+
+        <section id="atractivos" className="bg-white py-20">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1.2fr,0.8fr]">
+            <FeaturedCarousel />
+            <FeaturedPlaces />
+          </div>
         </section>
-        <section className="bg-section-white-black">
-          <FeaturedCarousel />
-        </section>
-        <section className="bg-section-blue">
-          <Hotels />
-        </section>
-        <section className="bg-section-orange">
-          <Restaurants />
-        </section>
-        <section className="bg-section-white">
-          <FeaturedPlaces />
-        </section>
-        <section className="bg-section-navy">
-          <Activities />
-        </section>
-        <section className="bg-section-orange">
-          <HowToGet />
-        </section>
-        <section className="bg-section-white">
-          <FaqSection />
-        </section>
-        <section className="bg-section-white-black">
-          <ContactCard />
-        </section>
-        <section className="bg-section-navy">
-          <Recommendations />
+
+        <section id="actividades" className="bg-[#f5fbfd] py-20">
+          <div className="mx-auto max-w-6xl space-y-10 px-4">
+            <Activities />
+            <div className="grid gap-8 lg:grid-cols-[0.9fr,1.1fr]">
+              <FaqSection />
+              <ContactCard />
+            </div>
+          </div>
         </section>
       </main>
       <Footer />

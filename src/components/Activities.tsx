@@ -1,39 +1,37 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Utensils, Music, Mountain, Camera, ShoppingBag, Users } from "lucide-react";
-import { Reveal } from "@/components/Reveal";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 
 const activities = [
   {
     icon: Utensils,
-    title: "Gastronomía Local",
-    description: "Saborea los platillos tradicionales y la deliciosa comida regional"
+    title: "Gastronomía local",
+    description: "Saborea platillos tradicionales y cocina contemporánea."
   },
   {
     icon: Music,
-    title: "Eventos Culturales",
-    description: "Disfruta festivales, conciertos y celebraciones durante todo el año"
+    title: "Eventos culturales",
+    description: "Festivales, conciertos y celebraciones durante todo el año."
   },
   {
     icon: Mountain,
     title: "Ecoturismo",
-    description: "Explora la naturaleza y paisajes únicos del desierto chihuahuense"
+    description: "Rutas al desierto, presas y paisajes únicos."
   },
   {
     icon: Camera,
-    title: "Recorridos Fotográficos",
-    description: "Captura momentos inolvidables en los lugares más pintorescos"
+    title: "Recorridos fotográficos",
+    description: "Tours guiados para capturar amaneceres y arquitectura."
   },
   {
     icon: ShoppingBag,
-    title: "Artesanías",
-    description: "Encuentra productos locales y artesanías únicas de la región"
+    title: "Artesanías y diseño",
+    description: "Mercados creativos y piezas hechas en Delicias."
   },
   {
     icon: Users,
-    title: "Turismo Familiar",
-    description: "Actividades diseñadas para disfrutar con toda la familia"
+    title: "Plan familiar",
+    description: "Actividades para todas las edades y temporadas."
   }
 ];
 
@@ -42,45 +40,36 @@ export const Activities = () => {
   const copy = getTranslations(locale).sections.activities;
 
   return (
-    <section id="actividades" className="py-20">
-      <div className="container mx-auto px-4">
-        <Reveal variant="fade-up" className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {copy.title} <span className="text-primary">{copy.highlight}</span>
-          </h2>
-          {copy.intro && (
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {copy.intro}
-            </p>
-          )}
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {activities.map((activity, index) => {
-            const Icon = activity.icon;
-            return (
-              <Reveal key={activity.title} delay={index * 120} className="h-full">
-                <Card 
-                  className="group relative h-full overflow-hidden border border-transparent bg-gradient-to-br from-white to-muted/50 shadow-md transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-xl"
-                >
-                  <CardContent className="relative z-10 p-6 text-center flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-lg shadow-primary/30 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                      {activity.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {activity.description}
-                    </p>
-                  </CardContent>
-                  <div className="absolute -right-10 -bottom-10 h-36 w-36 rounded-full bg-primary/10 blur-2xl transition-all duration-500 group-hover:-right-4 group-hover:-bottom-4 group-hover:bg-primary/20" />
-                </Card>
-              </Reveal>
-            );
-          })}
-        </div>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <p className="font-script text-2xl text-secondary/80">
+          {locale === "es" ? "Actividades & conexión" : "Activities & connection"}
+        </p>
+        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
+          {copy.title} · {copy.highlight}
+        </p>
+        {copy.intro && <p className="text-sm text-muted-foreground max-w-2xl">{copy.intro}</p>}
       </div>
-    </section>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {activities.map((activity) => {
+          const Icon = activity.icon;
+          return (
+            <article
+              key={activity.title}
+              className="flex items-start gap-4 rounded-[24px] border border-black/5 bg-white p-4 shadow-[0_15px_35px_rgba(4,18,42,0.08)]"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <Icon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-foreground">{activity.title}</h3>
+                <p className="text-sm text-muted-foreground">{activity.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
   );
 };

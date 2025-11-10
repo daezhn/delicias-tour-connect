@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 
@@ -8,137 +8,95 @@ const hotelImages = [
   "/images/hoteles/2.jpg",
   "/images/hoteles/3.jpg",
   "/images/hoteles/4.jpg",
-  "/images/hoteles/5.jpg",
+  "/images/hoteles/5.jpg"
 ];
 
 export const Hotels = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
   const { locale } = useLocale();
-  const copy = getTranslations(locale);
-  const hotelsCopy = copy.sections.hotels;
+  const translations = getTranslations(locale);
+  const hotelsCopy = translations.sections.hotels;
+  const script = locale === "es" ? "Sueña en la capital del desierto" : "Dream in the desert capital";
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % hotelImages.length);
-    }, 4000);
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % hotelImages.length), 4500);
     return () => clearInterval(timer);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % hotelImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + hotelImages.length) % hotelImages.length);
-  };
+  const goNext = () => setIndex((prev) => (prev + 1) % hotelImages.length);
+  const goPrev = () => setIndex((prev) => (prev - 1 + hotelImages.length) % hotelImages.length);
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            {hotelsCopy.title}
-          </h2>
-          {hotelsCopy.intro && (
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {hotelsCopy.intro}
-            </p>
-          )}
-        </div>
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <p className="font-script text-2xl text-secondary/80">{script}</p>
+        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">{hotelsCopy.title}</p>
+        {hotelsCopy.intro && (
+          <p className="max-w-xl text-sm text-muted-foreground">{hotelsCopy.intro}</p>
+        )}
+      </div>
 
-        <div className="max-w-md md:max-w-5xl mx-auto relative">
-          <div className="relative aspect-[3/4] md:aspect-[16/9] md:min-h-[420px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-            {hotelImages.map((image, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
+      <div className="rounded-[32px] border border-black/5 bg-white p-6 shadow-[0_25px_55px_rgba(4,18,42,0.1)]">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+            {hotelImages.map((image, i) => (
+              <img
+                key={image}
+                src={image}
+                alt={`Hotel en Delicias ${i + 1}`}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                  index === i ? "opacity-100" : "opacity-0"
                 }`}
-              >
-                <img
-                  src={image}
-                  alt={`Hotel en Delicias ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+                loading="lazy"
+                decoding="async"
+              />
             ))}
+            <button
+              onClick={goPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition hover:bg-white"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-5 w-5 text-primary" />
+            </button>
+            <button
+              onClick={goNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition hover:bg-white"
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="h-5 w-5 text-primary" />
+            </button>
+          </div>
 
-            <button
-              onClick={prevSlide}
-              className="md:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
-              aria-label="Previous hotel"
-            >
-              <ChevronUp className="w-6 h-6 text-white" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
-              aria-label="Next hotel"
-            >
-              <ChevronDown className="w-6 h-6 text-white" />
-            </button>
-
-            <button
-              onClick={prevSlide}
-              className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 hover:bg-white rounded-full p-4 shadow-lg transition-all"
-              aria-label="Previous hotel desktop"
-            >
-              <ChevronLeft className="w-6 h-6 text-primary" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 hover:bg-white rounded-full p-4 shadow-lg transition-all"
-              aria-label="Next hotel desktop"
-            >
-              <ChevronRight className="w-6 h-6 text-primary" />
-            </button>
-
-            <div className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-2">
-              {hotelImages.map((_, index) => (
+          <div className="flex flex-col justify-between gap-6">
+            <p className="text-sm text-muted-foreground">
+              {locale === "es"
+                ? "Desde hoteles boutique hasta estancias familiares con alberca, Delicias ofrece hospedaje para cada itinerario."
+                : "From boutique hotels to family-friendly stays with pools, Delicias has a room for every plan."}
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {hotelImages.map((image, i) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentIndex 
-                      ? "bg-primary h-8" 
-                      : "bg-white/50 hover:bg-white/70"
-                  }`}
-                  aria-label={`Go to hotel ${index + 1}`}
-                />
+                  key={image}
+                  onClick={() => setIndex(i)}
+                  className={`overflow-hidden rounded-2xl border ${index === i ? "border-primary" : "border-black/5"}`}
+                  aria-label={`Ver hotel ${i + 1}`}
+                >
+                  <img src={image} alt="" className="h-24 w-full object-cover" loading="lazy" decoding="async" />
+                </button>
               ))}
             </div>
-
-            <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-30 items-center gap-3">
-              {hotelImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "bg-primary w-12"
-                      : "bg-white/60 hover:bg-white/80 w-6"
-                  }`}
-                  aria-label={`Go to hotel ${index + 1}`}
-                />
-              ))}
-            </div>
+            <a
+              href="https://www.google.com/maps/search/hoteles+en+delicias+chihuahua/@28.2122512,-105.4975832,14z/data=!3m1!4b1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_15px_35px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
+            >
+              {translations.buttons.mapHotels}
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
-
-        <div className="mt-12 text-center">
-          <a
-            href="https://www.google.com/maps/search/hoteles+en+delicias+chihuahua/@28.2122512,-105.4975832,14z/data=!3m1!4b1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            {copy.buttons.mapHotels}
-            <ArrowUpRight className="h-5 w-5" />
-          </a>
-        </div>
       </div>
-    </section>
+    </div>
   );
 };

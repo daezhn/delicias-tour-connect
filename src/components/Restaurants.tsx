@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
@@ -30,62 +30,56 @@ const foodCategories = [
 export const Restaurants = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { locale } = useLocale();
-  const restaurantsCopy = getTranslations(locale).sections.restaurants;
+  const copy = getTranslations(locale).sections.restaurants;
+  const script = locale === "es" ? "Sabores para cada antojo" : "Flavors for every craving";
 
   return (
     <>
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              {restaurantsCopy.title}
-            </h2>
-            {restaurantsCopy.intro && (
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                {restaurantsCopy.intro}
-              </p>
-            )}
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {foodCategories.map((category, index) => (
-              <Card 
-                key={index} 
-                className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => setSelectedImage(category.image)}
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="text-xl font-bold mb-1">{category.title}</h3>
-                    <p className="text-sm text-white/90">{category.description}</p>
-                  </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-center text-sm text-muted-foreground">
-                    {restaurantsCopy.cardCta}
-                  </CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
+      <div className="space-y-8">
+        <div className="space-y-3">
+          <p className="font-script text-2xl text-secondary/80">{script}</p>
+          <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">{copy.title}</p>
+          {copy.intro && <p className="max-w-xl text-sm text-muted-foreground">{copy.intro}</p>}
         </div>
-      </section>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {foodCategories.map((category) => (
+            <Card
+              key={category.title}
+              className="overflow-hidden border border-black/5 bg-white shadow-[0_15px_35px_rgba(4,18,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_25px_45px_rgba(4,18,42,0.12)] cursor-pointer"
+              onClick={() => setSelectedImage(category.image)}
+            >
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                  <p className="text-[11px] uppercase tracking-[0.4em] text-white/70">{category.description}</p>
+                  <h3 className="text-xl font-semibold">{category.title}</h3>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-center text-xs uppercase tracking-[0.35em] text-muted-foreground">
+                  {copy.cardCta}
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      </div>
 
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="w-[90vw] md:w-auto md:max-w-5xl max-h-[90vh] p-0 border-none bg-transparent shadow-none place-items-center">
+        <DialogContent className="w-[90vw] max-w-4xl border-none bg-transparent p-0 shadow-none">
           {selectedImage && (
             <img
               src={selectedImage}
-              alt="Lista de restaurantes"
-              className="block w-full md:w-auto max-h-[85vh] object-contain rounded-lg"
+              alt="Lista gastronómica"
+              className="max-h-[80vh] w-full rounded-3xl object-contain"
               loading="lazy"
               decoding="async"
             />

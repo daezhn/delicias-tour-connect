@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,83 +10,85 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14% 15%;
+    --background: 33 63% 92%; /* #f6ecdf */
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 15%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 15%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 25 95% 53%;
+    --primary: 186 100% 38%; /* #00aec0 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 95% 35%;
+    --secondary: 217 93% 35%; /* #0645ad */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 35 20% 95%;
-    --muted-foreground: 20 10% 45%;
+    --muted: 32 45% 89%;
+    --muted-foreground: 36 9% 39%;
 
-    --accent: 40 96% 53%;
-    --accent-foreground: 20 14% 15%;
+    --accent: 32 84% 56%; /* #ed9533 */
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 15% 85%;
-    --input: 35 15% 85%;
-    --ring: 25 95% 53%;
+    --border: 28 37% 82%;
+    --input: 28 37% 82%;
+    --ring: 186 100% 38%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens */
-    --sunset-orange: 25 95% 53%;
-    --sunset-red: 10 90% 50%;
-    --desert-gold: 40 96% 53%;
-    --sky-blue: 200 95% 35%;
-    --deep-blue: 215 85% 25%;
+    --sunset-orange: 32 84% 56%;
+    --sunset-red: 330 65% 55%; /* #d64089 */
+    --desert-gold: 32 84% 56%;
+    --sky-blue: 217 93% 35%;
+    --deep-blue: 215 70% 12%;
     
     /* Gradients */
-    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunset-red)) 0%, hsl(var(--sunset-orange)) 50%, hsl(var(--desert-gold)) 100%);
-    --gradient-hero: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunset-red)) 0%, hsl(var(--sunset-orange)) 45%, hsl(var(--sky-blue)) 100%);
+    --gradient-hero: linear-gradient(120deg, rgba(6, 69, 173, 0.8) 0%, rgba(4, 18, 42, 0.95) 65%);
     
     /* Shadows */
-    --shadow-warm: 0 10px 40px -10px hsl(var(--sunset-orange) / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
+    --shadow-warm: 0 20px 50px -20px rgba(4, 18, 42, 0.25);
+    --shadow-card: 0 25px 60px -30px rgba(4, 18, 42, 0.25);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --font-script: "Playfair Display", "Poppins", serif;
   }
 
   .dark {
-    --background: 20 25% 8%;
-    --foreground: 35 20% 95%;
+    --background: 215 70% 12%;
+    --foreground: 33 63% 92%;
 
-    --card: 20 20% 12%;
-    --card-foreground: 35 20% 95%;
+    --card: 215 55% 18%;
+    --card-foreground: 33 63% 92%;
 
-    --popover: 20 20% 12%;
-    --popover-foreground: 35 20% 95%;
+    --popover: 215 55% 18%;
+    --popover-foreground: 33 63% 92%;
 
-    --primary: 25 95% 53%;
+    --primary: 186 100% 43%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 80% 40%;
+    --secondary: 217 93% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 20 15% 20%;
-    --muted-foreground: 35 15% 65%;
+    --muted: 220 30% 22%;
+    --muted-foreground: 32 35% 80%;
 
-    --accent: 40 96% 53%;
-    --accent-foreground: 20 25% 8%;
+    --accent: 32 84% 56%;
+    --accent-foreground: 215 70% 12%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 20 15% 20%;
-    --input: 20 15% 20%;
-    --ring: 25 95% 53%;
+    --border: 215 30% 32%;
+    --input: 215 30% 32%;
+    --ring: 186 100% 43%;
   }
 }
 
@@ -94,7 +98,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    font-family: "Poppins", "Inter", sans-serif;
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(circle at top left, rgba(0, 174, 192, 0.08), transparent 45%), radial-gradient(circle at 80% 10%, rgba(214, 64, 137, 0.08), transparent 55%);
+    @apply text-foreground;
   }
 
   :focus-visible {
@@ -104,6 +111,13 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  .shell-panel {
+    border-radius: 2.5rem;
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 25px 55px rgba(4, 18, 42, 0.1);
+  }
+
   .reveal {
     opacity: 0;
     transform: translate3d(0, 32px, 0);
@@ -136,6 +150,11 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  .font-script {
+    font-family: var(--font-script);
+    letter-spacing: 0.04em;
+  }
+
   @keyframes hero-zoom {
     from {
       transform: scale(1.05);
@@ -188,26 +207,26 @@ All colors MUST be HSL.
   }
 
   .bg-section-dark {
-    background: linear-gradient(180deg, rgba(3, 7, 18, 0.02) 0%, rgba(3, 7, 18, 0.12) 100%);
+    background-color: #04122a;
   }
 
   .bg-section-blue {
-    background: linear-gradient(180deg, rgba(15, 60, 138, 0.02) 0%, rgba(15, 60, 138, 0.12) 100%);
+    background-color: #f5fbfd;
   }
 
   .bg-section-orange {
-    background: linear-gradient(180deg, rgba(255, 176, 117, 0.03) 0%, rgba(255, 176, 117, 0.15) 100%);
+    background-color: #fff7ef;
   }
 
   .bg-section-white {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(247, 249, 252, 0.9) 100%);
+    background-color: #fff;
   }
 
   .bg-section-white-black {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(0, 0, 0, 0.08) 100%);
+    background-color: #f4e8d9;
   }
 
   .bg-section-navy {
-    background: linear-gradient(180deg, rgba(13, 27, 42, 0.02) 0%, rgba(13, 27, 42, 0.12) 100%);
+    background-color: #0b253f;
   }
 }
