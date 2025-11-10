@@ -9,6 +9,7 @@ interface TourFiltersProps {
   duration: string;
   date: string;
   availableDates: string[];
+  light?: boolean;
   onSearch: (value: string) => void;
   onCategory: (value: string) => void;
   onMinPrice: (value: string) => void;
@@ -32,6 +33,7 @@ export const TourFilters = ({
   duration,
   date,
   availableDates,
+  light = false,
   onSearch,
   onCategory,
   onMinPrice,
@@ -43,25 +45,38 @@ export const TourFilters = ({
 
   const label = (es: string, en: string) => (locale === "es" ? es : en);
 
+  const labelClass = light ? "flex flex-col gap-2 text-sm font-semibold text-white" : "flex flex-col gap-2 text-sm font-semibold text-muted-foreground";
+  const selectClass = light
+    ? "rounded-full border border-white/40 bg-white/85 px-4 py-2 text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    : "rounded-full border border-input bg-background px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
+  const inputClass = selectClass;
+  const miniLabel = light ? "flex flex-col text-xs font-semibold text-white" : "flex flex-col text-xs font-semibold text-muted-foreground";
+  const miniInput = light
+    ? "rounded-md border border-white/40 bg-white/10 px-2 py-1 text-sm text-white placeholder-white/60 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+    : "rounded-md border border-input px-2 py-1 text-sm focus-visible:ring-2 focus-visible:ring-primary";
+  const miniWrapper = light
+    ? "grid grid-cols-2 gap-3 rounded-full border border-white/40 bg-white/10 px-4 py-2"
+    : "grid grid-cols-2 gap-3 rounded-full border border-input bg-background px-4 py-2";
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <label className="flex flex-col gap-2 text-sm font-semibold text-muted-foreground">
+      <label className={labelClass}>
         {label("Buscar tours", "Search tours")}
         <input
           type="text"
           value={search}
           onChange={(e) => onSearch(e.target.value)}
           placeholder={label("Nombre, palabra clave", "Name, keyword")}
-          className="rounded-full border border-input bg-background px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className={inputClass}
         />
       </label>
 
-      <label className="flex flex-col gap-2 text-sm font-semibold text-muted-foreground">
+      <label className={labelClass}>
         {label("Categoría", "Category")}
         <select
           value={category}
           onChange={(e) => onCategory(e.target.value)}
-          className="rounded-full border border-input bg-background px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary"
+          className={selectClass}
         >
           <option value="">{label("Todas", "All")}</option>
           {tourCategories.map((cat) => (
@@ -72,35 +87,35 @@ export const TourFilters = ({
         </select>
       </label>
 
-      <div className="grid grid-cols-2 gap-3 rounded-full border border-input bg-background px-4 py-2">
-        <label className="flex flex-col text-xs font-semibold text-muted-foreground">
+      <div className={miniWrapper}>
+        <label className={miniLabel}>
           {label("Precio mínimo", "Min price")}
           <input
             type="number"
             min="0"
             value={minPrice}
             onChange={(e) => onMinPrice(e.target.value)}
-            className="rounded-md border border-input px-2 py-1 text-sm focus-visible:ring-2 focus-visible:ring-primary"
+            className={miniInput}
           />
         </label>
-        <label className="flex flex-col text-xs font-semibold text-muted-foreground">
+        <label className={miniLabel}>
           {label("Precio máximo", "Max price")}
           <input
             type="number"
             min="0"
             value={maxPrice}
             onChange={(e) => onMaxPrice(e.target.value)}
-            className="rounded-md border border-input px-2 py-1 text-sm focus-visible:ring-2 focus-visible:ring-primary"
+            className={miniInput}
           />
         </label>
       </div>
 
-      <label className="flex flex-col gap-2 text-sm font-semibold text-muted-foreground">
+      <label className={labelClass}>
         {label("Duración", "Duration")}
         <select
           value={duration}
           onChange={(e) => onDuration(e.target.value)}
-          className="rounded-full border border-input bg-background px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary"
+          className={selectClass}
         >
           {durationOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -110,12 +125,12 @@ export const TourFilters = ({
         </select>
       </label>
 
-      <label className="flex flex-col gap-2 text-sm font-semibold text-muted-foreground">
+      <label className={labelClass}>
         {label("Fecha disponible", "Available date")}
         <select
           value={date}
           onChange={(e) => onDate(e.target.value)}
-          className="rounded-full border border-input bg-background px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary"
+          className={selectClass}
         >
           <option value="">{label("Cualquiera", "Any")}</option>
           {availableDates.map((d) => (

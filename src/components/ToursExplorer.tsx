@@ -84,7 +84,7 @@ export const ToursExplorer = () => {
 
   return (
     <div className="space-y-10">
-      <div className="overflow-hidden rounded-[40px] border border-white/40 bg-gradient-to-r from-[#f7b267]/20 via-transparent to-[#8fd3fe]/20 p-4 shadow-[0_30px_70px_rgba(4,18,42,0.12)]">
+      <div className="overflow-hidden rounded-[40px] border border-white/40 bg-gradient-to-r from-[#f6b043]/30 via-transparent to-[#163d8b]/30 p-4 shadow-[0_30px_70px_rgba(4,18,42,0.25)]">
         <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {highlightImages.map((src, index) => (
             <div
@@ -104,7 +104,7 @@ export const ToursExplorer = () => {
         </div>
       </div>
 
-      <div className="rounded-[36px] border border-white/40 bg-gradient-to-br from-white via-[#fef7ef] to-[#ecfbff] p-6 shadow-[0_35px_80px_rgba(4,18,42,0.12)] backdrop-blur-xl space-y-6">
+      <div className="rounded-[36px] border border-white/40 bg-white/10 p-6 text-white shadow-[0_45px_110px_rgba(0,0,0,0.35)] backdrop-blur-2xl space-y-6">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
           <div className="flex-1">
             <TourFilters
@@ -115,6 +115,7 @@ export const ToursExplorer = () => {
               duration={duration}
               date={date}
               availableDates={availableDates}
+              light
               onSearch={setSearch}
               onCategory={setCategory}
               onMinPrice={setMinPrice}
@@ -125,10 +126,10 @@ export const ToursExplorer = () => {
           </div>
         </div>
         <div className="mt-6">
-          <div className="flex flex-wrap items-center gap-3 rounded-full border border-secondary/10 bg-white/70 px-5 py-2 text-[11px] uppercase tracking-[0.4em] text-secondary/80 shadow-sm">
+          <div className="flex flex-wrap items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-2 text-[11px] uppercase tracking-[0.4em] text-white/90 shadow-sm">
             <Tag className="h-4 w-4" />
             <span>{locale === "es" ? "Promociones especiales" : "Special offers"}</span>
-            <span className="text-muted-foreground/80 normal-case tracking-normal text-[11px]">
+            <span className="text-white/80 normal-case tracking-normal text-[11px]">
               {locale === "es"
                 ? "Combos para grupos, roadtrips y escapadas express."
                 : "Combos for groups, roadtrips and express escapes."}
@@ -138,14 +139,14 @@ export const ToursExplorer = () => {
             {specialOffers.map((offer) => (
               <Card
                 key={offer.id}
-                className="min-w-[260px] flex-1 border border-white/40 bg-white/80 shadow-[0_15px_35px_rgba(4,18,42,0.08)]"
+                className="min-w-[260px] flex-1 border border-white/40 bg-white/15 text-white shadow-[0_15px_35px_rgba(0,0,0,0.35)]"
               >
                 <CardContent className="space-y-2 p-4">
-                  <p className="font-tourism text-xl text-secondary">{offer.title[locale]}</p>
-                  <p className="text-xs text-muted-foreground">{offer.description[locale]}</p>
-                  <div className="flex items-center justify-between text-sm font-semibold text-foreground">
-                    <span>{offer.price[locale]}</span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/70">
+                  <p className="font-tourism text-xl text-white">{offer.title[locale]}</p>
+                  <p className="text-xs text-white/80">{offer.description[locale]}</p>
+                  <div className="flex items-center justify-between text-sm font-semibold text-white">
+                    <span className="text-lg font-bold text-white">{offer.price[locale]}</span>
+                    <span className="rounded-full border border-white/40 px-2 py-1 text-[10px] uppercase tracking-[0.3em] text-white/80">
                       {offer.note[locale]}
                     </span>
                   </div>
@@ -156,7 +157,7 @@ export const ToursExplorer = () => {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-foreground">
         {filtered.map((tour, index) => (
           <Reveal key={tour.id} variant="fade-up" delay={index * 80}>
             <Card className="flex h-full flex-col overflow-hidden border border-white/50 bg-white/80 shadow-[0_30px_70px_rgba(4,18,42,0.12)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_rgba(4,18,42,0.15)] backdrop-blur">
