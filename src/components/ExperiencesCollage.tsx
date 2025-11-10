@@ -35,6 +35,13 @@ const experiences = [
     image: "/images/Galería/14.jpg",
     title: { es: "Deportes", en: "Sports" },
     size: ""
+  },
+  {
+    id: "dine",
+    href: "/experiencias/que-comer",
+    image: "/images/restaurant-3.jpg",
+    title: { es: "¿Qué comer?", en: "Where to eat" },
+    size: ""
   }
 ] as const;
 
@@ -62,6 +69,8 @@ export const ExperiencesCollage = () => {
                 index === 3 ? "sm:col-span-3 sm:row-span-1" : ""
               } ${
                 index === 4 ? "sm:col-span-3 sm:row-span-1" : ""
+              } ${
+                index === 5 ? "sm:col-span-6 sm:row-span-1" : ""
               }`}
             >
               <img
