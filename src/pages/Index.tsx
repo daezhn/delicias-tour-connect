@@ -35,19 +35,16 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="tours" className="bg-white py-20">
-          <div className="mx-auto max-w-6xl space-y-12 px-4">
-            <div className="space-y-2">
-              <p className="font-script text-2xl text-secondary/80">Explora · planea · llega</p>
-              <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
-                Tours destacados y cómo llegar
-              </p>
-            </div>
+        <section id="tours" className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] py-20 text-white">
+          <div className="space-y-12 px-4 sm:px-8 lg:px-16">
             <ToursExplorer />
-            <div className="grid gap-8 lg:grid-cols-[1fr,0.9fr]">
-              <HowToGet />
-              <Recommendations />
-            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-20">
+          <div className="mx-auto max-w-6xl grid gap-8 px-4 lg:grid-cols-[1fr,0.9fr]">
+            <HowToGet />
+            <Recommendations />
           </div>
         </section>
 

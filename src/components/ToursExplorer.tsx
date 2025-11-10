@@ -50,6 +50,20 @@ export const ToursExplorer = () => {
     return Array.from(dates);
   }, []);
 
+  const highlightImages = useMemo(() => {
+    const seen = new Set<string>();
+    const images: string[] = [];
+    tours.forEach((tour) => {
+      tour.gallery.forEach((src) => {
+        if (!seen.has(src)) {
+          seen.add(src);
+          images.push(src);
+        }
+      });
+    });
+    return images.slice(0, 8);
+  }, []);
+
   const filtered = useMemo(() => {
     return tours.filter((tour) => {
       const matchesCategory = category ? tour.category === category : true;
@@ -70,38 +84,48 @@ export const ToursExplorer = () => {
 
   return (
     <div className="space-y-10">
-      <div className="space-y-2">
-        <p className="font-script text-2xl text-secondary/80">
-          {locale === "es" ? "Explora Delicias" : "Explore Delicias"}
-        </p>
-        <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
-          {locale === "es" ? "Tours destacados" : "Featured tours"}
-        </p>
-        <p className="max-w-3xl text-sm text-muted-foreground">
-          {locale === "es"
-            ? "Filtra por categoría, precio o fecha. Curamos experiencias diurnas y nocturnas para que planifiques tu visita desde Chihuahua capital."
-            : "Filter by category, price or date. We curate day & night experiences so you can plan straight from Chihuahua capital."}
-        </p>
+      <div className="overflow-hidden rounded-[40px] border border-white/40 bg-gradient-to-r from-[#f7b267]/20 via-transparent to-[#8fd3fe]/20 p-4 shadow-[0_30px_70px_rgba(4,18,42,0.12)]">
+        <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {highlightImages.map((src, index) => (
+            <div
+              key={`${src}-${index}`}
+              className="relative h-32 min-w-[220px] overflow-hidden rounded-3xl border border-white/50 shadow-[0_20px_45px_rgba(4,18,42,0.15)]"
+            >
+              <img
+                src={src}
+                alt=""
+                className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="rounded-[32px] border border-black/5 bg-white p-6 shadow-[0_20px_55px_rgba(4,18,42,0.08)]">
-        <TourFilters
-          search={search}
-          category={category}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          duration={duration}
-          date={date}
-          availableDates={availableDates}
-          onSearch={setSearch}
-          onCategory={setCategory}
-          onMinPrice={setMinPrice}
-          onMaxPrice={setMaxPrice}
-          onDuration={setDuration}
-          onDate={setDate}
-        />
+      <div className="rounded-[36px] border border-white/40 bg-gradient-to-br from-white via-[#fef7ef] to-[#ecfbff] p-6 shadow-[0_35px_80px_rgba(4,18,42,0.12)] backdrop-blur-xl space-y-6">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
+          <div className="flex-1">
+            <TourFilters
+              search={search}
+              category={category}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              duration={duration}
+              date={date}
+              availableDates={availableDates}
+              onSearch={setSearch}
+              onCategory={setCategory}
+              onMinPrice={setMinPrice}
+              onMaxPrice={setMaxPrice}
+              onDuration={setDuration}
+              onDate={setDate}
+            />
+          </div>
+        </div>
         <div className="mt-6">
-          <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.4em] text-secondary/80">
+          <div className="flex flex-wrap items-center gap-3 rounded-full border border-secondary/10 bg-white/70 px-5 py-2 text-[11px] uppercase tracking-[0.4em] text-secondary/80 shadow-sm">
             <Tag className="h-4 w-4" />
             <span>{locale === "es" ? "Promociones especiales" : "Special offers"}</span>
             <span className="text-muted-foreground/80 normal-case tracking-normal text-[11px]">
@@ -114,12 +138,12 @@ export const ToursExplorer = () => {
             {specialOffers.map((offer) => (
               <Card
                 key={offer.id}
-                className="min-w-[240px] flex-1 border border-black/5 bg-white/90 shadow-sm"
+                className="min-w-[260px] flex-1 border border-white/40 bg-white/80 shadow-[0_15px_35px_rgba(4,18,42,0.08)]"
               >
-                <CardContent className="space-y-1.5 p-3">
-                  <p className="text-sm font-semibold text-secondary">{offer.title[locale]}</p>
+                <CardContent className="space-y-2 p-4">
+                  <p className="font-tourism text-xl text-secondary">{offer.title[locale]}</p>
                   <p className="text-xs text-muted-foreground">{offer.description[locale]}</p>
-                  <div className="flex items-center justify-between text-[13px] font-semibold text-foreground">
+                  <div className="flex items-center justify-between text-sm font-semibold text-foreground">
                     <span>{offer.price[locale]}</span>
                     <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/70">
                       {offer.note[locale]}
@@ -132,60 +156,72 @@ export const ToursExplorer = () => {
         </div>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((tour, index) => (
           <Reveal key={tour.id} variant="fade-up" delay={index * 80}>
-            <Card className="overflow-hidden border border-black/5 bg-white shadow-[0_20px_45px_rgba(4,18,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_25px_55px_rgba(4,18,42,0.12)]">
-              <div className="grid gap-4 md:grid-cols-[0.9fr,1.1fr]">
+            <Card className="flex h-full flex-col overflow-hidden border border-white/50 bg-white/80 shadow-[0_30px_70px_rgba(4,18,42,0.12)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_rgba(4,18,42,0.15)] backdrop-blur">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={tour.gallery[0]}
                   alt={tour.title[locale]}
-                  className="h-64 w-full object-cover md:h-full"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   loading="lazy"
                   decoding="async"
                 />
-                <CardContent className="space-y-3 p-6">
-                  <div className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">
-                    {tour.category}
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground">{tour.title[locale]}</h3>
-                  <p className="text-sm text-muted-foreground">{tour.description[locale]}</p>
-                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                    <span className="inline-flex items-center gap-1">
-                      <Clock className="h-4 w-4 text-primary" /> {tour.durationHours}h
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <DollarSign className="h-4 w-4 text-primary" /> ${tour.price} MXN
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Star className="h-4 w-4 text-primary" />
-                      {typeof (tour as any).rating === "number" ? (tour as any).rating.toFixed(1) : "—"}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] uppercase tracking-[0.35em] text-muted-foreground">
-                      {tour.nextDates.slice(0, 2).join(" · ")}
-                    </div>
-                    <Button
-                      className="rounded-full px-6 py-2 text-[11px] uppercase tracking-[0.35em]"
-                      onClick={() => setSelected(tour)}
-                    >
-                      {locale === "es" ? "Ver detalle" : "Details"}
-                    </Button>
-                  </div>
-                </CardContent>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <span className="absolute left-4 top-4 rounded-full bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary shadow">
+                  {tour.category}
+                </span>
               </div>
+              <CardContent className="flex flex-1 flex-col space-y-3 p-5">
+                <p className="font-tourism text-2xl text-secondary/80">
+                  {tour.title[locale]}
+                </p>
+                <p className="text-sm text-muted-foreground line-clamp-3">{tour.description[locale]}</p>
+                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                  <span className="inline-flex items-center gap-1">
+                    <Clock className="h-4 w-4 text-primary" /> {tour.durationHours}h
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <DollarSign className="h-4 w-4 text-primary" /> ${tour.price} MXN
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Star className="h-4 w-4 text-primary" />
+                    {typeof (tour as any).rating === "number" ? (tour as any).rating.toFixed(1) : "—"}
+                  </span>
+                </div>
+                <div className="mt-auto flex items-center justify-between gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    {tour.nextDates.slice(0, 2).map((d) => (
+                      <span
+                        key={d}
+                        className="rounded-full border border-secondary/20 bg-secondary/5 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-secondary"
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                  <Button
+                    className="rounded-full bg-secondary px-6 py-2 text-[11px] uppercase tracking-[0.35em] text-white shadow-md hover:bg-secondary/90"
+                    onClick={() => setSelected(tour)}
+                  >
+                    {locale === "es" ? "Ver detalle" : "Details"}
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </Reveal>
         ))}
       </div>
 
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
-        <DialogContent className="max-w-4xl overflow-y-auto max-h-[90vh]">
+        <DialogContent className="max-w-4xl overflow-y-auto max-h-[90vh] rounded-[36px] border border-white/40 bg-gradient-to-br from-white via-[#fef7ef] to-[#ecfbff] shadow-[0_45px_95px_rgba(4,18,42,0.18)]">
           {selected && (
             <>
               <DialogHeader>
-                <DialogTitle>{selected.title[locale]}</DialogTitle>
+                <DialogTitle className="font-tourism text-3xl text-secondary/90">
+                  {selected.title[locale]}
+                </DialogTitle>
               </DialogHeader>
               <div className="grid gap-6 md:grid-cols-[2fr,1fr]">
                 <div className="space-y-4">
@@ -211,13 +247,13 @@ export const ToursExplorer = () => {
                     </ul>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-xl bg-muted/30 p-4">
+                    <div className="rounded-xl border border-white/40 bg-white/80 p-4 shadow">
                       <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
                         {locale === "es" ? "Duración" : "Duration"}
                       </p>
                       <p className="text-2xl font-semibold text-foreground">{selected.durationHours}h</p>
                     </div>
-                    <div className="rounded-xl bg-muted/30 p-4">
+                    <div className="rounded-xl border border-white/40 bg-white/80 p-4 shadow">
                       <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
                         {locale === "es" ? "Precio" : "Price"}
                       </p>
@@ -226,7 +262,7 @@ export const ToursExplorer = () => {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="rounded-2xl border border-muted/40 bg-muted/10 p-4 space-y-3">
+                  <div className="rounded-2xl border border-white/40 bg-white/80 p-4 space-y-3 shadow">
                     <p className="flex items-center gap-2 text-foreground font-semibold">
                       <MapPin className="h-4 w-4 text-primary" /> {locale === "es" ? "Ubicación" : "Location"}
                     </p>
