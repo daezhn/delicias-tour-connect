@@ -1,0 +1,35 @@
+import { Navigation } from "@/components/Navigation";
+import { ToursExplorer } from "@/components/ToursExplorer";
+import { PlanYourTrip } from "@/components/PlanYourTrip";
+import { Footer } from "@/components/Footer";
+import { useLocale } from "@/hooks/use-locale";
+import { ArrowLeft } from "lucide-react";
+
+const Tours = () => {
+  const { locale } = useLocale();
+
+  return (
+    <div className="min-h-screen bg-[#0c2c68] text-white">
+      <Navigation />
+      <main className="pt-[90px]">
+        <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 sm:px-8 lg:px-20">
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-white/20"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {locale === "es" ? "Regresar" : "Go back"}
+          </a>
+          <div className="mt-12">
+            <ToursExplorer />
+          </div>
+        </section>
+
+        <PlanYourTrip compact showHeading={false} />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Tours;

@@ -10,10 +10,11 @@ import { HowToGet } from "@/components/HowToGet";
 import { Events } from "@/components/Events";
 import { Recommendations } from "@/components/Recommendations";
 import { Footer } from "@/components/Footer";
-import { ToursExplorer } from "@/components/ToursExplorer";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCard } from "@/components/ContactCard";
 import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
+import { ExperiencesCollage } from "@/components/ExperiencesCollage";
+import { PlanYourTrip } from "@/components/PlanYourTrip";
 
 const Index = () => {
   return (
@@ -35,11 +36,9 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="tours" className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] py-20 text-white">
-          <div className="space-y-12 px-4 sm:px-8 lg:px-16">
-            <ToursExplorer />
-          </div>
-        </section>
+        <ExperiencesCollage />
+
+        <PlanYourTrip />
 
         <section className="bg-white py-20">
           <div className="mx-auto max-w-6xl grid gap-8 px-4 lg:grid-cols-[1fr,0.9fr]">

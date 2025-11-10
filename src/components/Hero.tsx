@@ -6,7 +6,7 @@ const HERO_IMAGE = "/images/HEROBUENO.jpg"; // provided asset in public/images
 
 const quickLinks = [
   { href: "#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
-  { href: "#tours", image: "/images/tours/cavall7.jpg", label: { es: "Tours", en: "Tours" }, hint: { es: "Desierto · ríos · ciudad", en: "Desert · rivers · city" } },
+  { href: "/tours", image: "/images/tours/cavall7.jpg", label: { es: "Tours", en: "Tours" }, hint: { es: "Desierto · ríos · ciudad", en: "Desert · rivers · city" } },
   { href: "#hoteles", image: "/images/hotel-4.jpg", label: { es: "Hoteles", en: "Hotels" }, hint: { es: "Boutique & comfort", en: "Boutique & comfort" } },
   { href: "#restaurantes", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" }, hint: { es: "Sabores locales", en: "Local flavors" } }
 ] as const;
@@ -23,7 +23,7 @@ export const Hero = () => {
       hint: tile.hint[locale] ?? tile.hint.es
     }));
 
-    const prioritizedOrder = ["#eventos", "#tours", "#restaurantes", "#hoteles"];
+    const prioritizedOrder = ["#eventos", "/tours", "#restaurantes", "#hoteles"];
 
     const orderedBase = prioritizedOrder
       .map((href) => localizedBase.find((tile) => tile.href === href))

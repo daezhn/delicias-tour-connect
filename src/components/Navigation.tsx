@@ -17,7 +17,7 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-black/5 bg-white/90 shadow-[0_10px_30px_rgba(4,18,42,0.08)] backdrop-blur">
+      <div className="border-b border-orange-200/60 bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="#inicio" className="flex items-center gap-3 py-4">
             <img src="/images/Logo_IDEA.png" alt="IDEA Delicias" className="h-14 w-auto" />
@@ -51,7 +51,7 @@ export const Navigation = () => {
               {locale === "es" ? "ES" : "EN"}
             </button>
             <a
-              href="#tours"
+              href="/tours"
               className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
             >
               {locale === "es" ? "Explorar" : "Explore"}
@@ -93,7 +93,7 @@ export const Navigation = () => {
                 </a>
               ))}
               <a
-                href="#tours"
+                href="/tours"
                 onClick={() => setOpen(false)}
                 className="mt-1 inline-flex items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
               >

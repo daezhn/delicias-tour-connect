@@ -44,7 +44,7 @@ const SUBDOMAINS = [
   {
     id: "experiencias",
     url: "delicias.travel/experiencias",
-    href: "#tours",
+    href: "/tours",
     image: "/images/torre-reloj.jpg",
     accent: "from-[#b7c95b]/80 to-[#00aec0]/80",
     title: {

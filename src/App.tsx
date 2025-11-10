@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Atractivos from "./pages/Atractivos";
 import Pantalla from "./pages/Pantalla";
+import Tours from "./pages/Tours";
 import { LocaleProvider } from "@/hooks/use-locale";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/Atractivos" element={<Atractivos />} />
             <Route path="/Pantalla" element={<Pantalla />} />
+            <Route path="/tours" element={<Tours />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
