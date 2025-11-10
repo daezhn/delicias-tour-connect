@@ -6,7 +6,8 @@ import { ArrowUpRight } from "lucide-react";
 const heroImages = [
   "/images/Galería/8.jpg",
   "/images/Galería/11.jpg",
-  "/images/Galería/18.jpg"
+  "/images/Galería/18.jpg",
+  "/images/Galería/2.jpg"
 ];
 
 const mustDo = [
@@ -35,8 +36,8 @@ const mustDo = [
   {
     image: "/images/Galería/15.jpg",
     title: {
-      es: "Museo del Mezquite & corredores artísticos",
-      en: "Mesquite Museum & art corridors"
+      es: "Museos",
+      en: "Museums"
     },
     description: {
       es: "Sumérgete en colecciones que narran la historia algodonera y recorre los corredores culturales con galerías emergentes.",
@@ -62,23 +63,30 @@ const ExperienciasQueHacer = () => {
       : "Delicias blends cotton heritage, creative gastronomy and desert scenery perfect for unforgettable escapes. Get inspired and craft your own itinerary.";
 
   return (
-    <div className="min-h-screen bg-[#fffdf7] text-foreground">
+    <div className="min-h-screen bg-gradient-to-br from-[#0c2c68]/10 via-[#fffdf7] to-[#f6b043]/15 text-foreground">
       <Navigation />
       <main className="pt-[90px]">
-        <section className="px-4 py-20 sm:px-8 lg:px-20">
+        <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 text-white sm:px-8 lg:px-20">
+          <a
+            href="/"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-white/15"
+          >
+            <ArrowUpRight className="h-4 w-4 rotate-180" />
+            {locale === "es" ? "Regresar" : "Go back"}
+          </a>
           <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
             <div className="space-y-5">
-              <p className="font-tourism text-3xl text-secondary/80">
+              <p className="font-tourism text-3xl text-white/80">
                 {locale === "es" ? "El corazón del norte de México" : "The heart of northern Mexico"}
               </p>
-              <h1 className="text-4xl font-black leading-tight text-foreground sm:text-5xl">{heroTitle}</h1>
-              <p className="text-lg text-muted-foreground">{heroCopy}</p>
+              <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl">{heroTitle}</h1>
+              <p className="text-lg text-white/85">{heroCopy}</p>
               <div className="flex flex-wrap gap-3">
                 {experiencesLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="inline-flex items-center gap-2 rounded-full border border-secondary/20 px-4 py-2 text-sm font-semibold text-secondary transition hover:border-secondary hover:bg-secondary/10"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
                   >
                     {link.label[locale]}
                     <ArrowUpRight className="h-4 w-4" />
@@ -86,22 +94,23 @@ const ExperienciasQueHacer = () => {
                 ))}
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {heroImages.map((src, idx) => (
-                <div
-                  key={src}
-                  className={`overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)] ${
-                    idx === 1 ? "sm:col-span-2" : ""
-                  }`}
-                >
-                  <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)]">
+                <img src={heroImages[0]} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+              </div>
+              <div className="grid gap-4">
+                <div className="overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)]">
+                  <img src={heroImages[1]} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
                 </div>
-              ))}
+                <div className="overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)]">
+                  <img src={heroImages[2]} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-20">
+        <section className="bg-gradient-to-br from-white via-[#fef7ef] to-[#f6b043]/20 py-20">
           <div className="mx-auto max-w-6xl space-y-12 px-4">
             <div className="space-y-2 text-center">
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
