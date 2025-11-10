@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { WelcomeDelicias } from "@/components/WelcomeDelicias";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { Hotels } from "@/components/Hotels";
 import { Restaurants } from "@/components/Restaurants";
@@ -22,11 +23,16 @@ const Index = () => {
       <main id="inicio" className="space-y-0 pt-[90px]">
         <Hero />
 
+        <WelcomeDelicias />
+
         <CitySubdomains />
 
-        <section id="eventos" className="bg-[#fdf9f6] py-20">
-          <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-[1.4fr,0.8fr]">
-            <Events />
+        <section id="eventos" className="py-0">
+          <Events />
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-4xl px-4">
             <AvailabilityCalendar compact />
           </div>
         </section>

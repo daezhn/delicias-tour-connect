@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Great+Vibes&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -59,6 +59,7 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --font-script: "Playfair Display", "Poppins", serif;
+    --font-tourism: "Great Vibes", "Playfair Display", cursive;
   }
 
   .dark {
@@ -147,12 +148,21 @@ All colors MUST be HSL.
     transform: translate3d(0, 0, 0);
     filter: blur(0);
   }
+  /* Diamond clip utility for hero link tiles */
+  .diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
 }
 
 @layer utilities {
   .font-script {
     font-family: var(--font-script);
     letter-spacing: 0.04em;
+  }
+
+  .font-tourism {
+    font-family: var(--font-tourism);
+    letter-spacing: 0.08em;
   }
 
   @keyframes hero-zoom {

@@ -38,7 +38,7 @@ export const HowToGet = () => {
   const copy = getTranslations(locale).sections.howToGet;
 
   return (
-    <section className="py-16">
+    <section id="como-llegar" className="py-16">
       <div className="container mx-auto px-4">
         <Reveal variant="fade-up" className="text-center mb-12 space-y-4">
           <PremiumBadge icon={<MapPin className="h-3 w-3" />} label={copy.badgeLabel ?? ""} className="mx-auto" />

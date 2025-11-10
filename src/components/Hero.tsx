@@ -1,14 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/Reveal";
+import { useMemo } from "react";
 import { useLocale } from "@/hooks/use-locale";
-import { getTranslations, type Locale } from "@/lib/i18n";
 
-const heroBackgrounds = [
-  { src: "/images/hero-delicias.jpg", alt: "Vista panorámica de Delicias" },
-  { src: "/images/hero-delicias-2.jpg", alt: "Atardecer en Delicias" },
-  { src: "/images/hero-delicias-3.jpg", alt: "Centro histórico de Delicias" }
-] as const;
+// Single static hero background containing embedded text per client request
+const HERO_IMAGE = "/images/herook.png"; // provided asset in public/images
 
 const quickLinks = [
   { href: "#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
@@ -17,126 +11,100 @@ const quickLinks = [
   { href: "#restaurantes", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" }, hint: { es: "Sabores locales", en: "Local flavors" } }
 ] as const;
 
-const heroStats: Record<Locale, Array<{ label: string; value: string }>> = {
-  es: [
-    { label: "Experiencias guiadas", value: "25+" },
-    { label: "Eventos al año", value: "40+" },
-    { label: "Km desde Chihuahua", value: "85" }
-  ],
-  en: [
-    { label: "Curated experiences", value: "25+" },
-    { label: "Yearly events", value: "40+" },
-    { label: "Km from Chihuahua", value: "85" }
-  ]
-};
+// Stats removed for cleaner tourist-first visual hero
 
 export const Hero = () => {
   const { locale } = useLocale();
-  const copy = getTranslations(locale);
-  const heroCopy = copy.hero;
-  const script = locale === "es" ? "Capital del desierto chihuahuense" : "Desert capital of Chihuahua";
-  const [activeImage, setActiveImage] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(
-      () => setActiveImage((prev) => (prev + 1) % heroBackgrounds.length),
-      8000
-    );
-    return () => clearInterval(timer);
-  }, []);
+  const heroLinks = useMemo(() => {
+    const localizedBase = quickLinks.map((tile) => ({
+      ...tile,
+      label: tile.label[locale] ?? tile.label.es,
+      hint: tile.hint[locale] ?? tile.hint.es
+    }));
 
-  const links = useMemo(
-    () =>
-      quickLinks.map((tile) => ({
-        ...tile,
-        label: tile.label[locale] ?? tile.label.es,
-        hint: tile.hint[locale] ?? tile.hint.es
-      })),
-    [locale]
-  );
+    const prioritizedOrder = ["#eventos", "#tours", "#restaurantes", "#hoteles"];
 
-  const stats = heroStats[locale] ?? heroStats.es;
+    const orderedBase = prioritizedOrder
+      .map((href) => localizedBase.find((tile) => tile.href === href))
+      .filter((tile): tile is (typeof localizedBase)[number] => Boolean(tile));
+
+    const leftovers = localizedBase.filter((tile) => !prioritizedOrder.includes(tile.href));
+
+    const additionalTiles = [
+      {
+        href: "#atractivos",
+        image: "/images/hero-delicias-3.jpg",
+        label: locale === "es" ? "Atractivos" : "Highlights",
+        hint: locale === "es" ? "Rutas fotogénicas" : "Scenic routes"
+      },
+      {
+        href: "#actividades",
+        image: "/images/hero-delicias-1.jpg",
+        label: locale === "es" ? "Actividades" : "Activities",
+        hint: locale === "es" ? "Experiencias al aire libre" : "Outdoor escapes"
+      },
+      {
+        href: "#stay-dine",
+        image: "/images/hotel-5.jpg",
+        label: locale === "es" ? "Stay & Dine" : "Stay & Dine",
+        hint: locale === "es" ? "Sabores y hospedaje" : "Taste & stay"
+      }
+    ];
+
+    return [...orderedBase, ...leftovers, ...additionalTiles];
+  }, [locale]);
 
   return (
-    <section className="relative isolate min-h-[92vh] overflow-hidden bg-[#04122a] text-white">
-      {heroBackgrounds.map((image, index) => (
-        <img
-          key={image.src}
-          src={image.src}
-          alt={image.alt}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity ${
-            activeImage === index ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ transitionDuration: "1500ms" }}
-          loading={index === 0 ? "eager" : "lazy"}
-          decoding="async"
-        />
-      ))}
-      <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_20%,rgba(0,174,192,0.35),transparent_55%),rgba(4,18,42,0.82)]" />
+    <section className="relative isolate min-h-[86vh] overflow-hidden bg-black text-white">
+      <img
+        src={HERO_IMAGE}
+        alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+      {/* Zig-zag dual-column diamond layout near the hero clock */}
+      <div className="absolute right-4 top-12 flex gap-6 sm:right-10 sm:top-20 sm:gap-8">
+        {([0, 1] as const).map((columnIndex) => {
+          const items = heroLinks.filter((_, idx) => idx % 2 === columnIndex);
+          if (!items.length) {
+            return null;
+          }
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-36 sm:px-6 lg:pt-40">
-        <div className="space-y-6">
-          <Reveal variant="fade-down" className="font-script text-3xl text-white/85">
-            {script}
-          </Reveal>
-          <Reveal as="h1" variant="fade-up" className="text-[clamp(42px,6vw,72px)] font-extrabold tracking-tight">
-            {heroCopy.titleLead}{" "}
-            <span
-              className="text-primary"
-              style={{
-                background: "var(--gradient-sunset)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+          return (
+            <div
+              key={`column-${columnIndex}`}
+              className={`flex flex-col gap-10 sm:gap-12 ${
+                columnIndex === 1 ? "mt-20 sm:mt-28" : ""
+              }`}
             >
-              {heroCopy.titleHighlight}
-            </span>
-          </Reveal>
-          <Reveal variant="fade-up" delay={120}>
-            <p className="max-w-xl text-base text-white/90 sm:text-lg">{heroCopy.description}</p>
-          </Reveal>
-          <Reveal variant="fade-up" delay={200}>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild className="rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-wide">
-                <a href="#eventos">{heroCopy.events}</a>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full border-white/40 bg-white/10 px-6 py-3 text-sm tracking-wide text-white hover:bg-white/20">
-                <a href="#atractivos">{heroCopy.explore}</a>
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal variant="fade-up" delay={260}>
-            <div className="flex flex-wrap gap-6 rounded-3xl border border-white/15/0 bg-white/0 p-0">
-              {stats.map((stat) => (
-                <div key={stat.label} className="min-w-[120px]">
-                  <p className="text-2xl font-bold">{stat.value}</p>
-                  <p className="text-xs tracking-wide text-white/75">{stat.label}</p>
-                </div>
+              {items.map((tile, idx) => (
+                <a
+                  key={`${tile.href}-${tile.label}`}
+                  href={tile.href}
+                  aria-label={tile.label}
+                  className="group relative h-24 w-24 overflow-hidden rounded-[30px] border border-white/35 shadow-[0_20px_45px_rgba(0,0,0,0.55)] transition hover:-translate-y-1 hover:border-white/70 hover:shadow-[0_30px_65px_rgba(0,0,0,0.65)] sm:h-28 sm:w-28"
+                  style={{ transform: "rotate(45deg)" }}
+                >
+                  <img
+                    src={tile.image}
+                    alt=""
+                    className="h-full w-full object-cover transition duration-700"
+                    loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    style={{ transform: "rotate(-45deg) scale(1.25)" }}
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/25 via-transparent to-black/35 opacity-80 transition group-hover:opacity-100"
+                    style={{ transform: "rotate(-45deg)" }}
+                  />
+                  <span className="sr-only">{tile.label}</span>
+                </a>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* Image-only quick tiles pinned over the hero */}
-      <div className="pointer-events-auto absolute inset-x-4 bottom-8 z-10 mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:inset-x-6 sm:grid-cols-4">
-        {links.map((tile, index) => (
-          <a
-            key={tile.href}
-            href={tile.href}
-            aria-label={tile.label}
-            className="group relative block overflow-hidden rounded-2xl border border-white/20 backdrop-blur-[2px]"
-          >
-            <img
-              src={tile.image}
-              alt=""
-              className="h-28 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-36"
-              loading={index === 0 ? "eager" : "lazy"}
-              decoding="async"
-            />
-            <span className="sr-only">{tile.label}</span>
-          </a>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
