@@ -70,13 +70,10 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
       <div className={compact ? "" : "mx-auto max-w-3xl px-4"}>
         <div className={`rounded-[32px] border border-white/30 bg-gradient-to-r from-[#fdf2ec]/80 via-white/90 to-[#ecfbff]/80 p-6 shadow-[0_30px_70px_rgba(4,18,42,0.12)] backdrop-blur-2xl ${compact ? "" : "text-center"}`}>
           <div className="space-y-3">
-            <p className="font-tourism text-xl text-secondary/80">
-              {locale === "es" ? "Planifica con estilo" : "Plan ahead in style"}
-            </p>
             <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/80">
               {copy?.highlight ?? "Eventos"}
             </p>
-            <h2 className="text-2xl font-bold text-foreground">{heading}</h2>
+            <h2 className="font-tourism text-3xl text-secondary/90">{heading}</h2>
             <p className="text-sm text-muted-foreground">{legend}</p>
           </div>
           <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -145,45 +142,6 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
               })}
             </div>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {upcomingEvents.map((event) => {
-                const date = parseISO(event.date);
-                return (
-                  <Card
-                    key={event.id}
-                    className="flex items-center gap-4 border border-white/40 bg-white/80 p-4 shadow-[0_15px_30px_rgba(4,18,42,0.08)]"
-                  >
-                    <div className="h-14 w-14 overflow-hidden rounded-2xl border border-white/60">
-                      <img
-                        src={event.image}
-                        alt={event.alt}
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-[11px] uppercase tracking-[0.4em] text-primary/70">
-                        {format(date, "EEEE", { locale: formatterLocale })}
-                      </p>
-                      <h3 className="text-sm font-semibold text-foreground">{event.label}</h3>
-                      <p className="text-[11px] text-muted-foreground">
-                        {locale === "es"
-                          ? "Cartel en la sección Agenda."
-                          : "Poster listed in Agenda."}
-                      </p>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="rounded-full border border-primary/30 px-3 py-1 text-[11px] uppercase tracking-[0.3em] text-primary"
-                    >
-                      {locale === "es" ? "Ver" : "Open"}
-                    </Button>
-                  </Card>
-                );
-              })}
-            </div>
           </div>
         )}
       </div>
