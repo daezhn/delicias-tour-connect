@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useLocale } from "@/hooks/use-locale";
 
 // Single static hero background containing embedded text per client request
-const HERO_IMAGE = "/images/herook.png"; // provided asset in public/images
+const HERO_IMAGE = "/images/HEROBUENO.jpg"; // provided asset in public/images
 
 const quickLinks = [
   { href: "#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
@@ -56,7 +56,7 @@ export const Hero = () => {
   }, [locale]);
 
   return (
-    <section className="relative isolate min-h-[86vh] overflow-hidden bg-black text-white">
+    <section className="relative isolate min-h-[94vh] overflow-hidden bg-black text-white">
       <img
         src={HERO_IMAGE}
         alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
@@ -65,7 +65,7 @@ export const Hero = () => {
         decoding="async"
       />
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute right-4 top-12 flex gap-6 sm:right-10 sm:top-20 sm:gap-8">
+      <div className="absolute right-6 top-16 flex gap-8 sm:right-12 sm:top-24 sm:gap-10">
         {([0, 1] as const).map((columnIndex) => {
           const items = heroLinks.filter((_, idx) => idx % 2 === columnIndex);
           if (!items.length) {
@@ -75,8 +75,8 @@ export const Hero = () => {
           return (
             <div
               key={`column-${columnIndex}`}
-              className={`flex flex-col gap-10 sm:gap-12 ${
-                columnIndex === 1 ? "mt-20 sm:mt-28" : ""
+              className={`flex flex-col gap-12 sm:gap-14 ${
+                columnIndex === 1 ? "mt-24 sm:mt-32" : ""
               }`}
             >
               {items.map((tile, idx) => (
@@ -84,7 +84,7 @@ export const Hero = () => {
                   key={`${tile.href}-${tile.label}`}
                   href={tile.href}
                   aria-label={tile.label}
-                  className="group relative h-24 w-24 overflow-hidden rounded-[30px] border border-white/35 shadow-[0_20px_45px_rgba(0,0,0,0.55)] transition hover:-translate-y-1 hover:border-white/70 hover:shadow-[0_30px_65px_rgba(0,0,0,0.65)] sm:h-28 sm:w-28"
+                  className="group relative h-28 w-28 overflow-hidden rounded-[34px] border border-white/35 shadow-[0_25px_55px_rgba(0,0,0,0.55)] transition hover:-translate-y-1 hover:border-white/70 hover:shadow-[0_35px_75px_rgba(0,0,0,0.65)] sm:h-32 sm:w-32"
                   style={{ transform: "rotate(45deg)" }}
                 >
                   <img

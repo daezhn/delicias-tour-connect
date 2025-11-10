@@ -14,7 +14,6 @@ import { ToursExplorer } from "@/components/ToursExplorer";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCard } from "@/components/ContactCard";
 import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
-import { CitySubdomains } from "@/components/CitySubdomains";
 
 const Index = () => {
   return (
@@ -25,7 +24,6 @@ const Index = () => {
 
         <WelcomeDelicias />
 
-        <CitySubdomains />
 
         <section id="eventos" className="py-0">
           <Events />
