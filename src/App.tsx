@@ -11,6 +11,8 @@ import Tours from "./pages/Tours";
 import ExperienciasQueHacer from "./pages/ExperienciasQueHacer";
 import ExperienciasVidaNocturna from "./pages/ExperienciasVidaNocturna";
 import ExperienciasQueComer from "./pages/ExperienciasQueComer";
+import ExperienciasArteCultura from "./pages/ExperienciasArteCultura";
+import ExperienciasFamilia from "./pages/ExperienciasFamilia";
 import { LocaleProvider } from "@/hooks/use-locale";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/experiencias/que-hacer" element={<ExperienciasQueHacer />} />
             <Route path="/experiencias/vida-nocturna" element={<ExperienciasVidaNocturna />} />
             <Route path="/experiencias/que-comer" element={<ExperienciasQueComer />} />
+            <Route path="/experiencias/arte-cultura" element={<ExperienciasArteCultura />} />
+            <Route path="/experiencias/familia" element={<ExperienciasFamilia />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
