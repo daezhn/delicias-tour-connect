@@ -35,7 +35,7 @@ export const Events = () => {
         <div className="flex flex-col gap-10 lg:flex-row">
           <Reveal variant="fade-up" className="flex h-full flex-col justify-center space-y-5 text-slate-900 lg:max-w-sm">
           <p className="text-base font-semibold uppercase tracking-[0.6em] text-sky-800 drop-shadow-sm">{eyebrow}</p>
-          <p className="font-tourism text-[clamp(1.9rem,4.5vw,2.9rem)] text-white drop-shadow-[0_8px_25px_rgba(0,0,0,0.25)] tracking-[0.08em] sm:whitespace-nowrap">
+          <p className="font-tourism text-[clamp(1.7rem,4vw,2.6rem)] text-white drop-shadow-[0_8px_25px_rgba(0,0,0,0.25)] tracking-[0.08em] sm:whitespace-nowrap">
             {script}
           </p>
           {copy.intro && <p className="text-base leading-relaxed text-slate-700 sm:text-lg">{copy.intro}</p>}
