@@ -77,7 +77,7 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
             <p className="text-sm text-muted-foreground">{legend}</p>
           </div>
           <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <div className="rounded-full border border-secondary/10 bg-white/70 px-6 py-2 text-sm font-semibold uppercase tracking-[0.4em] text-secondary">
+            <div className="rounded-full border border-secondary/10 bg-white/70 px-6 py-2 text-center text-sm font-semibold uppercase tracking-[0.35em] text-secondary whitespace-nowrap">
               {monthLabel}
             </div>
             <Button
@@ -104,7 +104,8 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
               </span>
             </div>
 
-            <div className="mt-6 grid grid-cols-7 gap-3">
+          <div className="mt-6 overflow-x-auto pb-2">
+            <div className="min-w-[560px] grid grid-cols-7 gap-3 sm:min-w-0">
               {calendarRange.map((day, index) => {
                 const iso = format(day, "yyyy-MM-dd");
                 const dayEvents = eventsByDate[iso];
@@ -121,7 +122,7 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                     } ${!inMonth ? "opacity-50" : ""}`}
                   >
                     {index < 7 && (
-                      <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
+                      <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px] sm:tracking-[0.4em]">
                         {dayNames[index]}
                       </p>
                     )}
@@ -132,7 +133,7 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                       {format(day, "MMM", { locale: formatterLocale })}
                     </p>
                     {isEvent && (
-                      <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[10px] font-semibold tracking-[0.2em] text-primary shadow-sm font-tourism">
+                      <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[9px] font-semibold tracking-[0.12em] text-primary shadow-sm font-tourism whitespace-nowrap sm:text-[10px] sm:tracking-[0.2em]">
                         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                         {locale === "es" ? "Agenda" : "Agenda"}
                       </span>
@@ -141,6 +142,7 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                 );
               })}
             </div>
+          </div>
 
           </div>
         )}

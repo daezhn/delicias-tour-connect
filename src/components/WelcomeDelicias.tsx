@@ -17,8 +17,8 @@ const PARAGRAPHS = {
 
 const STRINGS = {
   subtitle: {
-    es: "El corazón del norte de México",
-    en: "The Heart of Northern Mexico"
+    es: "El corazón de Chihuahua",
+    en: "The Heart of Chihuahua"
   },
   heading: {
     es: "Bienvenido a Delicias",
