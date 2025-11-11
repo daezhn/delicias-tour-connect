@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const heroHighlights = [
   {
@@ -107,6 +109,25 @@ const mapaGourmet = [
 
 const ExperienciasQueComer = () => {
   const { locale } = useLocale();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const menuImages = [
+    {
+      image: "/images/comerbien.png",
+      label: { es: "Comer y pasarlo bien", en: "Eat & enjoy" }
+    },
+    {
+      image: "/images/comidarapida.png",
+      label: { es: "Comida rápida", en: "Quick bites" }
+    },
+    {
+      image: "/images/exigentes.png",
+      label: { es: "Paladares exigentes", en: "Fine dining" }
+    },
+    {
+      image: "/images/snack.png",
+      label: { es: "Snacks & cafés", en: "Snacks & cafés" }
+    }
+  ] as const;
   const heroTitle = locale === "es" ? "Cocina del desierto" : "Desert cuisine";
   const heroCopy =
     locale === "es"
@@ -169,6 +190,45 @@ const ExperienciasQueComer = () => {
                   decoding="async"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-6xl space-y-6 px-4">
+            <div className="text-center space-y-2">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Directorio visual" : "Visual directory"}
+              </p>
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "Menús y guías impresas" : "Menus & print guides"}
+              </h2>
+              <p className="text-sm text-foreground/70">
+                {locale === "es"
+                  ? "Haz zoom sobre cada menú para planear tu ruta gastronómica."
+                  : "Zoom each menu to plan your gastronomic route."}
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {menuImages.map((menu) => (
+                <button
+                  key={menu.image}
+                  type="button"
+                  onClick={() => setSelectedImage(menu.image)}
+                  className="group overflow-hidden rounded-[32px] border border-foreground/10 bg-[#fff7ef] p-4 text-center shadow-[0_15px_35px_rgba(133,78,50,0.12)] transition hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(133,78,50,0.18)]"
+                >
+                  <img
+                    src={menu.image}
+                    alt={menu.label[locale]}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-60 w-full rounded-[20px] object-cover"
+                  />
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.35em] text-secondary">
+                    {menu.label[locale]}
+                  </p>
+                </button>
+              ))}
             </div>
           </div>
         </section>
@@ -279,6 +339,19 @@ const ExperienciasQueComer = () => {
           </div>
         </section>
       </main>
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Menú gastronómico"
+              className="max-h-[80vh] w-full rounded-[32px] object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
       <Footer />
     </div>
   );
