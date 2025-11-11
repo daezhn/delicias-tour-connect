@@ -7,12 +7,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const heroHighlights = [
   {
-    es: "Cafés de autor que dialogan con la tradición algodonera.",
-    en: "Signature cafés in dialogue with cotton heritage."
+    es: "Cafés de autor que dialogan con la tradición Deliciense.",
+    en: "Signature cafés in dialogue with Deliciense heritage."
   },
   {
-    es: "Cocina de humo y nuez en restaurantes familiares.",
-    en: "Smoke & pecan driven cuisine in family-run restaurants."
+    es: "Cocina de humo en restaurantes familiares.",
+    en: "Smoke driven cuisine in family-run restaurants."
   },
   {
     es: "Mercados nocturnos con elotes, pan y mixología local.",
@@ -22,8 +22,8 @@ const heroHighlights = [
 
 const tastingMenu = [
   {
-    course: { es: "Amuse-bouche", en: "Amuse-bouche" },
-    dish: { es: "Tostada de ixtle & atún", en: "Ixtle & tuna tostada" },
+    course: { es: "Entrada", en: "Starter" },
+    dish: { es: "Tostadas", en: "Tostadas" },
     spot: "Casa Nuez",
     description: {
       es: "Laminitas crujientes con emulsión cítrica para abrir apetito.",
@@ -32,18 +32,18 @@ const tastingMenu = [
     image: "/images/restaurant-1.jpg"
   },
   {
-    course: { es: "Fondo", en: "Main" },
-    dish: { es: "Lechón con glaze de sotol", en: "Suckling pig with sotol glaze" },
+    course: { es: "Plato fuerte", en: "Main" },
+    dish: { es: "Lechón", en: "Suckling pig" },
     spot: "Cuarto de Humo",
     description: {
-      es: "Corte jugoso cocinado 12 h acompañado de puré de nuez.",
-      en: "Juicy cut slow-cooked 12h served with pecan purée."
+      es: "Corte jugoso.",
+      en: "Juicy cut."
     },
     image: "/images/restaurant-2.jpg"
   },
   {
     course: { es: "Postre", en: "Dessert" },
-    dish: { es: "Cheesecake de algodón dulce", en: "Cotton candy cheesecake" },
+    dish: { es: "Cheesecake", en: "Candy cheesecake" },
     spot: "Atelier Dulce",
     description: {
       es: "Base de galleta con queso de rancho y nube rosa.",
@@ -57,16 +57,16 @@ const marketStops = [
   {
     title: { es: "Mercado Juárez", en: "Juárez Market" },
     description: {
-      es: "Quesos artesanales, chiles secos y panadería tradicional desde las 7 am.",
-      en: "Artisan cheeses, dried chiles and traditional bread from 7 a.m."
+      es: "Vhiles secos y panadería tradicional desde las 7 am.",
+      en: "Dried chiles and traditional bread from 7 a.m."
     },
     tip: { es: "Pide jugo de betabel y zanahoria recién hecho.", en: "Order the fresh beet-carrot juice." }
   },
   {
-    title: { es: "Corredor de elotes nocturno", en: "Night corn corridor" },
+    title: { es: "Elotes nocturnos", en: "Night corn" },
     description: {
-      es: "Carritos con esquites y salsas de la casa, abre a las 7 pm sobre avenida Sexta.",
-      en: "Carts with esquites and house sauces, open 7 p.m. along Sixth Avenue."
+      es: "Carritos con esquites y salsas de la casa, abre a las 7 pm.",
+      en: "Carts with esquites and house sauces, open 7 p.m."
     },
     tip: { es: "Combina con chiltepín y topping de nuez garapiñada.", en: "Add chiltepín and candied pecan topping." }
   },
