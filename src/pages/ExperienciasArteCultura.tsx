@@ -5,16 +5,16 @@ import { ArrowUpRight } from "lucide-react";
 
 const heroHighlights = [
   {
-    es: "MUDECH y el Museo de Paleontología resguardan colecciones únicas del desierto chihuahuense.",
-    en: "MUDECH and the Paleontology Museum safeguard singular collections from the Chihuahuan Desert."
+    es: "MUDECH conserva historias fósiles y residencias de escultura contemporánea.",
+    en: "MUDECH preserves fossil tales and contemporary sculpture residencies."
   },
   {
-    es: "Plaza Benito Juárez vibra con murales, danza y música al aire libre todo el año.",
-    en: "Benito Juárez plaza hums with murals, dance and open-air music all year long."
+    es: "Plaza Benito Juárez funciona como escenario vivo: murales, danza y cafés de autor.",
+    en: "Benito Juárez plaza is a living stage: murals, dance and signature cafés."
   },
   {
-    es: "Residencias creativas conectan artesanos de ixtle, fotógrafos y músicos con el paisaje algodonero.",
-    en: "Creative residencies connect ixtle artisans, photographers and musicians with the cotton landscape."
+    es: "Colectivos de ixtle, fotografía y literatura tejen ruta propia entre barrios algodoneros.",
+    en: "Ixtle, photography and literary collectives craft their own route across cotton neighborhoods."
   }
 ] as const;
 
@@ -24,20 +24,20 @@ const culturalEvents = [
     eyebrow: { es: "Residencia abierta", en: "Open residency" },
     title: { es: "Residencia MUDECH: Escultura y paisaje", en: "MUDECH residency: Sculpture & landscape" },
     description: {
-      es: "Curadores locales acompañan procesos de escultura con yeso, fibras de sotol y pigmentos del desierto.",
-      en: "Local curators guide sculpture processes with plaster, sotol fibers and pigments from the desert."
+      es: "Curadores locales guían procesos con fibras de sotol y pigmentos de desierto.",
+      en: "Local curators guide processes with sotol fibers and desert pigments."
     },
     date: { es: "14-16 noviembre · 10:00-18:00 h", en: "Nov 14-16 · 10 a.m.–6 p.m." },
-    venue: "Museo del Desierto Chihuahuense (MUDECH)",
+    venue: "Museo del Desierto Chihuahuense",
     link: "https://maps.google.com/?q=Museo+del+Desierto+Chihuahuense"
   },
   {
     image: "/images/event-1.jpg",
     eyebrow: { es: "Jam urbano", en: "Urban jam" },
-    title: { es: "Jam de muralismo y lettering", en: "Mural & lettering jam" },
+    title: { es: "Ruta 33000: lettering & beats", en: "Ruta 33000: lettering & beats" },
     description: {
-      es: "El colectivo Ruta 33000 pinta narrativas algodoneras mientras DJs locales musicalizan el atardecer.",
-      en: "Ruta 33000 collective paints cotton stories while local DJs soundtrack the sunset."
+      es: "Murales en vivo alrededor del reloj y sesiones DJ al atardecer.",
+      en: "Live murals around the clock tower with sunset DJ sets."
     },
     date: { es: "Jueves de noviembre · 19:30 h", en: "November Thursdays · 7:30 p.m." },
     venue: "Corredor del Reloj Público",
@@ -48,8 +48,8 @@ const culturalEvents = [
     eyebrow: { es: "Cine foro", en: "Film forum" },
     title: { es: "Noche fósil & cinema", en: "Fossil & cinema night" },
     description: {
-      es: "Recorrido nocturno entre dinosaurios seguido de documentales producidos en Chihuahua.",
-      en: "Night tour among dinosaurs followed by documentaries produced in Chihuahua."
+      es: "Recorridos nocturnos entre dinosaurios seguidos de documentales chihuahuenses.",
+      en: "Night tours among dinosaurs plus Chihuahua-made documentaries."
     },
     date: { es: "23 noviembre · 20:00 h", en: "Nov 23 · 8:00 p.m." },
     venue: "Museo de Paleontología de Delicias",
@@ -60,34 +60,34 @@ const culturalEvents = [
 const creativeItinerary = [
   {
     time: "09:30",
-    label: { es: "Murales y desayuno creativo", en: "Murals & creative breakfast" },
+    label: { es: "Murales & breakfast", en: "Murals & breakfast" },
     detail: {
-      es: "Camina entre el Reloj Público y la plaza Benito Juárez para ubicar murales y piezas de cerámica urbana mientras visitas cafeterías de autor.",
-      en: "Walk between the clock tower and Benito Juárez plaza to spot murals and ceramic pieces while visiting signature coffee shops."
+      es: "Café de autor cerca del reloj mientras descubres nuevos murales y cerámica urbana.",
+      en: "Signature coffee near the clock while spotting new murals and ceramic pieces."
     }
   },
   {
     time: "11:30",
-    label: { es: "MUDECH sin prisa", en: "Slow visit at MUDECH" },
+    label: { es: "MUDECH sin prisa", en: "Slow MUDECH visit" },
     detail: {
-      es: "Cuatro salas permanentes, sala multimedia y una terraza con vista al valle algodonero para entender el ecosistema del desierto.",
-      en: "Four permanent rooms, a multimedia hall and a terrace overlooking the cotton valley to understand the desert ecosystem."
+      es: "Salas permanentes, multimedia y terraza con vista algodonera.",
+      en: "Permanent rooms, multimedia hall and a cotton-valley terrace."
     }
   },
   {
     time: "15:00",
-    label: { es: "Laboratorio paleontológico", en: "Paleontology lab" },
+    label: { es: "Laboratorio paleo", en: "Paleo lab" },
     detail: {
-      es: "Taller familiar para limpiar réplicas de fósiles y conocer las especies cretácicas halladas en Delicias.",
-      en: "Family-friendly lab to clean fossil replicas and learn about the Cretaceous species discovered in Delicias."
+      es: "Taller con réplicas de fósiles y realidad aumentada para familias.",
+      en: "Fossil replica workshop plus AR for families."
     }
   },
   {
     time: "19:00",
     label: { es: "Atardecer sonoro", en: "Soundtracked sunset" },
     detail: {
-      es: "Bandas de jazz, ballet folklórico y narradores orales ocupan la explanada de la plaza los fines de semana.",
-      en: "Jazz bands, folk ballet and storytellers take over the plaza esplanade every weekend."
+      es: "Jazz, ballet y narradores orales ocupan la plaza los fines de semana.",
+      en: "Jazz, folk dance and storytellers take over the plaza on weekends."
     }
   }
 ] as const;
@@ -96,34 +96,34 @@ const culturalSpaces = [
   {
     name: "Museo del Desierto Chihuahuense",
     description: {
-      es: "Recorre su sala paleontológica, los jardines xerófilos y la colección multimedia sobre la cuenca del Río Conchos.",
-      en: "Tour the paleontological hall, xeric gardens and multimedia collection about the Río Conchos basin."
+      es: "Sala paleontológica, jardines xerófilos y colección multimedia de la cuenca del Conchos.",
+      en: "Paleontology hall, xeric gardens and multimedia collection about the Conchos basin."
     },
     detail: {
       es: "Entradas desde $60 MXN · martes a domingo",
-      en: "Tickets from $60 MXN · Tuesday to Sunday"
+      en: "Tickets from $60 MXN · Tuesday–Sunday"
     }
   },
   {
-    name: "Museo de Paleontología de Delicias",
+    name: "Museo de Paleontología",
     description: {
-      es: "Alberga el primer hadrosaurio montado con piezas originales en el país y talleres interactivos para todas las edades.",
-      en: "Hosts the first hadrosaur mounted with original pieces in Mexico plus interactive workshops for all ages."
+      es: "Primer hadrosaurio montado con piezas originales en México y laboratorios interactivos.",
+      en: "First hadrosaur mounted with original bones in Mexico plus interactive labs."
     },
     detail: {
       es: "Visitas guiadas previa reservación",
-      en: "Guided visits with prior reservation"
+      en: "Guided tours with reservation"
     }
   },
   {
-    name: "Plaza Benito Juárez & Reloj Público",
+    name: "Plaza Benito Juárez",
     description: {
-      es: "Galería a cielo abierto de murales, corredores fotográficos y presentaciones gratuitas al caer la tarde.",
-      en: "Open-air gallery with murals, photo corridors and free performances at dusk."
+      es: "Galería a cielo abierto con murales, ferias editoriales y escenario comunitario.",
+      en: "Open-air gallery with murals, zine fairs and a community stage."
     },
     detail: {
-      es: "Programación semanal · acceso libre",
-      en: "Weekly programming · open access"
+      es: "Acceso libre · programación semanal",
+      en: "Free entry · weekly programming"
     }
   }
 ] as const;
@@ -134,11 +134,11 @@ const editorialStories = [
     category: { es: "Relato del desierto", en: "Desert story" },
     title: {
       es: "Artesanías de ixtle que narran la vida algodonera",
-      en: "Ixtle crafts that recount the cotton lifestyle"
+      en: "Ixtle crafts retelling cotton life"
     },
     description: {
-      es: "Familias de Colonia Revolución recuperan tintes naturales para crear textiles contemporáneos.",
-      en: "Families in Colonia Revolución revive natural dyes to create contemporary textiles."
+      es: "Familias recuperan tintes naturales y diseñan textiles contemporáneos.",
+      en: "Families revive natural dyes to design contemporary textiles."
     },
     link: "https://www.facebook.com/municipiodedelicias"
   },
@@ -147,11 +147,11 @@ const editorialStories = [
     category: { es: "Entrevista", en: "Interview" },
     title: {
       es: "5 artistas delicienses que intervienen el desierto",
-      en: "5 Delicias artists who intervene the desert"
+      en: "5 Delicias artists intervening the desert"
     },
     description: {
-      es: "Desde esculturas con calcio fósil hasta videoarte que dialoga con la presa Las Vírgenes.",
-      en: "From fossil-calcium sculptures to video art in dialogue with Las Vírgenes dam."
+      es: "Esculturas con calcio fósil y videoarte inspirado en la presa.",
+      en: "Fossil-calcium sculptures and video art inspired by the dam."
     },
     link: "https://www.instagram.com/explore/locations/225678326/delicias-chihuahua/"
   },
@@ -159,12 +159,12 @@ const editorialStories = [
     image: "/images/flyer2.jpg",
     category: { es: "Publicación destacada", en: "Featured post" },
     title: {
-      es: "Rutas literarias del ferrocarril a los clubes de lectura",
-      en: "Literary routes from the railway to book clubs"
+      es: "Rutas literarias: del ferrocarril a los clubes de lectura",
+      en: "Literary routes: railway to book clubs"
     },
     description: {
-      es: "Mapea cafés-librerías y archivos comunitarios instalados en antiguas casas de adobe.",
-      en: "Maps café-bookshops and community archives housed in old adobe homes."
+      es: "Mapea cafés-librería y archivos comunitarios en casas de adobe.",
+      en: "Map café-bookshops and community archives in adobe homes."
     },
     link: "https://maps.google.com/?q=Plaza+Benito+Juarez+Delicias"
   }
@@ -172,128 +172,127 @@ const editorialStories = [
 
 const ExperienciasArteCultura = () => {
   const { locale } = useLocale();
-  const heroTitle = locale === "es" ? "Arte y cultura en Delicias" : "Art & culture in Delicias";
+  const heroTitle = locale === "es" ? "Arte & Cultura" : "Art & Culture";
+  const heroScript =
+    locale === "es" ? "Trazo + palabra + memoria" : "Stroke + word + memory";
   const heroCopy =
     locale === "es"
-      ? "Explora el alma creativa de Delicias: museos especializados, corredores de murales y eventos que mezclan ciencia, música y tradición algodonera."
-      : "Explore Delicias’ creative soul: specialized museums, mural corridors and events blending science, music and cotton heritage.";
+      ? "Descubre museos especializados, corredores de murales y residencias creativas que abrazan el paisaje algodonero."
+      : "Discover specialized museums, mural corridors and creative residencies embracing the cotton landscape.";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0c2c68]/5 via-[#fffdf7] to-[#f6b043]/15 text-foreground">
+    <div className="min-h-screen bg-[#fff8ef] text-foreground">
       <Navigation />
       <main className="pt-[90px]">
-        <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 text-white sm:px-8 lg:px-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
+        <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(247,198,162,0.45),_transparent)]" />
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-6">
               <a
                 href="/experiencias/que-hacer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
               </a>
-              <p className="font-tourism text-3xl text-white/80">
-                {locale === "es" ? "Sumérgete en el arte del desierto" : "Dive into desert artistry"}
+              <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
+                {locale === "es" ? "Cuaderno cultural" : "Cultural journal"}
               </p>
-              <h1 className="text-4xl font-black leading-tight sm:text-5xl">{heroTitle}</h1>
-              <p className="text-lg text-white/85">{heroCopy}</p>
-              <ul className="space-y-3 text-sm text-white/85">
+              <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{heroTitle}</h1>
+              <p className="font-script text-3xl italic text-secondary/80">{heroScript}</p>
+              <p className="max-w-xl text-base text-foreground/70">{heroCopy}</p>
+              <div className="grid gap-3">
                 {heroHighlights.map((item) => (
-                  <li key={item.es} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-white" />
-                    <span>{item[locale]}</span>
-                  </li>
+                  <div key={item.es} className="flex items-start gap-3">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-secondary" />
+                    <p className="text-sm text-foreground/75">{item[locale]}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
               <a
                 href="https://maps.google.com/?q=Arte+y+cultura+Delicias+Chihuahua"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#0c2c68] shadow-[0_15px_35px_rgba(4,18,42,0.3)] transition hover:bg-white/90"
+                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
                 {locale === "es" ? "Mapa cultural" : "Cultural map"}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
+              <img
+                src="/images/museo.jpg"
+                alt=""
+                className="h-64 w-full rounded-[32px] border border-white/60 object-cover shadow-[0_30px_80px_rgba(120,82,55,0.25)]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="grid gap-4">
                 <img
-                  src="/images/museo.jpg"
-                  alt={locale === "es" ? "Escultura en el MUDECH" : "Sculpture at MUDECH"}
-                  className="h-full w-full object-cover"
+                  src="/images/event-2.jpg"
+                  alt=""
+                  className="h-32 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div className="grid gap-4">
-                <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
-                  <img
-                    src="/images/event-2.jpg"
-                    alt={locale === "es" ? "Presentación cultural en Delicias" : "Cultural performance in Delicias"}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
-                  <img
-                    src="/images/teatro.jpg"
-                    alt={locale === "es" ? "Teatro y eventos" : "Theatre and events"}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+                <img
+                  src="/images/teatro.jpg"
+                  alt=""
+                  className="h-32 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-gradient-to-b from-white to-[#fef7ef] py-20">
-          <div className="mx-auto max-w-6xl space-y-12 px-4">
-            <div className="space-y-2 text-center">
+        <section className="border-y border-foreground/5 bg-[#fff3e4] py-16">
+          <div className="mx-auto max-w-6xl grid gap-10 px-4 lg:grid-cols-[0.9fr,1.1fr]">
+            <div className="space-y-4">
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Agenda creativa" : "Creative agenda"}
+                {locale === "es" ? "Cuaderno curatorial" : "Curatorial notebook"}
               </p>
-              <p className="font-tourism text-4xl text-secondary/90">
-                {locale === "es" ? "Eventos destacados" : "Highlighted events"}
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "Agenda artesanal & museos" : "Artisan & museum agenda"}
+              </h2>
+              <p className="font-script text-2xl italic text-secondary/70">
+                {locale === "es" ? "Programación íntima, plazas abiertas." : "Intimate programming, open plazas."}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {locale === "es"
-                  ? "Programación curada con testimonios de recintos culturales y colectivos locales."
-                  : "Programming curated alongside cultural venues and local collectives."}
+                  ? "Eventos confirmados con recintos aliados, ideales para viajeros curiosos que buscan talleres, jams y cineforos."
+                  : "Confirmed events with partner venues, perfect for curious travelers chasing workshops, jams and film forums."}
               </p>
             </div>
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="space-y-5">
               {culturalEvents.map((event) => (
                 <article
                   key={event.title.es}
-                  className="flex h-full flex-col overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_25px_55px_rgba(4,18,42,0.12)]"
+                  className="grid gap-4 rounded-[32px] border border-foreground/10 bg-white p-5 shadow-[0_20px_45px_rgba(120,82,55,0.15)] lg:grid-cols-[0.7fr,1fr]"
                 >
                   <img
                     src={event.image}
                     alt={event.title[locale]}
-                    className="h-60 w-full object-cover"
+                    className="h-48 w-full rounded-[28px] object-cover"
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="flex flex-1 flex-col space-y-4 p-6">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary/70">
+                  <div className="space-y-3">
+                    <span className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">
                       {event.eyebrow[locale]}
                     </span>
                     <h3 className="text-2xl font-semibold text-foreground">{event.title[locale]}</h3>
-                    <p className="text-sm text-muted-foreground">{event.description[locale]}</p>
-                    <div className="space-y-1 text-sm text-foreground/70">
-                      <p className="font-semibold text-secondary">{event.date[locale]}</p>
-                      <p>{event.venue}</p>
-                    </div>
+                    <p className="text-sm text-foreground/70">{event.description[locale]}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-secondary">{event.date[locale]}</p>
+                    <p className="text-sm text-foreground/60">{event.venue}</p>
                     <a
                       href={event.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-secondary"
+                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
                     >
-                      {locale === "es" ? "Ver ubicación" : "See location"}
+                      {locale === "es" ? "Ver detalles" : "See details"}
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
                   </div>
@@ -303,68 +302,87 @@ const ExperienciasArteCultura = () => {
           </div>
         </section>
 
-        <section className="bg-gradient-to-br from-[#fef7ef] via-white to-[#f6b043]/15 py-20">
+        <section className="bg-white py-20">
           <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
-              <div className="space-y-6">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">
-                  {locale === "es" ? "Plan sugerido" : "Suggested plan"}
-                </p>
-                <h2 className="text-3xl font-black text-foreground">
-                  {locale === "es" ? "Itinerario cultural de un día" : "One-day cultural itinerary"}
-                </h2>
-                <ol className="space-y-6">
-                  {creativeItinerary.map((stop) => (
-                    <li key={stop.time} className="rounded-[28px] border border-black/5 bg-white p-5 shadow-[0_15px_35px_rgba(4,18,42,0.08)]">
-                      <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="text-xl font-semibold">{stop.label[locale]}</h3>
-                        <span className="text-sm font-mono text-secondary/80">{stop.time} h</span>
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground">{stop.detail[locale]}</p>
-                    </li>
-                  ))}
-                </ol>
-                <a
-                  href="https://maps.google.com/?q=Museos+en+Delicias+Chihuahua"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-secondary"
+            <div className="text-center space-y-2">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Ruta sensorial" : "Sensorial route"}
+              </p>
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "24 horas de inspiración" : "24 hours of inspiration"}
+              </h2>
+            </div>
+            <div className="space-y-6">
+              {creativeItinerary.map((stop, index) => (
+                <article
+                  key={stop.time}
+                  className="flex flex-col gap-3 rounded-[28px] border border-secondary/15 bg-[#fff7ef] p-5 shadow-[0_15px_35px_rgba(120,82,55,0.12)] sm:flex-row sm:items-center sm:gap-6"
                 >
-                  {locale === "es" ? "Descargar guía" : "Download guide"}
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-              <div className="space-y-5">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/60">
-                  {locale === "es" ? "Espacios imperdibles" : "Must-see venues"}
-                </p>
-                <div className="space-y-4">
-                  {culturalSpaces.map((space) => (
-                    <article
-                      key={space.name}
-                      className="rounded-[28px] border border-secondary/20 bg-white/90 p-6 shadow-[0_20px_45px_rgba(4,18,42,0.1)] backdrop-blur"
-                    >
-                      <h3 className="text-2xl font-semibold text-secondary">{space.name}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">{space.description[locale]}</p>
-                      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.3em] text-foreground/60">
-                        {space.detail[locale]}
-                      </p>
-                    </article>
-                  ))}
-                </div>
-              </div>
+                  <div className="flex items-center gap-3 text-secondary">
+                    <span className="text-3xl font-black">{stop.time}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.35em] text-secondary/70">
+                      #{String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">{stop.label[locale]}</h3>
+                    <p className="text-sm text-foreground/70">{stop.detail[locale]}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#fdefda] py-20">
+          <div className="mx-auto max-w-6xl grid gap-10 px-4 lg:grid-cols-[1fr,0.8fr]">
+            <div className="space-y-6">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Atlas cultural" : "Cultural atlas"}
+              </p>
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "Museos y plazas esenciales" : "Essential museums & plazas"}
+              </h2>
+              <p className="text-sm text-foreground/70">
+                {locale === "es"
+                  ? "Encuentra tus paradas claves para entrevistas, fotos o aprendizaje en una misma ruta."
+                  : "Pin your key stops for interviews, photo shoots or learning along one route."}
+              </p>
+              <a
+                href="https://maps.google.com/?q=Museos+en+Delicias+Chihuahua"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
+              >
+                {locale === "es" ? "Abrir mapa" : "Open map"}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="space-y-4">
+              {culturalSpaces.map((space) => (
+                <article
+                  key={space.name}
+                  className="rounded-[28px] border border-foreground/10 bg-white p-5 shadow-[0_20px_45px_rgba(120,82,55,0.15)]"
+                >
+                  <h3 className="text-2xl font-semibold text-secondary">{space.name}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{space.description[locale]}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">
+                    {space.detail[locale]}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
         <section className="bg-secondary py-20 text-white">
           <div className="mx-auto max-w-6xl space-y-8 px-4">
-            <div className="space-y-2">
+            <div className="space-y-2 text-center">
               <p className="text-[11px] uppercase tracking-[0.5em] text-white/70">
-                {locale === "es" ? "Sumérgete en el arte" : "Dive into art"}
+                {locale === "es" ? "Publicaciones destacadas" : "Featured publications"}
               </p>
               <h2 className="text-3xl font-black">
-                {locale === "es" ? "Publicaciones destacadas" : "Featured publications"}
+                {locale === "es" ? "Desde el archivo" : "From the archive"}
               </h2>
             </div>
             <div className="flex gap-5 overflow-x-auto pb-4">
