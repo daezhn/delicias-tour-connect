@@ -1,204 +1,284 @@
-import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-const heroImages = ["/images/comerbien.png", "/images/exigentes.png"];
-
-const foodieStories = [
+const heroHighlights = [
   {
-    image: "/images/Galería/4.jpg",
-    title: {
-      es: "Los 5 mejores pasteles de Delicias",
-      en: "Top 5 cakes in Delicias"
-    },
-    description: {
-      es: "Conoce las reposterías consentidas para celebrar con sabores algodoneros y toques de sotol.",
-      en: "Discover the favorite bakeries to celebrate with cotton-inspired flavors and sotol twists."
-    },
-    href: "https://www.google.com/maps/search/pasteleria/@28.1953149,-105.4812411,7890m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D"
+    es: "Cafés de autor que dialogan con la tradición algodonera.",
+    en: "Signature cafés in dialogue with cotton heritage."
   },
   {
-    image: "/images/Galería/19.jpg",
-    title: {
-      es: "Los 5 mejores hot dogs de Delicias",
-      en: "Top 5 hot dogs in Delicias"
-    },
-    description: {
-      es: "Explora los puestos nocturnos y toppings creativos que solo Delicias sabe ofrecer.",
-      en: "Explore the late-night stands and creative toppings only Delicias locals know."
-    },
-    href: "https://www.google.com/maps/search/hot+dog/@28.1953119,-105.4813269,7890m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D"
+    es: "Cocina de humo y nuez en restaurantes familiares.",
+    en: "Smoke & pecan driven cuisine in family-run restaurants."
   },
   {
-    image: "/images/Galería/10.jpg",
-    title: {
-      es: "Los 5 mejores elotes de Delicias",
-      en: "Top 5 street corn spots"
-    },
-    description: {
-      es: "Sumérgete en el sabor callejero: esquites, elotes y snacks con salsas de la casa.",
-      en: "Dive into street flavor: esquites, corn cups and snacks with house-made sauces."
-    },
-    href: "https://www.google.com/maps/search/elotes/@28.1953119,-105.4813269,7890m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D"
+    es: "Mercados nocturnos con elotes, pan y mixología local.",
+    en: "Night markets loaded with street corn, pastries and local mixology."
   }
 ] as const;
 
-const EXPERIENCES = [
+const tastingMenu = [
   {
-    href: "/experiencias/que-comer/comerbien",
-    image: "/images/comerbien.png",
-    title: { es: "Comer y pasarlo bien", en: "Eat & enjoy" }
+    course: { es: "Amuse-bouche", en: "Amuse-bouche" },
+    dish: { es: "Tostada de ixtle & atún", en: "Ixtle & tuna tostada" },
+    spot: "Casa Nuez",
+    description: {
+      es: "Laminitas crujientes con emulsión cítrica para abrir apetito.",
+      en: "Crisp sheets with citrus emulsion to wake up your palate."
+    },
+    image: "/images/restaurant-1.jpg"
   },
   {
-    href: "/experiencias/que-comer/comidarapida",
-    image: "/images/comidarapida.png",
-    title: { es: "Comida rápida", en: "Quick bites" }
+    course: { es: "Fondo", en: "Main" },
+    dish: { es: "Lechón con glaze de sotol", en: "Suckling pig with sotol glaze" },
+    spot: "Cuarto de Humo",
+    description: {
+      es: "Corte jugoso cocinado 12 h acompañado de puré de nuez.",
+      en: "Juicy cut slow-cooked 12h served with pecan purée."
+    },
+    image: "/images/restaurant-2.jpg"
   },
   {
-    href: "/experiencias/que-comer/exigentes",
-    image: "/images/exigentes.png",
-    title: { es: "Para paladares exigentes", en: "Fine dining" }
+    course: { es: "Postre", en: "Dessert" },
+    dish: { es: "Cheesecake de algodón dulce", en: "Cotton candy cheesecake" },
+    spot: "Atelier Dulce",
+    description: {
+      es: "Base de galleta con queso de rancho y nube rosa.",
+      en: "Cookie base, farmhouse cheese and fluffy pink cloud."
+    },
+    image: "/images/restaurant-3.jpg"
+  }
+] as const;
+
+const marketStops = [
+  {
+    title: { es: "Mercado Juárez", en: "Juárez Market" },
+    description: {
+      es: "Quesos artesanales, chiles secos y panadería tradicional desde las 7 am.",
+      en: "Artisan cheeses, dried chiles and traditional bread from 7 a.m."
+    },
+    tip: { es: "Pide jugo de betabel y zanahoria recién hecho.", en: "Order the fresh beet-carrot juice." }
   },
   {
-    href: "/experiencias/que-comer/snack",
-    image: "/images/snack.png",
-    title: { es: "Snacks & cafés", en: "Snacks & cafés" }
+    title: { es: "Corredor de elotes nocturno", en: "Night corn corridor" },
+    description: {
+      es: "Carritos con esquites y salsas de la casa, abre a las 7 pm sobre avenida Sexta.",
+      en: "Carts with esquites and house sauces, open 7 p.m. along Sixth Avenue."
+    },
+    tip: { es: "Combina con chiltepín y topping de nuez garapiñada.", en: "Add chiltepín and candied pecan topping." }
+  },
+  {
+    title: { es: "Cafés de autor", en: "Signature cafés" },
+    description: {
+      es: "Espacios con cold brew de nuez, pan de masa madre y playlists lo-fi.",
+      en: "Spaces serving pecan cold brew, sourdough and lo-fi playlists."
+    },
+    tip: { es: "Pregunta por la degustación de cafetos chihuahuenses.", en: "Ask for the Chihuahua coffee flight." }
+  }
+] as const;
+
+const mapaGourmet = [
+  {
+    name: { es: "Ruta desayunos creativos", en: "Creative breakfast route" },
+    link: "https://maps.google.com/?q=cafeterias+delicias+chihuahua",
+    description: {
+      es: "Cafés con pan artesano, bowls y jugos cold pressed.",
+      en: "Coffee shops with artisan bread, bowls and cold-pressed juices."
+    }
+  },
+  {
+    name: { es: "Asadores & parrillas", en: "Grills & smokehouses" },
+    link: "https://maps.google.com/?q=parrilla+delicias+chihuahua",
+    description: {
+      es: "Cortes norteños, vegetales a la brasa y mixología ahumada.",
+      en: "Northern cuts, grilled veggies and smoky cocktails."
+    }
+  },
+  {
+    name: { es: "Antojitos nocturnos", en: "Late-night bites" },
+    link: "https://maps.google.com/?q=antojitos+delicias",
+    description: {
+      es: "Hot dogs estilo Delicias, elotes, churros y puestos móviles.",
+      en: "Delicias-style hot dogs, street corn, churros and food trucks."
+    }
   }
 ] as const;
 
 const ExperienciasQueComer = () => {
   const { locale } = useLocale();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const heading =
-    locale === "es" ? "Cafés y restaurantes en Delicias" : "Cafés & Restaurants in Delicias";
+  const heroTitle = locale === "es" ? "Cocina del desierto" : "Desert cuisine";
   const heroCopy =
     locale === "es"
-      ? "Desde cafeterías artesanales hasta alta cocina, Delicias fusiona tradición algodonera con propuestas contemporáneas. Inspírate y reserva."
-      : "From artisan cafés to fine dining, Delicias blends cotton heritage with contemporary proposals. Get inspired and book.";
+      ? "Delicias combina sabores algodoneros, humo norteño y cafés creativos. Traza tu propio menú con esta guía."
+      : "Delicias blends cotton heritage, northern smoke and creative cafés. Craft your tasting journey with this guide.";
+  const heroScript =
+    locale === "es" ? "Sabores que nacen del sol y el algodón." : "Flavors born from sun & cotton.";
 
   return (
-    <div className="min-h-screen bg-[#fff7ef] text-foreground">
+    <div className="min-h-screen bg-[#fff8ef] text-foreground">
       <Navigation />
       <main className="pt-[90px]">
-        <section className="bg-[#f4e3d2] px-4 py-20 sm:px-8 lg:px-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
-            <div className="space-y-5">
+        <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,203,178,0.6),_transparent)]" />
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
+            <div className="space-y-6">
               <a
                 href="/experiencias/que-hacer"
-                className="inline-flex items-center gap-2 rounded-full border border-secondary/20 px-4 py-2 text-sm font-semibold text-secondary transition hover:bg-secondary/10"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
               </a>
-              <h1 className="text-4xl font-black leading-tight text-foreground sm:text-5xl">{heading}</h1>
-              <p className="text-lg text-muted-foreground">{heroCopy}</p>
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Guía gastronómica" : "Gastronomy guide"}
+              </p>
+              <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{heroTitle}</h1>
+              <p className="font-script text-3xl italic text-secondary/80">{heroScript}</p>
+              <p className="max-w-xl text-sm text-foreground/70">{heroCopy}</p>
+              <div className="space-y-3">
+                {heroHighlights.map((item) => (
+                  <div key={item.es} className="flex items-start gap-3 text-sm text-foreground/70">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-secondary" />
+                    <p>{item[locale]}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex gap-4">
-              {heroImages.map((src) => (
+            <div className="grid gap-4 sm:grid-cols-2">
+              <img
+                src="/images/restaurant-4.jpg"
+                alt=""
+                className="h-60 w-full rounded-[32px] border border-white object-cover shadow-[0_20px_55px_rgba(133,78,50,0.3)]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="grid gap-4">
                 <img
-                  key={src}
-                  src={src}
+                  src="/images/restaurant-1.jpg"
                   alt=""
+                  className="h-28 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"
                   decoding="async"
-                  className="h-64 flex-1 rounded-[28px] object-cover shadow-[0_30px_70px_rgba(4,18,42,0.15)]"
                 />
-              ))}
+                <img
+                  src="/images/restaurant-2.jpg"
+                  alt=""
+                  className="h-28 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="border-y border-foreground/5 bg-[#fff2e3] py-16">
           <div className="mx-auto max-w-6xl space-y-8 px-4">
-            <p className="text-center font-tourism text-3xl text-secondary/80">
-              {locale === "es" ? "Somos el corazón del norte" : "We are the heart of the north"}
-            </p>
-            <p className="text-center text-muted-foreground">
-              {locale === "es"
-                ? "Deleita tu paladar con sabores del norte: cafeterías creativas, cocina regional y propuestas de autor."
-                : "Delight your palate with northern flavors: creative cafés, regional cuisine and signature menus."}
-            </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {EXPERIENCES.map((item) => (
-                <div
-                  key={item.href}
-                  className="group cursor-pointer overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_20px_45px_rgba(4,18,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(4,18,42,0.12)]"
-                  onClick={() => setSelectedImage(item.image)}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title[locale]}
-                    className="h-52 w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="p-4 text-center text-sm font-semibold uppercase tracking-[0.35em] text-secondary">
-                    {item.title[locale]}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-br from-white via-[#fef7ef] to-[#f6b043]/25 py-20">
-          <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <div className="space-y-2 text-center">
+            <div className="text-center space-y-2">
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Explora" : "Explore"}
+                {locale === "es" ? "Menú de degustación" : "Tasting menu"}
               </p>
-              <p className="font-tourism text-4xl text-secondary/90">
-                {locale === "es" ? "Recomendaciones locales" : "Local recommendations"}
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "Sabores imprescindibles" : "Must-taste flavors"}
+              </h2>
+              <p className="text-sm text-foreground/70">
+                {locale === "es"
+                  ? "Seleccionamos un amuse, fondo y postre para que armes tu itinerario foodie."
+                  : "We curated an amuse, main and dessert so you can script your foodie itinerary."}
               </p>
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
-              {foodieStories.map((story) => (
+              {tastingMenu.map((item) => (
                 <article
-                  key={story.title.es}
-                  className="flex flex-col overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_25px_55px_rgba(4,18,42,0.12)]"
+                  key={item.dish.es}
+                  className="space-y-4 rounded-[32px] border border-secondary/10 bg-white p-5 shadow-[0_20px_45px_rgba(133,78,50,0.15)]"
                 >
                   <img
-                    src={story.image}
-                    alt={story.title[locale]}
-                    className="h-64 w-full object-cover"
+                    src={item.image}
+                    alt={item.dish[locale]}
+                    className="h-48 w-full rounded-[24px] object-cover"
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="flex flex-1 flex-col space-y-4 p-6">
-                    <h3 className="text-2xl font-semibold text-foreground">{story.title[locale]}</h3>
-                    <p className="text-sm text-muted-foreground">{story.description[locale]}</p>
-                    <a
-                      href={story.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.35em] text-secondary"
-                    >
-                      {locale === "es" ? "Ver mapa" : "Open map"}
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </div>
+                  <p className="text-[11px] uppercase tracking-[0.45em] text-secondary/70">{item.course[locale]}</p>
+                  <h3 className="text-2xl font-semibold text-secondary">{item.dish[locale]}</h3>
+                  <p className="text-sm text-foreground/70">{item.description[locale]}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">{item.spot}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-20">
+          <div className="mx-auto max-w-6xl grid gap-10 px-4 lg:grid-cols-[1fr,0.9fr]">
+            <div className="space-y-4">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Mercados & cafés" : "Markets & cafés"}
+              </p>
+              <h2 className="text-3xl font-black text-secondary">
+                {locale === "es" ? "Ruta de compras y antojos" : "Grocery & cravings route"}
+              </h2>
+              <p className="font-script text-2xl italic text-secondary/70">
+                {locale === "es" ? "Compra, prueba, repite." : "Shop, taste, repeat."}
+              </p>
+              <p className="text-sm text-foreground/70">
+                {locale === "es"
+                  ? "Desde ingredientes frescos hasta antojitos nocturnos, arma tu despensa viajera y tu cena improvisada."
+                  : "From fresh ingredients to late-night bites, fill your traveler pantry and improvise dinner."}
+              </p>
+            </div>
+            <div className="space-y-5">
+              {marketStops.map((stop) => (
+                <article
+                  key={stop.title.es}
+                  className="rounded-[28px] border border-foreground/10 bg-[#fff7ef] p-5 shadow-[0_15px_35px_rgba(133,78,50,0.12)]"
+                >
+                  <h3 className="text-2xl font-semibold text-secondary">{stop.title[locale]}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{stop.description[locale]}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">
+                    {stop.tip[locale]}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-secondary py-20 text-white">
+          <div className="mx-auto max-w-5xl space-y-8 px-4">
+            <div className="text-center space-y-2">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-white/70">
+                {locale === "es" ? "Mapas gourmet" : "Gourmet maps"}
+              </p>
+              <h2 className="text-3xl font-black">
+                {locale === "es" ? "Encuentra tu mesa" : "Find your table"}
+              </h2>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-3">
+              {mapaGourmet.map((entry) => (
+                <article
+                  key={entry.name.es}
+                  className="flex flex-col rounded-[28px] border border-white/20 bg-white/10 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.25)] backdrop-blur"
+                >
+                  <h3 className="text-2xl font-semibold">{entry.name[locale]}</h3>
+                  <p className="mt-3 text-sm text-white/85">{entry.description[locale]}</p>
+                  <a
+                    href={entry.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em]"
+                  >
+                    {locale === "es" ? "Abrir mapa" : "Open map"}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
                 </article>
               ))}
             </div>
           </div>
         </section>
       </main>
-      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
-          {selectedImage && (
-            <img
-              src={selectedImage}
-              alt="Directorio gastronómico"
-              className="max-h-[80vh] w-full rounded-[32px] object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
-        </DialogContent>
-      </Dialog>
       <Footer />
     </div>
   );
