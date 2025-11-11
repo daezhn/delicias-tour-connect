@@ -1,5 +1,8 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import { preloadRoute } from "@/lib/route-preloader";
 
 const planTiles = [
   {
@@ -51,12 +54,21 @@ interface PlanYourTripProps {
 
 export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTripProps) => {
   const { locale } = useLocale();
+  const [loadedTiles, setLoadedTiles] = useState<Record<string, boolean>>({});
   const script = locale === "es" ? "El corazón de Chihuahua" : "The heart of Chihuahua";
   const heading = locale === "es" ? "Planea tu viaje a Delicias" : "Plan your trip to Delicias";
   const description =
     locale === "es"
       ? "Aquí reunimos transporte, hospedaje, itinerarios y clima para que armes la ruta ideal con un solo scroll."
       : "Transport, stays, itineraries and climate guidance gathered in one scroll so you can craft the perfect route.";
+
+  const markTileAsLoaded = (tileId: string) => {
+    setLoadedTiles((prev) => (prev[tileId] ? prev : { ...prev, [tileId]: true }));
+  };
+
+  const handlePrefetch = (href: string) => {
+    preloadRoute(href);
+  };
 
   return (
     <section id="plan-trip" className={compact ? "bg-transparent py-10" : "bg-white py-20"}>
@@ -73,19 +85,31 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
 
           <div className={`${compact ? "" : "grid gap-6 sm:grid-cols-2"}`}>
             {planTiles.map((tile) => (
-              <a
+              <Link
                 key={tile.id}
-                href={tile.href}
+                to={tile.href}
                 className="group relative block overflow-hidden rounded-[34px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                onPointerEnter={() => handlePrefetch(tile.href)}
+                onFocus={() => handlePrefetch(tile.href)}
               >
-                <img
-                  src={tile.image}
-                  alt={tile.title[locale]}
-                  className="h-64 w-full object-cover transition duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="relative h-64 w-full">
+                  <div
+                    className={`absolute inset-0 bg-[#04122a] transition-opacity duration-500 ${
+                      loadedTiles[tile.id] ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                  <img
+                    src={tile.image}
+                    alt={tile.title[locale]}
+                    className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${
+                      loadedTiles[tile.id] ? "opacity-100" : "opacity-0"
+                    }`}
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={() => markTileAsLoaded(tile.id)}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
                 <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
                   <div>
                     <p className="text-xl font-semibold tracking-wide">{tile.title[locale]}</p>
@@ -96,7 +120,7 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
@@ -181,6 +182,11 @@ const mobilityTips = [
   }
 ] as const;
 
+const lazySectionStyle: CSSProperties = {
+  contentVisibility: "auto",
+  containIntrinsicSize: "1px 1000px"
+};
+
 const Transporte = () => {
   const { locale } = useLocale();
 
@@ -204,8 +210,13 @@ const Transporte = () => {
               src="/images/hero-delicias-3.jpg"
               alt="Traslados a Delicias"
               className="h-full w-full object-cover opacity-40"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              width="1920"
+              height="1080"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/70" aria-hidden="true" />
           </div>
           <div className="relative z-10">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24">
@@ -228,7 +239,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-white py-16" style={lazySectionStyle}>
           <div className="mx-auto max-w-6xl space-y-10 px-4">
             <div className="space-y-4 text-center md:text-left">
               <p className="font-tourism text-2xl text-secondary/80">
@@ -272,7 +283,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-[#f5fbfd] py-16">
+        <section className="bg-[#f5fbfd] py-16" style={lazySectionStyle}>
           <div className="mx-auto max-w-6xl space-y-10 px-4">
             <div className="space-y-4 text-center">
               <p className="font-tourism text-2xl text-primary/80">
@@ -330,7 +341,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-white py-16" style={lazySectionStyle}>
           <div className="mx-auto max-w-6xl space-y-8 px-4">
             <div className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
               <Card className="border border-black/5 shadow-sm">
@@ -414,7 +425,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-[#fff7ef] py-16">
+        <section className="bg-[#fff7ef] py-16" style={lazySectionStyle}>
           <div className="mx-auto max-w-6xl space-y-8 px-4">
             <div className="text-center">
               <p className="font-tourism text-2xl text-secondary/80">
@@ -445,7 +456,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-[#0c2c68] py-16 text-white">
+        <section className="bg-[#0c2c68] py-16 text-white" style={lazySectionStyle}>
           <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center">
             <p className="font-tourism text-2xl text-white/70">
               {locale === "es" ? "Coordinación IDEA Delicias" : "IDEA Delicias coordination"}
