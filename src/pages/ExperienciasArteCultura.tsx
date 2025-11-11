@@ -18,45 +18,6 @@ const heroHighlights = [
   }
 ] as const;
 
-const culturalEvents = [
-  {
-    image: "/images/museo.jpg",
-    eyebrow: { es: "Residencia abierta", en: "Open residency" },
-    title: { es: "Residencia MUDECH: Escultura y paisaje", en: "MUDECH residency: Sculpture & landscape" },
-    description: {
-      es: "Curadores locales guían procesos con fibras de sotol y pigmentos de desierto.",
-      en: "Local curators guide processes with sotol fibers and desert pigments."
-    },
-    date: { es: "14-16 noviembre · 10:00-18:00 h", en: "Nov 14-16 · 10 a.m.–6 p.m." },
-    venue: "Museo del Desierto Chihuahuense",
-    link: "https://maps.google.com/?q=Museo+del+Desierto+Chihuahuense"
-  },
-  {
-    image: "/images/event-1.jpg",
-    eyebrow: { es: "Jam urbano", en: "Urban jam" },
-    title: { es: "Ruta 33000: lettering & beats", en: "Ruta 33000: lettering & beats" },
-    description: {
-      es: "Murales en vivo alrededor del reloj y sesiones DJ al atardecer.",
-      en: "Live murals around the clock tower with sunset DJ sets."
-    },
-    date: { es: "Jueves de noviembre · 19:30 h", en: "November Thursdays · 7:30 p.m." },
-    venue: "Corredor del Reloj Público",
-    link: "https://maps.google.com/?q=Reloj+Publico+Delicias"
-  },
-  {
-    image: "/images/teatro.jpg",
-    eyebrow: { es: "Cine foro", en: "Film forum" },
-    title: { es: "Noche fósil & cinema", en: "Fossil & cinema night" },
-    description: {
-      es: "Recorridos nocturnos entre dinosaurios seguidos de documentales chihuahuenses.",
-      en: "Night tours among dinosaurs plus Chihuahua-made documentaries."
-    },
-    date: { es: "23 noviembre · 20:00 h", en: "Nov 23 · 8:00 p.m." },
-    venue: "Museo de Paleontología de Delicias",
-    link: "https://maps.google.com/?q=Museo+de+Paleontologia+de+Delicias"
-  }
-] as const;
-
 const creativeItinerary = [
   {
     time: "09:30",
@@ -243,61 +204,6 @@ const ExperienciasArteCultura = () => {
                   decoding="async"
                 />
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-y border-foreground/5 bg-[#fff3e4] py-16">
-          <div className="mx-auto max-w-6xl grid gap-10 px-4 lg:grid-cols-[0.9fr,1.1fr]">
-            <div className="space-y-4">
-              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Cuaderno curatorial" : "Curatorial notebook"}
-              </p>
-              <h2 className="text-3xl font-black text-secondary">
-                {locale === "es" ? "Agenda artesanal & museos" : "Artisan & museum agenda"}
-              </h2>
-              <p className="font-script text-2xl italic text-secondary/70">
-                {locale === "es" ? "Programación íntima, plazas abiertas." : "Intimate programming, open plazas."}
-              </p>
-              <p className="text-sm text-foreground/70">
-                {locale === "es"
-                  ? "Eventos confirmados con recintos aliados, ideales para viajeros curiosos que buscan talleres, jams y cineforos."
-                  : "Confirmed events with partner venues, perfect for curious travelers chasing workshops, jams and film forums."}
-              </p>
-            </div>
-            <div className="space-y-5">
-              {culturalEvents.map((event) => (
-                <article
-                  key={event.title.es}
-                  className="grid gap-4 rounded-[32px] border border-foreground/10 bg-white p-5 shadow-[0_20px_45px_rgba(120,82,55,0.15)] lg:grid-cols-[0.7fr,1fr]"
-                >
-                  <img
-                    src={event.image}
-                    alt={event.title[locale]}
-                    className="h-48 w-full rounded-[28px] object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="space-y-3">
-                    <span className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">
-                      {event.eyebrow[locale]}
-                    </span>
-                    <h3 className="text-2xl font-semibold text-foreground">{event.title[locale]}</h3>
-                    <p className="text-sm text-foreground/70">{event.description[locale]}</p>
-                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-secondary">{event.date[locale]}</p>
-                    <p className="text-sm text-foreground/60">{event.venue}</p>
-                    <a
-                      href={event.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
-                    >
-                      {locale === "es" ? "Ver detalles" : "See details"}
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </section>
