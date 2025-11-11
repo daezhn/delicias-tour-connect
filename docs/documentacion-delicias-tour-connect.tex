@@ -1,0 +1,327 @@
+\documentclass[12pt]{article}
+\usepackage[spanish, es-nodecimaldot]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\geometry{letterpaper, margin=1in}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.2cm}
+\setlist[enumerate]{leftmargin=1.4cm}
+
+\definecolor{codegray}{RGB}{40,40,40}
+\definecolor{coderule}{RGB}{220,220,220}
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  rulecolor=\color{coderule},
+  breaklines=true,
+  backgroundcolor=\color{gray!10},
+  keywordstyle=\color{MidnightBlue},
+  commentstyle=\color{gray!70},
+  stringstyle=\color{ForestGreen}
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=MidnightBlue,
+  urlcolor=MidnightBlue,
+  citecolor=MidnightBlue,
+  pdfauthor={IDEA Delicias},
+  pdftitle={Documentación técnica - Delicias Tour Connect}
+}
+
+\title{\textbf{Delicias Tour Connect}\\Documentación técnica integral}
+\author{IDEA Delicias · Área Digital}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introducción general}
+Delicias Tour Connect es un sitio promocional y tablero de experiencias para la iniciativa turística de Delicias, Chihuahua. El proyecto reúne información de atractivos, eventos, rutas, hospedaje y contenido editorial en un solo código base escrito con React 18, TypeScript y Vite. Además del sitio público (home y páginas temáticas), el repositorio incluye la vista tipo tótem \texttt{/Pantalla} para kioscos informativos y los artefactos necesarios para su despliegue como aplicación web progresiva (PWA).
+
+Este documento en \LaTeX{} resume el funcionamiento completo del repositorio ubicado en \texttt{delicias-tour-connect}, incluyendo arquitectura, dependencias, fuentes de contenido, flujo de trabajo y lineamientos para mantenimiento o impresión.
+
+\section{Objetivos y alcance}
+\begin{itemize}
+  \item Documentar cada capa del proyecto: configuración, entrada, componentes, páginas y datos.
+  \item Explicar la manera de actualizar textos, imágenes, videos y catálogos sin romper el diseño.
+  \item Servir como guía de referencia para equipos de comunicación, tecnología y proveedores externos.
+  \item Incluir recomendaciones de operación, despliegue y próximos pasos.
+\end{itemize}
+
+\section{Panorama tecnológico}
+\begin{itemize}
+  \item \textbf{Framework principal:} React 18 + Vite (\texttt{vite.config.ts}) con TypeScript estricto.
+  \item \textbf{Estilos:} Tailwind CSS (\texttt{tailwind.config.ts}) con tokens definidos en \texttt{src/index.css} y componentes reutilizables basados en \texttt{shadcn/ui}.
+  \item \textbf{Estado y utilidades:} TanStack React Query, contexto propio de idioma (\texttt{use-locale}), hooks personalizados y utilidades en \texttt{src/lib}.
+  \item \textbf{UI y animación:} Lucide React para iconos, Embla Carousel, Leaflet para mapas interactivos, date-fns para manejo de fechas, y Reveal para transiciones con IntersectionObserver.
+  \item \textbf{Infraestructura:} Scripts de NPM para desarrollo y build, manifest PWA (\texttt{public/manifest.webmanifest}), service worker (\texttt{public/sw.js}) y reglas de seguridad en \texttt{vercel.json}.
+\end{itemize}
+
+\section{Requisitos y scripts operativos}
+\textbf{Requisitos básicos:} Node.js 18+, npm 9+ (ver \texttt{README.md}). El archivo \texttt{bun.lockb} refleja compatibilidad con Bun, pero la operación oficial se realiza con npm.
+
+\begin{longtable}{p{0.28\textwidth}p{0.68\textwidth}}
+\toprule
+\textbf{Comando} & \textbf{Descripción} \\
+\midrule
+\texttt{npm install} & Instala dependencias del proyecto. \\
+\texttt{npm run dev} & Levanta el entorno local de Vite en \texttt{http://localhost:5173} (puerto configurable). \\
+\texttt{npm run build} & Genera la carpeta \texttt{dist/} lista para producción. \\
+\texttt{npm run build:dev} & Compila en modo \texttt{development} útil para pruebas estilizadas. \\
+\texttt{npm run preview} & Sirve el build generado para validar antes de desplegar. \\
+\texttt{npm run lint} & Ejecuta ESLint con la configuración de \texttt{eslint.config.js}. \\
+\bottomrule
+\end{longtable}
+
+\section{Estructura de carpetas relevante}
+\begin{longtable}{p{0.32\textwidth}p{0.62\textwidth}}
+\toprule
+\textbf{Ruta} & \textbf{Contenido principal} \\
+\midrule
+\texttt{src/main.tsx} & Punto de entrada: renderiza \texttt{<App/>}, registra service worker en producción y aplica \texttt{LocaleProvider} + \texttt{ErrorBoundary}. \\
+\texttt{src/App.tsx} & Define proveedores globales (React Query, Tooltip, toasts) y el enrutamiento con \texttt{react-router-dom}. \\
+\texttt{src/pages/} & Páginas completas (Inicio, Atractivos, Tours, Transporte, Hospedaje, experiencias por categoría, Clima, Personas Destacadas, Pantalla, etc.). \\
+\texttt{src/components/} & Secciones reutilizables: navegación, hero, eventos, calendarios, mosaicos, carruseles, formularios y componentes UI. \\
+\texttt{src/components/ui/} & Implementaciones de \texttt{shadcn/ui} (botones, tarjetas, diálogos, acordeones, calendario, menús). \\
+\texttt{src/data/} & Datasets estáticos: \texttt{attractions.ts}, \texttt{tours.ts}, \texttt{upcoming-events.ts}. \\
+\texttt{src/hooks/} & Hooks personalizados (\texttt{use-locale}, \texttt{useIsMobile}, \texttt{use-toast}). \\
+\texttt{src/lib/} & Utilidades compartidas: \texttt{i18n}, \texttt{forms}, \texttt{utils} para clases CSS. \\
+\texttt{src/utils/pantalla.ts} & Lógica específica del ticker y reloj para la vista \texttt{/Pantalla}. \\
+\texttt{public/} & Recursos estáticos: imágenes, videos, fuentes, manifest, service worker, favicon e íconos PWA. \\
+\texttt{docs/} & Documentación interna existente (\texttt{GUIA\_DE\_CONTENIDO.md}) y este nuevo dossier \LaTeX. \\
+\texttt{vercel.json} & Encabezados de seguridad y regla de \textit{rewrite} para SPA. \\
+\bottomrule
+\end{longtable}
+
+\section{Arquitectura de la aplicación}
+\subsection{Entrada y proveedores}
+\begin{itemize}
+  \item \texttt{src/main.tsx} usa \texttt{createRoot} para montar la app y envuelve \texttt{<App/>} con \texttt{LocaleProvider} y \texttt{ErrorBoundary}. También registra \texttt{/sw.js} cuando \texttt{import.meta.env.PROD} es verdadero.
+  \item \texttt{src/App.tsx} agrega \texttt{QueryClientProvider}, \texttt{TooltipProvider} y dos sistemas de notificaciones (\texttt{Toaster} y \texttt{Sonner}). Se incluye nuevamente \texttt{LocaleProvider} para garantizar que rutas independientes tengan acceso al contexto.
+\end{itemize}
+
+\subsection{Enrutamiento}
+El enrutador (\texttt{BrowserRouter}) define las rutas principales:
+\begin{itemize}
+  \item \texttt{/}: página principal (\texttt{Index}).
+  \item \texttt{/Atractivos}, \texttt{/tours}, \texttt{/transporte}, \texttt{/hospedaje}, \texttt{/clima-tips}, \texttt{/personas-destacadas}.
+  \item Rutas específicas de experiencias: \texttt{/experiencias/que-hacer}, \texttt{/experiencias/vida-nocturna}, \texttt{/experiencias/que-comer}, \texttt{/experiencias/arte-cultura}, \texttt{/experiencias/familia}, \texttt{/experiencias/deportes}.
+  \item \texttt{/Pantalla} para la vista de tótem.
+  \item \texttt{*} captura cualquier otra dirección y renderiza \texttt{NotFound}.
+\end{itemize}
+
+\subsection{Gestión de idioma y textos}
+\texttt{LocaleProvider} (\texttt{src/hooks/use-locale.tsx}) expone \texttt{locale} y \texttt{setLocale}. Los textos se toman de \texttt{src/lib/i18n.ts}, donde se declara el objeto \texttt{translations} con llaves \texttt{es} y \texttt{en}. Componentes clave (\texttt{Navigation}, \texttt{Hero}, \texttt{Events}, \texttt{Footer}, etc.) usan \texttt{getTranslations(locale)} para mostrar el copy apropiado.
+
+\subsection{Estados complementarios}
+\begin{itemize}
+  \item \textbf{React Query:} configura un \texttt{QueryClient} aunque actualmente los datos se cargan de archivos estáticos; esto permite agregar peticiones remotas en el futuro sin rehacer la infraestructura.
+  \item \textbf{Toasts:} \texttt{src/hooks/use-toast.ts} gestiona un stack con límite de un toast visible (\texttt{TOAST\_LIMIT = 1}) y demoras largas para experiencias promocionales.
+  \item \textbf{ErrorBoundary:} captura errores de renderizado y muestra un fallback con botones de recarga y regreso al inicio, registrando el error en consola en desarrollo.
+\end{itemize}
+
+\section{Gestión de contenido y localización}
+\subsection{Datos estructurados}
+\begin{itemize}
+  \item \texttt{src/data/attractions.ts}: catálogo de atractivos con campos \texttt{name}, \texttt{category}, \texttt{description}, \texttt{image}, \texttt{location}, \texttt{schedule} e \texttt{highlights}. Es consumido en \texttt{Atractivos.tsx}.
+  \item \texttt{src/data/tours.ts}: define \texttt{tourCategories} y \texttt{tours} con traducciones (\texttt{title}, \texttt{description}), duración, precio, itinerario, beneficios, galería, coordenadas, rating y fechas futuras (\texttt{nextDates}). Alimenta \texttt{ToursExplorer}.
+  \item \texttt{src/data/upcoming-events.ts}: lista de eventos con \texttt{id}, \texttt{label}, \texttt{image}, \texttt{alt} y fecha ISO, usada por \texttt{Events} y \texttt{AvailabilityCalendar}.
+\end{itemize}
+
+\subsection{Texto global}
+\texttt{src/lib/i18n.ts} concentra navegación, hero, secciones, botones y pie. Para agregar nuevos textos globales se deben crear llaves dentro de \texttt{translations} y consumirlas mediante \texttt{getTranslations}. El \texttt{defaultLocale} es \texttt{"es"}.
+
+\subsection{Recursos multimedia}
+Todos los assets viven en \texttt{public/} y se referencian mediante rutas absolutas (ej. \texttt{/images/hero-delicias.jpg}). Existen subcarpetas para galerías, atractivos, videos (\texttt{public/Video}) y material específico de la pantalla (\texttt{public/pantalla}). Este enfoque permite sustituir archivos sin recompilar.
+
+\subsection{Documentación interna}
+El archivo \texttt{docs/GUIA\_DE\_CONTENIDO.md} actúa como hoja de ruta rápida para editores y describe dónde viven los textos clave. La presente documentación amplía ese contenido con mayor detalle técnico.
+
+\section{Secciones principales del home}
+La página \texttt{src/pages/Index.tsx} orquesta los bloques del home. La siguiente tabla detalla los componentes más relevantes:
+
+\begin{longtable}{p{0.26\textwidth}p{0.66\textwidth}}
+\toprule
+\textbf{Componente} & \textbf{Descripción y archivo} \\
+\midrule
+\texttt{Navigation} & Barra fija con logo, enlaces ancla y botón de idioma (archivo \texttt{src/components/Navigation.tsx}). Controla el estado móvil/desktop y expone un CTA hacia \texttt{/tours}. \\
+\texttt{Hero} & Mosaico visual en diamante con accesos rápidos (\texttt{src/components/Hero.tsx}). Cambia recursos según dispositivo mediante \texttt{<picture>}. \\
+\texttt{WelcomeDelicias} & Bloque editorial con texto bilingüe y mini-galería (\texttt{src/components/WelcomeDelicias.tsx}). \\
+\texttt{Events} & Carrusel de carteles conectado a \texttt{upcomingEvents}. Usa Embla Carousel y diálogos para ampliar flyers (\texttt{src/components/Events.tsx}). \\
+\texttt{AvailabilityCalendar} & Calendario mensual generado con \texttt{date-fns} que marca días con eventos confirmados (\texttt{src/components/AvailabilityCalendar.tsx}). \\
+\texttt{ExperiencesCollage} & Mosaico de enlaces a páginas temáticas (\texttt{src/components/ExperiencesCollage.tsx}). \\
+\texttt{PlanYourTrip} & Cuatro tarjetas que enlazan a transporte, hospedaje, tours y clima (\texttt{src/components/PlanYourTrip.tsx}). \\
+\texttt{FeaturedCitizens} & CTA hacia historias locales con imagen hero (\texttt{src/components/FeaturedCitizens.tsx}). \\
+\texttt{GalleryShowcase} & Carrusel automático de 20 fotografías con miniaturas (\texttt{src/components/GalleryShowcase.tsx} + \texttt{FadeImage}). \\
+\texttt{ContactCard}, \texttt{FaqSection}, \texttt{Footer} & Forman el cierre informativo con datos de contacto, preguntas frecuentes y links rápidos. \\
+\bottomrule
+\end{longtable}
+
+\section{Páginas temáticas}
+\subsection{Atractivos (\texttt{src/pages/Atractivos.tsx})}
+Presenta un hero con imagen de fondo y CTA de regreso, seguido de una grilla que recorre \texttt{attractions}. Cada tarjeta usa el componente \texttt{Card} de shadcn y \texttt{cn()} para combinar clases Tailwind.
+
+\subsection{Tours (\texttt{src/pages/Tours.tsx})}
+Incluye hero con degradado y \texttt{ToursExplorer}. El explorador ofrece filtros por texto, categoría, rango de precios, duración máxima y fecha disponible. Al hacer clic en ``Ver detalle'' se abre un \texttt{Dialog} con itinerario, beneficios y mapa (\texttt{TourMap}) que se renderiza mediante \texttt{react-leaflet} con carga diferida (\texttt{React.lazy}).
+
+\subsection{Transporte (\texttt{src/pages/Transporte.tsx})}
+Compila modos de llegada (avión, autobús, auto), rutas recomendadas, líneas de autobús, servicios y consejos de movilidad. Se apalanca de arreglos locales (\texttt{arrivalModes}, \texttt{corridors}, \texttt{busLines}, \texttt{mobilityTips}) para mantener el contenido en un solo archivo.
+
+\subsection{Hospedaje (\texttt{src/pages/Hospedaje.tsx})}
+Ofrece colecciones destacadas (boutique, alberca, creativas) con badges y amenidades, además de enlaces externos a Booking para reservas. Reutiliza tarjetas e iconografía de Lucide.
+
+\subsection{Clima y tips (\texttt{src/pages/ClimaTips.tsx})}
+Realiza una petición en vivo al API pública de \texttt{open-meteo.com} (coordenadas 28.1903, -105.4711). Maneja abortos de red, estados de carga y errores. Complementa con temporadas, listas de empaque y consejos visuales usando íconos (\texttt{Sun}, \texttt{CloudRain}, etc.).
+
+\subsection{Experiencias (varias rutas)}
+Cada archivo en \texttt{src/pages/Experiencias*.tsx} sigue el patrón de hero + mosaico + itinerario. Se definen arrays como \texttt{travelRoutes}, \texttt{dayPlanner} y \texttt{atlasStops} que alimentan la narrativa. Son totalmente bilingües gracias a \texttt{useLocale}.
+
+\subsection{Personas destacadas (\texttt{src/pages/PersonasDestacadas.tsx})}
+Recorre \texttt{featuredCitizens}, \texttt{talentNetwork} y \texttt{milestones} para contar historias locales. Cada tarjeta expone descripción bilingüe, insignias e imagen hero. Se provee un CTA para ``Compartir una historia''.
+
+\subsection{Pantalla (\texttt{src/pages/Pantalla.tsx})}
+Diseñada para tótems: reproduce un \texttt{mediaItems} circular con videos (\texttt{public/pantalla/*.mp4}) e imágenes promocionales. Usa \texttt{useRef} para controlar reproducción, \texttt{useClock} para mostrar hora/fecha y consulta \texttt{getTickerEvents(locale)} para poblar el ticker inferior. La animación de ticker se logra con la clase global \texttt{animate-marquee}.
+
+\section{Hooks y utilidades}
+\begin{itemize}
+  \item \texttt{use-locale.tsx}: contexto de idioma con \texttt{useState}. Puede conectarse a almacenamiento persistente si se necesita recordar la elección.
+  \item \texttt{use-mobile.tsx}: hook responsivo que usa \texttt{matchMedia} para detectar \textit{mobile} bajo 768 px.
+  \item \texttt{use-toast.ts}: implementación ligera de toasts sin dependencia externa; controla cola, auto cierre y listeners manuales.
+  \item \texttt{src/utils/pantalla.ts}: provee datos del ticker (en/es) y un hook \texttt{useClock} con intervalo configurable.
+  \item \texttt{src/lib/forms.ts}: esquema de newsletter con Zod, sanitización básica (\texttt{sanitizeText}) y tipos exportados para formularios.
+  \item \texttt{src/lib/utils.ts}: utilitario \texttt{cn()} que combina clases usando \texttt{clsx} + \texttt{tailwind-merge}.
+\end{itemize}
+
+\section{Sistema de UI y estilos}
+\begin{itemize}
+  \item \textbf{Tailwind \& tokens:} \texttt{src/index.css} define variables HSL para background, foreground, primaria, secundaria, acentos y gradientes. También incluye animaciones (marquee, pulse, hero-zoom) y utilidades (\texttt{diamond}, \texttt{scrollbar-hide}).
+  \item \textbf{Componentes UI:} La carpeta \texttt{src/components/ui} contiene implementaciones de botones, tarjetas, acordeones, menús, formularios, calendarios, diálogos, tooltips y tablas, congruentes con shadcn/ui.
+  \item \textbf{Fuentes:} Se importa Poppins, Playfair Display y Great Vibes desde Google Fonts y \texttt{/fonts}. Los estilos globales definen \texttt{font-tourism} para titulares decorativos.
+\end{itemize}
+
+\section{Integraciones y dependencias principales}
+\begin{itemize}
+  \item \textbf{React Router DOM} (\texttt{^6.30.1}): enrutamiento SPA.
+  \item \textbf{TanStack React Query} (\texttt{^5.83.0}): preparado para llamadas asincrónicas (por ejemplo, clima).
+  \item \textbf{Leaflet + react-leaflet}: mapa en \texttt{TourMap}. Se configura el ícono por defecto en \texttt{TourMapInner.tsx}.
+  \item \textbf{date-fns}: formateo de fechas en eventos, calendario y clima.
+  \item \textbf{Embla Carousel}: slider de eventos.
+  \item \textbf{lucide-react}: set de iconos lineales usado en toda la interfaz.
+  \item \textbf{Open Meteo API}: único consumo externo actual, efectuado por \texttt{ClimaTips}.
+  \item \textbf{Service Worker personalizado}: cachea activos esenciales y aplica estrategia \textit{runtime cache} para assets estáticos (ver \texttt{public/sw.js}).
+\end{itemize}
+
+\section{Recursos multimedia y pipeline}
+\begin{itemize}
+  \item \texttt{public/images/} almacena héroes, galerías, gastronomía, hoteles y flyers (incluyendo subcarpetas como \texttt{images/noviembre}).
+  \item \texttt{public/atractivos/} mantiene PNGs recortados para el catálogo de \texttt{Atractivos}.
+  \item \texttt{public/Video/} y \texttt{public/pantalla/} guardan clips usados en carruseles o en \texttt{/Pantalla}.
+  \item Cambiar un asset requiere subir el archivo con el mismo nombre o ajustar la ruta en el componente/dataset correspondiente.
+\end{itemize}
+
+\section{Flujo operativo sugerido}
+\begin{enumerate}
+  \item Clonar el repositorio y ejecutar \texttt{npm install}.
+  \item Levantar el entorno con \texttt{npm run dev}; Vite muestra errores de TypeScript en consola.
+  \item Editar contenido según corresponda:
+    \begin{itemize}
+      \item Textos globales: \texttt{src/lib/i18n.ts}.
+      \item Listados: \texttt{src/data/*.ts} o arreglos inmersos en la página (ej. \texttt{Transporte.tsx}).
+      \item Assets: colocar archivos en \texttt{public/...} y actualizar las rutas absolutas.
+    \end{itemize}
+  \item Validar cambios en navegadores desktop y mobile, incluyendo la ruta \texttt{/Pantalla}.
+  \item Ejecutar \texttt{npm run lint} y \texttt{npm run build} antes de desplegar. El build genera \texttt{dist/} listo para cualquier hosting estático (Vercel, Netlify, S3).
+\end{enumerate}
+
+\section{PWA y despliegue}
+\begin{itemize}
+  \item \textbf{Manifesto:} \texttt{public/manifest.webmanifest} define nombre, idioma (\texttt{es}), colores, íconos (\texttt{/icons/app-icon-192.png}, \texttt{512.png}), atajos (Atractivos y Pantalla) y capturas.
+  \item \textbf{Service Worker:} \texttt{public/sw.js} usa caches \texttt{CORE\_CACHE} y \texttt{RUNTIME\_CACHE}, intercepta navegación para servir \texttt{/index.html} cuando no hay red, y almacena assets estáticos.
+  \item \textbf{Headers de seguridad:} \texttt{vercel.json} aplica HSTS, CSP estricta, políticas de permisos y rescribe cualquier ruta hacia \texttt{/} para compatibilidad SPA.
+  \item \textbf{Despliegue recomendado:} subir \texttt{dist/} a Vercel/Netlify o servidor propio con fallback. El manifest+SW habilitan ``Agregar a pantalla de inicio'' en dispositivos móviles.
+\end{itemize}
+
+\section{Accesibilidad, rendimiento y observabilidad}
+\begin{itemize}
+  \item \textbf{Accesibilidad:} se usan etiquetas \texttt{aria-label}, \texttt{alt} descriptivos y botones con \texttt{aria-expanded} (ej. \texttt{AvailabilityCalendar}). Revisar contraste al subir nuevas imágenes.
+  \item \textbf{Rendimiento:} imágenes se cargan con \texttt{loading="lazy"} cuando aplica. El mapa de tours se carga con \texttt{React.lazy} para diferir Leaflet. Revisar pesos de videos en \texttt{/Pantalla} (ideal \(<50\) MB).
+  \item \textbf{Logging:} \texttt{ErrorBoundary} registra errores en consola. Se sugiere integrar un servicio como Sentry si se requiere telemetría.
+\end{itemize}
+
+\section{Mantenimiento y actualización de contenido}
+\begin{itemize}
+  \item \textbf{Eventos:} editar \texttt{src/data/upcoming-events.ts}; si se agregan más de seis registros, el carrusel los agrupa de tres en tres automáticamente.
+  \item \textbf{Tours:} actualizar \texttt{src/data/tours.ts}. Si se añaden categorías nuevas, incluirlas en \texttt{tourCategories} para que aparezcan en \texttt{TourFilters}.
+  \item \textbf{Atractivos:} administrar \texttt{attractions.ts}; cada imagen debe existir dentro de \texttt{public/atractivos}.
+  \item \textbf{Pantalla:} modificar el arreglo \texttt{mediaItems} en \texttt{Pantalla.tsx} y los textos en \texttt{src/utils/pantalla.ts}.
+  \item \textbf{Idiomas:} cualquier copy nuevo debe definirse en español e inglés dentro de \texttt{i18n.ts} para mantener paridad.
+\end{itemize}
+
+\section{Próximos pasos sugeridos}
+\begin{itemize}
+  \item Integrar analítica ligera (por ejemplo, Plausible o Google Analytics 4) mediante un hook de \texttt{useEffect} en \texttt{App.tsx}.
+  \item Migrar datos de tours y eventos a un CMS ligero (Airtable, Sanity) y consumirlos con React Query, aprovechando la infraestructura ya configurada.
+  \item Añadir pruebas visuales para la vista \texttt{/Pantalla} y validar que los videos estén optimizados para reproducción continua.
+  \item Extender el service worker con estrategias \textit{stale-while-revalidate} para flyers/eventos y permitir actualizaciones silenciosas.
+\end{itemize}
+
+\appendix
+\section{Comandos y scripts útiles}
+\begin{longtable}{p{0.3\textwidth}p{0.62\textwidth}}
+\toprule
+\textbf{Acción} & \textbf{Script/Archivo} \\
+\midrule
+Desarrollo local & \texttt{npm run dev} \\
+Build producción & \texttt{npm run build} \\
+Build de prueba & \texttt{npm run build:dev} \\
+Servidor de previsualización & \texttt{npm run preview} \\
+Linting & \texttt{npm run lint} \\
+Configuración Vite & \texttt{vite.config.ts} (puerto 8080 en modo servidor, alias \texttt{@} a \texttt{src/}) \\
+Tipos TS & \texttt{tsconfig.json}, \texttt{tsconfig.app.json} con \texttt{paths} para \texttt{@/\*}. \\
+\bottomrule
+\end{longtable}
+
+\section{Dependencias destacadas}
+\begin{longtable}{p{0.3\textwidth}p{0.6\textwidth}}
+\toprule
+\textbf{Paquete} & \textbf{Uso en el proyecto} \\
+\midrule
+\texttt{@tanstack/react-query} & Cache y manejo de estado remoto (preparado para futuras integraciones). \\
+\texttt{react-router-dom} & Enrutamiento declarativo de todas las vistas. \\
+\texttt{lucide-react} & Iconografía consistente con modo claro/oscuro. \\
+\texttt{embla-carousel-react} & Carrusel suave en \texttt{Events} y otras galerías. \\
+\texttt{react-leaflet} + \texttt{leaflet} & Mapa interactivo dentro del detalle de cada tour. \\
+\texttt{date-fns} & Formato y cálculo de fechas (eventos, calendario, clima). \\
+\texttt{react-hook-form} + \texttt{zod} & Formularios tipados (por ejemplo, newsletter futuro). \\
+\texttt{tailwindcss} + \texttt{tailwindcss-animate} & Diseño responsivo con utilidades y animaciones. \\
+\texttt{clsx} + \texttt{tailwind-merge} & Composición de clases (\texttt{cn()} en \texttt{src/lib/utils.ts}). \\
+\texttt{sonner} & Sistema de notificaciones ligero en paralelo al toaster interno. \\
+\bottomrule
+\end{longtable}
+
+\section{Checklist previo a despliegue}
+\begin{enumerate}
+  \item Ejecutar \texttt{npm run lint} y resolver advertencias.
+  \item Correr \texttt{npm run build} y verificar ausencia de errores en consola.
+  \item Probar rutas principales y secundarias en desktop y mobile, incluyendo \texttt{/Pantalla}.
+  \item Revisar que los flyers e imágenes nuevas existan en \texttt{public/} y tengan texto alternativo.
+  \item Validar que el manifest siga apuntando a las capturas y que los íconos PWA estén actualizados.
+  \item Confirmar que \texttt{vercel.json} (o la configuración del hosting) mantenga la política de seguridad requerida.
+\end{enumerate}
+
+\end{document}
