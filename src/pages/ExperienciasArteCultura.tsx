@@ -9,12 +9,12 @@ const heroHighlights = [
     en: "MUDECH preserves fossil tales and contemporary sculpture residencies."
   },
   {
-    es: "Plaza Benito Juárez funciona como escenario vivo: murales, danza y cafés de autor.",
-    en: "Benito Juárez plaza is a living stage: murals, dance and signature cafés."
+    es: "Plaza Benito Juárez funciona como escenario vivo.",
+    en: "Benito Juárez plaza is a living stage."
   },
   {
-    es: "Colectivos de ixtle, fotografía y literatura tejen ruta propia entre barrios algodoneros.",
-    en: "Ixtle, photography and literary collectives craft their own route across cotton neighborhoods."
+    es: "Fotografía y literatura tejen ruta propia entre barrios algodoneros.",
+    en: "Photography and literature craft their own route across cotton neighborhoods."
   }
 ] as const;
 
@@ -23,21 +23,21 @@ const creativeItinerary = [
     time: "09:30",
     label: { es: "Murales & breakfast", en: "Murals & breakfast" },
     detail: {
-      es: "Café de autor cerca del reloj mientras descubres nuevos murales y cerámica urbana.",
-      en: "Signature coffee near the clock while spotting new murals and ceramic pieces."
+      es: "Café cerca del reloj.",
+      en: "Coffee near the clock."
     }
   },
   {
     time: "11:30",
     label: { es: "MUDECH sin prisa", en: "Slow MUDECH visit" },
     detail: {
-      es: "Salas permanentes, multimedia y terraza con vista algodonera.",
-      en: "Permanent rooms, multimedia hall and a cotton-valley terrace."
+      es: "Salas permanentes, multimedia y terraza.",
+      en: "Permanent rooms, multimedia hall and a terrace."
     }
   },
   {
     time: "15:00",
-    label: { es: "Laboratorio paleo", en: "Paleo lab" },
+    label: { es: "Laboratorio", en: "Lab" },
     detail: {
       es: "Taller con réplicas de fósiles y realidad aumentada para familias.",
       en: "Fossil replica workshop plus AR for families."
@@ -47,8 +47,8 @@ const creativeItinerary = [
     time: "19:00",
     label: { es: "Atardecer sonoro", en: "Soundtracked sunset" },
     detail: {
-      es: "Jazz, ballet y narradores orales ocupan la plaza los fines de semana.",
-      en: "Jazz, folk dance and storytellers take over the plaza on weekends."
+      es: "Bailables ocupan la plaza los fines de semana.",
+      en: "Dances take over the plaza on weekends."
     }
   }
 ] as const;
@@ -57,8 +57,8 @@ const culturalSpaces = [
   {
     name: "Museo del Desierto Chihuahuense",
     description: {
-      es: "Sala paleontológica, jardines xerófilos y colección multimedia de la cuenca del Conchos.",
-      en: "Paleontology hall, xeric gardens and multimedia collection about the Conchos basin."
+      es: "Sala paleontológica y colección multimedia.",
+      en: "Paleontology hall and multimedia collection."
     },
     detail: {
       es: "Entradas desde $60 MXN · martes a domingo",
@@ -79,8 +79,8 @@ const culturalSpaces = [
   {
     name: "Plaza Benito Juárez",
     description: {
-      es: "Galería a cielo abierto con murales, ferias editoriales y escenario comunitario.",
-      en: "Open-air gallery with murals, zine fairs and a community stage."
+      es: "Escenario comunitario.",
+      en: "Community stage."
     },
     detail: {
       es: "Acceso libre · programación semanal",
