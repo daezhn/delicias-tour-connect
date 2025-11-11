@@ -6,10 +6,10 @@ const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg"; // provided asset in public/
 const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg"; // mobile-only crop centered on the clock tower
 
 const quickLinks = [
-  { href: "#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
+  { href: "/#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
   { href: "/tours", image: "/images/tours/cavall7.jpg", label: { es: "Tours", en: "Tours" }, hint: { es: "Desierto · ríos · ciudad", en: "Desert · rivers · city" } },
-  { href: "#hoteles", image: "/images/hotel-4.jpg", label: { es: "Hoteles", en: "Hotels" }, hint: { es: "Boutique & comfort", en: "Boutique & comfort" } },
-  { href: "#restaurantes", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" }, hint: { es: "Sabores locales", en: "Local flavors" } }
+  { href: "/hospedaje", image: "/images/hotel-4.jpg", label: { es: "Hoteles", en: "Hotels" }, hint: { es: "Boutique & comfort", en: "Boutique & comfort" } },
+  { href: "/experiencias/que-comer", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" }, hint: { es: "Sabores locales", en: "Local flavors" } }
 ] as const;
 
 // Stats removed for cleaner tourist-first visual hero
@@ -24,7 +24,7 @@ export const Hero = () => {
       hint: tile.hint[locale] ?? tile.hint.es
     }));
 
-    const prioritizedOrder = ["#eventos", "/tours", "#restaurantes", "#hoteles"];
+    const prioritizedOrder = ["/#eventos", "/tours", "/experiencias/que-comer", "/hospedaje"];
 
     const orderedBase = prioritizedOrder
       .map((href) => localizedBase.find((tile) => tile.href === href))
@@ -34,19 +34,19 @@ export const Hero = () => {
 
     const additionalTiles = [
       {
-        href: "#atractivos",
+        href: "/Atractivos",
         image: "/images/hero-delicias-3.jpg",
         label: locale === "es" ? "Atractivos" : "Highlights",
         hint: locale === "es" ? "Rutas fotogénicas" : "Scenic routes"
       },
       {
-        href: "#actividades",
+        href: "/experiencias/que-hacer",
         image: "/images/hero-delicias-1.jpg",
         label: locale === "es" ? "Actividades" : "Activities",
         hint: locale === "es" ? "Experiencias al aire libre" : "Outdoor escapes"
       },
       {
-        href: "#stay-dine",
+        href: "/#plan-trip",
         image: "/images/hotel-5.jpg",
         label: locale === "es" ? "Stay & Dine" : "Stay & Dine",
         hint: locale === "es" ? "Sabores y hospedaje" : "Taste & stay"

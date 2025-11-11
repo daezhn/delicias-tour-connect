@@ -4,6 +4,13 @@ import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 
 const NAV_LINKS = ["inicio", "atractivos", "actividades", "eventos", "contacto"] as const;
+const NAV_TARGETS: Record<(typeof NAV_LINKS)[number], string> = {
+  inicio: "/#inicio",
+  atractivos: "/Atractivos",
+  actividades: "/experiencias/que-hacer",
+  eventos: "/#eventos",
+  contacto: "/#contacto",
+};
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +18,7 @@ export const Navigation = () => {
   const navCopy = getTranslations(locale).nav;
   const ctaLabel = locale === "es" ? "Planear visita" : "Plan trip";
 
-  const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: `#${key}` }));
+  const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: NAV_TARGETS[key] }));
 
   const toggleLocale = () => setLocale(locale === "es" ? "en" : "es");
 
@@ -19,14 +26,8 @@ export const Navigation = () => {
     <nav className="fixed inset-x-0 top-0 z-50">
       <div className="border-b border-orange-200/60 bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
-          <a href="#inicio" className="flex items-center gap-3 py-4">
+          <a href="/#inicio" className="flex items-center gap-3 py-4">
             <img src="/images/Logo_IDEA.png" alt="IDEA Delicias" className="h-14 w-auto" />
-            <div className="hidden sm:flex flex-col text-[11px] uppercase tracking-[0.45em] text-foreground/70">
-              <span>{locale === "es" ? "Visit Delicias" : "Visit Delicias"}</span>
-              <span className="text-[10px] tracking-[0.55em] text-foreground/40">
-                Chihuahua · México
-              </span>
-            </div>
           </a>
 
           <div className="hidden lg:flex items-center gap-1">

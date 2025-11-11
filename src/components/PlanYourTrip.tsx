@@ -59,7 +59,7 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
       : "Transport, stays, itineraries and climate guidance gathered in one scroll so you can craft the perfect route.";
 
   return (
-    <section className={compact ? "bg-transparent py-10" : "bg-white py-20"}>
+    <section id="plan-trip" className={compact ? "bg-transparent py-10" : "bg-white py-20"}>
       <div className={`mx-auto ${compact ? "" : "max-w-6xl"} px-4`}>
         <div className={compact ? "grid gap-6" : "grid gap-10 lg:grid-cols-[0.9fr,1.1fr]"}>
           {!compact && showHeading && (
