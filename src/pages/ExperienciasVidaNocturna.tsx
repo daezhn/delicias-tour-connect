@@ -5,25 +5,25 @@ import { ArrowUpRight } from "lucide-react";
 
 const neonVenues = [
   {
-    image: "/images/Galería/19.jpg",
-    label: { es: "Terrazas mix", en: "Mix rooftops" },
-    title: { es: "Laboratorio de coctelería", en: "Mixology lab" },
+    image: "/vidanocturna/coctel.png",
+    label: { es: "Bares de autor", en: "Signature bars" },
+    title: { es: "Cócteles", en: "Cocktails" },
     detail: {
-      es: "Cartas de sotol infusionado, DJs invitados y mesas en altura con vista al desierto.",
-      en: "Infused sotol menus, guest DJs and high tables overlooking the desert."
+      es: "Barras íntimas con mixología creativa, bitters caseros y playlists cuidadas para antes del club.",
+      en: "Intimate bars pouring creative sotol mixes, house bitters and curated playlists to start the night."
     }
   },
   {
-    image: "/images/Galería/10.jpg",
-    label: { es: "Club subterráneo", en: "Underground club" },
-    title: { es: "Pantallas inmersivas", en: "Immersive visuals" },
+    image: "/vidanocturna/djantro.png",
+    label: { es: "Antros inmersivos", en: "Immersive clubs" },
+    title: { es: "Pantallas y DJ sets", en: "Screens & DJ sets" },
     detail: {
-      es: "Proyecciones 360°, bloques de reggaetón/electrónica y barras de autor hasta las 3 a.m.",
-      en: "360° visuals, reggaeton/electro blocks and craft bars until 3 a.m."
+      es: "Salas con mapping, line ups de electrónica y reggaetón y barras abiertas hasta la madrugada.",
+      en: "Mapped rooms with electronic/reggaeton lineups and bars running until late."
     }
   },
   {
-    image: "/images/Galería/4.jpg",
+    image: "/vidanocturna/sazon.png",
     label: { es: "Cantinas boutique", en: "Boutique cantinas" },
     title: { es: "Sazón clásico", en: "Classic flavor" },
     detail: {
@@ -32,7 +32,7 @@ const neonVenues = [
     }
   },
   {
-    image: "/images/Galería/17.jpg",
+    image: "/vidanocturna/tacos.png",
     label: { es: "Afterhours criollo", en: "Criollo afterhours" },
     title: { es: "Tacos nocturnos", en: "Late-night tacos" },
     detail: {
@@ -47,32 +47,32 @@ const nightTimeline = [
     time: "19:00",
     title: { es: "Golden hour en Plaza Benito Juárez", en: "Golden hour at Benito Juárez Plaza" },
     description: {
-      es: "Arranca con vermouth local y música a cielo abierto antes de subir a las terrazas.",
-      en: "Begin with local vermouth and open-air music before heading to rooftops."
+      es: "Arranca con música a cielo abierto.",
+      en: "Begin with open-air music."
     }
   },
   {
     time: "22:00",
-    title: { es: "Club hopping en la avenida Sexta", en: "Club hopping on 6th avenue" },
+    title: { es: "Club hopping", en: "Club hopping " },
     description: {
-      es: "Line ups de DJs nacionales, pantallas inmersivas y coctelería futurista.",
-      en: "National DJ lineups, immersive screens and futuristic cocktails."
+      es: "Line ups de DJs, pantallas y coctelería.",
+      en: "DJ lineups, screens and cocktails."
     }
   },
   {
     time: "01:30",
-    title: { es: "After de sotol y jazz", en: "Sotol & jazz afterhours" },
+    title: { es: "After", en: "After" },
     description: {
-      es: "Cantinas boutique con jam sessions íntimas y maridajes dulces.",
-      en: "Boutique cantinas hosting intimate jam sessions and sweet pairings."
+      es: "Cantinas con jam sessions íntimas y maridajes dulces.",
+      en: "Cantinas hosting intimate jam sessions and sweet pairings."
     }
   },
   {
     time: "03:00",
     title: { es: "Food trucks nocturnos", en: "Late-night food trucks" },
     description: {
-      es: "Tacos de barbacoa, burritos veganos y carajillos to-go para cerrar la noche.",
-      en: "Barbacoa tacos, vegan burritos and to-go carajillos to wrap the night."
+      es: "Tacos, burritos para cerrar la noche.",
+      en: "Tacos, burritos to wrap the night."
     }
   }
 ] as const;
@@ -107,10 +107,10 @@ const ExperienciasVidaNocturna = () => {
     locale === "es" ? "La noche de Delicias vibra en neón" : "Delicias by night glows in neon";
   const heroCopy =
     locale === "es"
-      ? "Terrazas cálidas, clubs subterráneos y cantinas que reinventan el sotol. Planea tu after perfecto."
-      : "Warm rooftops, underground clubs and cantinas reinventing sotol. Build your perfect after.";
+      ? "Terrazas cálidas y cantinas que reinventan la experiencia. Planea tu after perfecto."
+      : "Warm rooftops and cantinas reinventing the experience. Build your perfect after.";
   const heroScript =
-    locale === "es" ? "Sotol, beats y neón." : "Sotol, beats & neon.";
+    locale === "es" ? "Tragos, beats y neón." : "Drinks, beats & neon.";
 
   return (
     <div className="min-h-screen bg-[#050917] text-white">
@@ -143,7 +143,7 @@ const ExperienciasVidaNocturna = () => {
               <p className="font-script text-3xl italic text-[#ffb4d9]">{heroScript}</p>
               <p className="max-w-xl text-base text-white/80">{heroCopy}</p>
               <div className="flex flex-wrap gap-3">
-                {["DJs", "Sotol", "Rooftops", "After"].map((chip) => (
+                {["DJs", "Drinks", "Rooftops", "After"].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full border border-white/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/80"
@@ -179,9 +179,9 @@ const ExperienciasVidaNocturna = () => {
                   {locale === "es" ? "Line up del fin de semana" : "Weekend line-up"}
                 </p>
                 <ul className="mt-4 space-y-3 text-sm text-white/80">
-                  <li>· Desert Jazz Rooftop · 20:00 h</li>
-                  <li>· Neon Tropic Club · 22:30 h</li>
-                  <li>· Cantina La Sombra · 00:15 h</li>
+                  <li>· La ultima bar · 20:00 h</li>
+                  <li>· Cerveceria 19 · 22:30 h</li>
+                  <li>· Las Delicias · 00:15 h</li>
                 </ul>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">

@@ -7,7 +7,7 @@ const heroShots = ["/images/Galería/8.jpg", "/images/Galería/11.jpg", "/images
 
 const travelRoutes = [
   {
-    image: "/images/Galería/6.jpg",
+    image: "/images/quehacer/presa.png",
     title: { es: "Desierto & Presa", en: "Desert & dam" },
     description: {
       es: "Miradores en la Presa Las Vírgenes, senderos interpretativos y picnic naranja al atardecer.",
@@ -16,7 +16,7 @@ const travelRoutes = [
     cta: "https://maps.google.com/?q=Presa+Las+Virgenes"
   },
   {
-    image: "/images/Galería/9.jpg",
+    image: "/images/quehacer/reloj.jpg",
     title: { es: "Centro creativo", en: "Creative downtown" },
     description: {
       es: "Murales, concept stores y cafés de autor alrededor del reloj monumental.",
@@ -25,7 +25,7 @@ const travelRoutes = [
     cta: "/experiencias/arte-cultura"
   },
   {
-    image: "/images/Galería/15.jpg",
+    image: "/images/quehacer/museo.jpg",
     title: { es: "Museos táctiles", en: "Tactile museums" },
     description: {
       es: "MUDECH y Museo de Paleontología con laboratorios de fósiles y terrazas con vista.",
@@ -40,8 +40,8 @@ const dayPlanner = [
     time: "09:00",
     block: { es: "Murales + desayuno", en: "Murals + breakfast" },
     detail: {
-      es: "Café frente al reloj y recorrido por Plaza Benito Juárez para ubicar nuevas intervenciones.",
-      en: "Coffee near the clock tower plus walk around Benito Juárez plaza to spot new murals."
+      es: "Caminata frente al reloj y recorrido por Plaza Benito Juárez para ubicar nuevas intervenciones.",
+      en: "Walking near the clock tower plus walk around Benito Juárez plaza to spot new murals."
     }
   },
   {
@@ -64,8 +64,8 @@ const dayPlanner = [
     time: "21:00",
     block: { es: "Noches del centro", en: "Downtown nights" },
     detail: {
-      es: "Mixología local, música en vivo y food trucks alrededor del corredor Sexta.",
-      en: "Local mixology, live music and food trucks along 6th corridor."
+      es: "Mixología local, música en vivo y food trucks alrededor del centro.",
+      en: "Local mixology, live music and food trucks around downtown."
     }
   }
 ] as const;
@@ -81,8 +81,8 @@ const atlasStops = [
   {
     name: { es: "Plaza Benito Juárez", en: "Benito Juárez plaza" },
     detail: {
-      es: "Muralismo, cafés de autor y ferias culturales.",
-      en: "Murals, signature cafés and cultural fairs."
+      es: "Muralismo.",
+      en: "Murals."
     }
   },
   {
