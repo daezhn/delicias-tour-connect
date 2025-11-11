@@ -5,7 +5,7 @@ const experiences = [
   {
     id: "todo",
     href: "/experiencias/que-hacer",
-    image: "/images/Galería/3.jpg",
+    image: "/images/experiencias/que hacer.jpg",
     title: { es: "Qué hacer en Delicias", en: "Things to do" },
     size: "row-span-2"
   },
@@ -26,14 +26,14 @@ const experiences = [
   {
     id: "family",
     href: "/experiencias/familia",
-    image: "/images/Galería/7.jpg",
+    image: "/images/experiencias/familia.JPG",
     title: { es: "Diversión en familia", en: "Family fun" },
     size: ""
   },
   {
     id: "sports",
     href: "/experiencias/deportes",
-    image: "/images/Galería/14.jpg",
+    image: "/images/experiencias/deportes.jpg",
     title: { es: "Deportes", en: "Sports" },
     size: ""
   },

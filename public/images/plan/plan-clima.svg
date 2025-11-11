@@ -1,0 +1,37 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="climateGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3BC7D9"/>
+      <stop offset="100%" stop-color="#1B6FA1"/>
+    </linearGradient>
+    <linearGradient id="sunGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE27A"/>
+      <stop offset="100%" stop-color="#FFB347"/>
+    </linearGradient>
+    <linearGradient id="cloudGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E0F5FF" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#climateGradient)"/>
+  <circle cx="900" cy="200" r="140" fill="url(#sunGradient)"/>
+  <circle cx="920" cy="220" r="170" fill="#FFD86F" fill-opacity="0.25"/>
+  <g opacity="0.9">
+    <ellipse cx="360" cy="330" rx="160" ry="80" fill="url(#cloudGradient)"/>
+    <ellipse cx="540" cy="360" rx="200" ry="90" fill="url(#cloudGradient)"/>
+    <ellipse cx="720" cy="330" rx="170" ry="80" fill="url(#cloudGradient)"/>
+    <ellipse cx="880" cy="340" rx="150" ry="70" fill="url(#cloudGradient)"/>
+  </g>
+  <path d="M0 520C220 500 420 460 620 480C820 500 1000 580 1200 600V800H0V520Z" fill="#0E2F4A" fill-opacity="0.35"/>
+  <path d="M120 520C260 500 420 520 560 560C700 600 880 600 1040 560C1120 540 1170 530 1200 530" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 24"/>
+  <g opacity="0.75" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round">
+    <line x1="220" y1="540" x2="220" y2="640"/>
+    <line x1="260" y1="560" x2="260" y2="680"/>
+    <line x1="300" y1="550" x2="300" y2="660"/>
+    <line x1="960" y1="560" x2="960" y2="680"/>
+    <line x1="1000" y1="540" x2="1000" y2="650"/>
+    <line x1="1040" y1="560" x2="1040" y2="700"/>
+  </g>
+  <path d="M720 460C760 500 820 520 880 500" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 20" opacity="0.5"/>
+</svg>
+

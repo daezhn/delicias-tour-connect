@@ -147,10 +147,10 @@ const busLines = [
 
 const mobilityTips = [
   {
-    title: { es: "Apps y taxis seguros", en: "Apps & safe taxis" },
+    title: { es: "Apps y taxis seguros", en: "Apps & taxis" },
     body: {
-      es: "DiDi, inDrive y EcoTaxi operan en Delicias con puntos preferentes afuera de la Central Camionera y Plaza Carranza.",
-      en: "DiDi, inDrive and EcoTaxi operate in Delicias with preferred pick-ups at the bus terminal and Plaza Carranza."
+      es: "Uber y taxis locales  operan en Delicias con puntos preferentes afuera de la Central Camionera y Plaza Carranza.",
+      en: "Uber and taxis operate in Delicias with preferred pick-ups at the bus terminal and Plaza Carranza."
     },
     details: [
       { es: "Tarifa promedio Ciudad → Presa Las Vírgenes: $160 MXN", en: "Average fare city center → Las Vírgenes Dam: $160 MXN" },
@@ -164,7 +164,7 @@ const mobilityTips = [
       en: "Independent agencies provide sedans and pick-ups for farm visits; request GPS with offline maps."
     },
     details: [
-      { es: "Delicias Rent (Av. 6a Norte): $950 MXN / día", en: "Delicias Rent (6th Ave North): $950 MXN per day" },
+      { es: "Comunicate con nosotros para más informes", en: "Contact us for more information" },
       { es: "Combustible Magna promedio: $23.1 MXN / lt", en: "Average fuel price: $23.1 MXN per liter" }
     ]
   },
@@ -408,12 +408,6 @@ const Transporte = () => {
                       </span>
                     </li>
                   </ul>
-                  <div className="rounded-2xl border border-white/20 p-4 text-sm text-white/80">
-                    <p className="font-semibold uppercase tracking-[0.35em]">
-                      {locale === "es" ? "Ubicación" : "Location"}
-                    </p>
-                    <p>Av. Sexta Norte #202, Centro, Delicias, Chihuahua</p>
-                  </div>
                 </CardContent>
               </Card>
             </div>

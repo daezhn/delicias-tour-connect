@@ -5,7 +5,7 @@ const planTiles = [
   {
     id: "transport",
     href: "/transporte",
-    image: "/images/torre-reloj.jpg",
+    image: "/images/plan/plan-transport.svg",
     title: { es: "Transporte", en: "Transport" },
     summary: {
       es: "Rutas aéreas, carretera federal y tips para llegar en bus o auto.",
@@ -15,7 +15,7 @@ const planTiles = [
   {
     id: "stay",
     href: "/hospedaje",
-    image: "/images/hotel-4.jpg",
+    image: "/images/plan/plan-stay.svg",
     title: { es: "Hospedaje", en: "Stays" },
     summary: {
       es: "Hoteles boutique, casas creativas y experiencias con alberca.",
@@ -25,7 +25,7 @@ const planTiles = [
   {
     id: "tours",
     href: "/tours",
-    image: "/images/tours/cavall7.jpg",
+    image: "/images/plan/plan-tours.svg",
     title: { es: "Tours & experiencias", en: "Tours & experiences" },
     summary: {
       es: "Descubre rutas guiadas, safaris al desierto y escapadas nocturnas.",
@@ -35,7 +35,7 @@ const planTiles = [
   {
     id: "climate",
     href: "/clima-tips",
-    image: "/images/hero-delicias-2.jpg",
+    image: "/images/plan/plan-clima.svg",
     title: { es: "Clima & tips", en: "Climate & Tips" },
     summary: {
       es: "Consejos de temporada, qué empacar y mejores meses para visitar.",
@@ -51,7 +51,7 @@ interface PlanYourTripProps {
 
 export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTripProps) => {
   const { locale } = useLocale();
-  const script = locale === "es" ? "El corazón del norte de México" : "The heart of Northern Mexico";
+  const script = locale === "es" ? "El corazón de Chihuahua" : "The heart of Chihuahua";
   const heading = locale === "es" ? "Planea tu viaje a Delicias" : "Plan your trip to Delicias";
   const description =
     locale === "es"
