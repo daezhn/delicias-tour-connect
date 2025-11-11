@@ -1,20 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { WelcomeDelicias } from "@/components/WelcomeDelicias";
-import { FeaturedCarousel } from "@/components/FeaturedCarousel";
-import { Hotels } from "@/components/Hotels";
-import { Restaurants } from "@/components/Restaurants";
-import { FeaturedPlaces } from "@/components/FeaturedPlaces";
-import { Activities } from "@/components/Activities";
-import { HowToGet } from "@/components/HowToGet";
 import { Events } from "@/components/Events";
-import { Recommendations } from "@/components/Recommendations";
 import { Footer } from "@/components/Footer";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCard } from "@/components/ContactCard";
 import { AvailabilityCalendar } from "@/components/AvailabilityCalendar";
 import { ExperiencesCollage } from "@/components/ExperiencesCollage";
 import { PlanYourTrip } from "@/components/PlanYourTrip";
+import { FeaturedCitizens } from "@/components/FeaturedCitizens";
+import { GalleryShowcase } from "@/components/GalleryShowcase";
 
 const Index = () => {
   return (
@@ -39,47 +34,22 @@ const Index = () => {
         <ExperiencesCollage />
 
         <PlanYourTrip />
+        <FeaturedCitizens />
 
-        <section className="bg-white py-20">
-          <div className="mx-auto max-w-6xl grid gap-8 px-4 lg:grid-cols-[1fr,0.9fr]">
-            <HowToGet />
-            <Recommendations />
+        <GalleryShowcase />
+
+        <section
+          id="preguntas"
+          className="bg-gradient-to-br from-[#f7b267] via-[#f79d84] to-[#8fd3fe] py-20"
+        >
+          <div className="mx-auto max-w-5xl px-4">
+            <FaqSection />
           </div>
         </section>
 
-        <section className="bg-[#fff7ef] py-20" id="stay-dine">
-          <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <div className="space-y-2 text-center">
-              <p className="font-script text-2xl text-secondary/80">Sueña & saborea</p>
-              <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
-                Hospedaje boutique · Guías gastronómicas
-              </p>
-            </div>
-            <div className="grid gap-12 lg:grid-cols-2">
-              <div id="hoteles">
-                <Hotels />
-              </div>
-              <div id="restaurantes">
-                <Restaurants />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="atractivos" className="bg-white py-20">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1.2fr,0.8fr]">
-            <FeaturedCarousel />
-            <FeaturedPlaces />
-          </div>
-        </section>
-
-        <section id="actividades" className="bg-[#f5fbfd] py-20">
-          <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <Activities />
-            <div className="grid gap-8 lg:grid-cols-[0.9fr,1.1fr]">
-              <FaqSection />
-              <ContactCard />
-            </div>
+        <section id="contacto" className="bg-white py-20">
+          <div className="mx-auto max-w-4xl px-4">
+            <ContactCard />
           </div>
         </section>
       </main>

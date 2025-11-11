@@ -3,69 +3,102 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 
-const heroImages = ["/images/Galería/8.jpg", "/images/hero-delicias-2.jpg", "/images/parque-central.jpg"] as const;
+const heroShots = ["/images/Galería/8.jpg", "/images/hero-delicias-2.jpg", "/images/parque-central.jpg"] as const;
+
+const algodonerosMoments = [
+  {
+    tag: { es: "Temporada regular", en: "Regular season" },
+    title: { es: "Algodoneros pentacampeones", en: "Five-time champions" },
+    description: {
+      es: "Rachas históricas 2019-2023 con estadio lleno, mascots y fireworks cada serie en casa.",
+      en: "Historic 2019-2023 streak with packed stands, mascots and fireworks at every home series."
+    },
+    detail: { es: "Gran Estadio Delicias · 4,300 aficionados", en: "Gran Estadio Delicias · 4,300 fans" },
+    image: "/images/torre-reloj.jpg"
+  },
+  {
+    tag: { es: "Game day", en: "Game day" },
+    title: { es: "Tour por el estadio", en: "Stadium tour" },
+    description: {
+      es: "Visita dugout, vestidores y la sala de trofeos antes del playball. Reserva en taquilla en días sin juego.",
+      en: "Visit the dugout, locker rooms and trophy hall before playball. Reserve at the box office on off days."
+    },
+    detail: { es: "Reservación previa · 11:00 h", en: "Advance reservation · 11:00 a.m." },
+    image: "/images/Galería/11.jpg"
+  },
+  {
+    tag: { es: "Merch oficial", en: "Official merch" },
+    title: { es: "Tienda Algodonera", en: "Algodoneros store" },
+    description: {
+      es: "Jerseys edición limitada, gorras y bats firmados se venden durante la serie local.",
+      en: "Limited jerseys, caps and signed bats drop during each home series."
+    },
+    detail: { es: "Viernes a domingo · 17:00-22:00 h", en: "Friday–Sunday · 5–10 p.m." },
+    image: "/images/Galería/18.jpg"
+  }
+] as const;
 
 const actionCards = [
   {
-    image: "/images/parque-central.jpg",
-    title: { es: "Ruta amanecer 7K", en: "Sunrise 7K route" },
+    image: "/images/Galería/6.jpg",
+    title: { es: "Kayak Presa Las Vírgenes", en: "Kayak Las Vírgenes dam" },
     description: {
-      es: "Corre desde la plaza Benito Juárez hasta el Parque Fundadores y vuelve entre árboles maduros y estaciones de hidratación.",
-      en: "Run from Benito Juárez plaza to Parque Fundadores and back through shaded trees and hydration stops."
-    },
-    stats: { es: "Terreno mixto · 7 km", en: "Mixed terrain · 7 km" }
-  },
-  {
-    image: "/images/hero-delicias-3.jpg",
-    title: { es: "SUP & kayak Presa Las Vírgenes", en: "SUP & kayak Las Vírgenes dam" },
-    description: {
-      es: "Sesiones guiadas al amanecer con miradores y picnic posterior frente al valle algodonero.",
-      en: "Guided sunrise sessions with lookouts and a valley picnic afterwards."
+      es: "Remo al amanecer con guía y parada fotográfica en el mirador superior.",
+      en: "Sunrise paddle with a guide plus photo stop at the overlook."
     },
     stats: { es: "Duración 2.5 h", en: "2.5 h session" }
   },
   {
-    image: "/images/hero-delicias-1.jpg",
-    title: { es: "Gravel y ciclismo agro", en: "Gravel & agro cycling" },
+    image: "/images/Galería/8.jpg",
+    title: { es: "Gravel district ride", en: "Gravel district ride" },
     description: {
-      es: "Recorre los drenes del distrito de riego y termina en huertos de nogal con degustación de nuez.",
-      en: "Ride irrigation roads and finish at pecan orchards with nut tastings."
+      es: "Rueda entre drenes agrícolas y termina con degustación de nuez y café local.",
+      en: "Ride irrigation canals and finish with pecan + local coffee tasting."
     },
     stats: { es: "Nivel intermedio", en: "Intermediate level" }
+  },
+  {
+    image: "/images/parque-central.jpg",
+    title: { es: "Circuito Parque Vida", en: "Parque Vida circuit" },
+    description: {
+      es: "Funcional al aire libre, skate loop y canchas encendidas todas las tardes.",
+      en: "Outdoor functional training, skate loop and lit courts every evening."
+    },
+    stats: { es: "Familiar · gratuito", en: "Family-friendly · free" }
   }
 ] as const;
 
-const itinerary = [
+const gameDayPlan = [
   {
-    time: "06:30",
-    label: { es: "Trota entre plazas", en: "Run through plazas" },
+    time: "11:00",
+    block: { es: "Tour Algodonero", en: "Algodonero tour" },
     detail: {
-      es: "Calienta en el reloj monumental y toma dirección al Parque Fundadores antes de que suba el sol.",
-      en: "Warm up at the clock tower and head to Parque Fundadores before the sun is high."
+      es: "Ingresa al dugout, visita vestidores y conoce el mural histórico del equipo.",
+      en: "Step into the dugout, visit the locker rooms and learn from the team history mural."
     }
   },
   {
-    time: "10:00",
-    label: { es: "Kayak en Presa Las Vírgenes", en: "Kayak at Las Vírgenes Dam" },
+    time: "13:30",
+    block: { es: "Lunch temático", en: "Themed lunch" },
     detail: {
-      es: "Rema en aguas tranquilas y aprovecha el mirador para hacer fotos panorámicas.",
-      en: "Paddle calm waters and use the overlook for panoramic shots."
+      es: "Restaurantes alrededor del estadio ofrecen menús con nombres de jugadores.",
+      en: "Restaurants near the stadium feature dishes named after players."
     }
   },
   {
-    time: "15:00",
-    label: { es: "Tarde de estadio", en: "Stadium afternoon" },
+    time: "17:00",
+    block: { es: "Fan fest", en: "Fan fest" },
     detail: {
-      es: "Visita el Gran Estadio Delicias y consigue mercancía de los Algodoneros, pentacampeones estatales.",
-      en: "Tour Gran Estadio Delicias and shop Algodoneros merch, the state five-time champions."
+      es: "Zona kids, mascots y música en vivo previo al partido.",
+      en: "Kids zone, mascots and live music before first pitch."
     }
   },
   {
-    time: "20:00",
-    label: { es: "Nocturno en Parque Vida", en: "Night session at Parque Vida" },
+    time: "19:30",
+    block: { es: "Playball", en: "Playball" },
     detail: {
-      es: "Canchas iluminadas, pista de skate y clases funcionales gratuitas para cerrar el día.",
-      en: "Lit courts, skate track and free functional classes to close the day."
+      es: "Algodoneros vs rivales estatales. Fireworks tras la séptima entrada.",
+      en: "Algodoneros vs state rivals. Fireworks after the seventh inning."
     }
   }
 ] as const;
@@ -75,8 +108,8 @@ const agenda = [
     eyebrow: { es: "Temporada abril-agosto", en: "April–August season" },
     title: { es: "Algodoneros de Delicias", en: "Algodoneros de Delicias" },
     description: {
-      es: "Pentacampeones de la Liga Estatal con casa en el Gran Estadio Delicias. Ambiente familiar, food trucks y zona kids.",
-      en: "Five-time State League champions playing at Gran Estadio Delicias. Family vibe, food trucks and kids area."
+      es: "Pentacampeones de la Liga Estatal con ambiente familiar, food trucks y zona kids.",
+      en: "State League five-time champions with family vibe, food trucks and kids zone."
     },
     link: "https://es.wikipedia.org/wiki/Algodoneros_de_Delicias"
   },
@@ -84,8 +117,8 @@ const agenda = [
     eyebrow: { es: "Junio", en: "June" },
     title: { es: "10K Circuito Nogales", en: "Nogales Circuit 10K" },
     description: {
-      es: "Ruta matutina entre huertas y drenes con categorías recreativas y competitivas. Incluye kit con jersey local.",
-      en: "Morning route across pecan groves and irrigation canals with recreational and competitive categories. Includes local jersey kit."
+      es: "Ruta matutina entre huertas y drenes con categorías recreativas y competitivas.",
+      en: "Morning route through orchards and canals with fun and competitive categories."
     },
     link: "https://maps.google.com/?q=Parque+Fundadores+Delicias"
   },
@@ -93,128 +126,119 @@ const agenda = [
     eyebrow: { es: "Todo el año", en: "Year-round" },
     title: { es: "Sesiones Parque Vida", en: "Parque Vida sessions" },
     description: {
-      es: "Cancha de fútbol sintético, básquet techado y gimnasio al aire libre gratuito en Las Palmas.",
-      en: "Synthetic soccer field, covered basketball and free outdoor gym inside Las Palmas."
+      es: "Cancha sintética, básquet techado y funcional gratuito en Las Palmas.",
+      en: "Synthetic pitch, covered basketball and free functional training in Las Palmas."
     },
     link: "https://encortodigital.com/general/inauguran-parque-vida-en-delicias/"
   }
 ] as const;
 
+const sanSilvestreHighlight = {
+  date: { es: "31 de diciembre · 16:00 h", en: "December 31 · 4:00 p.m." },
+  title: { es: "Carrera San Silvestre Delicias", en: "San Silvestre Delicias" },
+  description: {
+    es: "Tradición de fin de año con ruta céntrica, categorías familiares y medalla coleccionable. Perfecta para despedir el año corriendo.",
+    en: "Year-end tradition with downtown route, family categories and collectible medal. Perfect way to close the year running."
+  },
+  cta: "https://www.google.com/maps/search/san+silvestre+delicias"
+};
+
 const venues = [
   {
-    name: "Gran Estadio Delicias",
+    name: { es: "Gran Estadio Delicias", en: "Gran Estadio Delicias" },
     detail: {
-      es: "Capacidad 4,300 aficionados. Tours guiados y locker room accesible cuando el equipo no juega.",
-      en: "Capacity 4,300 fans. Guided tours and locker room access on non-game days."
+      es: "Casa de los Algodoneros · tours guiados · museo del equipo.",
+      en: "Home of Algodoneros · guided tours · team museum."
     }
   },
   {
-    name: "Parque Vida",
+    name: { es: "Parque Vida", en: "Parque Vida" },
     detail: {
-      es: "Nuevo complejo deportivo en Las Palmas con fútbol, básquet, skate loop y áreas de acondicionamiento.",
-      en: "New sports complex in Las Palmas with soccer, basketball, skate loop and conditioning zones."
+      es: "Fútbol sintético, básquet techado, skate y gimnasio al aire libre.",
+      en: "Synthetic soccer, covered basketball, skate loop and outdoor gym."
     }
   },
   {
-    name: "Presa Las Vírgenes",
+    name: { es: "Presa Las Vírgenes", en: "Las Vírgenes Dam" },
     detail: {
-      es: "Embalse icónico para kayak, pesca responsable y miradores con mesas tipo picnic.",
-      en: "Iconic reservoir for kayaking, responsible fishing and lookouts with picnic tables."
+      es: "Kayak, SUP, pesca responsable y miradores con mesas picnic.",
+      en: "Kayak, SUP, responsible fishing and lookouts with picnic tables."
     }
   }
 ] as const;
 
 const ExperienciasDeportes = () => {
   const { locale } = useLocale();
-  const heroTitle = locale === "es" ? "Deportes & aventura" : "Sports & adventure";
+  const heroTitle = locale === "es" ? "Deportes & Algodoneros" : "Sports & Algodoneros";
   const heroCopy =
     locale === "es"
-      ? "Delicias vibra con béisbol, ciclismo en sus drenes históricos y agua calmada perfecta para remar. Diseña tu día activo con parques nuevos y la energía Algodonera."
-      : "Delicias pulses with baseball, cycling along historic canals and calm water ideal for paddling. Design your active day with new parks and Algodoneros energy.";
+      ? "La ciudad respira pelota caliente: Algodoneros pentacampeones, tours en el Gran Estadio y rutas outdoor para calentar antes del playball."
+      : "The city breathes baseball: Algodoneros five-time champs, Gran Estadio tours and outdoor routes to warm up before playball.";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0c2c68]/5 via-[#fffdf7] to-[#f6b043]/20 text-foreground">
+    <div className="min-h-screen bg-gradient-to-b from-[#030917] via-[#0c1f3d] to-[#f6b043]/20 text-white">
       <Navigation />
       <main className="pt-[90px]">
-        <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 text-white sm:px-8 lg:px-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
+        <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(13,25,66,0.65),transparent)]" />
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr,0.9fr]">
             <div className="space-y-6">
               <a
                 href="/experiencias/que-hacer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
               </a>
-              <p className="font-tourism text-3xl text-white/80">
-                {locale === "es" ? "Capital deportiva del desierto" : "Desert sports capital"}
+              <p className="text-[11px] uppercase tracking-[0.5em] text-white/60">
+                {locale === "es" ? "Diamante del desierto" : "Desert diamond"}
               </p>
               <h1 className="text-4xl font-black leading-tight sm:text-5xl">{heroTitle}</h1>
               <p className="text-lg text-white/85">{heroCopy}</p>
-              <ul className="space-y-3 text-sm text-white/80">
-                <li>{locale === "es" ? "Béisbol de alto nivel con los Algodoneros en el Gran Estadio." : "Top-tier baseball with the Algodoneros at Gran Estadio."}</li>
-                <li>
-                  {locale === "es"
-                    ? "Kayak y SUP en la presa Las Vírgenes y rutas gravel entre huertos."
-                    : "Kayak & SUP at Las Vírgenes dam plus gravel rides through orchards."}
-                </li>
-                <li>
-                  {locale === "es"
-                    ? "Parque Vida: canchas iluminadas, skate, gimnasio al aire libre."
-                    : "Parque Vida: lit courts, skate track, outdoor gym."}
-                </li>
-              </ul>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
-                <img
-                  src={heroImages[0]}
-                  alt={locale === "es" ? "Ciclistas en Delicias" : "Cyclists in Delicias"}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="grid gap-4">
-                <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
-                  <img
-                    src={heroImages[1]}
-                    alt={locale === "es" ? "Kayak en Las Vírgenes" : "Kayak at Las Vírgenes"}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-[32px] border border-white/20 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
-                  <img
-                    src={heroImages[2]}
-                    alt={locale === "es" ? "Parques deportivos" : "Sports parks"}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
+              {heroShots.map((shot) => (
+                <img key={shot} src={shot} alt="" className="h-60 w-full rounded-[32px] object-cover shadow-[0_30px_70px_rgba(0,0,0,0.35)]" loading="lazy" decoding="async" />
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-20">
+        <section className="border-y border-white/10 bg-[#060d1f] py-16">
+          <div className="mx-auto max-w-6xl space-y-6 px-4 sm:px-8">
+            <div className="flex items-center justify-between gap-6">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.5em] text-white/60">{locale === "es" ? "Momentos Algodoneros" : "Algodoneros moments"}</p>
+                <h2 className="text-3xl font-black">{locale === "es" ? "Todo gira alrededor del béisbol" : "Everything revolves around baseball"}</h2>
+              </div>
+              <div className="hidden text-xs uppercase tracking-[0.35em] text-white/60 sm:block">{locale === "es" ? "Desliza" : "Swipe"}</div>
+            </div>
+            <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
+              {algodonerosMoments.map((moment) => (
+                <article
+                  key={moment.title.es}
+                  className="flex w-80 snap-center flex-col overflow-hidden rounded-[36px] border border-white/15 bg-white/5 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.35)] backdrop-blur"
+                >
+                  <img src={moment.image} alt={moment.title[locale]} className="h-44 w-full rounded-[24px] object-cover" loading="lazy" decoding="async" />
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.4em] text-white/60">{moment.tag[locale]}</p>
+                  <h3 className="text-2xl font-semibold text-white">{moment.title[locale]}</h3>
+                  <p className="mt-2 text-sm text-white/80">{moment.description[locale]}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/60">{moment.detail[locale]}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#fef7ef] py-20 text-foreground">
           <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <div className="space-y-2 text-center">
-              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Rutas activas" : "Active routes"}
-              </p>
-              <p className="font-tourism text-4xl text-secondary/90">
-                {locale === "es" ? "Planifica tu entrenamiento" : "Plan your training"}
-              </p>
+            <div className="text-center space-y-2">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">{locale === "es" ? "Rutas activas" : "Active routes"}</p>
+              <h2 className="text-3xl font-black text-secondary">{locale === "es" ? "Planifica tu entrenamiento" : "Plan your training"}</h2>
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
               {actionCards.map((card) => (
-                <article
-                  key={card.title.es}
-                  className="flex flex-col overflow-hidden rounded-[32px] border border-black/5 bg-[#fef7ef] shadow-[0_25px_55px_rgba(4,18,42,0.08)]"
-                >
+                <article key={card.title.es} className="flex flex-col overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_25px_55px_rgba(4,18,42,0.08)]">
                   <img src={card.image} alt={card.title[locale]} className="h-60 w-full object-cover" loading="lazy" decoding="async" />
                   <div className="flex flex-1 flex-col space-y-4 p-6">
                     <h3 className="text-2xl font-semibold text-foreground">{card.title[locale]}</h3>
@@ -227,22 +251,18 @@ const ExperienciasDeportes = () => {
           </div>
         </section>
 
-        <section className="bg-gradient-to-br from-[#fef7ef] via-white to-[#f6b043]/20 py-20">
+        <section className="bg-gradient-to-br from-[#f7fbff] via-white to-[#fef7ef] py-20 text-foreground">
           <div className="mx-auto max-w-6xl space-y-10 px-4">
             <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
               <div className="space-y-6">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">
-                  {locale === "es" ? "Itinerario 24 horas" : "24-hour itinerary"}
-                </p>
-                <h2 className="text-3xl font-black text-foreground">
-                  {locale === "es" ? "Un día deportivo en Delicias" : "A sporty day in Delicias"}
-                </h2>
+                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">{locale === "es" ? "Itinerario 24 horas" : "24-hour itinerary"}</p>
+                <h2 className="text-3xl font-black text-foreground">{locale === "es" ? "Game day Algodonero" : "Algodonero game day"}</h2>
                 <ol className="space-y-6">
-                  {itinerary.map((stop) => (
+                  {gameDayPlan.map((stop) => (
                     <li key={stop.time} className="rounded-[28px] border border-black/5 bg-white p-5 shadow-[0_15px_35px_rgba(4,18,42,0.08)]">
                       <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="text-xl font-semibold">{stop.label[locale]}</h3>
-                        <span className="text-sm font-mono text-secondary/80">{stop.time} h</span>
+                        <h3 className="text-xl font-semibold">{stop.block[locale]}</h3>
+                        <span className="text-sm font-mono text-secondary/80">{stop.time}</span>
                       </div>
                       <p className="mt-2 text-sm text-muted-foreground">{stop.detail[locale]}</p>
                     </li>
@@ -251,7 +271,7 @@ const ExperienciasDeportes = () => {
               </div>
               <div className="space-y-5">
                 <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/60">
-                  {locale === "es" ? "Agenda Atlética" : "Athletic agenda"}
+                  {locale === "es" ? "Agenda deportiva" : "Sports agenda"}
                 </p>
                 <div className="space-y-4">
                   {agenda.map((event) => (
@@ -281,7 +301,39 @@ const ExperienciasDeportes = () => {
           </div>
         </section>
 
-        <section className="bg-white py-20">
+        <section className="bg-white py-20 text-foreground">
+          <div className="mx-auto max-w-5xl grid gap-8 px-4 lg:grid-cols-[1fr,0.9fr]">
+            <div className="space-y-4">
+              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
+                {locale === "es" ? "Gran fondo invernal" : "Winter highlight"}
+              </p>
+              <h2 className="text-3xl font-black text-secondary">{sanSilvestreHighlight.title[locale]}</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-secondary/70">{sanSilvestreHighlight.date[locale]}</p>
+              <p className="text-sm text-foreground/70">{sanSilvestreHighlight.description[locale]}</p>
+              <a
+                href={sanSilvestreHighlight.cta}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
+              >
+                {locale === "es" ? "Ver ruta" : "View route"}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="rounded-[32px] border border-black/5 bg-[#fef7ef] p-6 shadow-[0_20px_45px_rgba(4,18,42,0.08)]">
+              <h3 className="text-2xl font-semibold text-secondary">
+                {locale === "es" ? "Tips para la San Silvestre" : "San Silvestre tips"}
+              </h3>
+              <ul className="mt-4 space-y-3 text-sm text-foreground/70">
+                <li>· {locale === "es" ? "Entrega de paquetes 30 de diciembre en Plaza Benito Juárez." : "Packet pick-up on Dec 30 at Benito Juárez plaza."}</li>
+                <li>· {locale === "es" ? "Categorías 3K familiar, 5K recreativa y 10K competitiva." : "Categories: 3K family, 5K fun run, 10K competitive."}</li>
+                <li>· {locale === "es" ? "Medalla coleccionable inspirada en la Presa Las Vírgenes." : "Collectible medal inspired by Las Vírgenes dam."}</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-20 text-foreground">
           <div className="mx-auto max-w-6xl space-y-8 px-4">
             <div className="space-y-2 text-center">
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
@@ -294,10 +346,10 @@ const ExperienciasDeportes = () => {
             <div className="grid gap-6 lg:grid-cols-3">
               {venues.map((venue) => (
                 <article
-                  key={venue.name}
+                  key={venue.name.es}
                   className="rounded-[32px] border border-black/5 bg-[#fef7ef] p-6 text-center shadow-[0_20px_45px_rgba(4,18,42,0.08)]"
                 >
-                  <h3 className="text-2xl font-semibold text-secondary">{venue.name}</h3>
+                  <h3 className="text-2xl font-semibold text-secondary">{venue.name[locale]}</h3>
                   <p className="mt-3 text-sm text-muted-foreground">{venue.detail[locale]}</p>
                 </article>
               ))}

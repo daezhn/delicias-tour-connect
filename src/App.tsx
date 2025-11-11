@@ -14,6 +14,10 @@ import ExperienciasQueComer from "./pages/ExperienciasQueComer";
 import ExperienciasArteCultura from "./pages/ExperienciasArteCultura";
 import ExperienciasFamilia from "./pages/ExperienciasFamilia";
 import ExperienciasDeportes from "./pages/ExperienciasDeportes";
+import Transporte from "./pages/Transporte";
+import Hospedaje from "./pages/Hospedaje";
+import ClimaTips from "./pages/ClimaTips";
+import PersonasDestacadas from "./pages/PersonasDestacadas";
 import { LocaleProvider } from "@/hooks/use-locale";
 
 const queryClient = new QueryClient();
@@ -30,6 +34,10 @@ const App = () => (
             <Route path="/Atractivos" element={<Atractivos />} />
             <Route path="/Pantalla" element={<Pantalla />} />
             <Route path="/tours" element={<Tours />} />
+            <Route path="/transporte" element={<Transporte />} />
+            <Route path="/hospedaje" element={<Hospedaje />} />
+            <Route path="/clima-tips" element={<ClimaTips />} />
+            <Route path="/personas-destacadas" element={<PersonasDestacadas />} />
             <Route path="/experiencias/que-hacer" element={<ExperienciasQueHacer />} />
             <Route path="/experiencias/vida-nocturna" element={<ExperienciasVidaNocturna />} />
             <Route path="/experiencias/que-comer" element={<ExperienciasQueComer />} />

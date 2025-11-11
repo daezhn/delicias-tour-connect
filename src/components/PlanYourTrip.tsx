@@ -4,7 +4,7 @@ import { useLocale } from "@/hooks/use-locale";
 const planTiles = [
   {
     id: "transport",
-    href: "#como-llegar",
+    href: "/transporte",
     image: "/images/torre-reloj.jpg",
     title: { es: "Transporte", en: "Transport" },
     summary: {
@@ -14,7 +14,7 @@ const planTiles = [
   },
   {
     id: "stay",
-    href: "#stay-dine",
+    href: "/hospedaje",
     image: "/images/hotel-4.jpg",
     title: { es: "Hospedaje", en: "Stays" },
     summary: {
@@ -34,7 +34,7 @@ const planTiles = [
   },
   {
     id: "climate",
-    href: "#actividades",
+    href: "/clima-tips",
     image: "/images/hero-delicias-2.jpg",
     title: { es: "Clima & tips", en: "Climate & Tips" },
     summary: {
