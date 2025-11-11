@@ -5,39 +5,6 @@ import { ArrowUpRight } from "lucide-react";
 
 const heroShots = ["/images/Galería/8.jpg", "/images/hero-delicias-2.jpg", "/images/parque-central.jpg"] as const;
 
-const algodonerosMoments = [
-  {
-    tag: { es: "Temporada regular", en: "Regular season" },
-    title: { es: "Algodoneros pentacampeones", en: "Five-time champions" },
-    description: {
-      es: "Rachas históricas 2019-2023 con estadio lleno, mascots y fireworks cada serie en casa.",
-      en: "Historic 2019-2023 streak with packed stands, mascots and fireworks at every home series."
-    },
-    detail: { es: "Gran Estadio Delicias · 4,300 aficionados", en: "Gran Estadio Delicias · 4,300 fans" },
-    image: "/images/torre-reloj.jpg"
-  },
-  {
-    tag: { es: "Game day", en: "Game day" },
-    title: { es: "Tour por el estadio", en: "Stadium tour" },
-    description: {
-      es: "Visita dugout, vestidores y la sala de trofeos antes del playball. Reserva en taquilla en días sin juego.",
-      en: "Visit the dugout, locker rooms and trophy hall before playball. Reserve at the box office on off days."
-    },
-    detail: { es: "Reservación previa · 11:00 h", en: "Advance reservation · 11:00 a.m." },
-    image: "/images/Galería/11.jpg"
-  },
-  {
-    tag: { es: "Merch oficial", en: "Official merch" },
-    title: { es: "Tienda Algodonera", en: "Algodoneros store" },
-    description: {
-      es: "Jerseys edición limitada, gorras y bats firmados se venden durante la serie local.",
-      en: "Limited jerseys, caps and signed bats drop during each home series."
-    },
-    detail: { es: "Viernes a domingo · 17:00-22:00 h", en: "Friday–Sunday · 5–10 p.m." },
-    image: "/images/Galería/18.jpg"
-  }
-] as const;
-
 const actionCards = [
   {
     image: "/images/Galería/6.jpg",
@@ -50,12 +17,12 @@ const actionCards = [
   },
   {
     image: "/images/Galería/8.jpg",
-    title: { es: "Gravel district ride", en: "Gravel district ride" },
+    title: { es: "Polideportivo Bicentenario", en: "Bicentenario Sports Center" },
     description: {
-      es: "Rueda entre drenes agrícolas y termina con degustación de nuez y café local.",
-      en: "Ride irrigation canals and finish with pecan + local coffee tasting."
+      es: "Visita el polideportivo conociendo su infraestructura y actividades.",
+      en: "Visit the sports center exploring its facilities and activities."
     },
-    stats: { es: "Nivel intermedio", en: "Intermediate level" }
+    stats: { es: "Familiar ", en: "Family-friendly" }
   },
   {
     image: "/images/parque-central.jpg",
@@ -65,41 +32,6 @@ const actionCards = [
       en: "Outdoor functional training, skate loop and lit courts every evening."
     },
     stats: { es: "Familiar · gratuito", en: "Family-friendly · free" }
-  }
-] as const;
-
-const gameDayPlan = [
-  {
-    time: "11:00",
-    block: { es: "Tour Algodonero", en: "Algodonero tour" },
-    detail: {
-      es: "Ingresa al dugout, visita vestidores y conoce el mural histórico del equipo.",
-      en: "Step into the dugout, visit the locker rooms and learn from the team history mural."
-    }
-  },
-  {
-    time: "13:30",
-    block: { es: "Lunch temático", en: "Themed lunch" },
-    detail: {
-      es: "Restaurantes alrededor del estadio ofrecen menús con nombres de jugadores.",
-      en: "Restaurants near the stadium feature dishes named after players."
-    }
-  },
-  {
-    time: "17:00",
-    block: { es: "Fan fest", en: "Fan fest" },
-    detail: {
-      es: "Zona kids, mascots y música en vivo previo al partido.",
-      en: "Kids zone, mascots and live music before first pitch."
-    }
-  },
-  {
-    time: "19:30",
-    block: { es: "Playball", en: "Playball" },
-    detail: {
-      es: "Algodoneros vs rivales estatales. Fireworks tras la séptima entrada.",
-      en: "Algodoneros vs state rivals. Fireworks after the seventh inning."
-    }
   }
 ] as const;
 
@@ -169,11 +101,11 @@ const venues = [
 
 const ExperienciasDeportes = () => {
   const { locale } = useLocale();
-  const heroTitle = locale === "es" ? "Deportes & Algodoneros" : "Sports & Algodoneros";
+  const heroTitle = locale === "es" ? "Deportes" : "Sports";
   const heroCopy =
     locale === "es"
-      ? "La ciudad respira pelota caliente: Algodoneros pentacampeones, tours en el Gran Estadio y rutas outdoor para calentar antes del playball."
-      : "The city breathes baseball: Algodoneros five-time champs, Gran Estadio tours and outdoor routes to warm up before playball.";
+      ? "La ciudad respira desde temprano: tours en el Gran Estadio, ciclismo, maratones y rutas outdoor."
+      : "The city breathes early: Gran Estadio tours, cycling, marathons and outdoor routes to warm up before playball.";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030917] via-[#0c1f3d] to-[#f6b043]/20 text-white">
@@ -204,32 +136,6 @@ const ExperienciasDeportes = () => {
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[#060d1f] py-16">
-          <div className="mx-auto max-w-6xl space-y-6 px-4 sm:px-8">
-            <div className="flex items-center justify-between gap-6">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.5em] text-white/60">{locale === "es" ? "Momentos Algodoneros" : "Algodoneros moments"}</p>
-                <h2 className="text-3xl font-black">{locale === "es" ? "Todo gira alrededor del béisbol" : "Everything revolves around baseball"}</h2>
-              </div>
-              <div className="hidden text-xs uppercase tracking-[0.35em] text-white/60 sm:block">{locale === "es" ? "Desliza" : "Swipe"}</div>
-            </div>
-            <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
-              {algodonerosMoments.map((moment) => (
-                <article
-                  key={moment.title.es}
-                  className="flex w-80 snap-center flex-col overflow-hidden rounded-[36px] border border-white/15 bg-white/5 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.35)] backdrop-blur"
-                >
-                  <img src={moment.image} alt={moment.title[locale]} className="h-44 w-full rounded-[24px] object-cover" loading="lazy" decoding="async" />
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.4em] text-white/60">{moment.tag[locale]}</p>
-                  <h3 className="text-2xl font-semibold text-white">{moment.title[locale]}</h3>
-                  <p className="mt-2 text-sm text-white/80">{moment.description[locale]}</p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/60">{moment.detail[locale]}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="bg-[#fef7ef] py-20 text-foreground">
           <div className="mx-auto max-w-6xl space-y-10 px-4">
             <div className="text-center space-y-2">
@@ -252,51 +158,32 @@ const ExperienciasDeportes = () => {
         </section>
 
         <section className="bg-gradient-to-br from-[#f7fbff] via-white to-[#fef7ef] py-20 text-foreground">
-          <div className="mx-auto max-w-6xl space-y-10 px-4">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
-              <div className="space-y-6">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/70">{locale === "es" ? "Itinerario 24 horas" : "24-hour itinerary"}</p>
-                <h2 className="text-3xl font-black text-foreground">{locale === "es" ? "Game day Algodonero" : "Algodonero game day"}</h2>
-                <ol className="space-y-6">
-                  {gameDayPlan.map((stop) => (
-                    <li key={stop.time} className="rounded-[28px] border border-black/5 bg-white p-5 shadow-[0_15px_35px_rgba(4,18,42,0.08)]">
-                      <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="text-xl font-semibold">{stop.block[locale]}</h3>
-                        <span className="text-sm font-mono text-secondary/80">{stop.time}</span>
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground">{stop.detail[locale]}</p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-              <div className="space-y-5">
-                <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/60">
-                  {locale === "es" ? "Agenda deportiva" : "Sports agenda"}
-                </p>
-                <div className="space-y-4">
-                  {agenda.map((event) => (
-                    <article
-                      key={event.title.es}
-                      className="rounded-[28px] border border-secondary/20 bg-white/90 p-6 shadow-[0_20px_45px_rgba(4,18,42,0.1)] backdrop-blur"
-                    >
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary/70">
-                        {event.eyebrow[locale]}
-                      </p>
-                      <h3 className="text-2xl font-semibold text-secondary">{event.title[locale]}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">{event.description[locale]}</p>
-                      <a
-                        href={event.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary"
-                      >
-                        {locale === "es" ? "Conoce más" : "Learn more"}
-                        <ArrowUpRight className="h-4 w-4" />
-                      </a>
-                    </article>
-                  ))}
-                </div>
-              </div>
+          <div className="mx-auto max-w-5xl space-y-6 px-4">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-secondary/60">
+              {locale === "es" ? "Agenda deportiva" : "Sports agenda"}
+            </p>
+            <div className="grid gap-4 lg:grid-cols-2">
+              {agenda.map((event) => (
+                <article
+                  key={event.title.es}
+                  className="rounded-[28px] border border-secondary/20 bg-white/90 p-6 shadow-[0_20px_45px_rgba(4,18,42,0.1)] backdrop-blur"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary/70">
+                    {event.eyebrow[locale]}
+                  </p>
+                  <h3 className="text-2xl font-semibold text-secondary">{event.title[locale]}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{event.description[locale]}</p>
+                  <a
+                    href={event.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary"
+                  >
+                    {locale === "es" ? "Conoce más" : "Learn more"}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </article>
+              ))}
             </div>
           </div>
         </section>
