@@ -84,7 +84,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative isolate min-h-[110dvh] sm:min-h-[100vh] overflow-hidden bg-black text-white">
+    <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[100svh] sm:min-h-[100vh] overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <picture className="block h-full w-full">
           <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
@@ -124,7 +124,7 @@ export const Hero = () => {
         </div>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute inset-x-0 top-48 z-10 flex justify-between px-6 sm:hidden">
+      <div className="absolute inset-x-0 top-48 z-10 flex justify-between px-5 sm:hidden">
         {mobileColumns.map((column, columnIndex) => (
           <div
             key={`mobile-column-${columnIndex}`}
