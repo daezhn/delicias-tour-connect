@@ -115,7 +115,7 @@ const ExperienciasVidaNocturna = () => {
   return (
     <div className="min-h-screen bg-[#050917] text-white">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-10 lg:px-20">
           <div className="absolute inset-0">
             <img

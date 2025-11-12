@@ -128,7 +128,7 @@ const Hospedaje = () => {
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="relative overflow-hidden bg-[#1a2451] text-white">
           <div className="absolute inset-0">
             <img

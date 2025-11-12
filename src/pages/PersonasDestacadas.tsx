@@ -223,7 +223,7 @@ const DeliciensesDestacados = () => {
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="relative overflow-hidden bg-[#0c2c68] text-white">
           <div className="absolute inset-0">
             <img

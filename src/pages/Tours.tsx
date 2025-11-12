@@ -11,7 +11,7 @@ const Tours = () => {
   return (
     <div className="min-h-screen bg-[#0c2c68] text-white">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 sm:px-8 lg:px-20">
           <a
             href="/"

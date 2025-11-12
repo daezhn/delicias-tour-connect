@@ -110,7 +110,7 @@ const ExperienciasDeportes = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030917] via-[#0c1f3d] to-[#f6b043]/20 text-white">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(13,25,66,0.65),transparent)]" />
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr,0.9fr]">

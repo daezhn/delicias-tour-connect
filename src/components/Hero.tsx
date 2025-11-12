@@ -175,6 +175,18 @@ export const Hero = () => {
           <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px]" aria-hidden="true" />
         </div>
       </div>
+      <div
+        className="absolute right-4 z-20 hidden sm:block sm:right-6"
+        style={{ top: "calc(var(--nav-offset, 72px) + 20px)" }}
+      >
+        <img
+          src="/images/Logoideablanco.png"
+          alt="Idea Delicias"
+          className="h-12 w-auto object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)] lg:h-14"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div className="pointer-events-none absolute right-1 -top-2 flex items-center gap-3 sm:hidden">
         <img
           src="/images/recurso.png"

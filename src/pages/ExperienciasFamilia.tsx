@@ -134,7 +134,7 @@ const ExperienciasFamilia = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fef7ef] via-white to-[#f6f0ff] text-foreground">
       <Navigation />
-      <main className="pt-[90px]">
+      <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,193,0.55),transparent)]" />
           <div

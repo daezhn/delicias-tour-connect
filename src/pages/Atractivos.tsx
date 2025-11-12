@@ -12,7 +12,7 @@ const Atractivos = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="pt-24">
+      <main className="page-offset">
         <section id="inicio" className="relative overflow-hidden" tabIndex={-1}>
           <div className="absolute inset-0">
             <img

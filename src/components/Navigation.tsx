@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
@@ -18,6 +18,38 @@ export const Navigation = () => {
   const { locale, setLocale } = useLocale();
   const navCopy = getTranslations(locale).nav;
   const ctaLabel = locale === "es" ? "Planear visita" : "Plan trip";
+  const navBarRef = useRef<HTMLDivElement | null>(null);
+
+  const updateNavOffset = useCallback(() => {
+    if (typeof document === "undefined") return;
+    const navHeight = navBarRef.current?.getBoundingClientRect().height ?? 0;
+    if (navHeight > 0) {
+      document.documentElement.style.setProperty("--nav-offset", `${Math.round(navHeight)}px`);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    updateNavOffset();
+    window.addEventListener("resize", updateNavOffset);
+
+    let resizeObserver: ResizeObserver | null = null;
+
+    if (typeof ResizeObserver !== "undefined" && navBarRef.current) {
+      resizeObserver = new ResizeObserver(() => updateNavOffset());
+      resizeObserver.observe(navBarRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateNavOffset);
+      resizeObserver?.disconnect();
+    };
+  }, [updateNavOffset]);
+
+  useEffect(() => {
+    updateNavOffset();
+  }, [locale, updateNavOffset]);
 
   const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: NAV_TARGETS[key] }));
 
@@ -25,7 +57,10 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-transparent bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 py-1 sm:py-1.5 lg:py-3 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
+      <div
+        ref={navBarRef}
+        className="border-b border-transparent bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 py-1 sm:py-1.5 lg:py-3 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur"
+      >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
             <span className="rounded-full border border-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] text-white/90 backdrop-blur">
@@ -72,45 +107,45 @@ export const Navigation = () => {
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-
-        {open && (
-          <div className="border-t border-black/5 bg-white/95 px-4 py-4 lg:hidden">
-            <div className="flex items-center justify-between pb-3">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-foreground/70">
-                {locale === "es" ? "Idioma" : "Language"}
-              </span>
-              <button
-                onClick={toggleLocale}
-                className="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em]"
-              >
-                <Globe className="h-4 w-4" />
-                {locale === "es" ? "ES" : "EN"}
-              </button>
-            </div>
-            <div className="flex flex-col gap-2">
-              {links.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-2xl px-4 py-3 text-base font-medium tracking-wide text-foreground hover:bg-black/5"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <MagneticButton className="w-full">
-                <a
-                  href="/tours"
-                  onClick={() => setOpen(false)}
-                  className="mt-1 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
-                >
-                  {locale === "es" ? "Explorar" : "Explore"}
-                </a>
-              </MagneticButton>
-            </div>
-          </div>
-        )}
       </div>
+
+      {open && (
+        <div className="border-t border-black/5 bg-white/95 px-4 py-4 shadow-[0_10px_30px_rgba(4,18,42,0.25)] lg:hidden">
+          <div className="flex items-center justify-between pb-3">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-foreground/70">
+              {locale === "es" ? "Idioma" : "Language"}
+            </span>
+            <button
+              onClick={toggleLocale}
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em]"
+            >
+              <Globe className="h-4 w-4" />
+              {locale === "es" ? "ES" : "EN"}
+            </button>
+          </div>
+          <div className="flex flex-col gap-2">
+            {links.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl px-4 py-3 text-base font-medium tracking-wide text-foreground hover:bg-black/5"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <MagneticButton className="w-full">
+              <a
+                href="/tours"
+                onClick={() => setOpen(false)}
+                className="mt-1 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
+              >
+                {locale === "es" ? "Explorar" : "Explore"}
+              </a>
+            </MagneticButton>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
