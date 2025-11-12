@@ -148,7 +148,7 @@ export const Hero = () => {
           <img
             src={HERO_IMAGE_DESKTOP}
             alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-            className="h-full w-full object-cover object-[center_92%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.16] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
+            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.08] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
             loading="eager"
             decoding="async"
           />

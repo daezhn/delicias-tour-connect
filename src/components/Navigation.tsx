@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
@@ -22,45 +22,13 @@ export const Navigation = () => {
   const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: NAV_TARGETS[key] }));
 
   const toggleLocale = () => setLocale(locale === "es" ? "en" : "es");
-  const [solidBg, setSolidBg] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const heroTrigger = Math.max(window.innerHeight * 0.65, 200);
-    const onScroll = () => setSolidBg(window.scrollY > heroTrigger);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-const desktopGradient =
-  "bg-gradient-to-r from-[#0f1a2b]/95 via-[#1c2f4d]/90 to-[#f47a3c]/90 shadow-[0_10px_30px_rgba(4,18,42,0.25)]";
-const mobileGradient =
-  "bg-gradient-to-r from-white via-[#ffe3cf] to-[#f47a3c] shadow-[0_10px_30px_rgba(244,122,60,0.25)]";
-  const wrapperBg = isMobile ? mobileGradient : solidBg ? desktopGradient : "bg-transparent shadow-none";
-  const wrapperBlur = !isMobile || solidBg ? "backdrop-blur" : "";
-
-  const primaryTextClass = "text-white/90 hover:text-white";
-  const buttonBorderClass = "border-white/35 text-white hover:border-white/70 hover:text-white";
-  const buttonFocusClass = "focus-visible:outline-white/40";
-  const badgeClass = isMobile ? "border-black/10 text-black/80" : "border-white/60 text-white/90";
-  const hamburgerClass = "border-white/35 text-white";
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className={`border-b border-transparent py-1 sm:py-1.5 lg:py-3 ${wrapperBlur} ${wrapperBg}`}>
+      <div className="border-b border-transparent bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 py-1 sm:py-1.5 lg:py-3 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
-            <span className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] backdrop-blur ${badgeClass}`}>
+            <span className="rounded-full border border-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] text-white/90 backdrop-blur">
               Delicias
             </span>
           </a>
@@ -70,7 +38,7 @@ const mobileGradient =
               <a
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition ${primaryTextClass}`}
+                className="rounded-full px-4 py-2 text-sm font-medium tracking-wide text-foreground/80 transition hover:text-secondary"
               >
                 {item.label}
               </a>
@@ -80,7 +48,7 @@ const mobileGradient =
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={toggleLocale}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${buttonBorderClass} ${buttonFocusClass}`}
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-foreground transition hover:border-secondary hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary/40"
               aria-label="Change language"
             >
               <Globe className="h-4 w-4" />
@@ -97,7 +65,7 @@ const mobileGradient =
           </div>
 
           <button
-            className={`rounded-full border p-1.5 lg:hidden ${hamburgerClass}`}
+            className="rounded-full border border-black/10 p-1.5 text-foreground lg:hidden"
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Toggle navigation"
           >
