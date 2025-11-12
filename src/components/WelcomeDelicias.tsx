@@ -42,7 +42,7 @@ export const WelcomeDelicias = () => {
   const columnHeights = ["h-[300px] sm:h-[420px]", "h-[240px] sm:h-[360px]"];
 
   return (
-    <section className="bg-[#fffdf8] py-20">
+    <section className="bg-[#fffdf8] pt-10 pb-20 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-12 lg:grid-cols-[1.05fr,0.95fr]">
           <Reveal variant="fade-up" className="space-y-6 text-foreground">

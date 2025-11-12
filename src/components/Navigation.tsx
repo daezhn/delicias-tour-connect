@@ -25,10 +25,12 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-orange-200/60 bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
+      <div className="border-b border-transparent bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 py-1 sm:py-1.5 lg:py-3 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
-          <a href="/#inicio" className="flex items-center gap-3 py-4">
-            <img src="/images/Logo_IDEA.png" alt="IDEA Delicias" className="h-14 w-auto" />
+          <a href="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
+            <span className="rounded-full border border-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] text-white/90 backdrop-blur">
+              Delicias
+            </span>
           </a>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -63,7 +65,7 @@ export const Navigation = () => {
           </div>
 
           <button
-            className="rounded-full border border-black/10 p-2 text-foreground lg:hidden"
+            className="rounded-full border border-black/10 p-1.5 text-foreground lg:hidden"
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Toggle navigation"
           >

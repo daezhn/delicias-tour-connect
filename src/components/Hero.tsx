@@ -84,14 +84,14 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative isolate min-h-[94vh] overflow-hidden bg-black text-white">
+    <section className="relative isolate min-h-[110dvh] sm:min-h-[100vh] overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <picture className="block h-full w-full">
           <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
           <img
             src={HERO_IMAGE_DESKTOP}
             alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.08] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
             loading="eager"
             decoding="async"
           />
@@ -124,7 +124,7 @@ export const Hero = () => {
         </div>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute inset-x-0 top-32 z-10 flex justify-between px-6 sm:hidden">
+      <div className="absolute inset-x-0 top-48 z-10 flex justify-between pl-12 pr-4 sm:hidden">
         {mobileColumns.map((column, columnIndex) => (
           <div
             key={`mobile-column-${columnIndex}`}
@@ -135,7 +135,7 @@ export const Hero = () => {
                 key={`${tile.href}-${tile.label}-mobile`}
                 href={tile.href}
                 aria-label={tile.label}
-                className="group relative h-24 w-24 overflow-hidden rounded-[30px] border border-white/65 bg-white/10 shadow-[0_25px_55px_rgba(0,0,0,0.65)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
+                className="group relative h-20 w-20 overflow-hidden rounded-[26px] border border-white/65 bg-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
                 style={{ transform: "rotate(45deg)" }}
               >
                 <img
@@ -156,7 +156,7 @@ export const Hero = () => {
           </div>
         ))}
       </div>
-      <div className="absolute right-6 top-16 z-10 hidden gap-8 sm:flex sm:right-12 sm:top-24 sm:gap-10">
+      <div className="absolute right-4 top-28 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-40 sm:gap-8">
         {([0, 1] as const).map((columnIndex) => {
           const items = heroLinks.filter((_, idx) => idx % 2 === columnIndex);
           if (!items.length) {
@@ -175,7 +175,7 @@ export const Hero = () => {
                   key={`${tile.href}-${tile.label}`}
                   href={tile.href}
                   aria-label={tile.label}
-                  className="group relative h-28 w-28 overflow-hidden rounded-[36px] border border-white/60 bg-white/5 shadow-[0_30px_65px_rgba(0,0,0,0.6)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white/90 sm:h-32 sm:w-32"
+                  className="group relative h-24 w-24 overflow-hidden rounded-[32px] border border-white/60 bg-white/5 shadow-[0_28px_60px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white/90 sm:h-28 sm:w-28"
                   style={{ transform: "rotate(45deg)" }}
                 >
                   <img
@@ -198,7 +198,7 @@ export const Hero = () => {
         })}
       </div>
       <div
-        className={`pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transition-all duration-500 ${
+        className={`pointer-events-none absolute bottom-[12vh] sm:bottom-10 lg:bottom-12 left-1/2 z-20 -translate-x-1/2 transition-all duration-500 ${
           hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
         }`}
       >

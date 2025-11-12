@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
-      <main id="inicio" className="space-y-0 pt-[90px]">
+      <main id="inicio" className="space-y-0 pt-[32px] sm:pt-0">
         <Hero />
 
         <WelcomeDelicias />

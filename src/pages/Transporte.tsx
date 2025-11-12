@@ -222,13 +222,13 @@ const Transporte = () => {
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
-      <main className="pt-[90px]">
-        <section className="relative overflow-hidden bg-[#0c2c68] text-white">
+      <main className="pt-0">
+        <section className="relative overflow-hidden bg-[#0c2c68] text-white pt-[64px] sm:pt-[80px] lg:pt-[90px]">
           <div className="absolute inset-0">
             <img
               src="/images/hero-delicias-3.jpg"
               alt="Traslados a Delicias"
-              className="h-full w-full object-cover opacity-40"
+              className="h-full w-full origin-center scale-[1.12] object-cover opacity-40 sm:scale-[1.08] lg:scale-100"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -251,11 +251,11 @@ const Transporte = () => {
             <AuroraParticles />
           </div>
           <div className="relative z-10">
-            <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24">
+            <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-16 sm:gap-6 sm:py-20 lg:py-24">
               <Badge className="self-start bg-white/20 text-white backdrop-blur-sm">{hero.badge}</Badge>
-              <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
-              <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
-              <div className="flex flex-wrap gap-4">
+              <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{hero.heading}</h1>
+              <p className="text-base text-white/80 sm:text-lg md:max-w-3xl">{hero.subheading}</p>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <Button
                   asChild
                   variant="secondary"
@@ -274,7 +274,7 @@ const Transporte = () => {
                   {hero.cta}
                 </Button>
               </div>
-              <div className="grid gap-3 text-left text-[11px] uppercase tracking-[0.35em] text-white/70 sm:grid-cols-3">
+              <div className="grid gap-2 text-left text-[10px] uppercase tracking-[0.35em] text-white/70 sm:grid-cols-3 sm:gap-3 sm:text-[11px]">
                 {heroStats.map((stat, index) => (
                   <div
                     key={stat.id}
