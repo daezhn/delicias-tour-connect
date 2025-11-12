@@ -1,10 +1,11 @@
+import { useEffect, useRef, useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/hooks/use-locale";
-import { ArrowLeft, ArrowUpRight, Star, Users } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Sparkles, Star, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const featuredCitizens = [
@@ -169,6 +170,41 @@ const milestones = [
 
 const DeliciensesDestacados = () => {
   const { locale } = useLocale();
+  const [hideScrollCue, setHideScrollCue] = useState(false);
+  const [timelineReady, setTimelineReady] = useState(false);
+  const timelineSectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      setHideScrollCue((prev) => prev || window.scrollY > 60);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const section = timelineSectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimelineReady(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   const hero = {
     heading: locale === "es" ? "Delicienses destacados" : "Featured people of Delicias",
@@ -177,8 +213,12 @@ const DeliciensesDestacados = () => {
         ? "Historias reales de arte, gobierno, deporte y música que nacen en el Valle de Conchos."
         : "Real stories in arts, public service, sports and music born in the Conchos Valley.",
     badge: locale === "es" ? "Orgullo local" : "Local pride",
-    cta: locale === "es" ? "Compartir una historia" : "Share a story"
+    cta: locale === "es" ? "Compartir una historia" : "Share a story",
+    scrollCopy: locale === "es" ? "Desplázate" : "Scroll"
   };
+
+  const submissionsCopy =
+    locale === "es" ? "+128 semblanzas recibidas en 2024" : "+128 stories submitted in 2024";
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
@@ -189,13 +229,26 @@ const DeliciensesDestacados = () => {
             <img
               src="/images/Galería/11.jpg"
               alt="Panorámica de Delicias Chihuahua"
-              className="h-full w-full object-cover opacity-40"
+              className="h-full w-full object-cover opacity-50 animate-hero-pan"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/75" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/75 mix-blend-multiply" />
+            <div
+              className="absolute inset-0 opacity-60 mix-blend-soft-light"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15), transparent 45%), radial-gradient(circle at 80% 0, rgba(246,176,67,0.25), transparent 40%)"
+              }}
+            />
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-y-0 right-[-30%] w-2/3 bg-gradient-to-l from-[#f6b043]/40 via-transparent to-transparent blur-3xl animate-gradient-drift" />
+              <div className="absolute -bottom-16 left-5 h-60 w-60 rounded-full bg-[#f6b043]/35 blur-[120px] animate-pulse-soft" />
+            </div>
           </div>
           <div className="relative z-10">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24 text-center md:text-left">
-              <Badge className="self-center md:self-start bg-white/20 text-white">{hero.badge}</Badge>
+              <Badge className="self-center bg-white/20 text-white backdrop-blur-sm md:self-start">
+                {hero.badge}
+              </Badge>
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
               <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap justify-center gap-4 md:justify-start">
@@ -205,16 +258,25 @@ const DeliciensesDestacados = () => {
                     {locale === "es" ? "Volver al inicio" : "Back home"}
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  className="bg-white text-secondary hover:bg-white/90"
-                >
+                <Button asChild className="bg-white text-secondary hover:bg-white/90">
                   <a href="mailto:historias@visitdelicias.mx">
                     <ArrowUpRight className="mr-2 h-4 w-4" />
                     {hero.cta}
                   </a>
                 </Button>
               </div>
+            </div>
+          </div>
+          <div
+            className={`pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transition-all duration-500 ${
+              hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
+            }`}
+          >
+            <div className="flex flex-col items-center gap-3 text-white/80">
+              <div className="h-14 w-8 rounded-full border border-white/50 p-1">
+                <span className="block h-2 w-2 rounded-full bg-white animate-scroll-wheel" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.4em]">{hero.scrollCopy}</p>
             </div>
           </div>
         </section>
@@ -235,15 +297,20 @@ const DeliciensesDestacados = () => {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
-              {featuredCitizens.map((person) => (
+              {featuredCitizens.map((person, index) => (
                 <Card
                   key={person.id}
-                  className="overflow-hidden border border-black/5 shadow-[0_25px_55px_rgba(12,44,104,0.08)]"
+                  className="group relative overflow-hidden border border-black/5 bg-white/90 shadow-[0_25px_55px_rgba(12,44,104,0.08)] transition duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_35px_75px_rgba(12,44,104,0.18)] animate-fade-in"
+                  style={{ animationDelay: `${index * 0.12}s` }}
                 >
                   <div className="relative h-56 w-full overflow-hidden">
-                    <img src={person.image} alt={person.name} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <span className="absolute left-5 top-5 rounded-full bg-white/20 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <span className="absolute left-5 top-5 rounded-full bg-white/20 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur-sm">
                       {person.field[locale]}
                     </span>
                   </div>
@@ -256,7 +323,7 @@ const DeliciensesDestacados = () => {
                       {person.highlights.map((item) => (
                         <span
                           key={item.es}
-                          className="rounded-full border border-secondary/20 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-secondary"
+                          className="relative overflow-hidden rounded-full border border-secondary/30 bg-gradient-to-r from-secondary/10 via-white/5 to-secondary/20 bg-[length:200%_100%] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-secondary transition duration-500 group-hover:animate-chip-shine"
                         >
                           {item[locale]}
                         </span>
@@ -269,8 +336,8 @@ const DeliciensesDestacados = () => {
           </div>
         </section>
 
-        <section className="bg-[#f5fbfd] py-16">
-          <div className="mx-auto max-w-6xl space-y-8 px-4">
+        <section ref={timelineSectionRef} className="bg-[#f5fbfd] py-16">
+          <div className="mx-auto max-w-6xl space-y-10 px-4">
             <div className="text-center">
               <p className="font-tourism text-2xl text-primary/80">
                 {locale === "es" ? "Cronología del orgullo" : "Pride timeline"}
@@ -279,22 +346,40 @@ const DeliciensesDestacados = () => {
                 {locale === "es" ? "Momentos clave desde 1959" : "Key moments since 1959"}
               </h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {milestones.map((item) => (
-                <Card
-                  key={item.year}
-                  className="border border-primary/15 bg-white shadow-[0_20px_45px_rgba(12,44,104,0.06)]"
-                >
-                  <CardContent className="space-y-3 p-6">
+            <div className="relative mx-auto max-w-4xl pl-8 sm:pl-12">
+              <div className="absolute left-4 top-4 bottom-4 w-px overflow-hidden bg-primary/15 sm:left-5">
+                <div
+                  className={`w-full bg-gradient-to-b from-[#f6b043] via-[#f5d3a1] to-[#0c2c68] ${
+                    timelineReady ? "origin-top animate-timeline-grow" : "h-0"
+                  }`}
+                />
+              </div>
+              <div className="space-y-10">
+                {milestones.map((item, index) => (
+                  <div
+                    key={item.year}
+                    className={`relative rounded-2xl border border-primary/10 bg-white/90 p-6 pl-10 shadow-[0_20px_45px_rgba(12,44,104,0.06)] backdrop-blur-sm transition duration-500 ${
+                      timelineReady ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                    }`}
+                    style={{ transitionDelay: `${index * 120}ms` }}
+                  >
+                    <span
+                      className={`absolute left-[-18px] top-8 hidden h-4 w-4 -translate-x-1/2 rounded-full border-4 border-white bg-[#f6b043] shadow-[0_0_0_6px_rgba(246,176,67,0.25)] sm:block ${
+                        timelineReady ? "scale-100 opacity-100" : "scale-75 opacity-0"
+                      } transition duration-500`}
+                      aria-hidden="true"
+                    />
                     <div className="flex items-center gap-3 text-secondary">
-                      <Star className="h-5 w-5" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+                        <Star className={`h-5 w-5 ${timelineReady ? "animate-star-pop" : "opacity-0"}`} />
+                      </div>
                       <p className="text-sm font-semibold uppercase tracking-[0.35em]">{item.year}</p>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">{item.title[locale]}</h3>
+                    <h3 className="mt-4 text-xl font-semibold text-foreground">{item.title[locale]}</h3>
                     <p className="text-sm text-muted-foreground">{item.detail[locale]}</p>
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -308,18 +393,25 @@ const DeliciensesDestacados = () => {
               <h2 className="text-3xl font-bold">
                 {locale === "es" ? "Nuevas generaciones" : "New generations"}
               </h2>
-              <p className="text-muted-foreground md:max-w-3xl md:mx-auto">
+              <p className="text-muted-foreground md:mx-auto md:max-w-3xl">
                 {locale === "es"
                   ? "Seguimos el paso de delicienses que hoy suman victorias en canchas, foros y organizaciones civiles."
                   : "We follow locals who keep delivering wins on the field, stage and civic space."}
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
-              {talentNetwork.map((person) => (
-                <Card key={person.id} className="border border-black/5 shadow-sm">
+              {talentNetwork.map((person, index) => (
+                <Card
+                  key={person.id}
+                  className="group border border-black/5 bg-white/90 shadow-sm transition duration-500 hover:-translate-y-2 hover:border-secondary/60 hover:shadow-[0_25px_45px_rgba(246,176,67,0.25)] animate-fade-in"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
                   <CardContent className="space-y-3 p-6">
                     <div className="flex items-center gap-3">
-                      <Users className="h-5 w-5 text-secondary" />
+                      <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+                        <Users className="h-5 w-5" />
+                        <span className="absolute inset-0 rounded-full border border-secondary/20 opacity-0 transition duration-500 group-hover:opacity-100" />
+                      </div>
                       <div>
                         <h3 className="text-lg font-semibold">{person.name}</h3>
                         <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
@@ -350,18 +442,24 @@ const DeliciensesDestacados = () => {
                 ? "Envíanos semblanzas, enlaces o archivos para integrar nuevas historias al archivo ciudadano."
                 : "Send us bios, links or press clippings to expand this civic archive."}
             </p>
+            <div className="mx-auto w-fit rounded-full border border-secondary/30 bg-secondary/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary">
+              {submissionsCopy}
+            </div>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:historias@visitdelicias.mx"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-[0_20px_45px_rgba(246,176,67,0.35)]"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#f6b043] via-[#fbd38d] to-[#f6b043] px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-[0_20px_45px_rgba(246,176,67,0.35)] transition duration-500 hover:-translate-y-1"
               >
+                <span className="absolute inset-0 rounded-full bg-white/20 opacity-0 blur-3xl transition duration-500 group-hover:opacity-100" aria-hidden="true" />
+                <span className="absolute inset-y-0 left-[-30%] w-1/2 bg-white/60 opacity-0 mix-blend-screen blur-md group-hover:animate-cta-shine" aria-hidden="true" />
+                <Sparkles className="h-4 w-4" />
                 historias@visitdelicias.mx
               </a>
               <a
                 href="https://wa.me/526394720000"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-secondary"
+                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-secondary transition duration-500 hover:-translate-y-1 hover:bg-secondary/10"
               >
                 {locale === "es" ? "WhatsApp oficial" : "WhatsApp line"}
               </a>
