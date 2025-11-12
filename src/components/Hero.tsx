@@ -124,7 +124,7 @@ export const Hero = () => {
         </div>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute inset-x-0 top-48 z-10 flex justify-between pl-12 pr-4 sm:hidden">
+      <div className="absolute inset-x-0 top-48 z-10 flex justify-between px-6 sm:hidden">
         {mobileColumns.map((column, columnIndex) => (
           <div
             key={`mobile-column-${columnIndex}`}
