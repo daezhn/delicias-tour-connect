@@ -15,7 +15,7 @@ import {
   Thermometer,
   Wind
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 interface ForecastDay {
   date: string;
@@ -208,6 +208,8 @@ const ClimaTips = () => {
     );
   };
 
+  const handleBack = useSmartBackNavigation();
+
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
@@ -227,11 +229,13 @@ const ClimaTips = () => {
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
               <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap gap-4">
-                <Button asChild variant="secondary" className="bg-white/20 text-white hover:bg-white/40">
-                  <Link to="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    {locale === "es" ? "Volver al inicio" : "Back home"}
-                  </Link>
+                <Button
+                  variant="secondary"
+                  className="bg-white/20 text-white hover:bg-white/40"
+                  onClick={handleBack}
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {locale === "es" ? "Volver al inicio" : "Back home"}
                 </Button>
                 <Button
                   asChild

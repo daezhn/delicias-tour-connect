@@ -5,10 +5,12 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 const Atractivos = () => {
+  const handleBack = useSmartBackNavigation();
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -34,11 +36,13 @@ const Atractivos = () => {
                   tu visita a la region.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button asChild variant="secondary" className="bg-white/20 text-white hover:bg-white/30">
-                    <Link to="/">
-                      <ArrowLeft className="mr-2 h-4 w-4" />
-                      Volver al inicio
-                    </Link>
+                  <Button
+                    variant="secondary"
+                    className="bg-white/20 text-white hover:bg-white/30"
+                    onClick={handleBack}
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Volver al inicio
                   </Button>
                 </div>
               </div>

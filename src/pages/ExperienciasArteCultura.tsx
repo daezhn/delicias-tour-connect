@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
 
 const heroHighlights = [
@@ -141,6 +142,8 @@ const ExperienciasArteCultura = () => {
       ? "Descubre museos especializados, corredores de murales y residencias creativas que abrazan el paisaje algodonero."
       : "Discover specialized museums, mural corridors and creative residencies embracing the cotton landscape.";
 
+  const handleBack = useSmartBackNavigation("/experiencias/que-hacer");
+
   return (
     <div className="min-h-screen bg-[#fff8ef] text-foreground">
       <Navigation />
@@ -149,13 +152,14 @@ const ExperienciasArteCultura = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(247,198,162,0.45),_transparent)]" />
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-6">
-              <a
-                href="/experiencias/que-hacer"
+              <button
+                type="button"
+                onClick={handleBack}
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
-              </a>
+              </button>
               <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">
                 {locale === "es" ? "Cuaderno cultural" : "Cultural journal"}
               </p>

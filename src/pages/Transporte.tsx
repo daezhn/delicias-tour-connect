@@ -19,7 +19,7 @@ import {
   Phone,
   Plane
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 const arrivalModes = [
   {
@@ -219,6 +219,8 @@ const Transporte = () => {
     cta: locale === "es" ? "Descargar PDF" : "Download PDF"
   };
 
+  const handleBack = useSmartBackNavigation();
+
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
       <Navigation />
@@ -257,14 +259,12 @@ const Transporte = () => {
               <p className="text-base text-white/80 sm:text-lg md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <Button
-                  asChild
                   variant="secondary"
                   className="glow-pill bg-white/15 text-white hover:bg-white/40"
+                  onClick={handleBack}
                 >
-                  <Link to="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    {locale === "es" ? "Volver al inicio" : "Back home"}
-                  </Link>
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {locale === "es" ? "Volver al inicio" : "Back home"}
                 </Button>
                 <Button
                   variant="default"

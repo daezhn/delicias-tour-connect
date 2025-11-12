@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 const heroHighlights = [
   {
@@ -136,6 +137,8 @@ const ExperienciasQueComer = () => {
   const heroScript =
     locale === "es" ? "Sabores que nacen del sol y el algodón." : "Flavors born from sun & cotton.";
 
+  const handleBack = useSmartBackNavigation("/experiencias/que-hacer");
+
   return (
     <div className="min-h-screen bg-[#fff8ef] text-foreground">
       <Navigation />
@@ -144,13 +147,14 @@ const ExperienciasQueComer = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(244,203,178,0.6),_transparent)]" />
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-6">
-              <a
-                href="/experiencias/que-hacer"
+              <button
+                type="button"
+                onClick={handleBack}
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
-              </a>
+              </button>
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
                 {locale === "es" ? "Guía gastronómica" : "Gastronomy guide"}
               </p>

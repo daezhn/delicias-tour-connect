@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 const heroAlbums = [
   { image: "/images/Familia/fundadores.jpg", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
@@ -131,6 +132,8 @@ const ExperienciasFamilia = () => {
       ? "Planea un día con parques nuevos, museos  y plazas. Delicias abraza a niñas, niños y acompañantes peludos."
       : "Plan a day across new parks, museums and plazas. Delicias embraces kids, teens and furry companions.";
 
+  const handleBack = useSmartBackNavigation("/experiencias/que-hacer");
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fef7ef] via-white to-[#f6f0ff] text-foreground">
       <Navigation />
@@ -153,13 +156,14 @@ const ExperienciasFamilia = () => {
           <div className="relative z-10 grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
             <div className="space-y-6 rounded-[34px] border border-white/50 bg-white/80 p-8 shadow-[0_35px_85px_rgba(203,137,92,0.3)] backdrop-blur-md">
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="/experiencias/que-hacer"
+                <button
+                  type="button"
+                  onClick={handleBack}
                   className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
                 >
                   <ArrowUpRight className="h-4 w-4 rotate-180" />
                   {locale === "es" ? "Regresar" : "Back"}
-                </a>
+                </button>
                 <span className="inline-flex items-center rounded-full border border-secondary/20 bg-secondary/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary">
                   {locale === "es" ? "Nuevo parque" : "New park"}
                 </span>

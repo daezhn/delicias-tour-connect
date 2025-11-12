@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
 
 const heroShots = ["/images/Galería/8.jpg", "/images/Galería/11.jpg", "/images/Galería/18.jpg"] as const;
@@ -96,6 +97,7 @@ const atlasStops = [
 
 const ExperienciasQueHacer = () => {
   const { locale } = useLocale();
+  const handleBack = useSmartBackNavigation();
   const heroTitle = locale === "es" ? "Qué hacer en Delicias" : "Things to do in Delicias";
   const heroScript = locale === "es" ? "Algodón, desierto y ciudad creativa." : "Cotton, desert & creative city.";
   const heroCopy =
@@ -111,13 +113,14 @@ const ExperienciasQueHacer = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,122,208,0.15),transparent)]" />
           <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-5">
-              <a
-                href="/"
+              <button
+                type="button"
+                onClick={handleBack}
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Inicio" : "Home"}
-              </a>
+              </button>
               <p className="text-[11px] uppercase tracking-[0.5em] text-slate-500">{locale === "es" ? "Cuaderno de viaje" : "Travel log"}</p>
               <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{heroTitle}</h1>
               <p className="font-script text-3xl italic text-secondary/80">{heroScript}</p>

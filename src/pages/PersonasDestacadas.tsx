@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/hooks/use-locale";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowLeft, ArrowUpRight, Sparkles, Star, Users } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const featuredCitizens = [
   {
@@ -170,6 +170,7 @@ const milestones = [
 
 const DeliciensesDestacados = () => {
   const { locale } = useLocale();
+  const handleBack = useSmartBackNavigation();
   const [hideScrollCue, setHideScrollCue] = useState(false);
   const [timelineReady, setTimelineReady] = useState(false);
   const timelineSectionRef = useRef<HTMLElement | null>(null);
@@ -252,11 +253,13 @@ const DeliciensesDestacados = () => {
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
               <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap justify-center gap-4 md:justify-start">
-                <Button asChild variant="secondary" className="bg-white/20 text-white hover:bg-white/40">
-                  <Link to="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    {locale === "es" ? "Volver al inicio" : "Back home"}
-                  </Link>
+                <Button
+                  variant="secondary"
+                  className="bg-white/20 text-white hover:bg-white/40"
+                  onClick={handleBack}
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {locale === "es" ? "Volver al inicio" : "Back home"}
                 </Button>
                 <Button asChild className="bg-white text-secondary hover:bg-white/90">
                   <a href="mailto:historias@visitdelicias.mx">

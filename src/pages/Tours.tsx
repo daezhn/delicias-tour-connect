@@ -4,22 +4,25 @@ import { PlanYourTrip } from "@/components/PlanYourTrip";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowLeft } from "lucide-react";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 
 const Tours = () => {
   const { locale } = useLocale();
+  const handleBack = useSmartBackNavigation();
 
   return (
     <div className="min-h-screen bg-[#0c2c68] text-white">
       <Navigation />
       <main className="page-offset">
         <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 sm:px-8 lg:px-20">
-          <a
-            href="/"
+          <button
+            type="button"
+            onClick={handleBack}
             className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-white/20"
           >
             <ArrowLeft className="h-4 w-4" />
             {locale === "es" ? "Regresar" : "Go back"}
-          </a>
+          </button>
           <div className="mt-12">
             <ToursExplorer />
           </div>

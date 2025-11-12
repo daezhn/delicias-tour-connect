@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
+import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
 
 const neonVenues = [
@@ -103,6 +104,7 @@ const afterTips = [
 
 const ExperienciasVidaNocturna = () => {
   const { locale } = useLocale();
+  const handleBack = useSmartBackNavigation("/experiencias/que-hacer");
   const heroHeading =
     locale === "es" ? "La noche de Delicias vibra en neón" : "Delicias by night glows in neon";
   const heroCopy =
@@ -129,13 +131,14 @@ const ExperienciasVidaNocturna = () => {
           </div>
           <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-6">
-              <a
-                href="/experiencias/que-hacer"
+              <button
+                type="button"
+                onClick={handleBack}
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
               >
                 <ArrowUpRight className="h-4 w-4 rotate-180" />
                 {locale === "es" ? "Regresar" : "Back"}
-              </a>
+              </button>
               <p className="text-sm uppercase tracking-[0.6em] text-white/70">
                 {locale === "es" ? "Night flow" : "Night flow"}
               </p>
