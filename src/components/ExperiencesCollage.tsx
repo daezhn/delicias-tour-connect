@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MousePointerClick } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
 const experiences = [
@@ -54,6 +54,7 @@ export const ExperiencesCollage = () => {
     locale === "es"
       ? "De día o de noche, con amigos o en familia: arma el plan perfecto saltando directo a la categoría que necesitas."
       : "Day or night, with friends or family: jump straight into the vibe you want and plan the perfect outing.";
+  const clickCue = locale === "es" ? "Haz clic en una categoría" : "Tap any category";
 
   return (
     <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] py-20 text-white">
@@ -65,6 +66,12 @@ export const ExperiencesCollage = () => {
           </p>
           <p className="mx-auto max-w-2xl text-sm text-white/80">{intro}</p>
           <div className="mx-auto h-1 w-24 rounded-full bg-white/30" />
+          <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.45em] text-white/80 backdrop-blur">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10">
+              <MousePointerClick className="h-4 w-4 animate-pulse" />
+            </span>
+            {clickCue}
+          </div>
         </div>
         <div className="grid auto-rows-[260px] gap-4 sm:auto-rows-[350px] lg:auto-rows-[420px] sm:grid-cols-6">
           {experiences.map((item, index) => (
