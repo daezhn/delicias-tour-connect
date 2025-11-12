@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { usePointerPrecision } from "@/hooks/use-pointer-precision";
 import { preloadRoute } from "@/lib/route-preloader";
@@ -16,7 +16,9 @@ const planTiles = [
     summary: {
       es: "Rutas aéreas, carretera federal y tips para llegar en bus o auto.",
       en: "Flight routes, highway info and tips for arriving by bus or car."
-    }
+    },
+    tag: { es: "Moverte", en: "Getting around" },
+    accent: "from-[#f6b043] via-[#fbd38d] to-[#f6b043]"
   },
   {
     id: "stay",
@@ -26,7 +28,9 @@ const planTiles = [
     summary: {
       es: "Hoteles boutique, casas creativas y experiencias con alberca.",
       en: "Boutique hotels, creative homes and stays with pools."
-    }
+    },
+    tag: { es: "Descansar", en: "Stays" },
+    accent: "from-[#f78da7] via-[#fbb9c8] to-[#f78da7]"
   },
   {
     id: "tours",
@@ -36,7 +40,9 @@ const planTiles = [
     summary: {
       es: "Descubre rutas guiadas, safaris al desierto y escapadas nocturnas.",
       en: "Discover guided routes, desert safaris and night escapes."
-    }
+    },
+    tag: { es: "Explorar", en: "Go explore" },
+    accent: "from-[#8fd3fe] via-[#93f9b9] to-[#8fd3fe]"
   },
   {
     id: "climate",
@@ -46,7 +52,9 @@ const planTiles = [
     summary: {
       es: "Consejos de temporada, qué empacar y mejores meses para visitar.",
       en: "Seasonal advice, what to pack and best months to visit."
-    }
+    },
+    tag: { es: "Temporada", en: "Season" },
+    accent: "from-[#b693f8] via-[#dec0ff] to-[#b693f8]"
   }
 ] as const;
 
@@ -83,10 +91,35 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
     <Reveal
       as="section"
       id="plan-trip"
-      className={compact ? "bg-transparent py-10" : "bg-white py-20"}
+      className={`relative overflow-hidden ${compact ? "bg-transparent py-10" : "bg-gradient-to-br from-[#fff8ed] via-white to-[#f4f6ff] py-20"}`}
       variant="fade-up"
     >
-      <div className={`mx-auto ${compact ? "" : "max-w-6xl"} px-4`}>
+      {!compact && (
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, rgba(255,255,255,0.25) 0%, transparent 45%), radial-gradient(circle at 20% 20%, rgba(246,176,67,0.2), transparent 40%), radial-gradient(circle at 80% 0, rgba(143,211,254,0.2), transparent 45%)"
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-10"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)",
+              backgroundSize: "220px 220px"
+            }}
+            aria-hidden="true"
+          />
+          <div className="pointer-events-none absolute right-10 top-16 hidden rounded-[40px] border border-white/40 bg-white/30 px-6 py-4 text-xs font-semibold uppercase tracking-[0.4em] text-secondary shadow-[0_20px_55px_rgba(0,0,0,0.08)] backdrop-blur lg:flex">
+            <Sparkles className="mr-2 h-4 w-4" />
+            {locale === "es" ? "Plan maestro" : "Master plan"}
+          </div>
+        </>
+      )}
+      <div className={`relative mx-auto ${compact ? "" : "max-w-6xl"} px-4`}>
         <div className={compact ? "grid gap-6" : "grid gap-10 lg:grid-cols-[0.9fr,1.1fr]"}>
           {!compact && showHeading && (
             <div className="space-y-4">
@@ -158,14 +191,14 @@ const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded, enab
   return (
     <Link
       to={tile.href}
-      className="tilt-card group relative block overflow-hidden rounded-[34px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      className="tilt-card group relative block overflow-hidden rounded-[34px] border border-white/10 shadow-[0_25px_55px_rgba(4,18,42,0.12)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
       style={cardStyle}
       onPointerEnter={() => onPrefetch(tile.href)}
       onFocus={() => onPrefetch(tile.href)}
       onPointerMove={enableTilt ? handlePointerMove : undefined}
       onPointerLeave={enableTilt ? resetTilt : undefined}
     >
-      <div className="relative h-64 w-full">
+      <div className="relative h-48 w-full">
         <div className={`absolute inset-0 bg-[#04122a] transition-opacity duration-500 ${isImageLoaded ? "opacity-0" : "opacity-100"}`} />
         <img
           src={tile.image}
@@ -184,15 +217,18 @@ const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded, enab
           }
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
-      <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
+      <div className="flex flex-col gap-3 border-t border-white/30 bg-white/90 p-5 text-foreground backdrop-blur-sm">
+        <span className="inline-flex w-fit items-center rounded-full bg-gradient-to-r from-secondary/20 via-secondary/10 to-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.45em] text-secondary">
+          {tile.tag[locale]}
+        </span>
         <div>
-          <p className="text-xl font-semibold tracking-wide">{tile.title[locale]}</p>
-          <p className="mt-2 text-sm text-white/90">{tile.summary[locale]}</p>
+          <p className="text-xl font-semibold tracking-wide text-foreground">{tile.title[locale]}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{tile.summary[locale]}</p>
         </div>
-        <span className="glow-pill inline-flex items-center gap-2 self-start rounded-full bg-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/90">
+        <span className="glow-pill relative inline-flex items-center gap-2 self-start overflow-hidden rounded-full bg-secondary/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-secondary transition duration-300 group-hover:-translate-y-0.5">
           <span>{locale === "es" ? "Ver más" : "Explore"}</span>
-          <ArrowUpRight className="h-4 w-4" />
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          <span className="pointer-events-none absolute inset-0 bg-white/60 opacity-0 blur-lg transition duration-300 group-hover:opacity-60" aria-hidden="true" />
         </span>
       </div>
     </Link>

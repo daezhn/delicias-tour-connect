@@ -239,10 +239,10 @@ const DeliciensesDestacados = () => {
                   "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15), transparent 45%), radial-gradient(circle at 80% 0, rgba(246,176,67,0.25), transparent 40%)"
               }}
             />
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute inset-y-0 right-[-30%] w-2/3 bg-gradient-to-l from-[#f6b043]/40 via-transparent to-transparent blur-3xl animate-gradient-drift" />
-              <div className="absolute -bottom-16 left-5 h-60 w-60 rounded-full bg-[#f6b043]/35 blur-[120px] animate-pulse-soft" />
-            </div>
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute inset-y-0 right-[-30%] w-2/3 bg-gradient-to-l from-[#f6b043]/40 via-transparent to-transparent blur-3xl animate-gradient-drift" />
+                <div className="absolute -bottom-16 left-5 h-60 w-60 rounded-full bg-[#f6b043]/35 blur-[120px]" />
+              </div>
           </div>
           <div className="relative z-10">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24 text-center md:text-left">

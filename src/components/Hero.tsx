@@ -96,7 +96,6 @@ export const Hero = () => {
             decoding="async"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-[#04122a]" aria-hidden="true" />
         <div
           className="absolute inset-0 opacity-60 mix-blend-soft-light"
           style={{
@@ -115,8 +114,8 @@ export const Hero = () => {
           aria-hidden="true"
         />
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-16 left-6 h-40 w-40 rounded-full bg-[#f6b043]/40 blur-[90px] animate-pulse-soft" aria-hidden="true" />
-          <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+          <div className="absolute -top-16 left-6 h-40 w-40 rounded-full bg-[#f6b043]/40 blur-[90px]" aria-hidden="true" />
+          <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px]" aria-hidden="true" />
         </div>
       </div>
       <div className="absolute inset-x-0 top-6 z-10 flex justify-center sm:hidden">

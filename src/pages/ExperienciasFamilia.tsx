@@ -147,8 +147,8 @@ const ExperienciasFamilia = () => {
             aria-hidden="true"
           />
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-16 right-4 h-64 w-64 rounded-full bg-secondary/20 blur-[120px] animate-pulse-soft" aria-hidden="true" />
-            <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-[#f6b043]/30 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+            <div className="absolute -top-16 right-4 h-64 w-64 rounded-full bg-secondary/20 blur-[120px]" aria-hidden="true" />
+            <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-[#f6b043]/30 blur-[120px]" aria-hidden="true" />
           </div>
           <div className="relative z-10 grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
             <div className="space-y-6 rounded-[34px] border border-white/50 bg-white/80 p-8 shadow-[0_35px_85px_rgba(203,137,92,0.3)] backdrop-blur-md">
