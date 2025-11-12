@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { CalendarDays, Compass, Utensils, Mountain, Hotel, Activity, Car, MessageSquare } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
 // Single static hero background containing embedded text per client request
@@ -10,49 +11,65 @@ const quickLinks = [
     href: "/#eventos",
     image: "/images/event-2.jpg",
     label: { es: "Agenda", en: "Agenda" },
-    hint: { es: "Festivales y ferias", en: "Festivals & fairs" }
+    hint: { es: "Festivales y ferias", en: "Festivals & fairs" },
+    shortLabel: { es: "Agenda", en: "Agenda" },
+    Icon: CalendarDays
   },
   {
     href: "/tours",
     image: "/images/tours/cavall7.jpg",
     label: { es: "Tours guiados", en: "Guided tours" },
-    hint: { es: "Desierto · presa · ciudad", en: "Desert · dam · city" }
+    hint: { es: "Desierto · presa · ciudad", en: "Desert · dam · city" },
+    shortLabel: { es: "Tours", en: "Tours" },
+    Icon: Compass
   },
   {
     href: "/experiencias/que-comer",
     image: "/images/restaurant-1.jpg",
     label: { es: "Gastronomía", en: "Food & cafés" },
-    hint: { es: "Sabores locales", en: "Local flavors" }
+    hint: { es: "Sabores locales", en: "Local flavors" },
+    shortLabel: { es: "Sabores", en: "Food" },
+    Icon: Utensils
   },
   {
     href: "/Atractivos",
     image: "/images/hero-delicias-3.jpg",
     label: { es: "Atractivos", en: "Highlights" },
-    hint: { es: "Miradores y rutas", en: "Landmarks & routes" }
+    hint: { es: "Miradores y rutas", en: "Landmarks & routes" },
+    shortLabel: { es: "Atractivos", en: "Sights" },
+    Icon: Mountain
   },
   {
     href: "/hospedaje",
     image: "/images/hotel-4.jpg",
     label: { es: "Hospedaje nocturno", en: "Stay & nights" },
-    hint: { es: "Hoteles y glamping", en: "Hotels & glamping" }
+    hint: { es: "Hoteles y glamping", en: "Hotels & glamping" },
+    shortLabel: { es: "Hotel", en: "Stay" },
+    Icon: Hotel
   },
   {
     href: "/experiencias/que-hacer",
     image: "/images/hero-delicias-1.jpg",
     label: { es: "Actividades", en: "Activities" },
-    hint: { es: "Aire libre y cultura", en: "Outdoor & culture" }
+    hint: { es: "Aire libre y cultura", en: "Outdoor & culture" },
+    shortLabel: { es: "Accion", en: "Go" },
+    Icon: Activity
   },
   {
     href: "/Transporte",
     image: "/images/hero-delicias-2.jpg",
     label: { es: "Roadtrips", en: "Roadtrips" },
-    hint: { es: "Rutas y tips", en: "Routes & tips" }
+    hint: { es: "Rutas y tips", en: "Routes & tips" },
+    shortLabel: { es: "Ruta", en: "Road" },
+    Icon: Car
   },
   {
     href: "/#contacto",
     image: "/images/hotel-5.jpg",
     label: { es: "Plan personalizado", en: "Plan with us" },
-    hint: { es: "Contacta a IDEA", en: "Talk to IDEA" }
+    hint: { es: "Contacta a IDEA", en: "Talk to IDEA" },
+    shortLabel: { es: "Plan", en: "Plan" },
+    Icon: MessageSquare
   }
 ] as const;
 
@@ -64,11 +81,19 @@ export const Hero = () => {
   const scrollCopy = locale === "es" ? "Desplázate" : "Scroll";
 
   const heroLinks = useMemo(() => {
-    const localizedBase = quickLinks.map((tile) => ({
-      ...tile,
-      label: tile.label[locale] ?? tile.label.es,
-      hint: tile.hint[locale] ?? tile.hint.es
-    }));
+    const localizedBase = quickLinks.map((tile) => {
+      const label = tile.label[locale] ?? tile.label.es;
+      const hint = tile.hint[locale] ?? tile.hint.es;
+      const shortLabel =
+        tile.shortLabel?.[locale] ?? tile.shortLabel?.es ?? (label?.split(" ")[0] ?? label);
+
+      return {
+        ...tile,
+        label,
+        hint,
+        shortLabel
+      };
+    });
 
     const prioritizedOrder = [
       "/#eventos",
@@ -123,7 +148,7 @@ export const Hero = () => {
           <img
             src={HERO_IMAGE_DESKTOP}
             alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.08] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
+            className="h-full w-full object-cover object-[center_92%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.16] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
             loading="eager"
             decoding="async"
           />
@@ -132,7 +157,7 @@ export const Hero = () => {
           className="absolute inset-0 opacity-60 mix-blend-soft-light"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 40%), radial-gradient(circle at 80% 0, rgba(246,176,67,0.35), transparent 45%)"
+              "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4), transparent 40%), radial-gradient(circle at 80% 0, rgba(160,160,160,0.35), transparent 45%)"
           }}
           aria-hidden="true"
         />
@@ -173,36 +198,55 @@ export const Hero = () => {
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
       <div className="absolute inset-x-0 top-40 z-10 flex justify-between px-6 sm:hidden">
-        {mobileColumns.map((column, columnIndex) => (
-          <div
-            key={`mobile-column-${columnIndex}`}
-            className={`flex flex-col gap-8 ${columnIndex === 1 ? "mt-10 items-end" : "items-start"}`}
-          >
-            {column.map((tile, idx) => (
-              <a
-                key={`${tile.href}-${tile.label}-mobile`}
-                href={tile.href}
-                aria-label={tile.label}
-                className="group relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-[24px] border border-white/65 bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
-                style={{ transform: "rotate(45deg)" }}
-              >
-                <img
-                  src={tile.image}
-                  alt=""
-                  className="h-full w-full object-cover transition duration-700"
-                  loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  style={{ transform: "rotate(-45deg) scale(1.25)" }}
-                />
+        {mobileColumns.map((column, columnIndex) => {
+          const alignment = columnIndex === 1 ? "items-end text-right" : "items-start text-left";
+          return (
+            <div
+              key={`mobile-column-${columnIndex}`}
+              className={`flex flex-col gap-6 ${columnIndex === 1 ? "mt-10 items-end" : "items-start"}`}
+            >
+              {column.map((tile, idx) => (
                 <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/25 via-transparent to-black/45 opacity-85 transition group-hover:opacity-100"
-                  style={{ transform: "rotate(-45deg)" }}
-                />
-                <span className="sr-only">{tile.label}</span>
-              </a>
-            ))}
-          </div>
-        ))}
+                  key={`${tile.href}-${tile.label}-mobile`}
+                  className={`flex flex-col ${alignment}`}
+                >
+                  <a
+                    href={tile.href}
+                    aria-label={tile.label}
+                    className="group relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-[24px] border border-white/65 bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
+                    style={{ transform: "rotate(45deg)" }}
+                  >
+                    <img
+                      src={tile.image}
+                      alt=""
+                      className="h-full w-full object-cover transition duration-700"
+                      loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      style={{ transform: "rotate(-45deg) scale(1.25)" }}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/75 via-black/45 to-black/80 opacity-90 transition group-hover:opacity-100"
+                      style={{ transform: "rotate(-45deg) scale(1.32)" }}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 text-white drop-shadow-[0_3px_8px_rgba(0,0,0,0.85)] transition group-hover:scale-[1.03]"
+                      style={{ transform: "rotate(-45deg)" }}
+                    >
+                      {tile.Icon ? (
+                        <tile.Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                      ) : null}
+                      <span className="text-[0.55rem] font-semibold uppercase tracking-[0.25em]">
+                        {tile.shortLabel}
+                      </span>
+                    </div>
+                    <span className="sr-only">{tile.label}</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          );
+        })}
       </div>
       <div className="absolute right-4 top-20 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-32 sm:gap-8">
         {([0, 1] as const).map((columnIndex) => {
@@ -235,9 +279,21 @@ export const Hero = () => {
                     style={{ transform: "rotate(-45deg) scale(1.25)" }}
                   />
                   <div
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/25 via-transparent to-black/45 opacity-80 transition group-hover:opacity-100"
-                    style={{ transform: "rotate(-45deg)" }}
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/75 via-black/45 to-black/80 opacity-90 transition group-hover:opacity-100"
+                    style={{ transform: "rotate(-45deg) scale(1.28)" }}
                   />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] transition group-hover:scale-[1.03]"
+                    style={{ transform: "rotate(-45deg)" }}
+                  >
+                    {tile.Icon ? (
+                      <tile.Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />
+                    ) : null}
+                    <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] sm:text-xs">
+                      {tile.shortLabel}
+                    </span>
+                  </div>
                   <span className="sr-only">{tile.label}</span>
                 </a>
               ))}
