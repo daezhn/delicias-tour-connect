@@ -118,6 +118,22 @@ export const Hero = () => {
           <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px]" aria-hidden="true" />
         </div>
       </div>
+      <div className="pointer-events-none absolute right-1 -top-2 flex items-center gap-3 sm:hidden">
+        <img
+          src="/images/recurso.png"
+          alt=""
+          className="h-32 w-32 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="/images/Logoideablanco.png"
+          alt="Idea Delicias"
+          className="h-9 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:hidden">
         <div className="rounded-full border border-white/30 bg-black/45 px-4 py-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur">
           {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
