@@ -4,9 +4,9 @@ import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 
 const heroAlbums = [
-  { image: "/images/parque-central.jpg", caption: { es: "Picnic frente al lago", en: "Lakeside picnic" } },
-  { image: "/images/hero-delicias-2.jpg", caption: { es: "Bici en Las Vírgenes", en: "Cycling Las Vírgenes" } },
-  { image: "/images/Galería/5.jpg", caption: { es: "Parque Vida iluminado", en: "Parque Vida at dusk" } }
+  { image: "/images/Familia/fundadores.jpg", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
+  { image: "/images/Familia/ciclopista.jpg", caption: { es: "Bici en la ciclopista", en: "Cycling in the bike path" } },
+  { image: "/images/Familia/parquevida.jpg", caption: { es: "Parque Vida", en: "Parque Vida" } }
 ] as const;
 
 const parqueVidaHighlights = [
@@ -36,18 +36,18 @@ const parqueVidaHighlights = [
 const colorItinerary = [
   {
     time: "09:00",
-    title: { es: "Murales + desayuno", en: "Murals + breakfast" },
+    title: { es: "Desayuno", en: "Breakfast" },
     detail: {
-      es: "Café frente al reloj monumental y recorrido fotográfico por Plaza Benito Juárez.",
-      en: "Coffee near the clock tower plus photo walk around Benito Juárez plaza."
+      es: "Café frente al reloj y recorrido fotográfico por Plaza Benito Juárez.",
+      en: "Coffee near the clock plus photo walk around Benito Juárez plaza."
     }
   },
   {
     time: "12:00",
     title: { es: "Parque Fundadores", en: "Parque Fundadores" },
     detail: {
-      es: "Tren infantil, fuentes interactivas y renta de bicis familiares.",
-      en: "Kids train, splash fountains and family bike rentals."
+      es: "Caminata disfrutando el clima y áreas verdes con zona de juegos infantiles.",
+      en: "Walking enjoying the weather and green areas with a kids play zone."
     }
   },
   {
@@ -60,10 +60,10 @@ const colorItinerary = [
   },
   {
     time: "19:30",
-    title: { es: "Parque Vida iluminado", en: "Parque Vida lights" },
+    title: { es: "Parque Vida", en: "Parque Vida" },
     detail: {
-      es: "Skate loop, canchas y food trucks saludables para cerrar el día.",
-      en: "Skate loop, lit courts and healthy food trucks to end the day."
+      es: "Skate loop, canchas y food trucks para cerrar el día.",
+      en: "Skate loop, lit courts and food trucks to end the day."
     }
   }
 ] as const;
@@ -79,11 +79,11 @@ const kidAgenda = [
     link: "https://maps.google.com/?q=Parque+Vida+Delicias"
   },
   {
-    title: { es: "Cine bajo las estrellas", en: "Movies under the stars" },
+    title: { es: "Comida al aire libre", en: "Outdoor dining" },
     info: { es: "Domingo · 20:00 h", en: "Sunday · 8:00 p.m." },
     detail: {
-      es: "Películas PG en Plaza Benito Juárez + food trucks locales.",
-      en: "PG movies at Benito Juárez plaza + local food trucks."
+      es: "Food trucks locales.",
+      en: "Local food trucks."
     },
     link: "https://maps.google.com/?q=Plaza+Benito+Juarez+Delicias"
   },
@@ -114,10 +114,10 @@ const playgroundTips = [
     }
   },
   {
-    label: { es: "Corredor infantil Benito Juárez", en: "Benito Juárez kids corridor" },
+    label: { es: "Plaza Benito Juárez", en: "Plaza Benito Juárez" },
     items: {
-      es: ["Murales para colorear", "Mercadito de productores", "Biblioteca móvil"],
-      en: ["Chalk-friendly murals", "Local producers market", "Mobile library"]
+      es: ["Bastidores para pintar, comida de food trucks y vendedores locales"],
+      en: ["Easel for painting, food trucks and local vendors"]
     }
   }
 ] as const;
@@ -128,8 +128,8 @@ const ExperienciasFamilia = () => {
   const heroScript = locale === "es" ? "Tiempo de calidad bajo el sol del desierto." : "Quality time under the desert sun.";
   const heroCopy =
     locale === "es"
-      ? "Planea un día con parques nuevos, museos táctiles y corredores creativos. Delicias abraza a niñas, niños y acompañantes peludos."
-      : "Plan a day across new parks, tactile museums and creative corridors. Delicias embraces kids, teens and furry companions.";
+      ? "Planea un día con parques nuevos, museos  y plazas. Delicias abraza a niñas, niños y acompañantes peludos."
+      : "Plan a day across new parks, museums and plazas. Delicias embraces kids, teens and furry companions.";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fef7ef] via-white to-[#f6f0ff] text-foreground">

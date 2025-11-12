@@ -20,7 +20,7 @@ const featuredCitizens = [
       { es: "PRI, generación 86", en: "PRI, class of ’86" },
       { es: "Impulsor de obra hidráulica", en: "Waterworks advocate" }
     ],
-    image: "/images/Galería/15.jpg"
+    image: "/images/personasdestacadas/fernandobaeza.jpg"
   },
   {
     id: "chavez",
@@ -34,7 +34,7 @@ const featuredCitizens = [
       { es: "Récord 44-8", en: "Record 44-8" },
       { es: "Miembro Salón de la Fama de Texas", en: "Texas Hall of Fame" }
     ],
-    image: "/images/Galería/4.jpg"
+    image: "/images/personasdestacadas/jesuschavez.jpg"
   },
   {
     id: "gardea",
@@ -48,7 +48,7 @@ const featuredCitizens = [
       { es: "Sistema Nacional de Creadores", en: "National Creators System" },
       { es: "Crónica del desierto", en: "Desert chronicler" }
     ],
-    image: "/images/Galería/10.jpg"
+    image: "/images/personasdestacadas/jesusgardea.jpg"
   },
   {
     id: "maverick",
@@ -62,7 +62,7 @@ const featuredCitizens = [
       { es: "Latin Grammy 2021", en: "Latin Grammy 2021" },
       { es: "Mix Pa’ Llorar en tu Cuarto", en: "Mix Pa’ Llorar en tu Cuarto" }
     ],
-    image: "/images/Galería/9.jpg"
+    image: "/images/personasdestacadas/edmaverick.jpg"
   },
   {
     id: "roel",
@@ -76,7 +76,7 @@ const featuredCitizens = [
       { es: "40 años de trayectoria", en: "40-year career" },
       { es: "Teatro · Cine · TV", en: "Stage · Film · TV" }
     ],
-    image: "/images/Galería/6.jpg"
+    image: "/images/personasdestacadas/gabrielaroel.jpg"
   },
   {
     id: "mijares",
@@ -90,7 +90,7 @@ const featuredCitizens = [
       { es: "Juegos Olímpicos 1960", en: "1960 Olympics" },
       { es: "Oro CAC 1959", en: "CAC gold 1959" }
     ],
-    image: "/images/Galería/2.jpg"
+    image: "/images/personasdestacadas/rodolfomijares.jpg"
   }
 ] as const;
 
