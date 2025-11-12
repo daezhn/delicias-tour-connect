@@ -118,7 +118,7 @@ export const Hero = () => {
           <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px]" aria-hidden="true" />
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-28 z-10 flex justify-center sm:hidden">
+      <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:hidden">
         <div className="rounded-full border border-white/30 bg-black/45 px-4 py-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur">
           {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
         </div>
