@@ -6,10 +6,54 @@ const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg"; // provided asset in public/
 const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg"; // mobile-only crop centered on the clock tower
 
 const quickLinks = [
-  { href: "/#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" }, hint: { es: "Festivales y ferias", en: "Festivals & fairs" } },
-  { href: "/tours", image: "/images/tours/cavall7.jpg", label: { es: "Tours", en: "Tours" }, hint: { es: "Desierto · ríos · ciudad", en: "Desert · rivers · city" } },
-  { href: "/hospedaje", image: "/images/hotel-4.jpg", label: { es: "Hoteles", en: "Hotels" }, hint: { es: "Boutique & comfort", en: "Boutique & comfort" } },
-  { href: "/experiencias/que-comer", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" }, hint: { es: "Sabores locales", en: "Local flavors" } }
+  {
+    href: "/#eventos",
+    image: "/images/event-2.jpg",
+    label: { es: "Agenda", en: "Agenda" },
+    hint: { es: "Festivales y ferias", en: "Festivals & fairs" }
+  },
+  {
+    href: "/tours",
+    image: "/images/tours/cavall7.jpg",
+    label: { es: "Tours guiados", en: "Guided tours" },
+    hint: { es: "Desierto · presa · ciudad", en: "Desert · dam · city" }
+  },
+  {
+    href: "/experiencias/que-comer",
+    image: "/images/restaurant-1.jpg",
+    label: { es: "Gastronomía", en: "Food & cafés" },
+    hint: { es: "Sabores locales", en: "Local flavors" }
+  },
+  {
+    href: "/Atractivos",
+    image: "/images/hero-delicias-3.jpg",
+    label: { es: "Atractivos", en: "Highlights" },
+    hint: { es: "Miradores y rutas", en: "Landmarks & routes" }
+  },
+  {
+    href: "/hospedaje",
+    image: "/images/hotel-4.jpg",
+    label: { es: "Hospedaje nocturno", en: "Stay & nights" },
+    hint: { es: "Hoteles y glamping", en: "Hotels & glamping" }
+  },
+  {
+    href: "/experiencias/que-hacer",
+    image: "/images/hero-delicias-1.jpg",
+    label: { es: "Actividades", en: "Activities" },
+    hint: { es: "Aire libre y cultura", en: "Outdoor & culture" }
+  },
+  {
+    href: "/Transporte",
+    image: "/images/hero-delicias-2.jpg",
+    label: { es: "Roadtrips", en: "Roadtrips" },
+    hint: { es: "Rutas y tips", en: "Routes & tips" }
+  },
+  {
+    href: "/#contacto",
+    image: "/images/hotel-5.jpg",
+    label: { es: "Plan personalizado", en: "Plan with us" },
+    hint: { es: "Contacta a IDEA", en: "Talk to IDEA" }
+  }
 ] as const;
 
 // Stats removed for cleaner tourist-first visual hero
@@ -26,7 +70,16 @@ export const Hero = () => {
       hint: tile.hint[locale] ?? tile.hint.es
     }));
 
-    const prioritizedOrder = ["/#eventos", "/tours", "/experiencias/que-comer", "/hospedaje"];
+    const prioritizedOrder = [
+      "/#eventos",
+      "/tours",
+      "/experiencias/que-comer",
+      "/Atractivos",
+      "/hospedaje",
+      "/experiencias/que-hacer",
+      "/Transporte",
+      "/#contacto"
+    ];
 
     const orderedBase = prioritizedOrder
       .map((href) => localizedBase.find((tile) => tile.href === href))
@@ -34,28 +87,7 @@ export const Hero = () => {
 
     const leftovers = localizedBase.filter((tile) => !prioritizedOrder.includes(tile.href));
 
-    const additionalTiles = [
-      {
-        href: "/Atractivos",
-        image: "/images/hero-delicias-3.jpg",
-        label: locale === "es" ? "Atractivos" : "Highlights",
-        hint: locale === "es" ? "Rutas fotogénicas" : "Scenic routes"
-      },
-      {
-        href: "/experiencias/que-hacer",
-        image: "/images/hero-delicias-1.jpg",
-        label: locale === "es" ? "Actividades" : "Activities",
-        hint: locale === "es" ? "Experiencias al aire libre" : "Outdoor escapes"
-      },
-      {
-        href: "/#plan-trip",
-        image: "/images/hotel-5.jpg",
-        label: locale === "es" ? "Stay & Dine" : "Stay & Dine",
-        hint: locale === "es" ? "Sabores y hospedaje" : "Taste & stay"
-      }
-    ];
-
-    return [...orderedBase, ...leftovers, ...additionalTiles];
+    return [...orderedBase, ...leftovers];
   }, [locale]);
 
   const mobileColumns = useMemo(() => {
@@ -172,7 +204,7 @@ export const Hero = () => {
           </div>
         ))}
       </div>
-      <div className="absolute right-4 top-24 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-36 sm:gap-8">
+      <div className="absolute right-4 top-20 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-32 sm:gap-8">
         {([0, 1] as const).map((columnIndex) => {
           const items = heroLinks.filter((_, idx) => idx % 2 === columnIndex);
           if (!items.length) {
