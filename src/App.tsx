@@ -12,6 +12,7 @@ type LazyComponent = LazyExoticComponent<ComponentType<any>>;
 const Index = lazy(routeLoaders["/"]);
 const Atractivos = lazy(routeLoaders["/Atractivos"]);
 const Pantalla = lazy(routeLoaders["/Pantalla"]);
+const PantallaTouch = lazy(routeLoaders["/pantallatouch"]);
 const Tours = lazy(routeLoaders["/tours"]);
 const Transporte = lazy(routeLoaders["/transporte"]);
 const Hospedaje = lazy(routeLoaders["/hospedaje"]);
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/" element={withSuspense(Index, <FullPageSkeleton tone="sand" sections={4} />)} />
           <Route path="/Atractivos" element={withSuspense(Atractivos)} />
           <Route path="/Pantalla" element={withSuspense(Pantalla)} />
+          <Route path="/pantallatouch" element={withSuspense(PantallaTouch, <FullPageSkeleton tone="sand" sections={2} />)} />
           <Route path="/tours" element={withSuspense(Tours)} />
           <Route path="/transporte" element={withSuspense(Transporte, <FullPageSkeleton tone="indigo" />)} />
           <Route path="/hospedaje" element={withSuspense(Hospedaje)} />

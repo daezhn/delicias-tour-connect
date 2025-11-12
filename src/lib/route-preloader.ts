@@ -6,6 +6,7 @@ export const routeLoaders = {
   "/": () => import("@/pages/Index"),
   "/Atractivos": () => import("@/pages/Atractivos"),
   "/Pantalla": () => import("@/pages/Pantalla"),
+  "/pantallatouch": () => import("@/pages/PantallaTouch"),
   "/tours": () => import("@/pages/Tours"),
   "/transporte": () => import("@/pages/Transporte"),
   "/hospedaje": () => import("@/pages/Hospedaje"),

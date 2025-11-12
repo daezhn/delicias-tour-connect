@@ -46,7 +46,7 @@ export const GalleryShowcase = () => {
 
   const title = locale === "es" ? "Postales de la capital deliciosa" : "Postcards from Delicias";
   const subtitle =
-    locale === "es" ? "Archivo fotográfico · Valle de Conchos" : "Photo archive · Conchos Valley";
+    locale === "es" ? "Archivo fotográfico ·" : "Photo archive ·";
   const description =
     locale === "es"
       ? "Un carrusel inmersivo con escenas urbanas, gastronomía, naturaleza y talento local capturados durante el año."
