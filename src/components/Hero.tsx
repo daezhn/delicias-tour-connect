@@ -124,7 +124,7 @@ export const Hero = () => {
         </div>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute inset-x-0 top-44 z-10 flex justify-between px-5 sm:hidden">
+      <div className="absolute inset-x-0 top-40 z-10 flex justify-between px-6 sm:hidden">
         {mobileColumns.map((column, columnIndex) => (
           <div
             key={`mobile-column-${columnIndex}`}
@@ -135,7 +135,7 @@ export const Hero = () => {
                 key={`${tile.href}-${tile.label}-mobile`}
                 href={tile.href}
                 aria-label={tile.label}
-                className="group relative h-20 w-20 overflow-hidden rounded-[26px] border border-white/65 bg-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
+                className="group relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-[24px] border border-white/65 bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
                 style={{ transform: "rotate(45deg)" }}
               >
                 <img
@@ -197,8 +197,9 @@ export const Hero = () => {
           );
         })}
       </div>
+      {/* Desktop-only scroll cue */}
       <div
-        className={`pointer-events-none absolute bottom-[12vh] sm:bottom-10 lg:bottom-12 left-1/2 z-20 -translate-x-1/2 transition-all duration-500 ${
+        className={`pointer-events-none absolute bottom-10 left-1/2 z-20 hidden -translate-x-1/2 transition-all duration-500 sm:block ${
           hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
         }`}
       >
