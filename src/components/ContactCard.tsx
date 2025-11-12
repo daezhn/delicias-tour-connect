@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { MagneticButton } from "@/components/MagneticButton";
 import { newsletterSchema, sanitizeText } from "@/lib/forms";
 import { useLocale } from "@/hooks/use-locale";
 import { useState } from "react";
@@ -61,9 +62,11 @@ export const ContactCard = () => {
               ? "Acepto recibir información sobre tours y eventos"
               : "I’d like to receive info about tours and events"}
           </label>
-          <Button type="submit" disabled={pending} className="rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.4em]">
-            {pending ? (locale === "es" ? "Enviando..." : "Sending...") : locale === "es" ? "Enviar" : "Send"}
-          </Button>
+          <MagneticButton>
+            <Button type="submit" disabled={pending} className="rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.4em]">
+              {pending ? (locale === "es" ? "Enviando..." : "Sending...") : locale === "es" ? "Enviar" : "Send"}
+            </Button>
+          </MagneticButton>
           {message && <p className="text-sm text-primary">{message}</p>}
         </form>
       </CardContent>

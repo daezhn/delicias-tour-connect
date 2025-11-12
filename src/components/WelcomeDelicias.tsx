@@ -1,4 +1,5 @@
 import { useLocale } from "@/hooks/use-locale";
+import { Reveal } from "@/components/Reveal";
 
 const PARAGRAPHS = {
   es: [
@@ -44,7 +45,7 @@ export const WelcomeDelicias = () => {
     <section className="bg-[#fffdf8] py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-12 lg:grid-cols-[1.05fr,0.95fr]">
-          <div className="space-y-6 text-foreground">
+          <Reveal variant="fade-up" className="space-y-6 text-foreground">
             <p className="font-tourism text-3xl text-secondary/90">{STRINGS.subtitle[locale]}</p>
             <div>
               <h2 className="text-3xl font-bold leading-tight sm:text-4xl">{STRINGS.heading[locale]}</h2>
@@ -56,9 +57,9 @@ export const WelcomeDelicias = () => {
               ))}
             </div>
             <p className="text-sm italic text-foreground/70">{STRINGS.closing[locale]}</p>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col gap-6 sm:flex-row">
+          <Reveal variant="fade-up" delay={120} className="flex flex-col gap-6 sm:flex-row">
             {GALLERY_IMAGES.map((image, index) => (
               <div
                 key={image.src}
@@ -75,7 +76,7 @@ export const WelcomeDelicias = () => {
                 />
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

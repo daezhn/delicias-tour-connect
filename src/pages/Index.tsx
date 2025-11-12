@@ -10,6 +10,7 @@ import { ExperiencesCollage } from "@/components/ExperiencesCollage";
 import { PlanYourTrip } from "@/components/PlanYourTrip";
 import { FeaturedCitizens } from "@/components/FeaturedCitizens";
 import { GalleryShowcase } from "@/components/GalleryShowcase";
+import { Reveal } from "@/components/Reveal";
 
 const Index = () => {
   return (
@@ -21,15 +22,15 @@ const Index = () => {
         <WelcomeDelicias />
 
 
-        <section id="eventos" className="py-0">
+        <Reveal as="section" id="eventos" className="py-0">
           <Events />
-        </section>
+        </Reveal>
 
-        <section className="bg-white py-16">
+        <Reveal as="section" className="bg-white py-16">
           <div className="mx-auto max-w-4xl px-4">
             <AvailabilityCalendar compact />
           </div>
-        </section>
+        </Reveal>
 
         <ExperiencesCollage />
 
@@ -38,20 +39,21 @@ const Index = () => {
 
         <GalleryShowcase />
 
-        <section
+        <Reveal
+          as="section"
           id="preguntas"
           className="bg-gradient-to-br from-[#f7b267] via-[#f79d84] to-[#8fd3fe] py-20"
         >
           <div className="mx-auto max-w-5xl px-4">
             <FaqSection />
           </div>
-        </section>
+        </Reveal>
 
-        <section id="contacto" className="bg-white py-20">
+        <Reveal as="section" id="contacto" className="bg-white py-20">
           <div className="mx-auto max-w-4xl px-4">
             <ContactCard />
           </div>
-        </section>
+        </Reveal>
       </main>
       <Footer />
     </div>

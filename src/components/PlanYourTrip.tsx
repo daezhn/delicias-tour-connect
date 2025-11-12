@@ -3,7 +3,9 @@ import type { CSSProperties, PointerEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import { usePointerPrecision } from "@/hooks/use-pointer-precision";
 import { preloadRoute } from "@/lib/route-preloader";
+import { Reveal } from "@/components/Reveal";
 
 const planTiles = [
   {
@@ -60,6 +62,7 @@ const tiltRange = 8;
 
 export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTripProps) => {
   const { locale } = useLocale();
+  const { isFine } = usePointerPrecision();
   const [loadedTiles, setLoadedTiles] = useState<Record<string, boolean>>({});
   const script = locale === "es" ? "El corazón de Chihuahua" : "The heart of Chihuahua";
   const heading = locale === "es" ? "Planea tu viaje a Delicias" : "Plan your trip to Delicias";
@@ -77,7 +80,12 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
   };
 
   return (
-    <section id="plan-trip" className={compact ? "bg-transparent py-10" : "bg-white py-20"}>
+    <Reveal
+      as="section"
+      id="plan-trip"
+      className={compact ? "bg-transparent py-10" : "bg-white py-20"}
+      variant="fade-up"
+    >
       <div className={`mx-auto ${compact ? "" : "max-w-6xl"} px-4`}>
         <div className={compact ? "grid gap-6" : "grid gap-10 lg:grid-cols-[0.9fr,1.1fr]"}>
           {!compact && showHeading && (
@@ -98,12 +106,13 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
                 onPrefetch={handlePrefetch}
                 isImageLoaded={Boolean(loadedTiles[tile.id])}
                 onImageLoaded={markTileAsLoaded}
+                enableTilt={isFine}
               />
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 };
 
@@ -113,13 +122,15 @@ type PlanTileProps = {
   onPrefetch: (href: string) => void;
   isImageLoaded: boolean;
   onImageLoaded: (tileId: string) => void;
+  enableTilt: boolean;
 };
 
-const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded }: PlanTileProps) => {
+const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded, enableTilt }: PlanTileProps) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [glow, setGlow] = useState({ x: 50, y: 50 });
 
   const handlePointerMove = (event: PointerEvent<HTMLAnchorElement>) => {
+    if (!enableTilt) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const relativeX = (event.clientX - bounds.left) / bounds.width;
     const relativeY = (event.clientY - bounds.top) / bounds.height;
@@ -139,7 +150,7 @@ const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded }: Pl
   };
 
   const cardStyle: CSSVarStyle = {
-    transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
+    transform: enableTilt ? `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` : undefined,
     "--mouse-x": `${glow.x}%`,
     "--mouse-y": `${glow.y}%`
   };
@@ -151,8 +162,8 @@ const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded }: Pl
       style={cardStyle}
       onPointerEnter={() => onPrefetch(tile.href)}
       onFocus={() => onPrefetch(tile.href)}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={resetTilt}
+      onPointerMove={enableTilt ? handlePointerMove : undefined}
+      onPointerLeave={enableTilt ? resetTilt : undefined}
     >
       <div className="relative h-64 w-full">
         <div className={`absolute inset-0 bg-[#04122a] transition-opacity duration-500 ${isImageLoaded ? "opacity-0" : "opacity-100"}`} />

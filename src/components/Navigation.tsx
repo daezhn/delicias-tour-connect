@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const NAV_LINKS = ["inicio", "atractivos", "actividades", "eventos", "contacto"] as const;
 const NAV_TARGETS: Record<(typeof NAV_LINKS)[number], string> = {
@@ -51,12 +52,14 @@ export const Navigation = () => {
               <Globe className="h-4 w-4" />
               {locale === "es" ? "ES" : "EN"}
             </button>
-            <a
-              href="/tours"
-              className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
-            >
-              {locale === "es" ? "Explorar" : "Explore"}
-            </a>
+            <MagneticButton>
+              <a
+                href="/tours"
+                className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
+              >
+                {locale === "es" ? "Explorar" : "Explore"}
+              </a>
+            </MagneticButton>
           </div>
 
           <button
@@ -93,13 +96,15 @@ export const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <a
-                href="/tours"
-                onClick={() => setOpen(false)}
-                className="mt-1 inline-flex items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
-              >
-                {locale === "es" ? "Explorar" : "Explore"}
-              </a>
+              <MagneticButton className="w-full">
+                <a
+                  href="/tours"
+                  onClick={() => setOpen(false)}
+                  className="mt-1 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
+                >
+                  {locale === "es" ? "Explorar" : "Explore"}
+                </a>
+              </MagneticButton>
             </div>
           </div>
         )}

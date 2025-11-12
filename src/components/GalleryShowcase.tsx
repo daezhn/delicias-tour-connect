@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { FadeImage } from "@/components/FadeImage";
+import { Reveal } from "@/components/Reveal";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const galleryImages = [
   { src: "/images/Galería/1.jpg", alt: "Vista aérea de Delicias" },
@@ -53,13 +55,22 @@ export const GalleryShowcase = () => {
   return (
     <section className="bg-white py-20" id="galeria-delicias">
       <div className="mx-auto max-w-6xl space-y-8 px-4">
-        <div className="text-center space-y-2">
+        <Reveal className="text-center space-y-2">
           <p className="font-tourism text-2xl text-secondary/80">{title}</p>
           <p className="text-[11px] uppercase tracking-[0.5em] text-foreground/60">{subtitle}</p>
           <p className="mx-auto max-w-3xl text-sm text-muted-foreground">{description}</p>
-        </div>
+        </Reveal>
 
-        <div className="relative overflow-hidden rounded-[36px] border border-white/40 bg-gradient-to-r from-[#0c2c68]/85 via-[#11254a]/70 to-[#f6b043]/30 shadow-[0_35px_85px_rgba(4,18,42,0.25)] px-4 py-10">
+        <Reveal
+          variant="fade-up"
+          delay={120}
+          className="relative overflow-hidden rounded-[36px] border border-white/40 bg-gradient-to-r from-[#0c2c68]/85 via-[#11254a]/70 to-[#f6b043]/30 shadow-[0_35px_85px_rgba(4,18,42,0.25)] px-4 py-10"
+        >
+          <div className="pointer-events-none absolute inset-0">
+            <span className="gallery-orb left-[10%] top-[-15%] h-48 w-48 bg-cyan-400/40" style={{ "--gallery-duration": "16s" } as CSSProperties} />
+            <span className="gallery-orb right-[8%] top-[10%] h-56 w-56 bg-amber-300/45" style={{ "--gallery-duration": "22s" } as CSSProperties} />
+            <span className="gallery-orb left-[30%] bottom-[-10%] h-64 w-64 bg-pink-400/35" style={{ "--gallery-duration": "18s" } as CSSProperties} />
+          </div>
           <div className="relative mx-auto flex h-[420px] max-w-5xl items-center justify-center">
             {galleryImages.map((photo, photoIndex) => {
               const isCurrent = photoIndex === index;
@@ -96,28 +107,32 @@ export const GalleryShowcase = () => {
             })}
 
             <div className="absolute -bottom-3 flex w-full items-center justify-between px-6">
-              <button
-                onClick={goPrev}
-                aria-label={locale === "es" ? "Imagen anterior" : "Previous photo"}
-                className="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
+              <MagneticButton>
+                <button
+                  onClick={goPrev}
+                  aria-label={locale === "es" ? "Imagen anterior" : "Previous photo"}
+                  className="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
+              </MagneticButton>
               <span className="rounded-full bg-white/90 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-secondary shadow">
                 {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
               </span>
-              <button
-                onClick={goNext}
-                aria-label={locale === "es" ? "Imagen siguiente" : "Next photo"}
-                className="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </button>
+              <MagneticButton>
+                <button
+                  onClick={goNext}
+                  aria-label={locale === "es" ? "Imagen siguiente" : "Next photo"}
+                  className="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/20 p-3 text-white backdrop-blur transition hover:bg-white/40"
+                >
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </MagneticButton>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <Reveal delay={220} className="flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {galleryImages.map((photo, photoIndex) => (
             <button
               key={photo.src}
@@ -131,7 +146,7 @@ export const GalleryShowcase = () => {
               <span className="absolute inset-0 bg-black/20" />
             </button>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

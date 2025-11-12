@@ -8,6 +8,7 @@ import { getTranslations } from "@/lib/i18n";
 import { upcomingEvents } from "@/data/upcoming-events";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { MagneticButton } from "@/components/MagneticButton";
 
 export const Events = () => {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
@@ -84,14 +85,16 @@ export const Events = () => {
                               <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-primary/80">
                                 Delicias · Live
                               </span>
-                              <button
-                                type="button"
-                                onClick={() => setSelectedPoster(event.image)}
-                                className="inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-sky-500"
-                              >
-                                {eventCta}
-                                <ArrowUpRight className="h-3.5 w-3.5" />
-                              </button>
+                              <MagneticButton>
+                                <button
+                                  type="button"
+                                  onClick={() => setSelectedPoster(event.image)}
+                                  className="inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-sky-500"
+                                >
+                                  {eventCta}
+                                  <ArrowUpRight className="h-3.5 w-3.5" />
+                                </button>
+                              </MagneticButton>
                             </div>
                           </div>
                         </article>

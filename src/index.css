@@ -380,6 +380,41 @@ All colors MUST be HSL.
   .tilt-card:focus-visible::after {
     opacity: 1;
   }
+
+  .magnetic-wrapper {
+    position: relative;
+    perspective: 600px;
+  }
+
+  .magnetic-inner {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .magnetic-wrapper:focus-within .magnetic-inner {
+    transform: scale(0.98);
+  }
+
+  .gallery-orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.35;
+    filter: blur(30px);
+    animation: gallery-drift var(--gallery-duration, 18s) ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes gallery-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(0.9);
+    }
+    50% {
+      transform: translate3d(8%, -6%, 0) scale(1.05);
+    }
+    100% {
+      transform: translate3d(-6%, 8%, 0) scale(0.95);
+    }
+  }
 }
 
 @layer utilities {
