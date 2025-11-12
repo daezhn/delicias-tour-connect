@@ -118,13 +118,13 @@ export const Hero = () => {
           <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px]" aria-hidden="true" />
         </div>
       </div>
-      <div className="absolute inset-x-0 top-6 z-10 flex justify-center sm:hidden">
-        <div className="rounded-full border border-white/40 bg-black/40 px-5 py-2 text-center text-[11px] font-semibold uppercase tracking-[0.35em] text-white backdrop-blur">
+      <div className="absolute inset-x-0 bottom-28 z-10 flex justify-center sm:hidden">
+        <div className="rounded-full border border-white/30 bg-black/45 px-4 py-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur">
           {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
         </div>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
-      <div className="absolute inset-x-0 top-48 z-10 flex justify-between px-5 sm:hidden">
+      <div className="absolute inset-x-0 top-44 z-10 flex justify-between px-5 sm:hidden">
         {mobileColumns.map((column, columnIndex) => (
           <div
             key={`mobile-column-${columnIndex}`}
@@ -156,7 +156,7 @@ export const Hero = () => {
           </div>
         ))}
       </div>
-      <div className="absolute right-4 top-28 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-40 sm:gap-8">
+      <div className="absolute right-4 top-24 z-10 hidden gap-6 sm:flex sm:right-10 sm:top-36 sm:gap-8">
         {([0, 1] as const).map((columnIndex) => {
           const items = heroLinks.filter((_, idx) => idx % 2 === columnIndex);
           if (!items.length) {
