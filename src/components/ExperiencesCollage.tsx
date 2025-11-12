@@ -71,7 +71,7 @@ export const ExperiencesCollage = () => {
             <a
               key={item.id}
               href={item.href}
-              className={`group relative block overflow-hidden rounded-[36px] border border-black/5 shadow-[0_35px_70px_rgba(4,18,42,0.15)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${
+              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${
                 index === 0 ? "sm:col-span-3 sm:row-span-3" : ""
               } ${index === 1 ? "sm:col-span-3 sm:row-span-2" : ""} ${index === 2 ? "sm:col-span-3 sm:row-span-1" : ""} ${
                 index === 3 ? "sm:col-span-3 sm:row-span-1" : ""
@@ -89,9 +89,9 @@ export const ExperiencesCollage = () => {
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <span className="pointer-events-none absolute right-5 top-5 inline-flex h-10 w-10 rounded-full bg-white/30 opacity-70 blur-[1px] animate-ping" />
-              <span className="pointer-events-none absolute right-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/85 text-secondary shadow-lg ring-1 ring-white/80 transition group-hover:bg-white">
-                <ArrowUpRight className="h-4 w-4" />
+              <span className="pointer-events-none absolute right-4 top-4 h-14 w-14 glow-orb-ring" aria-hidden="true" />
+              <span className="pointer-events-none absolute right-4 top-4 z-10 inline-flex h-12 w-12 items-center justify-center glow-orb ring-1 ring-white/60 shadow-xl transition group-hover:scale-105" aria-hidden="true">
+                <ArrowUpRight className="h-5 w-5" />
               </span>
               <div className="absolute inset-0 flex items-end p-5">
                 <p className="text-2xl font-semibold text-white drop-shadow">{item.title[locale]}</p>

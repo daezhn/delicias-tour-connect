@@ -5,6 +5,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AuroraParticles } from "@/components/AuroraParticles";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -217,6 +218,7 @@ const Transporte = () => {
               height="1080"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/70" aria-hidden="true" />
+            <AuroraParticles />
           </div>
           <div className="relative z-10">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24">
@@ -224,13 +226,20 @@ const Transporte = () => {
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
               <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap gap-4">
-                <Button asChild variant="secondary" className="bg-white/20 text-white hover:bg-white/40">
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="glow-pill bg-white/15 text-white hover:bg-white/40"
+                >
                   <Link to="/">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     {locale === "es" ? "Volver al inicio" : "Back home"}
                   </Link>
                 </Button>
-                <Button variant="default" className="bg-white text-secondary hover:bg-white/90">
+                <Button
+                  variant="default"
+                  className="glow-pill bg-white text-secondary hover:bg-white/90"
+                >
                   <ArrowUpRight className="mr-2 h-4 w-4" />
                   {hero.cta}
                 </Button>
@@ -255,12 +264,19 @@ const Transporte = () => {
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
-              {arrivalModes.map((mode) => {
+              {arrivalModes.map((mode, index) => {
                 const Icon = mode.icon;
                 return (
-                  <Card key={mode.id} className="h-full border border-black/5 shadow-sm">
-                    <CardContent className="space-y-4 p-6">
-                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
+                  <Card
+                    key={mode.id}
+                    className="group relative h-full overflow-hidden border border-black/5 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(4,18,42,0.12)]"
+                  >
+                    <span className="card-sheen" aria-hidden="true" />
+                    <CardContent className="relative z-10 space-y-4 p-6">
+                      <span
+                        className="icon-float inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary shadow-inner shadow-white/30"
+                        style={{ animationDelay: `${index * 0.4}s` }}
+                      >
                         <Icon className="h-6 w-6" />
                       </span>
                       <div className="space-y-2">
@@ -276,6 +292,7 @@ const Transporte = () => {
                         ))}
                       </ul>
                     </CardContent>
+                    <div className="pointer-events-none absolute inset-x-6 bottom-0 h-1 bg-gradient-to-r from-transparent via-secondary/30 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                   </Card>
                 );
               })}

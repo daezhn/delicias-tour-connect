@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { CSSProperties, PointerEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
@@ -52,6 +53,11 @@ interface PlanYourTripProps {
   showHeading?: boolean;
 }
 
+type PlanTileData = (typeof planTiles)[number];
+type CSSVarStyle = CSSProperties & { "--mouse-x"?: string; "--mouse-y"?: string };
+
+const tiltRange = 8;
+
 export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTripProps) => {
   const { locale } = useLocale();
   const [loadedTiles, setLoadedTiles] = useState<Record<string, boolean>>({});
@@ -85,46 +91,99 @@ export const PlanYourTrip = ({ compact = false, showHeading = true }: PlanYourTr
 
           <div className={`${compact ? "" : "grid gap-6 sm:grid-cols-2"}`}>
             {planTiles.map((tile) => (
-              <Link
+              <PlanTile
                 key={tile.id}
-                to={tile.href}
-                className="group relative block overflow-hidden rounded-[34px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-                onPointerEnter={() => handlePrefetch(tile.href)}
-                onFocus={() => handlePrefetch(tile.href)}
-              >
-                <div className="relative h-64 w-full">
-                  <div
-                    className={`absolute inset-0 bg-[#04122a] transition-opacity duration-500 ${
-                      loadedTiles[tile.id] ? "opacity-0" : "opacity-100"
-                    }`}
-                  />
-                  <img
-                    src={tile.image}
-                    alt={tile.title[locale]}
-                    className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${
-                      loadedTiles[tile.id] ? "opacity-100" : "opacity-0"
-                    }`}
-                    loading="lazy"
-                    decoding="async"
-                    onLoad={() => markTileAsLoaded(tile.id)}
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
-                <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
-                  <div>
-                    <p className="text-xl font-semibold tracking-wide">{tile.title[locale]}</p>
-                    <p className="mt-2 text-sm text-white/90">{tile.summary[locale]}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-2 self-start rounded-full bg-white/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white transition group-hover:bg-white/30">
-                    {locale === "es" ? "Ver más" : "Explore"}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
+                tile={tile}
+                locale={locale}
+                onPrefetch={handlePrefetch}
+                isImageLoaded={Boolean(loadedTiles[tile.id])}
+                onImageLoaded={markTileAsLoaded}
+              />
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+type PlanTileProps = {
+  tile: PlanTileData;
+  locale: "es" | "en";
+  onPrefetch: (href: string) => void;
+  isImageLoaded: boolean;
+  onImageLoaded: (tileId: string) => void;
+};
+
+const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded }: PlanTileProps) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [glow, setGlow] = useState({ x: 50, y: 50 });
+
+  const handlePointerMove = (event: PointerEvent<HTMLAnchorElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const relativeX = (event.clientX - bounds.left) / bounds.width;
+    const relativeY = (event.clientY - bounds.top) / bounds.height;
+    setTilt({
+      x: (relativeX - 0.5) * tiltRange,
+      y: (0.5 - relativeY) * tiltRange
+    });
+    setGlow({
+      x: relativeX * 100,
+      y: relativeY * 100
+    });
+  };
+
+  const resetTilt = () => {
+    setTilt({ x: 0, y: 0 });
+    setGlow({ x: 50, y: 50 });
+  };
+
+  const cardStyle: CSSVarStyle = {
+    transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
+    "--mouse-x": `${glow.x}%`,
+    "--mouse-y": `${glow.y}%`
+  };
+
+  return (
+    <Link
+      to={tile.href}
+      className="tilt-card group relative block overflow-hidden rounded-[34px] border border-black/5 shadow-[0_25px_55px_rgba(4,18,42,0.12)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      style={cardStyle}
+      onPointerEnter={() => onPrefetch(tile.href)}
+      onFocus={() => onPrefetch(tile.href)}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+    >
+      <div className="relative h-64 w-full">
+        <div className={`absolute inset-0 bg-[#04122a] transition-opacity duration-500 ${isImageLoaded ? "opacity-0" : "opacity-100"}`} />
+        <img
+          src={tile.image}
+          alt={tile.title[locale]}
+          className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => onImageLoaded(tile.id)}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100"
+          style={
+            {
+              background: "radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 55%)"
+            } as CSSProperties
+          }
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
+        <div>
+          <p className="text-xl font-semibold tracking-wide">{tile.title[locale]}</p>
+          <p className="mt-2 text-sm text-white/90">{tile.summary[locale]}</p>
+        </div>
+        <span className="glow-pill inline-flex items-center gap-2 self-start rounded-full bg-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/90">
+          <span>{locale === "es" ? "Ver más" : "Explore"}</span>
+          <ArrowUpRight className="h-4 w-4" />
+        </span>
+      </div>
+    </Link>
   );
 };
