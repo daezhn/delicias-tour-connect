@@ -188,6 +188,24 @@ const lazySectionStyle: CSSProperties = {
   containIntrinsicSize: "1px 1000px"
 };
 
+const heroStats = [
+  {
+    id: "highway",
+    label: { es: "Carretera federal", en: "Federal highway" },
+    value: { es: "81 km seguros", en: "81 km safe drive" }
+  },
+  {
+    id: "transfer",
+    label: { es: "Traslado CUU → Centro", en: "CUU → Downtown transfer" },
+    value: { es: "65 min promedio", en: "65 min average" }
+  },
+  {
+    id: "buses",
+    label: { es: "Corridas regionales", en: "Regional departures" },
+    value: { es: "+18 por día", en: "+18 per day" }
+  }
+] as const;
+
 const Transporte = () => {
   const { locale } = useLocale();
 
@@ -218,11 +236,23 @@ const Transporte = () => {
               height="1080"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0c2c68]/90 via-[#163d8b]/80 to-[#f6b043]/70" aria-hidden="true" />
+            <div
+              className="absolute inset-0 opacity-60 mix-blend-soft-light"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 40%), radial-gradient(circle at 80% 0, rgba(133,208,255,0.35), transparent 45%)"
+              }}
+              aria-hidden="true"
+            />
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute -top-10 left-0 h-56 w-56 rounded-full bg-[#f6b043]/30 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+              <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#7cd3ff]/25 blur-[140px] animate-pulse-soft" aria-hidden="true" />
+            </div>
             <AuroraParticles />
           </div>
           <div className="relative z-10">
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-24">
-              <Badge className="self-start bg-white/20 text-white">{hero.badge}</Badge>
+              <Badge className="self-start bg-white/20 text-white backdrop-blur-sm">{hero.badge}</Badge>
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">{hero.heading}</h1>
               <p className="text-lg text-white/80 md:max-w-3xl">{hero.subheading}</p>
               <div className="flex flex-wrap gap-4">
@@ -244,6 +274,29 @@ const Transporte = () => {
                   {hero.cta}
                 </Button>
               </div>
+              <div className="grid gap-3 text-left text-[11px] uppercase tracking-[0.35em] text-white/70 sm:grid-cols-3">
+                {heroStats.map((stat, index) => (
+                  <div
+                    key={stat.id}
+                    className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-[0_25px_55px_rgba(4,18,42,0.4)] backdrop-blur-sm animate-fade-in"
+                    style={{ animationDelay: `${index * 0.12}s` }}
+                  >
+                    <p>{stat.label[locale]}</p>
+                    <p className="mt-1 text-2xl font-semibold tracking-normal text-white">{stat.value[locale]}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="pointer-events-none absolute bottom-10 right-6 hidden text-left text-xs uppercase tracking-[0.35em] text-white/70 md:block">
+            <div className="inline-flex flex-col gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 shadow-[0_25px_65px_rgba(4,18,42,0.45)] backdrop-blur">
+              <span>{locale === "es" ? "Ruta destacada" : "Highlighted route"}</span>
+              <div className="text-base font-semibold tracking-normal text-white">
+                CUU → Delicias
+              </div>
+              <span className="text-[11px] font-semibold tracking-[0.3em] text-white/60">
+                65 min · 81 km
+              </span>
             </div>
           </div>
         </section>
@@ -269,7 +322,8 @@ const Transporte = () => {
                 return (
                   <Card
                     key={mode.id}
-                    className="group relative h-full overflow-hidden border border-black/5 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(4,18,42,0.12)]"
+                    className="group relative h-full overflow-hidden border border-black/5 bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(4,18,42,0.12)] animate-fade-in"
+                    style={{ animationDelay: `${index * 0.12}s` }}
                   >
                     <span className="card-sheen" aria-hidden="true" />
                     <CardContent className="relative z-10 space-y-4 p-6">

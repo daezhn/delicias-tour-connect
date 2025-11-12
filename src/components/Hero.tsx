@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/hooks/use-locale";
 
 // Single static hero background containing embedded text per client request
@@ -16,6 +16,8 @@ const quickLinks = [
 
 export const Hero = () => {
   const { locale } = useLocale();
+  const [hideScrollCue, setHideScrollCue] = useState(false);
+  const scrollCopy = locale === "es" ? "Desplázate" : "Scroll";
 
   const heroLinks = useMemo(() => {
     const localizedBase = quickLinks.map((tile) => ({
@@ -69,18 +71,54 @@ export const Hero = () => {
     return [left, right];
   }, [heroLinks]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      setHideScrollCue((prev) => prev || window.scrollY > 40);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative isolate min-h-[94vh] overflow-hidden bg-black text-white">
-      <picture>
-        <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
-        <img
-          src={HERO_IMAGE_DESKTOP}
-          alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          loading="eager"
-          decoding="async"
+      <div className="absolute inset-0">
+        <picture className="block h-full w-full">
+          <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
+          <img
+            src={HERO_IMAGE_DESKTOP}
+            alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
+            className="h-full w-full object-cover object-center"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-[#04122a]" aria-hidden="true" />
+        <div
+          className="absolute inset-0 opacity-60 mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 40%), radial-gradient(circle at 80% 0, rgba(246,176,67,0.35), transparent 45%)"
+          }}
+          aria-hidden="true"
         />
-      </picture>
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "linear-gradient(120deg, rgba(255,255,255,0.08) 0%, transparent 45%), linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+            backgroundSize: "100% 100%, 180px 180px, 180px 180px"
+          }}
+          aria-hidden="true"
+        />
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-16 left-6 h-40 w-40 rounded-full bg-[#f6b043]/40 blur-[90px] animate-pulse-soft" aria-hidden="true" />
+          <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-[#85d0ff]/30 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+        </div>
+      </div>
       <div className="absolute inset-x-0 top-6 z-10 flex justify-center sm:hidden">
         <div className="rounded-full border border-white/40 bg-black/40 px-5 py-2 text-center text-[11px] font-semibold uppercase tracking-[0.35em] text-white backdrop-blur">
           {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
@@ -159,6 +197,18 @@ export const Hero = () => {
             </div>
           );
         })}
+      </div>
+      <div
+        className={`pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transition-all duration-500 ${
+          hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="flex flex-col items-center gap-3 text-white/80">
+          <div className="h-14 w-8 rounded-full border border-white/50 p-1">
+            <span className="block h-2 w-2 rounded-full bg-white animate-scroll-wheel" />
+          </div>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.45em]">{scrollCopy}</p>
+        </div>
       </div>
     </section>
   );

@@ -136,29 +136,63 @@ const ExperienciasFamilia = () => {
       <Navigation />
       <main className="pt-[90px]">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,193,0.5),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,193,0.55),transparent)]" />
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, rgba(255,255,255,0.4) 0%, transparent 60%), linear-gradient(rgba(255,255,255,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.25) 1px, transparent 1px)",
+              backgroundSize: "100% 100%, 220px 220px, 220px 220px"
+            }}
+            aria-hidden="true"
+          />
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-16 right-4 h-64 w-64 rounded-full bg-secondary/20 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+            <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-[#f6b043]/30 blur-[120px] animate-pulse-soft" aria-hidden="true" />
+          </div>
           <div className="relative z-10 grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
-            <div className="space-y-6">
-              <a
-                href="/experiencias/que-hacer"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
-              >
-                <ArrowUpRight className="h-4 w-4 rotate-180" />
-                {locale === "es" ? "Regresar" : "Back"}
-              </a>
+            <div className="space-y-6 rounded-[34px] border border-white/50 bg-white/80 p-8 shadow-[0_35px_85px_rgba(203,137,92,0.3)] backdrop-blur-md">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="/experiencias/que-hacer"
+                  className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
+                >
+                  <ArrowUpRight className="h-4 w-4 rotate-180" />
+                  {locale === "es" ? "Regresar" : "Back"}
+                </a>
+                <span className="inline-flex items-center rounded-full border border-secondary/20 bg-secondary/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.4em] text-secondary">
+                  {locale === "es" ? "Nuevo parque" : "New park"}
+                </span>
+              </div>
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">{locale === "es" ? "Agenda familiar" : "Family agenda"}</p>
               <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{heroTitle}</h1>
               <p className="font-script text-3xl italic text-secondary/80">{heroScript}</p>
               <p className="max-w-xl text-sm text-foreground/70">{heroCopy}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {heroAlbums.map((album) => (
-                <div key={album.image} className="space-y-2">
-                  <img src={album.image} alt={album.caption[locale]} className="h-48 w-full rounded-[32px] object-cover shadow-[0_30px_60px_rgba(203,137,92,0.2)]" loading="lazy" decoding="async" />
+              {heroAlbums.map((album, index) => (
+                <div
+                  key={album.image}
+                  className="group space-y-2 rounded-[32px] border border-white/60 bg-white/70 p-3 shadow-[0_30px_60px_rgba(203,137,92,0.2)] backdrop-blur"
+                >
+                  <div className="relative overflow-hidden rounded-[28px]">
+                    <img
+                      src={album.image}
+                      alt={album.caption[locale]}
+                      className="h-48 w-full object-cover transition duration-700 group-hover:scale-105 animate-float-y"
+                      loading="lazy"
+                      decoding="async"
+                      style={{ animationDelay: `${index * 0.4}s` }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" aria-hidden="true" />
+                  </div>
                   <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">{album.caption[locale]}</p>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="pointer-events-none absolute bottom-8 right-6 hidden rounded-[28px] border border-white/50 bg-white/75 px-6 py-4 text-xs uppercase tracking-[0.4em] text-secondary shadow-[0_25px_65px_rgba(203,137,92,0.25)] backdrop-blur lg:block">
+            {locale === "es" ? "Plan sugerido · 4 paradas" : "Suggested plan · 4 stops"}
           </div>
         </section>
 
