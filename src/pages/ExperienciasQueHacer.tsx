@@ -4,7 +4,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
 
-const heroShots = ["/images/Galería/8.jpg", "/images/Galería/11.jpg", "/images/Galería/18.jpg"] as const;
+const heroShots = ["/images/quehacer/hero1.jpg", "/images/Galería/11.jpg", "/images/Galería/18.jpg"] as const;
 
 const travelRoutes = [
   {
@@ -75,8 +75,8 @@ const atlasStops = [
   {
     name: { es: "Presa Las Vírgenes", en: "Las Vírgenes Dam" },
     detail: {
-      es: "Kayak, SUP y miradores con mesas picnic.",
-      en: "Kayak, SUP and lookouts with picnic tables."
+      es: "Miradores con mesas picnic.",
+      en: "Lookouts with picnic tables."
     }
   },
   {

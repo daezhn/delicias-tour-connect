@@ -31,16 +31,8 @@ const arrivalModes = [
       en: "Land at Chihuahua International Airport (CUU) and reach Delicias in 65 minutes via Highway 45."
     },
     highlights: {
-      es: [
-        "Vuelos diarios CDMX, Monterrey y Dallas",
-        "Shuttles privados bajo reserva",
-        "Renta de autos dentro del aeropuerto"
-      ],
-      en: [
-        "Daily flights from CDMX, Monterrey and Dallas",
-        "Private shuttles on request",
-        "On-site car rentals"
-      ]
+      es: ["Vuelos diarios desde distintas localizaciones nacionales e internacionales"],
+      en: ["Daily flights from several national and international hubs"]
     }
   },
   {
@@ -53,12 +45,10 @@ const arrivalModes = [
     },
     highlights: {
       es: [
-        "Ómnibus, Noreste, Transportes Chihuahuenses",
         "Boletaje en línea y taquilla",
         "Tarifa promedio $280 MXN"
       ],
       en: [
-        "Ómnibus, Noreste, Transportes Chihuahuenses",
         "Tickets online or on-site",
         "Average fare $280 MXN"
       ]
@@ -74,13 +64,11 @@ const arrivalModes = [
     },
     highlights: {
       es: [
-        "Peajes moderados y estaciones 24/7",
-        "Gasolineras con cafetería en km 90",
+        "Gasolineras con cafetería",
         "Zona urbana bien señalizada"
       ],
       en: [
-        "Moderate tolls and 24/7 stations",
-        "Fuel stops with cafés near km 90",
+        "Fuel stops with cafés",
         "Well signed urban grid"
       ]
     }
@@ -97,8 +85,8 @@ const corridors = [
       en: "Highway 45 in great condition, featuring viewpoints over the pecan fields."
     },
     tips: {
-      es: ["Salir antes de las 8am para evitar tráfico", "Parada recomendada en Laderas Café (km 52)"],
-      en: ["Depart before 8 am to skip traffic", "Suggested break at Laderas Café (km 52)"]
+      es: ["Salir antes de las 8am para evitar tráfico"],
+      en: ["Depart before 8 am to skip traffic"]
     }
   },
   {
@@ -110,7 +98,7 @@ const corridors = [
       en: "Semi-desert landscapes with gentle curves; perfect for photo-friendly roadtrips."
     },
     tips: {
-      es: ["Revisar combustible en Valle de Zaragoza", "Clima fresco al amanecer, lleva chamarra"],
+      es: ["Clima fresco al amanecer, lleva chamarra"],
       en: ["Top up fuel in Valle de Zaragoza", "Cool sunrise temps, pack a light jacket"]
     }
   },
@@ -123,8 +111,8 @@ const corridors = [
       en: "Toll highway with full services and vistas of the Samalayuca desert."
     },
     tips: {
-      es: ["Pago con tarjeta o efectivo en peaje Sacramento", "Descansa en Villa Ahumada para probar asaderos"],
-      en: ["Pay tolls with card or cash at Sacramento booth", "Stop in Villa Ahumada for local asadero bread"]
+      es: ["Pago con tarjeta  en  mayoría de peajes", "Descansa en Villa Ahumada para probar asaderos"],
+      en: ["Pay tolls with card at most booths", "Stop in Villa Ahumada for local asadero bread"]
     }
   }
 ] as const;
@@ -132,42 +120,36 @@ const corridors = [
 const busLines = [
   {
     line: "Ómnibus de México",
-    schedule: { es: "Cada 60 min · 05:30 - 22:00", en: "Every 60 min · 5:30 am - 10:00 pm" },
+    schedule: { es: "Rutas todo el día", en: "All-day routes" },
     perks: { es: "Wi-Fi, asientos reclinables, lockers", en: "Wi-Fi, reclining seats, lockers" }
   },
   {
     line: "Transportes Chihuahuenses",
-    schedule: { es: "Express matutino · 06:00, 08:00, 10:00", en: "Morning express · 6:00, 8:00, 10:00" },
-    perks: { es: "Línea directa a aeropuerto CUU", en: "Direct line to CUU airport" }
+    schedule: { es: "Rutas todo el día", en: "All-day routes" },
+    perks: { es: "Preferencia por usuarios según Google", en: "Preference for users according to Google" }
   },
-  {
-    line: "Noreste",
-    schedule: { es: "Rutas Parral / Camargo · 07:00 - 21:00", en: "Parral / Camargo routes · 7:00 am - 9:00 pm" },
-    perks: { es: "Enlaces a cuencas vitivinícolas", en: "Connections to wine valley towns" }
-  }
+  
 ] as const;
 
 const mobilityTips = [
   {
-    title: { es: "Apps y taxis seguros", en: "Apps & taxis" },
+    title: { es: "Uber", en: "Uber" },
     body: {
-      es: "Uber y taxis locales  operan en Delicias con puntos preferentes afuera de la Central Camionera y Plaza Carranza.",
-      en: "Uber and taxis operate in Delicias with preferred pick-ups at the bus terminal and Plaza Carranza."
+      es: "Uber opera en Delicias con puntos preferentes afuera de la Central Camionera y Plaza Carranza.",
+      en: "Uber operates in Delicias with preferred pick-ups at the bus terminal and Plaza Carranza."
     },
     details: [
-      { es: "Tarifa promedio Ciudad → Presa Las Vírgenes: $160 MXN", en: "Average fare city center → Las Vírgenes Dam: $160 MXN" },
-      { es: "Radio Taxi Delicias: (639) 472-2222", en: "Radio Taxi Delicias: +52 639 472 2222" }
+      { es: "Operando desde 2025", en: "Operating since 2025" },
     ]
   },
   {
-    title: { es: "Renta de auto local", en: "Local car rentals" },
+    title: { es: "Radio Taxis Delicias", en: "Radio Taxis Delicias" },
     body: {
-      es: "Agencias independientes ofrecen sedanes y pick-ups para campos agrícolas; solicita GPS con mapas offline.",
-      en: "Independent agencies provide sedans and pick-ups for farm visits; request GPS with offline maps."
+      es: "Taxis locales con servicio por numero telefonico.",
+      en: "Local taxis with phone service."
     },
     details: [
-      { es: "Comunicate con nosotros para más informes", en: "Contact us for more information" },
-      { es: "Combustible Magna promedio: $23.1 MXN / lt", en: "Average fuel price: $23.1 MXN per liter" }
+      { es: "Comunicate por telefono para más información", en: "Contact us for more information" },
     ]
   },
   {
@@ -192,17 +174,12 @@ const heroStats = [
   {
     id: "highway",
     label: { es: "Carretera federal", en: "Federal highway" },
-    value: { es: "81 km seguros", en: "81 km safe drive" }
+    value: { es: "81 KILOMETROS", en: "81 km safe drive" }
   },
   {
     id: "transfer",
     label: { es: "Traslado CUU → Centro", en: "CUU → Downtown transfer" },
     value: { es: "65 min promedio", en: "65 min average" }
-  },
-  {
-    id: "buses",
-    label: { es: "Corridas regionales", en: "Regional departures" },
-    value: { es: "+18 por día", en: "+18 per day" }
   }
 ] as const;
 
@@ -274,7 +251,7 @@ const Transporte = () => {
                   {hero.cta}
                 </Button>
               </div>
-              <div className="grid gap-2 text-left text-[10px] uppercase tracking-[0.35em] text-white/70 sm:grid-cols-3 sm:gap-3 sm:text-[11px]">
+              <div className="grid gap-2 text-left text-[10px] uppercase tracking-[0.35em] text-white/70 sm:grid-cols-2 sm:gap-3 sm:text-[11px]">
                 {heroStats.map((stat, index) => (
                   <div
                     key={stat.id}
@@ -542,18 +519,18 @@ const Transporte = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:movilidad@visitdelicias.mx"
+                href="mailto:contacto@visitadelicias.com"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-secondary shadow-lg"
               >
-                movilidad@visitdelicias.mx
+                contacto@visitadelicias.com
               </a>
               <a
-                href="https://wa.me/526394720000"
+                href="https://wa.me/526394675629"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
               >
-                +52 639 472 0000
+                +52 639 467 5629
               </a>
             </div>
           </div>

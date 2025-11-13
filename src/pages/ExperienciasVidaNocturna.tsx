@@ -15,7 +15,7 @@ const neonVenues = [
     }
   },
   {
-    image: "/vidanocturna/djantro.png",
+    image: "/vidanocturna/1.jpg",
     label: { es: "Antros inmersivos", en: "Immersive clubs" },
     title: { es: "Pantallas y DJ sets", en: "Screens & DJ sets" },
     detail: {
@@ -23,17 +23,9 @@ const neonVenues = [
       en: "Mapped rooms with electronic/reggaeton lineups and bars running until late."
     }
   },
+
   {
-    image: "/vidanocturna/sazon.png",
-    label: { es: "Cantinas boutique", en: "Boutique cantinas" },
-    title: { es: "Sazón clásico", en: "Classic flavor" },
-    detail: {
-      es: "Recetas centenarias, maridajes con sotol y tríos en vivo en espacios íntimos.",
-      en: "Centenary recipes, sotol pairings and live trios in intimate rooms."
-    }
-  },
-  {
-    image: "/vidanocturna/tacos.png",
+    image: "/vidanocturna/2.jpg",
     label: { es: "Afterhours criollo", en: "Criollo afterhours" },
     title: { es: "Tacos nocturnos", en: "Late-night tacos" },
     detail: {
@@ -89,8 +81,8 @@ const afterTips = [
   {
     heading: { es: "Ruta responsable", en: "Safe route" },
     copy: {
-      es: "Pide transporte por apps locales y aprovecha el corredor peatonal entre Sexta y la plaza central.",
-      en: "Use local ride-hailing and walk the pedestrian corridor between 6th Ave and the plaza."
+      es: "Pide transporte por apps locales y aprovecha recorrer plazas con food trucks.",
+      en: "Use local ride-hailing apps and explore plazas with food trucks."
     }
   },
   {
