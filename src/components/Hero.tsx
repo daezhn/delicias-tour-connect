@@ -9,7 +9,7 @@ const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg"; // mobile-only crop centered
 const quickLinks = [
   {
     href: "/#eventos",
-    image: "/images/event-2.jpg",
+    image: "/images/contenedoresheromain/agenda.jpg",
     label: { es: "Agenda", en: "Agenda" },
     hint: { es: "Festivales y ferias", en: "Festivals & fairs" },
     shortLabel: { es: "Agenda", en: "Agenda" },
@@ -17,7 +17,7 @@ const quickLinks = [
   },
   {
     href: "/tours",
-    image: "/images/tours/cavall7.jpg",
+    image: "/images/contenedoresheromain/cavall7.jpg",
     label: { es: "Tours guiados", en: "Guided tours" },
     hint: { es: "Desierto · presa · ciudad", en: "Desert · dam · city" },
     shortLabel: { es: "Tours", en: "Tours" },
@@ -25,7 +25,7 @@ const quickLinks = [
   },
   {
     href: "/experiencias/que-comer",
-    image: "/images/restaurant-1.jpg",
+    image: "/images/contenedoresheromain/sabores.jpg",
     label: { es: "Gastronomía", en: "Food & cafés" },
     hint: { es: "Sabores locales", en: "Local flavors" },
     shortLabel: { es: "Sabores", en: "Food" },
@@ -33,7 +33,7 @@ const quickLinks = [
   },
   {
     href: "/Atractivos",
-    image: "/images/hero-delicias-3.jpg",
+    image: "/images/contenedoresheromain/atractivos.jpg",
     label: { es: "Atractivos", en: "Highlights" },
     hint: { es: "Miradores y rutas", en: "Landmarks & routes" },
     shortLabel: { es: "Atractivos", en: "Sights" },
@@ -41,7 +41,7 @@ const quickLinks = [
   },
   {
     href: "/hospedaje",
-    image: "/images/hotel-4.jpg",
+    image: "/images/contenedoresheromain/hotel.jpg",
     label: { es: "Hospedaje nocturno", en: "Stay & nights" },
     hint: { es: "Hoteles y glamping", en: "Hotels & glamping" },
     shortLabel: { es: "Hotel", en: "Stay" },
@@ -49,15 +49,15 @@ const quickLinks = [
   },
   {
     href: "/experiencias/que-hacer",
-    image: "/images/hero-delicias-1.jpg",
+    image: "/images/contenedoresheromain/reloj.jpg",
     label: { es: "Actividades", en: "Activities" },
     hint: { es: "Aire libre y cultura", en: "Outdoor & culture" },
-    shortLabel: { es: "Accion", en: "Go" },
+    shortLabel: { es: "Qué hacer", en: "Go" },
     Icon: Activity
   },
   {
     href: "/Transporte",
-    image: "/images/hero-delicias-2.jpg",
+    image: "/images/contenedoresheromain/ruta.jpg",
     label: { es: "Roadtrips", en: "Roadtrips" },
     hint: { es: "Rutas y tips", en: "Routes & tips" },
     shortLabel: { es: "Ruta", en: "Road" },
@@ -65,10 +65,10 @@ const quickLinks = [
   },
   {
     href: "/#contacto",
-    image: "/images/hotel-5.jpg",
+    image: "/images/contenedoresheromain/contacto.jpg",
     label: { es: "Plan personalizado", en: "Plan with us" },
     hint: { es: "Contacta a IDEA", en: "Talk to IDEA" },
-    shortLabel: { es: "Plan", en: "Plan" },
+    shortLabel: { es: "Contacto", en: "Plan" },
     Icon: MessageSquare
   }
 ] as const;

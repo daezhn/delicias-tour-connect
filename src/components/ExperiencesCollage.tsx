@@ -7,42 +7,35 @@ const experiences = [
     href: "/experiencias/que-hacer",
     image: "/images/experiencias/que hacer.jpg",
     title: { es: "Qué hacer en Delicias", en: "Things to do" },
-    size: "row-span-2"
+    layout: "sm:col-span-3 sm:row-span-3"
   },
   {
     id: "nightlife",
     href: "/experiencias/vida-nocturna",
     image: "/images/Galería/12.jpg",
     title: { es: "Vida nocturna", en: "Nightlife" },
-    size: "col-span-2"
+    layout: "sm:col-span-3 sm:row-span-2"
   },
   {
     id: "art",
     href: "/experiencias/arte-cultura",
     image: "/images/Galería/5.jpg",
     title: { es: "Arte y cultura", en: "Art & culture" },
-    size: ""
+    layout: "sm:col-span-3 sm:row-span-1"
   },
   {
     id: "family",
     href: "/experiencias/familia",
     image: "/images/experiencias/familia.JPG",
     title: { es: "Diversión en familia", en: "Family fun" },
-    size: ""
-  },
-  {
-    id: "sports",
-    href: "/experiencias/deportes",
-    image: "/images/experiencias/deportes.jpg",
-    title: { es: "Deportes", en: "Sports" },
-    size: ""
+    layout: "sm:col-span-3 sm:row-span-1"
   },
   {
     id: "dine",
     href: "/experiencias/que-comer",
     image: "/images/restaurant-3.jpg",
     title: { es: "¿Qué comer?", en: "Where to eat" },
-    size: ""
+    layout: "sm:col-span-3 sm:row-span-1"
   }
 ] as const;
 
@@ -74,19 +67,11 @@ export const ExperiencesCollage = () => {
           </div>
         </div>
         <div className="grid auto-rows-[260px] gap-4 sm:auto-rows-[350px] lg:auto-rows-[420px] sm:grid-cols-6">
-          {experiences.map((item, index) => (
+          {experiences.map((item) => (
             <a
               key={item.id}
               href={item.href}
-              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${
-                index === 0 ? "sm:col-span-3 sm:row-span-3" : ""
-              } ${index === 1 ? "sm:col-span-3 sm:row-span-2" : ""} ${index === 2 ? "sm:col-span-3 sm:row-span-1" : ""} ${
-                index === 3 ? "sm:col-span-3 sm:row-span-1" : ""
-              } ${
-                index === 4 ? "sm:col-span-3 sm:row-span-1" : ""
-              } ${
-                index === 5 ? "sm:col-span-6 sm:row-span-1" : ""
-              }`}
+              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${item.layout ?? ""}`}
             >
               <img
                 src={item.image}
