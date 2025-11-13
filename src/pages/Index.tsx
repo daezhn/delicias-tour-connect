@@ -11,10 +11,12 @@ import { PlanYourTrip } from "@/components/PlanYourTrip";
 import { FeaturedCitizens } from "@/components/FeaturedCitizens";
 import { GalleryShowcase } from "@/components/GalleryShowcase";
 import { Reveal } from "@/components/Reveal";
+import { WelcomeModal } from "@/components/WelcomeModal";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+      <WelcomeModal />
       <Navigation />
       <main id="inicio" className="space-y-0 pt-[32px] sm:pt-0">
         <Hero />
