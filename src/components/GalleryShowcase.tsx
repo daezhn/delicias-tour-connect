@@ -70,6 +70,7 @@ export const GalleryShowcase = () => {
             <span className="gallery-orb left-[10%] top-[-15%] h-48 w-48 bg-cyan-400/40" style={{ "--gallery-duration": "16s" } as CSSProperties} />
             <span className="gallery-orb right-[8%] top-[10%] h-56 w-56 bg-amber-300/45" style={{ "--gallery-duration": "22s" } as CSSProperties} />
             <span className="gallery-orb left-[30%] bottom-[-10%] h-64 w-64 bg-pink-400/35" style={{ "--gallery-duration": "18s" } as CSSProperties} />
+            <span className="gallery-orb right-[20%] bottom-[5%] h-40 w-40 bg-primary/30" style={{ "--gallery-duration": "25s" } as CSSProperties} />
           </div>
           <div className="relative mx-auto flex h-[420px] max-w-5xl items-center justify-center">
             {galleryImages.map((photo, photoIndex) => {

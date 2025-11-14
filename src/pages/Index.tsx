@@ -12,34 +12,51 @@ import { FeaturedCitizens } from "@/components/FeaturedCitizens";
 import { GalleryShowcase } from "@/components/GalleryShowcase";
 import { Reveal } from "@/components/Reveal";
 import { WelcomeModal } from "@/components/WelcomeModal";
+import { ParallaxSection } from "@/components/ParallaxSection";
+import { AnimatedGradient } from "@/components/AnimatedGradient";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+    <div className="min-h-screen bg-[#f6ecdf] text-foreground relative overflow-hidden">
+      <AnimatedGradient variant="subtle" speed="slow" />
       <WelcomeModal />
       <Navigation />
-      <main id="inicio" className="space-y-0 pt-[32px] sm:pt-0">
+      <main id="inicio" className="space-y-0 relative">
         <Hero />
 
-        <WelcomeDelicias />
+        <ParallaxSection speed={0.3}>
+          <WelcomeDelicias />
+        </ParallaxSection>
 
-
-        <Reveal as="section" id="eventos" className="py-0">
-          <Events />
+        <Reveal as="section" id="eventos" className="py-0 relative">
+          <ParallaxSection speed={0.2} direction="down">
+            <Events />
+          </ParallaxSection>
         </Reveal>
 
-        <Reveal as="section" className="bg-white py-16">
-          <div className="mx-auto max-w-4xl px-4">
-            <AvailabilityCalendar compact />
-          </div>
+        <Reveal as="section" className="bg-white py-16 relative">
+          <ParallaxSection speed={0.15}>
+            <div className="mx-auto max-w-4xl px-4">
+              <AvailabilityCalendar compact />
+            </div>
+          </ParallaxSection>
         </Reveal>
 
-        <ExperiencesCollage />
+        <ParallaxSection speed={0.25}>
+          <ExperiencesCollage />
+        </ParallaxSection>
 
-        <PlanYourTrip />
-        <FeaturedCitizens />
+        <ParallaxSection speed={0.2}>
+          <PlanYourTrip />
+        </ParallaxSection>
+        
+        <ParallaxSection speed={0.3} direction="down">
+          <FeaturedCitizens />
+        </ParallaxSection>
 
-        <GalleryShowcase />
+        <ParallaxSection speed={0.2}>
+          <GalleryShowcase />
+        </ParallaxSection>
 
         <Reveal
           as="section"

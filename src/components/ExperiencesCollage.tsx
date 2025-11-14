@@ -1,5 +1,6 @@
 import { ArrowUpRight, MousePointerClick } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import type { CSSProperties } from "react";
 
 const experiences = [
   {
@@ -71,7 +72,15 @@ export const ExperiencesCollage = () => {
             <a
               key={item.id}
               href={item.href}
-              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${item.layout ?? ""}`}
+              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition-all duration-500 hover:shadow-[0_45px_90px_rgba(4,18,42,0.25)] hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${item.layout ?? ""}`}
+              style={{ "--mouse-x": "50%", "--mouse-y": "50%" } as CSSProperties}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
+                e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
+              }}
             >
               <img
                 src={item.image}

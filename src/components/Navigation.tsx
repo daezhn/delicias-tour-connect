@@ -15,6 +15,7 @@ const NAV_TARGETS: Record<(typeof NAV_LINKS)[number], string> = {
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { locale, setLocale } = useLocale();
   const navCopy = getTranslations(locale).nav;
   const ctaLabel = locale === "es" ? "Planear visita" : "Plan trip";
@@ -51,6 +52,27 @@ export const Navigation = () => {
     updateNavOffset();
   }, [locale, updateNavOffset]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      // Cambiar cuando se pase el 80% del viewport (aproximadamente cuando termina el hero)
+      // En mobile es 103vh, en desktop es 110vh, usamos un cálculo dinámico
+      const heroHeight = windowHeight * (window.innerWidth >= 640 ? 1.10 : 1.03);
+      setScrolled(scrollY > heroHeight * 0.8);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   const links = NAV_LINKS.map((key) => ({ label: navCopy[key], href: NAV_TARGETS[key] }));
 
   const toggleLocale = () => setLocale(locale === "es" ? "en" : "es");
@@ -59,11 +81,21 @@ export const Navigation = () => {
     <nav className="fixed inset-x-0 top-0 z-50">
       <div
         ref={navBarRef}
-        className="border-b border-transparent bg-gradient-to-r from-[#f6b043]/85 via-[#f79d84]/80 to-black/70 py-1 sm:py-1.5 lg:py-3 shadow-[0_10px_30px_rgba(4,18,42,0.25)] backdrop-blur"
+        className={`border-b py-1 sm:py-1.5 lg:py-3 backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md transition-all duration-300 ${
+          scrolled
+            ? "border-black/10 bg-white/95 shadow-[0_10px_30px_rgba(4,18,42,0.15)]"
+            : "border-transparent bg-gradient-to-r from-[#f6b043]/20 via-[#f79d84]/15 to-black/10 shadow-none"
+        }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
-            <span className="rounded-full border border-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] text-white/90 backdrop-blur">
+            <span
+              className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] backdrop-blur transition-colors duration-300 ${
+                scrolled
+                  ? "border-foreground/20 text-foreground"
+                  : "border-white/50 text-white/90"
+              }`}
+            >
               Delicias
             </span>
           </a>
@@ -73,7 +105,11 @@ export const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-sm font-medium tracking-wide text-foreground/80 transition hover:text-secondary"
+                className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  scrolled
+                    ? "text-foreground/80 hover:text-secondary"
+                    : "text-white/90 hover:text-white"
+                }`}
               >
                 {item.label}
               </a>
@@ -83,7 +119,11 @@ export const Navigation = () => {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={toggleLocale}
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-foreground transition hover:border-secondary hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary/40"
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                scrolled
+                  ? "border-black/10 text-foreground hover:border-secondary hover:text-secondary focus-visible:outline-secondary/40"
+                  : "border-white/30 text-white/90 hover:border-white/50 hover:text-white focus-visible:outline-white/40"
+              }`}
               aria-label="Change language"
             >
               <Globe className="h-4 w-4" />
@@ -92,15 +132,20 @@ export const Navigation = () => {
             <MagneticButton>
               <a
                 href="/tours"
-                className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition hover:bg-primary/90"
+                className="group relative inline-flex items-center overflow-hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_15px_35px_rgba(0,174,192,0.45)] active:scale-95"
               >
-                {locale === "es" ? "Explorar" : "Explore"}
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                <span className="relative z-10">{locale === "es" ? "Explorar" : "Explore"}</span>
               </a>
             </MagneticButton>
           </div>
 
           <button
-            className="rounded-full border border-black/10 p-1.5 text-foreground lg:hidden"
+            className={`rounded-full border p-1.5 transition-colors duration-300 lg:hidden ${
+              scrolled
+                ? "border-black/10 text-foreground"
+                : "border-white/30 text-white/90"
+            }`}
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Toggle navigation"
           >
@@ -138,9 +183,10 @@ export const Navigation = () => {
               <a
                 href="/tours"
                 onClick={() => setOpen(false)}
-                className="mt-1 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white"
+                className="group relative mt-1 inline-flex w-full items-center justify-center overflow-hidden rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white transition-all duration-300 active:scale-95"
               >
-                {locale === "es" ? "Explorar" : "Explore"}
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                <span className="relative z-10">{locale === "es" ? "Explorar" : "Explore"}</span>
               </a>
             </MagneticButton>
           </div>

@@ -63,14 +63,14 @@ export const WelcomeDelicias = () => {
             {GALLERY_IMAGES.map((image, index) => (
               <div
                 key={image.src}
-                className={`flex-1 overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_50px_rgba(4,18,42,0.12)] ${columnHeights[index]} ${
+                className={`group flex-1 overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_50px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_70px_rgba(4,18,42,0.2)] hover:-translate-y-1 ${columnHeights[index]} ${
                   index === 1 ? "sm:mt-12" : ""
                 }`}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   loading={index === 0 ? "lazy" : "lazy"}
                   decoding="async"
                 />

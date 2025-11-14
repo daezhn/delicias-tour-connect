@@ -78,6 +78,7 @@ const quickLinks = [
 export const Hero = () => {
   const { locale } = useLocale();
   const [hideScrollCue, setHideScrollCue] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const scrollCopy = locale === "es" ? "Desplázate" : "Scroll";
 
   const heroLinks = useMemo(() => {
@@ -131,24 +132,36 @@ export const Hero = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
     const handleScroll = () => {
       setHideScrollCue((prev) => prev || window.scrollY > 40);
     };
 
+    handleResize();
     handleScroll();
+    window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[100svh] sm:min-h-[100vh] overflow-hidden bg-black text-white">
+    <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[103svh] sm:min-h-[110vh] overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <picture className="block h-full w-full">
           <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
           <img
             src={HERO_IMAGE_DESKTOP}
             alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-[center_120%] xl:object-[center_132%] scale-[1.08] sm:scale-[1.08] lg:scale-[1.06] xl:scale-[1.04] transition-transform duration-700 lg:translate-y-5 xl:translate-y-8"
+            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-cover lg:object-center xl:object-cover xl:object-center transition-transform duration-700"
+            style={{
+              transform: isDesktop ? "scaleY(1.1)" : undefined,
+            }}
             loading="eager"
             decoding="async"
           />
@@ -187,18 +200,21 @@ export const Hero = () => {
           decoding="async"
         />
       </div>
-      <div className="pointer-events-none absolute right-1 -top-2 flex items-center gap-3 sm:hidden">
+      <div 
+        className="pointer-events-none absolute right-1 flex items-center gap-3 sm:hidden"
+        style={{ top: "calc(var(--nav-offset, 72px) - 32px)" }}
+      >
         <img
           src="/images/recurso.png"
           alt=""
-          className="h-32 w-32 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
+          className="h-36 w-36 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
           loading="lazy"
           decoding="async"
         />
         <img
           src="/images/Logoideablanco.png"
           alt="Idea Delicias"
-          className="h-9 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
+          className="h-10 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
           loading="lazy"
           decoding="async"
         />

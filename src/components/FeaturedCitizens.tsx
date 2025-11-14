@@ -27,9 +27,10 @@ export const FeaturedCitizens = () => {
           <p className="mt-3 max-w-2xl text-base text-white/80">{description}</p>
           <a
             href="/personas-destacadas"
-            className="mt-6 inline-flex items-center rounded-full bg-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(246,176,67,0.35)] transition hover:bg-secondary/90"
+            className="group relative mt-6 inline-flex items-center overflow-hidden rounded-full bg-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(246,176,67,0.35)] transition-all duration-300 hover:bg-secondary/90 hover:shadow-[0_16px_45px_rgba(246,176,67,0.45)] active:scale-95"
           >
-            {cta}
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+            <span className="relative z-10">{cta}</span>
           </a>
         </div>
       </div>

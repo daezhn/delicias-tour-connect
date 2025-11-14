@@ -63,7 +63,7 @@ export const Events = () => {
                       return (
                         <article
                           key={event.id}
-                          className="group flex h-full flex-col overflow-hidden rounded-[32px] border border-white bg-white shadow-[0_25px_55px_rgba(6,69,173,0.18)] transition hover:-translate-y-1 hover:shadow-[0_35px_70px_rgba(6,69,173,0.28)]"
+                          className="group flex h-full flex-col overflow-hidden rounded-[32px] border border-white bg-white shadow-[0_25px_55px_rgba(6,69,173,0.18)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(6,69,173,0.35)] hover:scale-[1.02]"
                         >
                           <div className="relative h-44 w-full overflow-hidden sm:h-48 lg:h-52">
                             <img
@@ -89,10 +89,13 @@ export const Events = () => {
                                 <button
                                   type="button"
                                   onClick={() => setSelectedPoster(event.image)}
-                                  className="inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-sky-500"
+                                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-sky-600 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:bg-sky-500 hover:shadow-lg active:scale-95"
                                 >
-                                  {eventCta}
-                                  <ArrowUpRight className="h-3.5 w-3.5" />
+                                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                                  <span className="relative z-10 flex items-center gap-2">
+                                    {eventCta}
+                                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                  </span>
                                 </button>
                               </MagneticButton>
                             </div>

@@ -9,8 +9,12 @@ export const Footer = () => {
   const navCopy = translations.nav;
 
   return (
-    <footer id="contacto" className="bg-foreground text-white py-12">
-      <div className="container mx-auto px-4">
+    <footer id="contacto" className="relative bg-foreground text-white py-12 overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About */}
           <div>

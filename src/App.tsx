@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { FullPageSkeleton } from "@/components/skeletons/FullPageSkeleton";
 import { routeLoaders } from "@/lib/route-preloader";
+import { CursorFollower } from "@/components/CursorFollower";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 type LazyComponent = LazyExoticComponent<ComponentType<any>>;
 
@@ -37,6 +39,8 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <ScrollProgress />
+      <CursorFollower />
       <Toaster />
       <Sonner />
       <BrowserRouter>
