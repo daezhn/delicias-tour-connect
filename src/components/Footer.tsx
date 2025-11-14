@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const { locale } = useLocale();
@@ -36,10 +37,10 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-4">{copy.quickLinksTitle}</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><a href="#inicio" className="hover:text-primary transition-colors">{navCopy.inicio}</a></li>
-              <li><a href="#atractivos" className="hover:text-primary transition-colors">{navCopy.atractivos}</a></li>
-              <li><a href="#actividades" className="hover:text-primary transition-colors">{navCopy.actividades}</a></li>
-              <li><a href="#eventos" className="hover:text-primary transition-colors">{navCopy.eventos}</a></li>
+              <li><Link to="/#inicio" className="hover:text-primary transition-colors">{navCopy.inicio}</Link></li>
+              <li><Link to="/#atractivos" className="hover:text-primary transition-colors">{navCopy.atractivos}</Link></li>
+              <li><Link to="/#actividades" className="hover:text-primary transition-colors">{navCopy.actividades}</Link></li>
+              <li><Link to="/#eventos" className="hover:text-primary transition-colors">{navCopy.eventos}</Link></li>
             </ul>
           </div>
 

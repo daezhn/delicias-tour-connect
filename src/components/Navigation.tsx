@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 import { MagneticButton } from "@/components/MagneticButton";
@@ -88,7 +89,7 @@ export const Navigation = () => {
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
-          <a href="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
+          <Link to="/#inicio" className="flex items-center gap-2 py-1.5 sm:py-2 lg:py-3">
             <span
               className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.5em] backdrop-blur transition-colors duration-300 ${
                 scrolled
@@ -98,13 +99,13 @@ export const Navigation = () => {
             >
               Delicias
             </span>
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-1">
             {links.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 ${
                   scrolled
                     ? "text-foreground/80 hover:text-secondary"
@@ -112,7 +113,7 @@ export const Navigation = () => {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -130,13 +131,13 @@ export const Navigation = () => {
               {locale === "es" ? "ES" : "EN"}
             </button>
             <MagneticButton>
-              <a
-                href="/tours"
+              <Link
+                to="/tours"
                 className="group relative inline-flex items-center overflow-hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_25px_rgba(0,174,192,0.35)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_15px_35px_rgba(0,174,192,0.45)] active:scale-95"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                 <span className="relative z-10">{locale === "es" ? "Explorar" : "Explore"}</span>
-              </a>
+              </Link>
             </MagneticButton>
           </div>
 
@@ -170,24 +171,24 @@ export const Navigation = () => {
           </div>
           <div className="flex flex-col gap-2">
             {links.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="rounded-2xl px-4 py-3 text-base font-medium tracking-wide text-foreground hover:bg-black/5"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <MagneticButton className="w-full">
-              <a
-                href="/tours"
+              <Link
+                to="/tours"
                 onClick={() => setOpen(false)}
                 className="group relative mt-1 inline-flex w-full items-center justify-center overflow-hidden rounded-2xl bg-primary px-4 py-3 text-base font-semibold tracking-wide text-white transition-all duration-300 active:scale-95"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                 <span className="relative z-10">{locale === "es" ? "Explorar" : "Explore"}</span>
-              </a>
+              </Link>
             </MagneticButton>
           </div>
         </div>

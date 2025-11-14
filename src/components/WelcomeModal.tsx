@@ -3,6 +3,7 @@ import { Sparkles } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const modalCopy = {
   es: {
@@ -69,7 +70,7 @@ export const WelcomeModal = () => {
               className="flex-1 bg-[#f6b043] text-slate-900 transition hover:-translate-y-0.5 hover:bg-[#f6b043]/90"
               onClick={() => handleOpenChange(false)}
             >
-              <a href="/#eventos">{copy.primaryCta}</a>
+              <Link to="/#eventos">{copy.primaryCta}</Link>
             </Button>
             <Button
               asChild
@@ -77,7 +78,7 @@ export const WelcomeModal = () => {
               className="flex-1 border-white/60 bg-white/80 text-secondary transition hover:-translate-y-0.5 hover:bg-white"
               onClick={() => handleOpenChange(false)}
             >
-              <a href="/#plan-trip">{copy.secondaryCta}</a>
+              <Link to="/#plan-trip">{copy.secondaryCta}</Link>
             </Button>
           </div>
           <Button variant="ghost" className="text-muted-foreground" onClick={() => handleOpenChange(false)}>

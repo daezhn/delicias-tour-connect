@@ -114,7 +114,11 @@ const ExperienciasVidaNocturna = () => {
           <div className="absolute inset-0">
             <img
               src="/images/Galería/17.jpg"
-              alt=""
+              alt={
+                locale === "es"
+                  ? "Personas brindando en un bar iluminado de Delicias"
+                  : "Friends enjoying cocktails under neon lights in Delicias"
+              }
               className="h-full w-full object-cover opacity-40"
               loading="lazy"
               decoding="async"
@@ -182,14 +186,22 @@ const ExperienciasVidaNocturna = () => {
               <div className="grid gap-4 sm:grid-cols-2">
                 <img
                   src="/images/Galería/10.jpg"
-                  alt=""
+                  alt={
+                    locale === "es"
+                      ? "Cocteles coloridos servidos en una barra local"
+                      : "Colorful cocktails served at a local bar"
+                  }
                   className="h-48 w-full rounded-[28px] object-cover shadow-[0_25px_55px_rgba(0,0,0,0.4)]"
                   loading="lazy"
                   decoding="async"
                 />
                 <img
                   src="/images/Galería/1.jpg"
-                  alt=""
+                  alt={
+                    locale === "es"
+                      ? "DJ y pista de baile iluminada en Delicias"
+                      : "DJ booth and dance floor lit up in Delicias"
+                  }
                   className="h-48 w-full rounded-[28px] object-cover shadow-[0_25px_55px_rgba(0,0,0,0.4)]"
                   loading="lazy"
                   decoding="async"

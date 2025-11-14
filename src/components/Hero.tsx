@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { CalendarDays, Compass, Utensils, Mountain, Hotel, Activity, Car, MessageSquare } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -79,6 +80,7 @@ export const Hero = () => {
   const { locale } = useLocale();
   const [hideScrollCue, setHideScrollCue] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
   const scrollCopy = locale === "es" ? "Desplázate" : "Scroll";
 
   const heroLinks = useMemo(() => {
@@ -150,20 +152,41 @@ export const Hero = () => {
     };
   }, []);
 
+  const heroTransformParts: string[] = [];
+  if (isDesktop) heroTransformParts.push("scaleY(1.1)");
+  if (!heroLoaded) heroTransformParts.push("scale(1.05)");
+  const heroImageStyles = {
+    transform: heroTransformParts.join(" ") || undefined,
+    filter: heroLoaded ? "blur(0px)" : "blur(18px)",
+    opacity: heroLoaded ? 1 : 0,
+    transition: "opacity 500ms ease, filter 600ms ease, transform 800ms ease"
+  } as const;
+
   return (
     <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[103svh] sm:min-h-[110vh] overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-[#0f0501] via-[#12051a] to-[#03050a] transition-opacity duration-700 ${
+            heroLoaded ? "opacity-0" : "opacity-100"
+          }`}
+          aria-hidden="true"
+        />
+        <div
+          className={`absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_45%),radial-gradient(circle_at_70%_10%,rgba(255,255,255,0.06),transparent_50%)] blur-3xl transition-opacity duration-700 ${
+            heroLoaded ? "opacity-0" : "opacity-100"
+          }`}
+          aria-hidden="true"
+        />
         <picture className="block h-full w-full">
           <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />
           <img
             src={HERO_IMAGE_DESKTOP}
             alt={locale === "es" ? "Aquí todo es Delicioso" : "Everything is Delicious"}
-            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-cover lg:object-center xl:object-cover xl:object-center transition-transform duration-700"
-            style={{
-              transform: isDesktop ? "scaleY(1.1)" : undefined,
-            }}
+            className="h-full w-full object-cover object-[center_85%] sm:object-[center_88%] lg:object-cover lg:object-center xl:object-cover xl:object-center"
+            style={heroImageStyles}
             loading="eager"
             decoding="async"
+            onLoad={() => setHeroLoaded(true)}
           />
         </picture>
         <div
@@ -206,7 +229,7 @@ export const Hero = () => {
       >
         <img
           src="/images/recurso.png"
-          alt=""
+          alt={locale === "es" ? "Sello turístico de Delicias" : "Delicias tourism seal"}
           className="h-36 w-36 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
           loading="lazy"
           decoding="async"
@@ -238,15 +261,15 @@ export const Hero = () => {
                   key={`${tile.href}-${tile.label}-mobile`}
                   className={`flex flex-col ${alignment}`}
                 >
-                  <a
-                    href={tile.href}
+                  <Link
+                    to={tile.href}
                     aria-label={tile.label}
                     className="group relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-[24px] border border-white/65 bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
                     style={{ transform: "rotate(45deg)" }}
                   >
                     <img
                       src={tile.image}
-                      alt=""
+                      alt={tile.label}
                       className="h-full w-full object-cover transition duration-700"
                       loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
                       decoding="async"
@@ -269,7 +292,7 @@ export const Hero = () => {
                       </span>
                     </div>
                     <span className="sr-only">{tile.label}</span>
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -291,16 +314,16 @@ export const Hero = () => {
               }`}
             >
               {items.map((tile, idx) => (
-                <a
+                <Link
                   key={`${tile.href}-${tile.label}`}
-                  href={tile.href}
+                  to={tile.href}
                   aria-label={tile.label}
                   className="group relative h-24 w-24 overflow-hidden rounded-[32px] border border-white/60 bg-white/5 shadow-[0_28px_60px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white/90 sm:h-28 sm:w-28"
                   style={{ transform: "rotate(45deg)" }}
                 >
                   <img
                     src={tile.image}
-                    alt=""
+                    alt={tile.label}
                     className="h-full w-full object-cover transition duration-700"
                     loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
                     decoding="async"
@@ -323,7 +346,7 @@ export const Hero = () => {
                     </span>
                   </div>
                   <span className="sr-only">{tile.label}</span>
-                </a>
+                </Link>
               ))}
             </div>
           );

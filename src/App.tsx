@@ -8,6 +8,7 @@ import { FullPageSkeleton } from "@/components/skeletons/FullPageSkeleton";
 import { routeLoaders } from "@/lib/route-preloader";
 import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { ScrollManager } from "@/components/ScrollManager";
 
 type LazyComponent = LazyExoticComponent<ComponentType<any>>;
 
@@ -44,6 +45,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollManager />
         <Routes>
           <Route path="/" element={withSuspense(Index, <FullPageSkeleton tone="sand" sections={4} />)} />
           <Route path="/Atractivos" element={withSuspense(Atractivos)} />
