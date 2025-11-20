@@ -6,19 +6,24 @@ interface SEOProps {
   description?: string;
   image?: string;
   type?: "website" | "article";
+  canonical?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 export const SEO = ({ 
   title, 
   description, 
   image = "/images/herook.png", 
-  type = "website" 
+  type = "website",
+  canonical,
+  jsonLd
 }: SEOProps) => {
   const { locale } = useLocale();
   
   const siteName = "Delicias Tour Connect";
   const fullTitle = `${title} | ${siteName}`;
   const currentUrl = window.location.href;
+  const effectiveCanonical = canonical || currentUrl;
 
   return (
     <Helmet>
@@ -26,6 +31,7 @@ export const SEO = ({
       <html lang={locale} />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <link rel="canonical" href={effectiveCanonical} />
       
       {/* Security: Content Security Policy */}
       <meta 
@@ -35,7 +41,7 @@ export const SEO = ({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={currentUrl} />
+      <meta property="og:url" content={effectiveCanonical} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
@@ -47,6 +53,13 @@ export const SEO = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* Structured Data */}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };

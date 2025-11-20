@@ -11,6 +11,8 @@ import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollManager } from "@/components/ScrollManager";
 import { PageTransition } from "@/components/PageTransition";
+import { SplashScreen } from "@/components/SplashScreen";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 type LazyComponent = LazyExoticComponent<ComponentType<unknown>>;
 
@@ -71,6 +73,8 @@ const AnimatedRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SplashScreen />
+      <SmoothScroll />
       <ScrollProgress />
       <CursorFollower />
       <Toaster />
