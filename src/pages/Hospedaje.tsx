@@ -179,15 +179,17 @@ const Hospedaje = () => {
                 <Button
                   asChild
                   variant="default"
-                  className="bg-[#FF385C] text-white hover:bg-[#FF385C]/90"
+                  className="relative overflow-hidden bg-gradient-to-r from-[#FF385C] to-[#BD1E59] px-8 py-6 text-lg font-bold text-white shadow-[0_8px_20px_rgba(255,56,92,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_25px_rgba(255,56,92,0.5)] active:scale-95"
                 >
                   <a
                     href="https://www.airbnb.mx/s/Delicias--Chihuahua--México/homes"
                     target="_blank"
                     rel="noreferrer"
+                    className="flex items-center gap-2"
                   >
-                    <ArrowUpRight className="mr-2 h-4 w-4" />
-                    Airbnb
+                    <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                    <ArrowUpRight className="h-5 w-5 animate-pulse" />
+                    <span className="relative z-10">Airbnb</span>
                   </a>
                 </Button>
               </div>

@@ -1,5 +1,7 @@
+import { useRef, useEffect, useState } from "react";
 import { useLocale } from "@/hooks/use-locale";
 import { Reveal } from "@/components/Reveal";
+import { Volume2, VolumeX } from "lucide-react";
 
 const PARAGRAPHS = {
   es: [
@@ -40,11 +42,45 @@ export const WelcomeDelicias = () => {
   const { locale } = useLocale();
   const paragraphs = PARAGRAPHS[locale] ?? PARAGRAPHS.es;
   const columnHeights = ["h-[300px] sm:h-[420px]", "h-[240px] sm:h-[360px]"];
+  
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current?.play().catch(() => {
+              // Autoplay might be prevented by browser policy
+              console.log("Autoplay prevented");
+            });
+          } else {
+            videoRef.current?.pause();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
 
   return (
     <section className="bg-[#fffdf8] pt-10 pb-20 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr,0.95fr]">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="grid gap-12 lg:grid-cols-[1fr,1.2fr]">
           <Reveal variant="fade-up" className="space-y-6 text-foreground">
             <p className="font-tourism text-3xl text-secondary/90">{STRINGS.subtitle[locale]}</p>
             <div>
@@ -59,19 +95,38 @@ export const WelcomeDelicias = () => {
             <p className="text-sm italic text-foreground/70">{STRINGS.closing[locale]}</p>
           </Reveal>
 
-          <Reveal variant="fade-up" delay={120} className="flex flex-col gap-6 sm:flex-row">
+          <Reveal variant="fade-up" delay={120} className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+             {/* Video Reel */}
+             <div className="group relative overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_50px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_70px_rgba(4,18,42,0.2)] hover:-translate-y-1 h-[320px] sm:h-[440px] mt-8 sm:mt-0">
+              <video
+                ref={videoRef}
+                src="/images/entretumbas.mp4"
+                className="h-full w-full object-cover"
+                loop
+                muted={isMuted}
+                playsInline
+              />
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-4 right-4 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition hover:bg-black/60"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
+            </div>
+
             {GALLERY_IMAGES.map((image, index) => (
               <div
                 key={image.src}
-                className={`group flex-1 overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_50px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_70px_rgba(4,18,42,0.2)] hover:-translate-y-1 ${columnHeights[index]} ${
-                  index === 1 ? "sm:mt-12" : ""
+                className={`group overflow-hidden rounded-[28px] border border-black/5 shadow-[0_25px_50px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_70px_rgba(4,18,42,0.2)] hover:-translate-y-1 ${columnHeights[index]} ${
+                  index === 1 ? "mt-12 sm:mt-20" : "mt-6 sm:mt-10"
                 }`}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                  loading={index === 0 ? "lazy" : "lazy"}
+                  loading="lazy"
                   decoding="async"
                 />
               </div>
