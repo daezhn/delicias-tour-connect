@@ -32,7 +32,7 @@ const STRINGS = {
 };
 
 const GALLERY_IMAGES = [
-  { src: "/images/Galería/4.jpg", alt: "Panorámica nocturna del centro de Delicias" },
+  { src: "/images/motocross.png", alt: "Motocross en Delicias" },
   { src: "/images/Galería/12.jpg", alt: "Atardecer dorado sobre el desierto de Delicias" }
 ];
 

@@ -187,33 +187,32 @@ const ExperienciasArteCultura = () => {
                 href="https://maps.google.com/?q=Arte+y+cultura+Delicias+Chihuahua"
                 target="_blank"
                 rel="noreferrer"
-                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
                 {locale === "es" ? "Mapa cultural" : "Cultural map"}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 h-full">
               <img
-                src="/images/museo.jpg"
-                alt=""
-                className="h-64 w-full rounded-[32px] border border-white/60 object-cover shadow-[0_30px_80px_rgba(120,82,55,0.25)]"
+                src="/images/arte y cultura/mudech1.png"
+                alt="MUDECH"
+                className="h-full min-h-[24rem] w-full rounded-[32px] border border-white/60 object-cover shadow-[0_30px_80px_rgba(120,82,55,0.25)]"
                 loading="lazy"
                 decoding="async"
               />
-              <div className="grid gap-4">
+              <div className="grid gap-4 h-full">
                 <img
-                  src="/images/event-2.jpg"
-                  alt=""
-                  className="h-32 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
+                  src="/images/arte y cultura/teatro.png"
+                  alt="Teatro de la Ciudad"
+                  className="h-52 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
                 <img
-                  src="/images/teatro.jpg"
-                  alt=""
-                  className="h-32 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
+                  src="/images/arte y cultura/teatro2.png"
+                  alt="Interior Teatro"
+                  className="h-52 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
@@ -272,7 +271,6 @@ const ExperienciasArteCultura = () => {
                 href="https://maps.google.com/?q=Museos+en+Delicias+Chihuahua"
                 target="_blank"
                 rel="noreferrer"
-                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
                 {locale === "es" ? "Abrir mapa" : "Open map"}
@@ -296,50 +294,7 @@ const ExperienciasArteCultura = () => {
           </div>
         </section>
 
-        <section className="bg-secondary py-20 text-white">
-          <div className="mx-auto max-w-6xl space-y-8 px-4">
-            <div className="space-y-2 text-center">
-              <p className="text-[11px] uppercase tracking-[0.5em] text-white/70">
-                {locale === "es" ? "Publicaciones destacadas" : "Featured publications"}
-              </p>
-              <h2 className="text-3xl font-black">
-                {locale === "es" ? "Desde el archivo" : "From the archive"}
-              </h2>
-            </div>
-            <div className="flex gap-5 overflow-x-auto pb-4">
-              {editorialStories.map((story) => (
-                <article
-                  key={story.title.es}
-                  className="relative h-80 w-[320px] flex-shrink-0 overflow-hidden rounded-[36px] border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.35)]"
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(7,20,50,0.25) 0%, rgba(7,20,50,0.8) 100%), url(${story.image})`
-                    }}
-                  />
-                  <div className="relative z-10 flex h-full flex-col justify-end p-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-white/75">
-                      {story.category[locale]}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-semibold leading-tight">{story.title[locale]}</h3>
-                    <p className="mt-2 text-sm text-white/85">{story.description[locale]}</p>
-                    <a
-                      href={story.link}
-                      target="_blank"
-                rel="noreferrer"
-                      rel="noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em]"
-                    >
-                      {locale === "es" ? "Leer historia" : "Read story"}
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

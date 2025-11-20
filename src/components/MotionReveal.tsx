@@ -7,7 +7,7 @@ interface MotionRevealProps {
   className?: string;
   delay?: number;
   duration?: number;
-  variant?: "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale-up" | "none";
+  variant?: "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale-up" | "wipe-right" | "wipe-up" | "zoom-reveal" | "none";
   threshold?: number;
   once?: boolean;
 }
@@ -45,6 +45,18 @@ export const MotionReveal = ({
     "scale-up": {
       hidden: { opacity: 0, scale: 0.8 },
       visible: { opacity: 1, scale: 1 },
+    },
+    "wipe-right": {
+      hidden: { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+      visible: { opacity: 1, clipPath: "inset(0 0% 0 0)" },
+    },
+    "wipe-up": {
+      hidden: { opacity: 0, clipPath: "inset(100% 0 0 0)" },
+      visible: { opacity: 1, clipPath: "inset(0 0 0 0)" },
+    },
+    "zoom-reveal": {
+      hidden: { opacity: 0, scale: 1.1, filter: "blur(10px)" },
+      visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
     },
     none: {
       hidden: {},

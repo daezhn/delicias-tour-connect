@@ -173,3 +173,4 @@ const { ref, style } = useParallax({ speed: 0.3 });
 <img ref={ref} style={style} src="/hero.jpg" />
 ```
 
+

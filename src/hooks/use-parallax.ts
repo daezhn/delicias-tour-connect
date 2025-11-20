@@ -52,3 +52,4 @@ export const useParallax = ({
   return { ref, style: { transform } };
 };
 
+

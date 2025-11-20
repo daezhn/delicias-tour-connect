@@ -11,14 +11,14 @@ const neonVenues = [
     label: { es: "Bares de autor", en: "Signature bars" },
     title: { es: "Cócteles", en: "Cocktails" },
     detail: {
-      es: "Barras íntimas con mixología creativa, bitters caseros y playlists cuidadas para antes del club.",
-      en: "Intimate bars pouring creative sotol mixes, house bitters and curated playlists to start the night."
+      es: "Barras íntimas con mixología creativa y playlists cuidadas para antes del club.",
+      en: "Intimate bars pouring creative sotol mixes and curated playlists to start the night."
     }
   },
   {
     image: "/vidanocturna/1.jpg",
     label: { es: "Antros inmersivos", en: "Immersive clubs" },
-    title: { es: "Pantallas y DJ sets", en: "Screens & DJ sets" },
+    title: { es: "DJ sets", en: "DJ sets" },
     detail: {
       es: "Salas con mapping, line ups de electrónica y reggaetón y barras abiertas hasta la madrugada.",
       en: "Mapped rooms with electronic/reggaeton lineups and bars running until late."
@@ -30,8 +30,8 @@ const neonVenues = [
     label: { es: "Afterhours criollo", en: "Criollo afterhours" },
     title: { es: "Tacos nocturnos", en: "Late-night tacos" },
     detail: {
-      es: "Foodtrucks frente a los clubs con trompos y salsas de nuez.",
-      en: "Food trucks outside clubs with trompo and pecan salsas."
+      es: "Foodtrucks frente a las plazas principales.",
+      en: "Food trucks."
     }
   }
 ] as const;
@@ -54,14 +54,6 @@ const nightTimeline = [
     }
   },
   {
-    time: "01:30",
-    title: { es: "After", en: "After" },
-    description: {
-      es: "Cantinas con jam sessions íntimas y maridajes dulces.",
-      en: "Cantinas hosting intimate jam sessions and sweet pairings."
-    }
-  },
-  {
     time: "03:00",
     title: { es: "Food trucks nocturnos", en: "Late-night food trucks" },
     description: {
@@ -75,7 +67,7 @@ const afterTips = [
   {
     heading: { es: "Dress code brillante", en: "Glow-ready dress code" },
     copy: {
-      es: "Muchas terrazas piden smart casual; suma accesorios metálicos para resaltar con la iluminación LED.",
+      es: "Muchas terrazas piden smart casual; suma accesorios metálicos para resaltar.",
       en: "Rooftops lean smart casual; add metallic accessories so LEDs make you pop."
     }
   },
@@ -151,7 +143,7 @@ const ExperienciasVidaNocturna = () => {
               <p className="font-script text-3xl italic text-[#ffb4d9]">{heroScript}</p>
               <p className="max-w-xl text-base text-white/80">{heroCopy}</p>
               <div className="flex flex-wrap gap-3">
-                {["DJs", "Drinks", "Rooftops", "After"].map((chip) => (
+                {["DJs", "Drinks", "Terrazas", "Food trucks"].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full border border-white/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/80"

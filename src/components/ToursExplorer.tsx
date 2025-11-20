@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 import { TourMap } from "@/components/TourMap";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const specialOffers = [
   {
@@ -70,8 +71,8 @@ export const ToursExplorer = () => {
       const term = search.toLowerCase();
       const matchesSearch = term
         ? tour.title.es.toLowerCase().includes(term) ||
-          tour.title.en.toLowerCase().includes(term) ||
-          tour.description.es.toLowerCase().includes(term)
+        tour.title.en.toLowerCase().includes(term) ||
+        tour.description.es.toLowerCase().includes(term)
         : true;
       const matchesPrice =
         (!minPrice || tour.price >= Number(minPrice)) &&
@@ -160,7 +161,7 @@ export const ToursExplorer = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-foreground">
         {filtered.map((tour, index) => (
           <Reveal key={tour.id} variant="fade-up" delay={index * 80}>
-            <Card className="flex h-full flex-col overflow-hidden border border-white/50 bg-white/80 shadow-[0_30px_70px_rgba(4,18,42,0.12)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_rgba(4,18,42,0.15)] backdrop-blur">
+            <SpotlightCard className="flex h-full flex-col overflow-hidden border border-white/50 bg-white/80 shadow-[0_30px_70px_rgba(4,18,42,0.12)] transition hover:-translate-y-1 hover:shadow-[0_40px_90px_rgba(4,18,42,0.15)] backdrop-blur">
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={tour.gallery[0]}
@@ -210,7 +211,7 @@ export const ToursExplorer = () => {
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </SpotlightCard>
           </Reveal>
         ))}
       </div>
@@ -274,7 +275,6 @@ export const ToursExplorer = () => {
                       <a
                         href={`https://www.google.com/maps/search/?api=1&query=${selected.location.lat},${selected.location.lng}`}
                         target="_blank"
-                        rel="noreferrer"
                         rel="noreferrer"
                       >
                         {locale === "es" ? "Ver en Maps" : "Open in Maps"}

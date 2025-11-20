@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/hooks/use-locale";
 import { quickLinks } from "@/data/hero-links";
 import { HeroTile } from "@/components/HeroTile";
+import { MotionReveal } from "@/components/MotionReveal";
 
 // Single static hero background containing embedded text per client request
 const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg"; // provided asset in public/images
@@ -99,15 +100,13 @@ export const Hero = () => {
     <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[103svh] sm:min-h-[110vh] overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <div
-          className={`absolute inset-0 bg-gradient-to-b from-[#0f0501] via-[#12051a] to-[#03050a] transition-opacity duration-700 ${
-            heroLoaded ? "opacity-0" : "opacity-100"
-          }`}
+          className={`absolute inset-0 bg-gradient-to-b from-[#0f0501] via-[#12051a] to-[#03050a] transition-opacity duration-700 ${heroLoaded ? "opacity-0" : "opacity-100"
+            }`}
           aria-hidden="true"
         />
         <div
-          className={`absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_45%),radial-gradient(circle_at_70%_10%,rgba(255,255,255,0.06),transparent_50%)] blur-3xl transition-opacity duration-700 ${
-            heroLoaded ? "opacity-0" : "opacity-100"
-          }`}
+          className={`absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_45%),radial-gradient(circle_at_70%_10%,rgba(255,255,255,0.06),transparent_50%)] blur-3xl transition-opacity duration-700 ${heroLoaded ? "opacity-0" : "opacity-100"
+            }`}
           aria-hidden="true"
         />
         <picture className="block h-full w-full">
@@ -148,37 +147,45 @@ export const Hero = () => {
         className="absolute right-4 z-20 hidden sm:block sm:right-6"
         style={{ top: "calc(var(--nav-offset, 72px) + 20px)" }}
       >
-        <img
-          src="/images/Logoideablanco.png"
-          alt="Idea Delicias"
-          className="h-12 w-auto object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)] lg:h-14"
-          loading="lazy"
-          decoding="async"
-        />
+        <MotionReveal variant="fade-down" delay={0.5}>
+          <img
+            src="/images/Logoideablanco.png"
+            alt="Idea Delicias"
+            className="h-12 w-auto object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)] lg:h-14"
+            loading="lazy"
+            decoding="async"
+          />
+        </MotionReveal>
       </div>
-      <div 
+      <div
         className="pointer-events-none absolute right-1 flex items-center gap-3 sm:hidden"
         style={{ top: "calc(var(--nav-offset, 72px) - 32px)" }}
       >
-        <img
-          src="/images/recurso.png"
-          alt={locale === "es" ? "Sello turístico de Delicias" : "Delicias tourism seal"}
-          className="h-36 w-36 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
-          loading="lazy"
-          decoding="async"
-        />
-        <img
-          src="/images/Logoideablanco.png"
-          alt="Idea Delicias"
-          className="h-10 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
-          loading="lazy"
-          decoding="async"
-        />
+        <MotionReveal variant="fade-left" delay={0.2}>
+          <img
+            src="/images/recurso.png"
+            alt={locale === "es" ? "Sello turístico de Delicias" : "Delicias tourism seal"}
+            className="h-36 w-36 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
+            loading="lazy"
+            decoding="async"
+          />
+        </MotionReveal>
+        <MotionReveal variant="fade-down" delay={0.4}>
+          <img
+            src="/images/Logoideablanco.png"
+            alt="Idea Delicias"
+            className="h-10 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
+            loading="lazy"
+            decoding="async"
+          />
+        </MotionReveal>
       </div>
       <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:hidden">
-        <div className="rounded-full border border-white/30 bg-black/45 px-4 py-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur">
-          {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
-        </div>
+        <MotionReveal variant="fade-up" delay={1}>
+          <div className="rounded-full border border-white/30 bg-black/45 px-4 py-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur">
+            {locale === "es" ? "Presiona un ícono para ir a su categoría" : "Press an icon to visit its category"}
+          </div>
+        </MotionReveal>
       </div>
       {/* Zig-zag dual-column diamond layout near the hero clock */}
       <div className="absolute inset-x-0 top-40 z-10 flex justify-between px-6 sm:hidden">
@@ -219,9 +226,8 @@ export const Hero = () => {
           return (
             <div
               key={`column-${columnIndex}`}
-              className={`flex flex-col gap-12 sm:gap-14 ${
-                columnIndex === 1 ? "mt-24 sm:mt-32" : ""
-              }`}
+              className={`flex flex-col gap-12 sm:gap-14 ${columnIndex === 1 ? "mt-24 sm:mt-32" : ""
+                }`}
             >
               {items.map((tile, idx) => (
                 <HeroTile
@@ -241,9 +247,8 @@ export const Hero = () => {
       </div>
       {/* Desktop-only scroll cue */}
       <div
-        className={`pointer-events-none absolute bottom-10 left-1/2 z-20 hidden -translate-x-1/2 transition-all duration-500 sm:block ${
-          hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
-        }`}
+        className={`pointer-events-none absolute bottom-10 left-1/2 z-20 hidden -translate-x-1/2 transition-all duration-500 sm:block ${hideScrollCue ? "translate-y-4 opacity-0" : "opacity-100"
+          }`}
       >
         <div className="flex flex-col items-center gap-3 text-white/80">
           <div className="h-14 w-8 rounded-full border border-white/50 p-1">

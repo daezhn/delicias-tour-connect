@@ -1,6 +1,6 @@
 import { ArrowUpRight, MousePointerClick } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
-import type { CSSProperties } from "react";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const experiences = [
   {
@@ -69,35 +69,28 @@ export const ExperiencesCollage = () => {
         </div>
         <div className="grid auto-rows-[260px] gap-4 sm:auto-rows-[350px] lg:auto-rows-[420px] sm:grid-cols-6">
           {experiences.map((item) => (
-            <a
+            <SpotlightCard
               key={item.id}
-              href={item.href}
-              className={`premium-card group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition-all duration-500 hover:shadow-[0_45px_90px_rgba(4,18,42,0.25)] hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${item.layout ?? ""}`}
-              style={{ "--mouse-x": "50%", "--mouse-y": "50%" } as CSSProperties}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
-                e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
-              }}
+              className={`group relative block overflow-hidden rounded-[36px] border border-white/10 shadow-[0_35px_70px_rgba(4,18,42,0.15)] transition-all duration-500 hover:shadow-[0_45px_90px_rgba(4,18,42,0.25)] hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${item.layout ?? ""}`}
             >
-              <img
-                src={item.image}
-                alt={item.title[locale]}
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <span className="pointer-events-none absolute right-4 top-4 h-14 w-14 glow-orb-ring" aria-hidden="true" />
-              <span className="pointer-events-none absolute right-4 top-4 z-10 inline-flex h-12 w-12 items-center justify-center glow-orb ring-1 ring-white/60 shadow-xl transition group-hover:scale-105" aria-hidden="true">
-                <ArrowUpRight className="h-5 w-5" />
-              </span>
-              <div className="absolute inset-0 flex items-end p-5">
-                <p className="text-2xl font-semibold text-white drop-shadow">{item.title[locale]}</p>
-              </div>
-            </a>
+              <a href={item.href} className="block h-full w-full">
+                <img
+                  src={item.image}
+                  alt={item.title[locale]}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <span className="pointer-events-none absolute right-4 top-4 h-14 w-14 glow-orb-ring" aria-hidden="true" />
+                <span className="pointer-events-none absolute right-4 top-4 z-10 inline-flex h-12 w-12 items-center justify-center glow-orb ring-1 ring-white/60 shadow-xl transition group-hover:scale-105" aria-hidden="true">
+                  <ArrowUpRight className="h-5 w-5" />
+                </span>
+                <div className="absolute inset-0 flex items-end p-5">
+                  <p className="text-2xl font-semibold text-white drop-shadow">{item.title[locale]}</p>
+                </div>
+              </a>
+            </SpotlightCard>
           ))}
         </div>
       </div>

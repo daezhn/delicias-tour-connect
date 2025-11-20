@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react"
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 import { Link } from "react-router-dom";
+import { MotionReveal } from "@/components/MotionReveal";
 
 export const Footer = () => {
   const { locale } = useLocale();
@@ -18,7 +19,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About */}
-          <div>
+          <MotionReveal delay={0}>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-white" />
@@ -31,10 +32,10 @@ export const Footer = () => {
             <p className="text-sm text-white/70">
               {copy.aboutDescription}
             </p>
-          </div>
+          </MotionReveal>
 
           {/* Quick Links */}
-          <div>
+          <MotionReveal delay={0.1}>
             <h4 className="font-bold text-lg mb-4">{copy.quickLinksTitle}</h4>
             <ul className="space-y-2 text-sm text-white/70">
               <li><Link to="/#inicio" className="hover:text-primary transition-colors">{navCopy.inicio}</Link></li>
@@ -42,10 +43,10 @@ export const Footer = () => {
               <li><Link to="/#actividades" className="hover:text-primary transition-colors">{navCopy.actividades}</Link></li>
               <li><Link to="/#eventos" className="hover:text-primary transition-colors">{navCopy.eventos}</Link></li>
             </ul>
-          </div>
+          </MotionReveal>
 
           {/* Contact */}
-          <div>
+          <MotionReveal delay={0.2}>
             <h4 className="font-bold text-lg mb-4">{copy.contactTitle}</h4>
             <ul className="space-y-3 text-sm text-white/70">
               <li className="flex items-start gap-2">
@@ -61,35 +62,35 @@ export const Footer = () => {
                 <span>turismo@delicias.gob.mx</span>
               </li>
             </ul>
-          </div>
+          </MotionReveal>
 
           {/* Social Media */}
-          <div>
+          <MotionReveal delay={0.3}>
             <h4 className="font-bold text-lg mb-4">{copy.followTitle}</h4>
             <div className="flex gap-3">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="YouTube"
               >
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
-          </div>
+          </MotionReveal>
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70">

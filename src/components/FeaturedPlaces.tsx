@@ -3,6 +3,7 @@ import { attractions } from "@/data/attractions";
 import { Reveal } from "@/components/Reveal";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const featuredIds = [1, 4, 6, 5];
 const featuredPlaces = featuredIds
@@ -28,25 +29,25 @@ export const FeaturedPlaces = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {featuredPlaces.map((place, index) => (
           <Reveal key={place.id} variant="fade-up" delay={index * 80}>
-            <Link
-              to={`/Atractivos#atractivo-${place.id}`}
-              className={`relative block overflow-hidden rounded-[28px] border border-black/5 bg-black ${
-                index === 0 ? "md:col-span-2 md:row-span-2" : ""
-              }`}
+            <SpotlightCard
+              className={`relative block overflow-hidden rounded-[28px] border border-black/5 bg-black ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
+                }`}
             >
-              <img
-                src={place.image}
-                alt={place.name}
-                className="h-full w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-4">
-                <p className="text-[11px] uppercase tracking-[0.35em] text-white/70">Delicias · Chihuahua</p>
-                <p className="text-xl font-semibold text-white">{place.name}</p>
-              </div>
-            </Link>
+              <Link to={`/Atractivos#atractivo-${place.id}`} className="block h-full w-full">
+                <img
+                  src={place.image}
+                  alt={place.name}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.35em] text-white/70">Delicias · Chihuahua</p>
+                  <p className="text-xl font-semibold text-white">{place.name}</p>
+                </div>
+              </Link>
+            </SpotlightCard>
           </Reveal>
         ))}
       </div>
