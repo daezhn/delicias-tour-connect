@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { SEO } from "@/components/SEO";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const heroHighlights = [
   {
@@ -179,26 +180,26 @@ const ExperienciasQueComer = () => {
                 ))}
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 h-full">
               <img
                 src="/images/restaurant-4.jpg"
                 alt=""
-                className="h-60 w-full rounded-[32px] border border-white object-cover shadow-[0_20px_55px_rgba(133,78,50,0.3)]"
+                className="h-full min-h-[24rem] w-full rounded-[32px] border border-white object-cover shadow-[0_20px_55px_rgba(133,78,50,0.3)]"
                 loading="lazy"
                 decoding="async"
               />
-              <div className="grid gap-4">
+              <div className="grid gap-4 h-full">
                 <img
-                  src="/images/restaurant-1.jpg"
-                  alt=""
-                  className="h-28 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
+                  src="/images/que_comer/agave.png"
+                  alt="Agave"
+                  className="h-52 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
                 <img
                   src="/images/restaurant-2.jpg"
                   alt=""
-                  className="h-28 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
+                  className="h-52 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
@@ -246,43 +247,7 @@ const ExperienciasQueComer = () => {
           </div>
         </section>
 
-        <section className="border-y border-foreground/5 bg-[#fff2e3] py-16">
-          <div className="mx-auto max-w-6xl space-y-8 px-4">
-            <div className="text-center space-y-2">
-              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Menú de degustación" : "Tasting menu"}
-              </p>
-              <h2 className="text-3xl font-black text-secondary">
-                {locale === "es" ? "Sabores imprescindibles" : "Must-taste flavors"}
-              </h2>
-              <p className="text-sm text-foreground/70">
-                {locale === "es"
-                  ? "Seleccionamos un amuse, fondo y postre para que armes tu itinerario foodie."
-                  : "We curated an amuse, main and dessert so you can script your foodie itinerary."}
-              </p>
-            </div>
-            <div className="grid gap-6 lg:grid-cols-3">
-              {tastingMenu.map((item) => (
-                <article
-                  key={item.dish.es}
-                  className="space-y-4 rounded-[32px] border border-secondary/10 bg-white p-5 shadow-[0_20px_45px_rgba(133,78,50,0.15)]"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.dish[locale]}
-                    className="h-48 w-full rounded-[24px] object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <p className="text-[11px] uppercase tracking-[0.45em] text-secondary/70">{item.course[locale]}</p>
-                  <h3 className="text-2xl font-semibold text-secondary">{item.dish[locale]}</h3>
-                  <p className="text-sm text-foreground/70">{item.description[locale]}</p>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">{item.spot}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         <section className="bg-white py-20">
           <div className="mx-auto max-w-6xl grid gap-10 px-4 lg:grid-cols-[1fr,0.9fr]">
@@ -331,9 +296,10 @@ const ExperienciasQueComer = () => {
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
               {mapaGourmet.map((entry) => (
-                <article
+                <SpotlightCard
                   key={entry.name.es}
                   className="flex flex-col rounded-[28px] border border-white/20 bg-white/10 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.25)] backdrop-blur"
+                  spotlightColor="rgba(255, 255, 255, 0.2)"
                 >
                   <h3 className="text-2xl font-semibold">{entry.name[locale]}</h3>
                   <p className="mt-3 text-sm text-white/85">{entry.description[locale]}</p>
@@ -341,13 +307,12 @@ const ExperienciasQueComer = () => {
                     href={entry.link}
                     target="_blank"
                     rel="noreferrer"
-                    rel="noreferrer"
                     className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em]"
                   >
                     {locale === "es" ? "Abrir mapa" : "Open map"}
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
-                </article>
+                </SpotlightCard>
               ))}
             </div>
           </div>

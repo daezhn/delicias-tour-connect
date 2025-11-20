@@ -129,7 +129,7 @@ const busLines = [
     schedule: { es: "Rutas todo el día", en: "All-day routes" },
     perks: { es: "Preferencia por usuarios según Google", en: "Preference for users according to Google" }
   },
-  
+
 ] as const;
 
 const mobilityTips = [
@@ -513,38 +513,7 @@ const Transporte = () => {
           </div>
         </section>
 
-        <section className="bg-[#0c2c68] py-16 text-white" style={lazySectionStyle}>
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center">
-            <p className="font-tourism text-2xl text-white/70">
-              {locale === "es" ? "Coordinación IDEA Delicias" : "IDEA Delicias coordination"}
-            </p>
-            <h2 className="text-3xl font-bold leading-tight">
-              {locale === "es" ? "¿Necesitas traslados personalizados?" : "Need custom transfers?"}
-            </h2>
-            <p className="text-white/80">
-              {locale === "es"
-                ? "Enviamos cotizaciones para grupos, productores y medios que visiten Delicias. Escríbenos con tu itinerario."
-                : "We prepare quotes for groups, producers and media visiting Delicias. Send us your itinerary."}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:contacto@visitadelicias.com"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-secondary shadow-lg"
-              >
-                contacto@visitadelicias.com
-              </a>
-              <a
-                href="https://wa.me/526394675629"
-                target="_blank"
-                rel="noreferrer"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
-              >
-                +52 639 467 5629
-              </a>
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

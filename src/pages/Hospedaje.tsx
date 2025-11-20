@@ -28,8 +28,8 @@ const highlightTiles = [
       en: "Restored townhomes around Plaza Carranza offering rooftops and signature cocktails."
     },
     badges: {
-      es: ["Desayuno local", "Terraza panorámica", "Check-in 24/7"],
-      en: ["Local breakfast", "Panoramic terrace", "24/7 check-in"]
+      es: ["Desayuno local", "Check-in 24/7"],
+      en: ["Local breakfast", "24/7 check-in"]
     }
   },
   {
@@ -38,12 +38,12 @@ const highlightTiles = [
     eyebrow: { es: "Zona norte", en: "North district" },
     title: { es: "Escapadas con alberca", en: "Pool escapes" },
     description: {
-      es: "Complejos con jardines desérticos, asadores y habitaciones familiares hasta para 6 huéspedes.",
-      en: "Desert garden lodges with grills, pools and family suites for up to six guests."
+      es: "Complejos con jardines, asadores y habitaciones familiares hasta para 6 huéspedes.",
+      en: "Garden lodges with grills, pools and family suites for up to six guests."
     },
     badges: {
-      es: ["Asadores", "Kids friendly", "Spa vespertino"],
-      en: ["Grill areas", "Kids friendly", "Sunset spa"]
+      es: ["Kids friendly", "Spa vespertino"],
+      en: ["Kids friendly", "Sunset spa"]
     }
   },
   {
@@ -56,8 +56,8 @@ const highlightTiles = [
       en: "Adobe homes and lofts near pecan groves, ideal for creative retreats and culinary sessions."
     },
     badges: {
-      es: ["Talleres privados", "Huerto propio", "Chef residente"],
-      en: ["Private workshops", "On-site garden", "Resident chef"]
+      es: ["Huerto propio"],
+      en: ["On-site garden"]
     }
   }
 ] as const;
@@ -129,7 +129,7 @@ const Hospedaje = () => {
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
-      <SEO 
+      <SEO
         title={locale === "es" ? "Hospedaje" : "Lodging"}
         description={
           locale === "es"
@@ -171,7 +171,6 @@ const Hospedaje = () => {
                     href="https://www.booking.com/searchresults.es.html?ss=Delicias%2C+Chihuahua%2C+M%C3%A9xico&ssne=Buenavista&ssne_untouched=Buenavista&efdco=1&label=mkt123sc-c9834c4e-4625-4c14-af98-7eccb3d6dec5&sid=0fd0cc83e7eefaf56662edf84b96e6d7&aid=304142&lang=es&sb=1&src_elem=sb&src=index&dest_id=-1677823&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=es&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=721978d2f6f9040c&ac_meta=GhA3MjE5NzhkMmY2ZjkwNDBjIAAoATICZXM6CGRlbGljaWFzQABKAFAA&group_adults=2&no_rooms=1&group_children=0"
                     target="_blank"
                     rel="noreferrer"
-                    rel="noreferrer"
                   >
                     <ArrowUpRight className="mr-2 h-4 w-4" />
                     {hero.cta}
@@ -206,17 +205,6 @@ const Hospedaje = () => {
                       {tile.eyebrow[locale]}
                     </p>
                     <h3 className="text-xl font-semibold text-foreground">{tile.title[locale]}</h3>
-                    <p className="text-sm text-muted-foreground">{tile.description[locale]}</p>
-                    <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
-                      {tile.badges[locale].map((badge) => (
-                        <span
-                          key={badge}
-                          className="rounded-full border border-secondary/20 px-3 py-1 text-secondary/80"
-                        >
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -284,39 +272,7 @@ const Hospedaje = () => {
           </div>
         </section>
 
-        <section className="bg-[#0c2c68] py-16 text-white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center">
-            <p className="font-tourism text-2xl text-white/70">
-              {locale === "es" ? "Hospitalidad local" : "Local hospitality"}
-            </p>
-            <h2 className="text-3xl font-bold leading-tight">
-              {locale === "es"
-                ? "¿Necesitas ayuda para elegir o reservar?"
-                : "Need help choosing or booking?"}
-            </h2>
-            <p className="text-white/80">
-              {locale === "es"
-                ? "Nuestro equipo IDEA arma propuestas para productores, familias y eventos creativos. Comparte fecha, número de huéspedes y estilo."
-                : "IDEA curators craft options for film crews, families and creative events. Send dates, guest count and vibe."}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:hospedaje@visitdelicias.mx"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-secondary shadow-lg"
-              >
-                hospedaje@visitdelicias.mx
-              </a>
-              <a
-                href="https://wa.me/526394720000"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
-              >
-                +52 639 472 0000
-              </a>
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { WelcomeDelicias } from "@/components/WelcomeDelicias";
+import { VideoPromo } from "@/components/VideoPromo";
 import { Events } from "@/components/Events";
 import { Footer } from "@/components/Footer";
 import { FaqSection } from "@/components/FaqSection";
@@ -38,6 +39,10 @@ const Index = () => {
 
         <ParallaxSection speed={0.3}>
           <WelcomeDelicias />
+        </ParallaxSection>
+
+        <ParallaxSection speed={0.25}>
+          <VideoPromo />
         </ParallaxSection>
 
         <section id="eventos" className="py-0 relative">

@@ -21,8 +21,8 @@ export const Footer = () => {
           {/* About */}
           <MotionReveal delay={0}>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/images/IDEAICON.png" alt="IDEA Delicias" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="font-bold text-lg">IDEA Delicias</h3>
@@ -30,7 +30,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-white/70">
-              {copy.aboutDescription}
+              Instituto de Desarrollo Económico y Agropecuario Delicias
             </p>
           </MotionReveal>
 
@@ -55,11 +55,11 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>(639) 000-0000</span>
+                <span>639 171 3086</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>turismo@delicias.gob.mx</span>
+                <span>contacto@ideadelicias.com</span>
               </li>
             </ul>
           </MotionReveal>
@@ -69,33 +69,20 @@ export const Footer = () => {
             <h4 className="font-bold text-lg mb-4">{copy.followTitle}</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/IDEADelicias"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </MotionReveal>
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70">
-          <p>© 2025 IDEA Delicias. {copy.rights}</p>
-          <p className="mt-2">{copy.govt}</p>
+          <p>© 2025 Instituto de Desarrollo Económico y Agropecuario Delicias. {copy.rights}</p>
         </div>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import { FadeImage } from "@/components/FadeImage";
 import { Reveal } from "@/components/Reveal";
 import { MagneticButton } from "@/components/MagneticButton";
 
-const galleryImages = [
+const initialGalleryImages = [
   { src: "/images/Galería/1.jpg", alt: "Vista aérea de Delicias" },
   { src: "/images/Galería/2.jpg", alt: "Detalles urbanos y arquitectura" },
   { src: "/images/Galería/3.jpg", alt: "Plaza principal al atardecer" },
@@ -26,10 +26,26 @@ const galleryImages = [
   { src: "/images/Galería/18.jpg", alt: "Festividades comunitarias" },
   { src: "/images/Galería/19.jpg", alt: "Experiencias de aventura" },
   { src: "/images/Galería/20.jpg", alt: "Atardeceres en Delicias" }
-] as const;
+];
+
+const additionalImages = [
+  "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png",
+  "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png", "18.png", "19.png", "29.png"
+].map(name => ({
+  src: `/images/Galeria/${name}`,
+  alt: "Postales de Delicias"
+}));
+
+const allGalleryImages = [...initialGalleryImages, ...additionalImages];
 
 export const GalleryShowcase = () => {
   const { locale } = useLocale();
+  // Shuffle images on mount using useMemo to ensure consistency during render cycle but random per reload
+  // Note: In a purely client-side app, this runs once per session/reload. 
+  const galleryImages = useMemo(() => {
+    return [...allGalleryImages].sort(() => Math.random() - 0.5);
+  }, []);
+
   const [index, setIndex] = useState(0);
   const total = galleryImages.length;
 

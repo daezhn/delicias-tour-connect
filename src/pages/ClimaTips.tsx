@@ -254,7 +254,6 @@ const ClimaTips = () => {
                   <a
                     href="https://www.google.com/maps/place/Delicias,+Chihuahua"
                     target="_blank"
-                  rel="noreferrer"
                     rel="noreferrer"
                   >
                     <MapPin className="mr-2 h-4 w-4" />
@@ -285,7 +284,6 @@ const ClimaTips = () => {
                 <a
                   href="https://www.meteored.mx/clima-en_Delicias-America+Norte-Mexico-Chihuahua-MMCS-1-26626.html"
                   target="_blank"
-                  rel="noreferrer"
                   rel="noreferrer"
                 >
                   <ArrowUpRight className="mr-2 h-4 w-4" />
@@ -402,39 +400,7 @@ const ClimaTips = () => {
           </div>
         </section>
 
-        <section className="bg-[#0c2c68] py-16 text-white">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center">
-            <p className="font-tourism text-2xl text-white/70">
-              {locale === "es" ? "Coordinación IDEA Delicias" : "IDEA Delicias team"}
-            </p>
-            <h2 className="text-3xl font-bold leading-tight">
-              {locale === "es"
-                ? "¿Necesitas reporte especializado para tu evento?"
-                : "Need a custom weather brief for your event?"}
-            </h2>
-            <p className="text-white/80">
-              {locale === "es"
-                ? "Enviamos pronósticos extendidos para filmaciones, festivales y medios. Comparte fechas y horarios clave."
-                : "We deliver extended forecasts for shoots, festivals and press visits. Share key dates and time blocks."}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:clima@visitdelicias.mx"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-secondary shadow-lg"
-              >
-                clima@visitdelicias.mx
-              </a>
-              <a
-                href="https://wa.me/526394720000"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
-              >
-                +52 639 472 0000
-              </a>
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

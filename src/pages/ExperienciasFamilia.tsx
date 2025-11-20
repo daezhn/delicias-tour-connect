@@ -4,6 +4,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { SEO } from "@/components/SEO";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const heroAlbums = [
   { image: "/images/Familia/fundadores.jpg", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
@@ -182,26 +183,48 @@ const ExperienciasFamilia = () => {
               <p className="font-script text-3xl italic text-secondary/80">{heroScript}</p>
               <p className="max-w-xl text-sm text-foreground/70">{heroCopy}</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {heroAlbums.map((album, index) => (
-                <div
-                  key={album.image}
-                  className="group space-y-2 rounded-[32px] border border-white/60 bg-white/70 p-3 shadow-[0_30px_60px_rgba(203,137,92,0.2)] backdrop-blur"
-                >
-                  <div className="relative overflow-hidden rounded-[28px]">
-                    <img
-                      src={album.image}
-                      alt={album.caption[locale]}
-                      className="h-48 w-full object-cover transition duration-700 group-hover:scale-105 animate-float-y"
-                      loading="lazy"
-                      decoding="async"
-                      style={{ animationDelay: `${index * 0.4}s` }}
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" aria-hidden="true" />
-                  </div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/50">{album.caption[locale]}</p>
+            <div className="grid gap-4 sm:grid-cols-2 h-full">
+              <div className="group relative overflow-hidden rounded-[32px] border border-white/60 bg-white/70 shadow-[0_30px_60px_rgba(203,137,92,0.2)] backdrop-blur">
+                <img
+                  src={heroAlbums[0].image}
+                  alt={heroAlbums[0].caption[locale]}
+                  className="h-full min-h-[24rem] w-full object-cover transition duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <p className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/90">
+                  {heroAlbums[0].caption[locale]}
+                </p>
+              </div>
+              <div className="grid gap-4 h-full">
+                <div className="group relative overflow-hidden rounded-[28px] border border-white/60 bg-white/70 shadow-[0_20px_50px_rgba(203,137,92,0.2)] backdrop-blur">
+                  <img
+                    src={heroAlbums[1].image}
+                    alt={heroAlbums[1].caption[locale]}
+                    className="h-52 w-full object-cover transition duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <p className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/90">
+                    {heroAlbums[1].caption[locale]}
+                  </p>
                 </div>
-              ))}
+                <div className="group relative overflow-hidden rounded-[28px] border border-white/60 bg-white/70 shadow-[0_20px_50px_rgba(203,137,92,0.2)] backdrop-blur">
+                  <img
+                    src={heroAlbums[2].image}
+                    alt={heroAlbums[2].caption[locale]}
+                    className="h-52 w-full object-cover transition duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <p className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/90">
+                    {heroAlbums[2].caption[locale]}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="pointer-events-none absolute bottom-8 right-6 hidden rounded-[28px] border border-white/50 bg-white/75 px-6 py-4 text-xs uppercase tracking-[0.4em] text-secondary shadow-[0_25px_65px_rgba(203,137,92,0.25)] backdrop-blur lg:block">
@@ -222,7 +245,6 @@ const ExperienciasFamilia = () => {
               <a
                 href="https://encortodigital.com/general/inauguran-parque-vida-en-delicias/"
                 target="_blank"
-                rel="noreferrer"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
@@ -272,21 +294,20 @@ const ExperienciasFamilia = () => {
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
               {kidAgenda.map((event) => (
-                <article key={event.title.es} className="flex flex-col rounded-[28px] border border-foreground/10 bg-[#fff7ef] p-5 shadow-[0_15px_35px_rgba(203,137,92,0.12)]">
+                <SpotlightCard key={event.title.es} className="flex flex-col rounded-[28px] border border-foreground/10 bg-[#fff7ef] p-5 shadow-[0_15px_35px_rgba(203,137,92,0.12)]">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-secondary/70">{event.info[locale]}</p>
                   <h3 className="text-2xl font-semibold text-secondary">{event.title[locale]}</h3>
                   <p className="mt-2 text-sm text-foreground/70">{event.detail[locale]}</p>
                   <a
                     href={event.link}
                     target="_blank"
-                rel="noreferrer"
                     rel="noreferrer"
                     className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
                   >
                     {locale === "es" ? "Ver ubicación" : "See location"}
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
-                </article>
+                </SpotlightCard>
               ))}
             </div>
           </div>
