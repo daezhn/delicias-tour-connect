@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { tours } from "@/data/tours";
+import { tours, type Tour } from "@/data/tours";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TourFilters } from "@/components/TourFilters";
@@ -42,7 +42,7 @@ export const ToursExplorer = () => {
   const [maxPrice, setMaxPrice] = useState("");
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState("");
-  const [selected, setSelected] = useState<(typeof tours)[number] | null>(null);
+  const [selected, setSelected] = useState<Tour | null>(null);
 
   const availableDates = useMemo(() => {
     const dates = new Set<string>();
@@ -188,7 +188,7 @@ export const ToursExplorer = () => {
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <Star className="h-4 w-4 text-primary" />
-                    {typeof (tour as any).rating === "number" ? (tour as any).rating.toFixed(1) : "—"}
+                    {typeof tour.rating === "number" ? tour.rating.toFixed(1) : "—"}
                   </span>
                 </div>
                 <div className="mt-auto flex items-center justify-between gap-3">

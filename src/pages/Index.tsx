@@ -14,10 +14,22 @@ import { Reveal } from "@/components/Reveal";
 import { WelcomeModal } from "@/components/WelcomeModal";
 import { ParallaxSection } from "@/components/ParallaxSection";
 import { AnimatedGradient } from "@/components/AnimatedGradient";
+import { SEO } from "@/components/SEO";
+import { useLocale } from "@/hooks/use-locale";
 
 const Index = () => {
+  const { locale } = useLocale();
+
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground relative overflow-hidden">
+      <SEO 
+        title={locale === "es" ? "Inicio" : "Home"}
+        description={
+          locale === "es" 
+            ? "Descubre Delicias, Chihuahua. Encuentra qué hacer, dónde comer y hospedarte en la ciudad de los vencedores del desierto." 
+            : "Discover Delicias, Chihuahua. Find things to do, places to eat and stay in the city of desert conquerors."
+        }
+      />
       <AnimatedGradient variant="subtle" speed="slow" />
       <WelcomeModal />
       <Navigation />

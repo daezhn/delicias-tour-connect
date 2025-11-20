@@ -7,12 +7,23 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
+import { useLocale } from "@/hooks/use-locale";
 
 const Atractivos = () => {
+  const { locale } = useLocale();
   const handleBack = useSmartBackNavigation();
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title={locale === "es" ? "Atractivos Turísticos" : "Tourist Attractions"}
+        description={
+          locale === "es"
+            ? "Visita el Museo del Desierto, el Reloj Público y los parques emblemáticos de Delicias."
+            : "Visit the Desert Museum, the Public Clock and iconic parks in Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section id="inicio" className="relative overflow-hidden" tabIndex={-1}>

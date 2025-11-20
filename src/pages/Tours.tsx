@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowLeft } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 
 const Tours = () => {
   const { locale } = useLocale();
@@ -12,6 +13,14 @@ const Tours = () => {
 
   return (
     <div className="min-h-screen bg-[#0c2c68] text-white">
+      <SEO 
+        title={locale === "es" ? "Tours y Recorridos" : "Tours & Trips"}
+        description={
+          locale === "es"
+            ? "Explora la presa Las Vírgenes, museos y la ruta del sotol con guías locales certificados."
+            : "Explore Las Vírgenes dam, museums and the sotol route with certified local guides."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="bg-gradient-to-br from-[#0c2c68] via-[#163d8b] to-[#f6b043] px-4 py-20 sm:px-8 lg:px-20">

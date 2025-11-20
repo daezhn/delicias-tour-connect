@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-type RouteLoader = () => Promise<{ default: ComponentType<any> }>;
+type RouteLoader = () => Promise<{ default: ComponentType<unknown> }>;
 
 export const routeLoaders = {
   "/": () => import("@/pages/Index"),

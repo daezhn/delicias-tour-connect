@@ -1,3 +1,31 @@
+export interface Tour {
+  id: string;
+  title: {
+    es: string;
+    en: string;
+  };
+  category: string;
+  durationHours: number;
+  price: number;
+  description: {
+    es: string;
+    en: string;
+  };
+  includes: string[];
+  itinerary: string[];
+  gallery: string[];
+  location: {
+    lat: number;
+    lng: number;
+  };
+  rating: number;
+  testimonials: {
+    name: string;
+    comment: string;
+  }[];
+  nextDates: string[];
+}
+
 export const tourCategories = [
   "histórico",
   "gastronómico",
@@ -5,7 +33,7 @@ export const tourCategories = [
   "natural",
 ];
 
-export const tours = [
+export const tours: Tour[] = [
   {
     id: "tour-historico",
     title: {
@@ -28,7 +56,7 @@ export const tours = [
     ],
     gallery: ["/images/torre-reloj.jpg", "/images/museo.jpg"],
     location: { lat: 28.1903, lng: -105.4711 },
-  rating: 4.7,
+    rating: 4.7,
     testimonials: [
       { name: "Laura", comment: "El guía conoce cada detalle. Recomendado." },
       { name: "Marcus", comment: "Perfecto para la primera visita a Delicias." },
@@ -57,7 +85,7 @@ export const tours = [
     ],
     gallery: ["/images/restaurant-1.jpg", "/images/restaurant-3.jpg"],
     location: { lat: 28.2001, lng: -105.4604 },
-  rating: 4.8,
+    rating: 4.8,
     testimonials: [{ name: "Daniel", comment: "Probé platillos que no conocía. Gran experiencia." }],
     nextDates: ["2025-11-10", "2025-11-13", "2025-11-20"],
   },
@@ -83,7 +111,7 @@ export const tours = [
     ],
     gallery: ["/images/hero-delicias-3.jpg", "/images/parque-central.jpg"],
     location: { lat: 28.362, lng: -105.5603 },
-  rating: 4.9,
+    rating: 4.9,
     testimonials: [{ name: "Sofía", comment: "Los paisajes son increíbles, super relajante." }],
     nextDates: ["2025-11-09", "2025-11-16", "2025-11-23"],
   },

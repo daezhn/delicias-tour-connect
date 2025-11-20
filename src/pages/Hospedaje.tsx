@@ -15,6 +15,7 @@ import {
   Wifi
 } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 
 const highlightTiles = [
   {
@@ -128,6 +129,14 @@ const Hospedaje = () => {
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+      <SEO 
+        title={locale === "es" ? "Hospedaje" : "Lodging"}
+        description={
+          locale === "es"
+            ? "Encuentra hoteles, moteles y estancias en Delicias para tu viaje de placer o negocios."
+            : "Find hotels, motels and stays in Delicias for your leisure or business trip."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative overflow-hidden bg-[#1a2451] text-white">

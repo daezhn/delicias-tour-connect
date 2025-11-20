@@ -1,78 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { CalendarDays, Compass, Utensils, Mountain, Hotel, Activity, Car, MessageSquare } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import { quickLinks } from "@/data/hero-links";
+import { HeroTile } from "@/components/HeroTile";
 
 // Single static hero background containing embedded text per client request
 const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg"; // provided asset in public/images
 const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg"; // mobile-only crop centered on the clock tower
-
-const quickLinks = [
-  {
-    href: "/#eventos",
-    image: "/images/contenedoresheromain/agenda.jpg",
-    label: { es: "Agenda", en: "Agenda" },
-    hint: { es: "Festivales y ferias", en: "Festivals & fairs" },
-    shortLabel: { es: "Agenda", en: "Agenda" },
-    Icon: CalendarDays
-  },
-  {
-    href: "/tours",
-    image: "/images/contenedoresheromain/cavall7.jpg",
-    label: { es: "Tours guiados", en: "Guided tours" },
-    hint: { es: "Desierto · presa · ciudad", en: "Desert · dam · city" },
-    shortLabel: { es: "Tours", en: "Tours" },
-    Icon: Compass
-  },
-  {
-    href: "/experiencias/que-comer",
-    image: "/images/contenedoresheromain/sabores.jpg",
-    label: { es: "Gastronomía", en: "Food & cafés" },
-    hint: { es: "Sabores locales", en: "Local flavors" },
-    shortLabel: { es: "Sabores", en: "Food" },
-    Icon: Utensils
-  },
-  {
-    href: "/Atractivos",
-    image: "/images/contenedoresheromain/atractivos.jpg",
-    label: { es: "Atractivos", en: "Highlights" },
-    hint: { es: "Miradores y rutas", en: "Landmarks & routes" },
-    shortLabel: { es: "Atractivos", en: "Sights" },
-    Icon: Mountain
-  },
-  {
-    href: "/hospedaje",
-    image: "/images/contenedoresheromain/hotel.jpg",
-    label: { es: "Hospedaje nocturno", en: "Stay & nights" },
-    hint: { es: "Hoteles y glamping", en: "Hotels & glamping" },
-    shortLabel: { es: "Hotel", en: "Stay" },
-    Icon: Hotel
-  },
-  {
-    href: "/experiencias/que-hacer",
-    image: "/images/contenedoresheromain/reloj.jpg",
-    label: { es: "Actividades", en: "Activities" },
-    hint: { es: "Aire libre y cultura", en: "Outdoor & culture" },
-    shortLabel: { es: "Qué hacer", en: "Go" },
-    Icon: Activity
-  },
-  {
-    href: "/Transporte",
-    image: "/images/contenedoresheromain/ruta.jpg",
-    label: { es: "Roadtrips", en: "Roadtrips" },
-    hint: { es: "Rutas y tips", en: "Routes & tips" },
-    shortLabel: { es: "Ruta", en: "Road" },
-    Icon: Car
-  },
-  {
-    href: "/#contacto",
-    image: "/images/contenedoresheromain/contacto.jpg",
-    label: { es: "Plan personalizado", en: "Plan with us" },
-    hint: { es: "Contacta a IDEA", en: "Talk to IDEA" },
-    shortLabel: { es: "Contacto", en: "Plan" },
-    Icon: MessageSquare
-  }
-] as const;
 
 // Stats removed for cleaner tourist-first visual hero
 
@@ -261,38 +194,15 @@ export const Hero = () => {
                   key={`${tile.href}-${tile.label}-mobile`}
                   className={`flex flex-col ${alignment}`}
                 >
-                  <Link
-                    to={tile.href}
-                    aria-label={tile.label}
-                    className="group relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-[24px] border border-white/65 bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white"
-                    style={{ transform: "rotate(45deg)" }}
-                  >
-                    <img
-                      src={tile.image}
-                      alt={tile.label}
-                      className="h-full w-full object-cover transition duration-700"
-                      loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                      style={{ transform: "rotate(-45deg) scale(1.25)" }}
-                    />
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/75 via-black/45 to-black/80 opacity-90 transition group-hover:opacity-100"
-                      style={{ transform: "rotate(-45deg) scale(1.32)" }}
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 text-white drop-shadow-[0_3px_8px_rgba(0,0,0,0.85)] transition group-hover:scale-[1.03]"
-                      style={{ transform: "rotate(-45deg)" }}
-                    >
-                      {tile.Icon ? (
-                        <tile.Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                      ) : null}
-                      <span className="text-[0.55rem] font-semibold uppercase tracking-[0.25em]">
-                        {tile.shortLabel}
-                      </span>
-                    </div>
-                    <span className="sr-only">{tile.label}</span>
-                  </Link>
+                  <HeroTile
+                    href={tile.href}
+                    label={tile.label}
+                    shortLabel={tile.shortLabel}
+                    image={tile.image}
+                    Icon={tile.Icon}
+                    priority={columnIndex === 0 && idx === 0}
+                    className="h-[4.5rem] w-[4.5rem] rounded-[24px]"
+                  />
                 </div>
               ))}
             </div>
@@ -314,39 +224,16 @@ export const Hero = () => {
               }`}
             >
               {items.map((tile, idx) => (
-                <Link
+                <HeroTile
                   key={`${tile.href}-${tile.label}`}
-                  to={tile.href}
-                  aria-label={tile.label}
-                  className="group relative h-24 w-24 overflow-hidden rounded-[32px] border border-white/60 bg-white/5 shadow-[0_28px_60px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:-translate-y-1 hover:border-white/90 sm:h-28 sm:w-28"
-                  style={{ transform: "rotate(45deg)" }}
-                >
-                  <img
-                    src={tile.image}
-                    alt={tile.label}
-                    className="h-full w-full object-cover transition duration-700"
-                    loading={columnIndex === 0 && idx === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    style={{ transform: "rotate(-45deg) scale(1.25)" }}
-                  />
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/75 via-black/45 to-black/80 opacity-90 transition group-hover:opacity-100"
-                    style={{ transform: "rotate(-45deg) scale(1.28)" }}
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] transition group-hover:scale-[1.03]"
-                    style={{ transform: "rotate(-45deg)" }}
-                  >
-                    {tile.Icon ? (
-                      <tile.Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />
-                    ) : null}
-                    <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] sm:text-xs">
-                      {tile.shortLabel}
-                    </span>
-                  </div>
-                  <span className="sr-only">{tile.label}</span>
-                </Link>
+                  href={tile.href}
+                  label={tile.label}
+                  shortLabel={tile.shortLabel}
+                  image={tile.image}
+                  Icon={tile.Icon}
+                  priority={columnIndex === 0 && idx === 0}
+                  className="h-24 w-24 rounded-[32px] sm:h-28 sm:w-28"
+                />
               ))}
             </div>
           );
