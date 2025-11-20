@@ -27,6 +27,12 @@ export const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       
+      {/* Security: Content Security Policy */}
+      <meta 
+        httpEquiv="Content-Security-Policy" 
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com https://*.googleapis.com; connect-src 'self' https://api.open-meteo.com https://nominatim.openstreetmap.org; frame-src 'self' https://www.google.com;" 
+      />
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:url" content={currentUrl} />
@@ -44,4 +50,3 @@ export const SEO = ({
     </Helmet>
   );
 };
-

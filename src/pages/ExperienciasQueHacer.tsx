@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const heroShots = ["/images/quehacer/hero1.jpg", "/images/Galería/11.jpg", "/images/Galería/18.jpg"] as const;
 
@@ -107,6 +108,14 @@ const ExperienciasQueHacer = () => {
 
   return (
     <div className="min-h-screen bg-[#f7fbff] text-foreground">
+      <SEO
+        title={locale === "es" ? "Qué Hacer" : "Things to Do"}
+        description={
+          locale === "es"
+            ? "Desierto, museos y ciudad creativa. Descubre las mejores actividades y lugares para visitar en Delicias."
+            : "Desert, museums and creative city. Discover the best activities and places to visit in Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">

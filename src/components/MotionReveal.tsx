@@ -2,45 +2,53 @@ import { motion, useAnimation, useInView, type Variants } from "framer-motion";
 import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface TextRevealProps {
+interface MotionRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
   duration?: number;
-  direction?: "up" | "down" | "left" | "right";
-  once?: boolean;
+  variant?: "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale-up" | "none";
   threshold?: number;
+  once?: boolean;
 }
 
-export const TextReveal = ({
+export const MotionReveal = ({
   children,
   className,
   delay = 0,
-  duration = 0.6,
-  direction = "up",
-  once = true,
+  duration = 0.5,
+  variant = "fade-up",
   threshold = 0.2,
-}: TextRevealProps) => {
+  once = true,
+}: MotionRevealProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: threshold, once });
   const controls = useAnimation();
 
   const variants: Record<string, Variants> = {
-    up: {
-      hidden: { opacity: 0, y: 20 },
+    "fade-up": {
+      hidden: { opacity: 0, y: 40 },
       visible: { opacity: 1, y: 0 },
     },
-    down: {
-      hidden: { opacity: 0, y: -20 },
+    "fade-down": {
+      hidden: { opacity: 0, y: -40 },
       visible: { opacity: 1, y: 0 },
     },
-    left: {
-      hidden: { opacity: 0, x: 20 },
+    "fade-left": {
+      hidden: { opacity: 0, x: 40 },
       visible: { opacity: 1, x: 0 },
     },
-    right: {
-      hidden: { opacity: 0, x: -20 },
+    "fade-right": {
+      hidden: { opacity: 0, x: -40 },
       visible: { opacity: 1, x: 0 },
+    },
+    "scale-up": {
+      hidden: { opacity: 0, scale: 0.8 },
+      visible: { opacity: 1, scale: 1 },
+    },
+    none: {
+      hidden: {},
+      visible: {},
     },
   };
 
@@ -57,11 +65,12 @@ export const TextReveal = ({
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={variants[direction]}
-      transition={{ duration, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }} // Custom cubic-bezier for "premium" feel
+      variants={variants[variant]}
+      transition={{ duration, delay, ease: "easeOut" }}
       className={cn(className)}
     >
       {children}
     </motion.div>
   );
 };
+

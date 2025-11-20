@@ -5,6 +5,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -212,6 +213,14 @@ const ClimaTips = () => {
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+      <SEO
+        title={locale === "es" ? "Clima y Tips de Viaje" : "Weather & Travel Tips"}
+        description={
+          locale === "es"
+            ? "Consulta el pronóstico de 7 días y recomendaciones de equipaje para tu visita a Delicias."
+            : "Check the 7-day forecast and packing recommendations for your visit to Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative overflow-hidden bg-[#0c2c68] text-white">
@@ -245,6 +254,7 @@ const ClimaTips = () => {
                   <a
                     href="https://www.google.com/maps/place/Delicias,+Chihuahua"
                     target="_blank"
+                  rel="noreferrer"
                     rel="noreferrer"
                   >
                     <MapPin className="mr-2 h-4 w-4" />
@@ -275,6 +285,7 @@ const ClimaTips = () => {
                 <a
                   href="https://www.meteored.mx/clima-en_Delicias-America+Norte-Mexico-Chihuahua-MMCS-1-26626.html"
                   target="_blank"
+                  rel="noreferrer"
                   rel="noreferrer"
                 >
                   <ArrowUpRight className="mr-2 h-4 w-4" />

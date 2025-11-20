@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useLocale } from "@/hooks/use-locale";
+import { SEO } from "@/components/SEO";
 
 const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg";
 const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg";
@@ -72,6 +73,14 @@ const PantallaTouch = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <SEO
+        title={locale === "es" ? "Quiosco Interactivo" : "Interactive Kiosk"}
+        description={
+          locale === "es"
+            ? "Explora Delicias a través de nuestro quiosco interactivo táctil."
+            : "Explore Delicias through our interactive touch kiosk."
+        }
+      />
       <main className="relative isolate min-h-screen overflow-hidden">
         <picture className="absolute inset-0 h-full w-full">
           <source srcSet={HERO_IMAGE_MOBILE} media="(max-width: 640px)" />

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 
 const heroAlbums = [
   { image: "/images/Familia/fundadores.jpg", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
@@ -136,6 +137,14 @@ const ExperienciasFamilia = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fef7ef] via-white to-[#f6f0ff] text-foreground">
+      <SEO
+        title={locale === "es" ? "Experiencias Familiares" : "Family Experiences"}
+        description={
+          locale === "es"
+            ? "Parques, museos interactivos y actividades para disfrutar con niños en Delicias."
+            : "Parks, interactive museums and activities to enjoy with kids in Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
@@ -214,6 +223,7 @@ const ExperienciasFamilia = () => {
                 href="https://encortodigital.com/general/inauguran-parque-vida-en-delicias/"
                 target="_blank"
                 rel="noreferrer"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
                 {locale === "es" ? "Leer nota" : "Read article"}
@@ -269,6 +279,7 @@ const ExperienciasFamilia = () => {
                   <a
                     href={event.link}
                     target="_blank"
+                rel="noreferrer"
                     rel="noreferrer"
                     className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
                   >

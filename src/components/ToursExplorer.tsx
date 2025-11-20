@@ -275,6 +275,7 @@ export const ToursExplorer = () => {
                         href={`https://www.google.com/maps/search/?api=1&query=${selected.location.lat},${selected.location.lng}`}
                         target="_blank"
                         rel="noreferrer"
+                        rel="noreferrer"
                       >
                         {locale === "es" ? "Ver en Maps" : "Open in Maps"}
                       </a>

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AuroraParticles } from "@/components/AuroraParticles";
+import { SEO } from "@/components/SEO";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -200,6 +201,14 @@ const Transporte = () => {
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+      <SEO
+        title={locale === "es" ? "Transporte y Cómo Llegar" : "Transport & Getting Here"}
+        description={
+          locale === "es"
+            ? "Guía completa para llegar a Delicias: vuelos a Chihuahua, autobuses y rutas seguras en carretera."
+            : "Complete guide to reaching Delicias: flights to Chihuahua, buses and safe highway routes."
+        }
+      />
       <Navigation />
       <main className="pt-0">
         <section className="relative overflow-hidden bg-[#0c2c68] text-white pt-[64px] sm:pt-[80px] lg:pt-[90px]">
@@ -527,6 +536,7 @@ const Transporte = () => {
               <a
                 href="https://wa.me/526394675629"
                 target="_blank"
+                rel="noreferrer"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white"
               >

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 
 const heroShots = ["/images/Deportes/hero1.JPG", "/images/Deportes/hero2.JPG", "/images/Deportes/hero3.jpg"] as const;
 
@@ -112,6 +113,14 @@ const ExperienciasDeportes = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030917] via-[#0c1f3d] to-[#f6b043]/20 text-white">
+      <SEO
+        title={locale === "es" ? "Deportes y Aire Libre" : "Sports & Outdoors"}
+        description={
+          locale === "es"
+            ? "Ciclismo, carreras, béisbol y actividades deportivas al aire libre en Delicias."
+            : "Cycling, running, baseball and outdoor sports activities in Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
@@ -180,6 +189,7 @@ const ExperienciasDeportes = () => {
                   <a
                     href={event.link}
                     target="_blank"
+                    rel="noreferrer"
                     rel="noreferrer"
                     className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary"
                   >

@@ -171,6 +171,7 @@ const Hospedaje = () => {
                     href="https://www.booking.com/searchresults.es.html?ss=Delicias%2C+Chihuahua%2C+M%C3%A9xico&ssne=Buenavista&ssne_untouched=Buenavista&efdco=1&label=mkt123sc-c9834c4e-4625-4c14-af98-7eccb3d6dec5&sid=0fd0cc83e7eefaf56662edf84b96e6d7&aid=304142&lang=es&sb=1&src_elem=sb&src=index&dest_id=-1677823&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=es&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=721978d2f6f9040c&ac_meta=GhA3MjE5NzhkMmY2ZjkwNDBjIAAoATICZXM6CGRlbGljaWFzQABKAFAA&group_adults=2&no_rooms=1&group_children=0"
                     target="_blank"
                     rel="noreferrer"
+                    rel="noreferrer"
                   >
                     <ArrowUpRight className="mr-2 h-4 w-4" />
                     {hero.cta}

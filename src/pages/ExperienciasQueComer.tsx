@@ -5,6 +5,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 
 const heroHighlights = [
   {
@@ -141,6 +142,14 @@ const ExperienciasQueComer = () => {
 
   return (
     <div className="min-h-screen bg-[#fff8ef] text-foreground">
+      <SEO
+        title={locale === "es" ? "Qué Comer" : "Where to Eat"}
+        description={
+          locale === "es"
+            ? "Guía gastronómica de Delicias: desde cocina del desierto y cortes norteños hasta cafés de especialidad."
+            : "Delicias gastronomy guide: from desert cuisine and northern cuts to specialty coffee shops."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
@@ -331,6 +340,7 @@ const ExperienciasQueComer = () => {
                   <a
                     href={entry.link}
                     target="_blank"
+                    rel="noreferrer"
                     rel="noreferrer"
                     className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em]"
                   >

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { SEO } from "@/components/SEO";
 import { useLocale } from "@/hooks/use-locale";
+import { MotionReveal } from "@/components/MotionReveal";
 
 const Atractivos = () => {
   const { locale } = useLocale();
@@ -37,26 +38,28 @@ const Atractivos = () => {
           </div>
           <div className="relative z-10">
             <div className="container mx-auto px-4 py-20 md:py-28">
-              <div className="max-w-3xl space-y-6 text-white">
-                <Badge className="bg-primary/80 text-white">Explora Delicias</Badge>
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                  Todos los atractivos turisticos de Delicias
-                </h1>
-                <p className="text-lg md:text-xl text-white/80">
-                  Encuentra experiencias culturales, gastronomicas, historicas y naturales para planear
-                  tu visita a la region.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button
-                    variant="secondary"
-                    className="bg-white/20 text-white hover:bg-white/30"
-                    onClick={handleBack}
-                  >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Volver al inicio
-                  </Button>
+              <MotionReveal variant="fade-up" duration={0.8}>
+                <div className="max-w-3xl space-y-6 text-white">
+                  <Badge className="bg-primary/80 text-white">Explora Delicias</Badge>
+                  <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                    Todos los atractivos turisticos de Delicias
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/80">
+                    Encuentra experiencias culturales, gastronomicas, historicas y naturales para planear
+                    tu visita a la region.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Button
+                      variant="secondary"
+                      className="bg-white/20 text-white hover:bg-white/30"
+                      onClick={handleBack}
+                    >
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      Volver al inicio
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              </MotionReveal>
             </div>
           </div>
         </section>
@@ -73,33 +76,40 @@ const Atractivos = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {attractions.map((place) => (
-                <Card
+              {attractions.map((place, index) => (
+                <MotionReveal
                   key={place.id}
-                  id={`atractivo-${place.id}`}
-                  className="group overflow-hidden border-0 bg-gradient-to-br from-[#1f242f] via-[#2c3140] to-[#1b1e26] shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                  variant="fade-up"
+                  delay={index * 0.1}
+                  duration={0.5}
+                  className="h-full"
                 >
-                  <div className="relative aspect-[4/5] flex flex-col items-center justify-center overflow-hidden">
-                    <img
-                      src={place.image}
-                      alt={place.name}
-                      className={cn(
-                        "max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105",
-                        place.imageClass,
-                      )}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="px-5 pb-6 pt-5 text-center">
-                    <span className="inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.4em] text-primary">
-                      {place.category}
-                    </span>
-                    <p className="mt-4 text-xl font-semibold text-white tracking-wide">
-                      {place.name}
-                    </p>
-                  </div>
-                </Card>
+                  <Card
+                    id={`atractivo-${place.id}`}
+                    className="group h-full overflow-hidden border-0 bg-gradient-to-br from-[#1f242f] via-[#2c3140] to-[#1b1e26] shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                  >
+                    <div className="relative aspect-[4/5] flex flex-col items-center justify-center overflow-hidden">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className={cn(
+                          "max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105",
+                          place.imageClass,
+                        )}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="px-5 pb-6 pt-5 text-center">
+                      <span className="inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.4em] text-primary">
+                        {place.category}
+                      </span>
+                      <p className="mt-4 text-xl font-semibold text-white tracking-wide">
+                        {place.name}
+                      </p>
+                    </div>
+                  </Card>
+                </MotionReveal>
               ))}
             </div>
           </div>

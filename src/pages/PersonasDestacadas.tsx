@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/hooks/use-locale";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
+import { SEO } from "@/components/SEO";
 import { ArrowLeft, ArrowUpRight, Sparkles, Star, Users } from "lucide-react";
 
 const featuredCitizens = [
@@ -223,6 +224,14 @@ const DeliciensesDestacados = () => {
 
   return (
     <div className="min-h-screen bg-[#f6ecdf] text-foreground">
+      <SEO
+        title={locale === "es" ? "Personas Destacadas" : "Featured People"}
+        description={
+          locale === "es"
+            ? "Conoce a los delicienses que han hecho historia en la política, el deporte y las artes."
+            : "Meet the people from Delicias who have made history in politics, sports and the arts."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative overflow-hidden bg-[#0c2c68] text-white">
@@ -461,6 +470,7 @@ const DeliciensesDestacados = () => {
               <a
                 href="https://wa.me/526394720000"
                 target="_blank"
+                rel="noreferrer"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-secondary transition duration-500 hover:-translate-y-1 hover:bg-secondary/10"
               >

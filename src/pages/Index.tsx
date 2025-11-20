@@ -10,7 +10,7 @@ import { ExperiencesCollage } from "@/components/ExperiencesCollage";
 import { PlanYourTrip } from "@/components/PlanYourTrip";
 import { FeaturedCitizens } from "@/components/FeaturedCitizens";
 import { GalleryShowcase } from "@/components/GalleryShowcase";
-import { Reveal } from "@/components/Reveal";
+import { MotionReveal } from "@/components/MotionReveal";
 import { WelcomeModal } from "@/components/WelcomeModal";
 import { ParallaxSection } from "@/components/ParallaxSection";
 import { AnimatedGradient } from "@/components/AnimatedGradient";
@@ -40,19 +40,23 @@ const Index = () => {
           <WelcomeDelicias />
         </ParallaxSection>
 
-        <Reveal as="section" id="eventos" className="py-0 relative">
+        <section id="eventos" className="py-0 relative">
           <ParallaxSection speed={0.2} direction="down">
-            <Events />
+            <MotionReveal variant="fade-up">
+              <Events />
+            </MotionReveal>
           </ParallaxSection>
-        </Reveal>
+        </section>
 
-        <Reveal as="section" className="bg-white py-16 relative">
+        <section className="bg-white py-16 relative">
           <ParallaxSection speed={0.15}>
-            <div className="mx-auto max-w-4xl px-4">
-              <AvailabilityCalendar compact />
-            </div>
+            <MotionReveal variant="scale-up" delay={0.2}>
+              <div className="mx-auto max-w-4xl px-4">
+                <AvailabilityCalendar compact />
+              </div>
+            </MotionReveal>
           </ParallaxSection>
-        </Reveal>
+        </section>
 
         <ParallaxSection speed={0.25}>
           <ExperiencesCollage />
@@ -70,21 +74,24 @@ const Index = () => {
           <GalleryShowcase />
         </ParallaxSection>
 
-        <Reveal
-          as="section"
+        <section
           id="preguntas"
           className="bg-gradient-to-br from-[#f7b267] via-[#f79d84] to-[#8fd3fe] py-20"
         >
-          <div className="mx-auto max-w-5xl px-4">
-            <FaqSection />
-          </div>
-        </Reveal>
+          <MotionReveal variant="fade-up">
+            <div className="mx-auto max-w-5xl px-4">
+              <FaqSection />
+            </div>
+          </MotionReveal>
+        </section>
 
-        <Reveal as="section" id="contacto" className="bg-white py-20">
-          <div className="mx-auto max-w-4xl px-4">
-            <ContactCard />
-          </div>
-        </Reveal>
+        <section id="contacto" className="bg-white py-20">
+          <MotionReveal variant="fade-up" delay={0.1}>
+            <div className="mx-auto max-w-4xl px-4">
+              <ContactCard />
+            </div>
+          </MotionReveal>
+        </section>
       </main>
       <Footer />
     </div>

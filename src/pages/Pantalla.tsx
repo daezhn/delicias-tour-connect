@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "@/hooks/use-locale";
-import { getTranslations } from "@/lib/i18n";
 import { getTickerEvents, useClock } from "@/utils/pantalla";
 import { format } from "date-fns";
 import { es, enUS } from "date-fns/locale";
+import { SEO } from "@/components/SEO";
 
 type MediaItem =
   | { type: "video"; src: string }
@@ -91,6 +91,10 @@ const Pantalla = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
+      <SEO
+        title={locale === "es" ? "Pantalla Informativa" : "Info Display"}
+        description="Display informativo de Delicias Tour Connect."
+      />
       {currentMedia.type === "video" ? (
         <video
           ref={videoRef}

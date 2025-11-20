@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const heroHighlights = [
   {
@@ -146,6 +147,14 @@ const ExperienciasArteCultura = () => {
 
   return (
     <div className="min-h-screen bg-[#fff8ef] text-foreground">
+      <SEO
+        title={locale === "es" ? "Arte y Cultura" : "Art & Culture"}
+        description={
+          locale === "es"
+            ? "Explora museos, murales y la escena cultural creativa de Delicias."
+            : "Explore museums, murals and the creative cultural scene of Delicias."
+        }
+      />
       <Navigation />
       <main className="page-offset">
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-8 lg:px-20">
@@ -177,6 +186,7 @@ const ExperienciasArteCultura = () => {
               <a
                 href="https://maps.google.com/?q=Arte+y+cultura+Delicias+Chihuahua"
                 target="_blank"
+                rel="noreferrer"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
@@ -262,6 +272,7 @@ const ExperienciasArteCultura = () => {
                 href="https://maps.google.com/?q=Museos+en+Delicias+Chihuahua"
                 target="_blank"
                 rel="noreferrer"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
               >
                 {locale === "es" ? "Abrir mapa" : "Open map"}
@@ -316,6 +327,7 @@ const ExperienciasArteCultura = () => {
                     <a
                       href={story.link}
                       target="_blank"
+                rel="noreferrer"
                       rel="noreferrer"
                       className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em]"
                     >
