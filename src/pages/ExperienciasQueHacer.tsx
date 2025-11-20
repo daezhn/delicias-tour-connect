@@ -34,6 +34,15 @@ const travelRoutes = [
       en: "MUDECH + Paleontology Museum with fossil labs and terraces."
     },
     cta: "/experiencias/arte-cultura"
+  },
+  {
+    image: "/images/cavall.jpg",
+    title: { es: "Ruta del Vino", en: "Wine Route" },
+    description: {
+      es: "Visita las vinícolas locales, catas de vinos premiados y recorridos por viñedos.",
+      en: "Visit local wineries, taste award-winning wines and tour vineyards."
+    },
+    cta: "https://www.facebook.com/VinosSantaClara/"
   }
 ] as const;
 

@@ -34,7 +34,7 @@ const highlightTiles = [
   },
   {
     id: "pool",
-    image: "/images/hoteles/3.jpg",
+    image: "/images/comfort.jpg",
     eyebrow: { es: "Zona norte", en: "North district" },
     title: { es: "Escapadas con alberca", en: "Pool escapes" },
     description: {
@@ -174,6 +174,20 @@ const Hospedaje = () => {
                   >
                     <ArrowUpRight className="mr-2 h-4 w-4" />
                     {hero.cta}
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="default"
+                  className="bg-[#FF385C] text-white hover:bg-[#FF385C]/90"
+                >
+                  <a
+                    href="https://www.airbnb.mx/s/Delicias--Chihuahua--México/homes"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ArrowUpRight className="mr-2 h-4 w-4" />
+                    Airbnb
                   </a>
                 </Button>
               </div>
