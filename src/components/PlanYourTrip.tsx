@@ -183,15 +183,17 @@ const PlanTile = ({ tile, locale, onPrefetch, isImageLoaded, onImageLoaded, enab
   };
 
   const cardStyle: CSSVarStyle = {
-    transform: enableTilt ? `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` : undefined,
+    transform: enableTilt ? `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateZ(0)` : "translateZ(0)",
     "--mouse-x": `${glow.x}%`,
-    "--mouse-y": `${glow.y}%`
+    "--mouse-y": `${glow.y}%`,
+    backfaceVisibility: "hidden",
+    WebkitBackfaceVisibility: "hidden",
   };
 
   return (
     <Link
       to={tile.href}
-      className="tilt-card group relative block overflow-hidden rounded-[34px] border border-white/10 shadow-[0_25px_55px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_75px_rgba(4,18,42,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      className="tilt-card group relative block overflow-hidden rounded-[34px] border border-white/10 shadow-[0_25px_55px_rgba(4,18,42,0.12)] transition-all duration-500 hover:shadow-[0_35px_75px_rgba(4,18,42,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary will-change-transform"
       style={cardStyle}
       onPointerEnter={() => onPrefetch(tile.href)}
       onFocus={() => onPrefetch(tile.href)}
