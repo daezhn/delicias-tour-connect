@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const ScrollManager = () => {
+export const ScrollManager = ({ children }: { children?: ReactNode }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -19,9 +19,9 @@ export const ScrollManager = () => {
     if (location.hash) {
       requestAnimationFrame(() => scrollToHash(location.hash));
     } else {
-      window.scrollTo({ top: 0, behavior: "auto" });
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [location.pathname, location.hash]);
 
-  return null;
+  return <>{children}</>;
 };

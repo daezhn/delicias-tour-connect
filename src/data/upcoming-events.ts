@@ -44,9 +44,9 @@ export const upcomingEvents: UpcomingEvent[] = [
   },
   {
     id: 6,
-    label: "Lunes 10 de noviembre",
-    image: "/images/event-3.jpg",
-    alt: "Cartel de eventos para el lunes 10 de noviembre",
-    date: "2025-11-10"
+    label: "Desfile Revolución Mexicana",
+    image: "/images/POPUP/desfile.png",
+    alt: "Gran Desfile de la Revolución Mexicana - 20 de Noviembre",
+    date: "2025-11-20"
   }
 ];

@@ -110,13 +110,16 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                 const iso = format(day, "yyyy-MM-dd");
                 const dayEvents = eventsByDate[iso];
                 const isEvent = Boolean(dayEvents?.length);
+                const isRevolutionParade = iso.endsWith("-11-20"); // Matches Nov 20
                 const inMonth = isSameMonth(day, referenceDate);
 
                 return (
                   <div
                     key={iso}
                     className={`min-h-[110px] rounded-[24px] border px-3 py-4 text-left transition ${
-                      isEvent
+                      isRevolutionParade
+                        ? "border-[#006847] bg-gradient-to-br from-[#006847]/10 via-white to-[#CE1126]/10 text-[#006847]"
+                        : isEvent
                         ? "border-[#00aec0]/40 bg-gradient-to-br from-[#c9f1ff] to-white text-[#0645ad]"
                         : "border-black/5 bg-gradient-to-br from-white to-[#fff7ef] text-foreground"
                     } ${!inMonth ? "opacity-50" : ""}`}
@@ -133,9 +136,16 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                       {format(day, "MMM", { locale: formatterLocale })}
                     </p>
                     {isEvent && (
-                      <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[9px] font-semibold tracking-[0.12em] text-primary shadow-sm font-tourism whitespace-nowrap sm:text-[10px] sm:tracking-[0.2em]">
-                        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                        {locale === "es" ? "Agenda" : "Agenda"}
+                      <span className={`mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[9px] font-semibold tracking-[0.12em] shadow-sm font-tourism whitespace-nowrap sm:text-[10px] sm:tracking-[0.2em] ${
+                        isRevolutionParade ? "text-[#CE1126]" : "text-primary"
+                      }`}>
+                        <span className={`h-1.5 w-1.5 rounded-full ${
+                          isRevolutionParade ? "bg-[#CE1126]" : "bg-primary"
+                        }`} />
+                        {isRevolutionParade 
+                          ? (locale === "es" ? "Desfile" : "Parade")
+                          : (locale === "es" ? "Agenda" : "Agenda")
+                        }
                       </span>
                     )}
                   </div>
