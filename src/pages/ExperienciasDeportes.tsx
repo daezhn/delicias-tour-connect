@@ -190,7 +190,6 @@ const ExperienciasDeportes = () => {
                     href={event.link}
                     target="_blank"
                     rel="noreferrer"
-                    rel="noreferrer"
                     className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.4em] text-secondary"
                   >
                     {locale === "es" ? "Conoce más" : "Learn more"}

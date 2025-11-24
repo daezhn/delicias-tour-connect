@@ -471,7 +471,6 @@ const DeliciensesDestacados = () => {
                 href="https://wa.me/526394720000"
                 target="_blank"
                 rel="noreferrer"
-                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-secondary transition duration-500 hover:-translate-y-1 hover:bg-secondary/10"
               >
                 {locale === "es" ? "WhatsApp oficial" : "WhatsApp line"}

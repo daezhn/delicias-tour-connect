@@ -18,6 +18,8 @@ export const routeLoaders = {
   "/experiencias/arte-cultura": () => import("@/pages/ExperienciasArteCultura"),
   "/experiencias/familia": () => import("@/pages/ExperienciasFamilia"),
   "/experiencias/deportes": () => import("@/pages/ExperienciasDeportes"),
+  "/privacidad": () => import("@/pages/Privacidad"),
+  "/privacy": () => import("@/pages/Privacidad"),
   "/404": () => import("@/pages/NotFound")
 } satisfies Record<string, RouteLoader>;
 

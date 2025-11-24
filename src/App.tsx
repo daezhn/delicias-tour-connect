@@ -31,6 +31,7 @@ const ExperienciasQueComer = lazy(routeLoaders["/experiencias/que-comer"]);
 const ExperienciasArteCultura = lazy(routeLoaders["/experiencias/arte-cultura"]);
 const ExperienciasFamilia = lazy(routeLoaders["/experiencias/familia"]);
 const ExperienciasDeportes = lazy(routeLoaders["/experiencias/deportes"]);
+const Privacidad = lazy(routeLoaders["/privacidad"]);
 const NotFound = lazy(routeLoaders["/404"]);
 
 const withSuspense = (Component: LazyComponent, fallback?: ReactNode) => (
@@ -64,6 +65,8 @@ const AnimatedRoutes = () => {
         <Route path="/experiencias/arte-cultura" element={withSuspense(ExperienciasArteCultura)} />
         <Route path="/experiencias/familia" element={withSuspense(ExperienciasFamilia)} />
         <Route path="/experiencias/deportes" element={withSuspense(ExperienciasDeportes)} />
+        <Route path="/privacidad" element={withSuspense(Privacidad)} />
+        <Route path="/privacy" element={withSuspense(Privacidad)} />
         <Route path="*" element={withSuspense(NotFound)} />
       </Routes>
     </AnimatePresence>

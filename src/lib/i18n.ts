@@ -42,6 +42,7 @@ interface Translations {
     followTitle: string;
     rights: string;
     govt: string;
+    privacy: string;
   };
 }
 
@@ -116,6 +117,7 @@ const translations: Record<Locale, Translations> = {
       followTitle: "Síguenos",
       rights: "Todos los derechos reservados.",
       govt: "Instituto de Desarrollo y Atención al Turismo - Gobierno Municipal de Delicias",
+      privacy: "Aviso de privacidad",
     },
   },
   en: {
@@ -188,6 +190,7 @@ const translations: Record<Locale, Translations> = {
       followTitle: "Follow us",
       rights: "All rights reserved.",
       govt: "Tourism Development Institute - City of Delicias",
+      privacy: "Privacy policy",
     },
   },
 };

@@ -42,6 +42,7 @@ export const Footer = () => {
               <li><Link to="/#atractivos" className="hover:text-primary transition-colors">{navCopy.atractivos}</Link></li>
               <li><Link to="/#actividades" className="hover:text-primary transition-colors">{navCopy.actividades}</Link></li>
               <li><Link to="/#eventos" className="hover:text-primary transition-colors">{navCopy.eventos}</Link></li>
+              <li><Link to="/privacidad" className="hover:text-primary transition-colors">{copy.privacy}</Link></li>
             </ul>
           </MotionReveal>
 
@@ -81,8 +82,11 @@ export const Footer = () => {
           </MotionReveal>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70">
+        <div className="border-t border-white/10 pt-8 text-center text-sm text-white/70 space-y-1">
           <p>© 2025 Instituto de Desarrollo Económico y Agropecuario Delicias. {copy.rights}</p>
+          <Link to="/privacidad" className="text-white/70 underline-offset-4 hover:text-primary hover:underline">
+            {copy.privacy}
+          </Link>
         </div>
       </div>
     </footer>

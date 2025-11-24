@@ -157,7 +157,6 @@ const ExperienciasVidaNocturna = () => {
                   href="https://www.google.com/maps/search/bares+y+antros+en+delicias+chihuahua"
                   target="_blank"
                   rel="noreferrer"
-                  rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#050917] shadow-[0_25px_45px_rgba(0,0,0,0.35)] transition hover:bg-white/90"
                 >
                   {locale === "es" ? "Mapa nocturno" : "Night map"}
@@ -166,7 +165,6 @@ const ExperienciasVidaNocturna = () => {
                 <a
                   href="https://www.instagram.com/explore/locations/225678326/delicias-chihuahua/"
                   target="_blank"
-                  rel="noreferrer"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em]"
                 >
