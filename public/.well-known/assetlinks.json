@@ -1,11 +1,15 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.visitadelicias.www.twa",
       "sha256_cert_fingerprints": [
-        "35:4B:CC:2D:3A:E5:97:62:CA:21:B0:FF:BA:92:E4:A9:E8:84:25:D7:53:34:64:91:47:C8:02:0E:F1:7A:63:C1"
+        "35:4B:CC:2D:3A:E5:97:62:CA:21:B0:FF:BA:92:E4:A9:E8:84:25:D7:53:34:64:91:47:C8:02:0E:F1:7A:63:C1",
+        "D8:E7:C6:85:70:39:4F:E1:2A:BA:0F:B1:99:AB:2C:C2:F7:DD:AC:15:20:13:48:FE:55:62:E9:72:30:75:07:52"
       ]
     }
   }
