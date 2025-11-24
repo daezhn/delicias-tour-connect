@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Loader2, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ interface Message {
 
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
-const SYSTEM_PROMPT = `Eres "Guía Delicias", asistente turístico de Delicias, Chihuahua, México.
+const SYSTEM_PROMPT = `Eres "Asistente IDEA", el asistente virtual oficial de turismo de Delicias, Chihuahua, México.
 
 ## REGLAS DE RESPUESTA (MUY IMPORTANTE):
 1. **Brevedad**: Máximo 2-3 oraciones por respuesta. Solo expande si el usuario pide más detalles.
@@ -30,7 +30,7 @@ const SYSTEM_PROMPT = `Eres "Guía Delicias", asistente turístico de Delicias, 
 Ayudas con: lugares turísticos, restaurantes, hoteles, eventos, transporte, clima y actividades en Delicias.
 
 ## LIMITACIONES:
-- Si no sabes algo específico, di: "No tengo ese dato, pero puedes checarlo en la sección [X] del sitio."
+- Si no sabes algo específico, di: "No tengo ese dato, pero puedes checarlo en la sección correspondiente del sitio."
 - No inventes direcciones, teléfonos ni precios específicos.
 
 ## EJEMPLOS DE TONO CORRECTO:
@@ -45,7 +45,7 @@ export const Chatbot = () => {
     {
       id: "welcome",
       role: "assistant",
-      content: "¡Hola! 👋 Soy Guía Delicias. ¿Qué te gustaría saber sobre nuestra ciudad?",
+      content: "¡Hola! 👋 Soy el Asistente IDEA. ¿En qué puedo ayudarte hoy?",
       timestamp: new Date(),
     },
   ]);
@@ -85,9 +85,8 @@ export const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      // Verificar que la API key existe
       if (!OPENAI_API_KEY) {
-        throw new Error("API key no configurada. Verifica tu archivo .env");
+        throw new Error("API key no configurada");
       }
 
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -117,7 +116,7 @@ export const Chatbot = () => {
       }
 
       const data = await response.json();
-      const assistantContent = data.choices[0]?.message?.content || "Lo siento, no pude procesar tu mensaje. ¿Podrías intentarlo de nuevo?";
+      const assistantContent = data.choices[0]?.message?.content || "No pude procesar tu mensaje.";
 
       const assistantMessage: Message = {
         id: generateId(),
@@ -128,11 +127,11 @@ export const Chatbot = () => {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      console.error("Error al enviar mensaje:", error);
+      console.error("Error:", error);
       const errorMessage: Message = {
         id: generateId(),
         role: "assistant",
-        content: "Lo siento, hubo un problema al conectar con el asistente. Por favor, intenta de nuevo en unos momentos. 🙏",
+        content: "Hubo un problema de conexión. Intenta de nuevo. 🙏",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
@@ -150,7 +149,7 @@ export const Chatbot = () => {
 
   return (
     <>
-      {/* Botón flotante del chatbot */}
+      {/* Botón flotante */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
@@ -159,17 +158,19 @@ export const Chatbot = () => {
             exit={{ scale: 0, opacity: 0 }}
             className="fixed bottom-6 right-6 z-50"
           >
-            <Button
+            <motion.button
               onClick={() => setIsOpen(true)}
-              className="h-14 w-14 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              size="icon"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative h-14 w-14 rounded-full bg-gradient-to-br from-slate-800 to-slate-900 shadow-lg shadow-slate-900/25 flex items-center justify-center group"
             >
-              <MessageCircle className="h-6 w-6 text-white" />
-            </Button>
-            <span className="absolute -top-1 -right-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
-            </span>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <MessageCircle className="h-6 w-6 text-amber-400" />
+              <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400"></span>
+              </span>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -181,71 +182,65 @@ export const Chatbot = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-6rem)] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700"
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-6rem)] bg-slate-900 rounded-3xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden border border-slate-700/50"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-amber-500 to-orange-600 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="bg-white/20 p-2 rounded-full">
-                  <Sparkles className="h-5 w-5 text-white" />
+            <div className="relative px-5 py-4 flex items-center justify-between border-b border-slate-700/50">
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-transparent to-orange-500/10" />
+              <div className="relative flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/25">
+                  <Bot className="h-5 w-5 text-slate-900" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Guía Delicias</h3>
-                  <p className="text-xs text-white/80">Tu asistente turístico</p>
+                  <h3 className="font-semibold text-white text-sm">Asistente IDEA</h3>
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-[11px] text-slate-400">En línea</span>
+                  </div>
                 </div>
               </div>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 rounded-full"
+                className="relative h-8 w-8 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg"
               >
-                <X className="h-5 w-5" />
+                <Minimize2 className="h-4 w-4" />
               </Button>
             </div>
 
             {/* Mensajes */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800/50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-900/50">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
                   className={cn(
-                    "flex gap-3",
+                    "flex gap-2.5",
                     message.role === "user" ? "flex-row-reverse" : "flex-row"
                   )}
                 >
+                  {message.role === "assistant" && (
+                    <div className="flex-shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-md shadow-amber-500/20">
+                      <Bot className="h-3.5 w-3.5 text-slate-900" />
+                    </div>
+                  )}
                   <div
                     className={cn(
-                      "flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center",
+                      "max-w-[80%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed",
                       message.role === "user"
-                        ? "bg-amber-500"
-                        : "bg-gradient-to-r from-amber-500 to-orange-600"
-                    )}
-                  >
-                    {message.role === "user" ? (
-                      <User className="h-4 w-4 text-white" />
-                    ) : (
-                      <Bot className="h-4 w-4 text-white" />
-                    )}
-                  </div>
-                  <div
-                    className={cn(
-                      "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm",
-                      message.role === "user"
-                        ? "bg-amber-500 text-white rounded-br-md"
-                        : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-sm rounded-bl-md"
+                        ? "bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-br-md shadow-md shadow-amber-500/20"
+                        : "bg-slate-800 text-slate-100 rounded-bl-md border border-slate-700/50"
                     )}
                   >
                     <p className="whitespace-pre-wrap">{message.content}</p>
                     <p
                       className={cn(
-                        "text-[10px] mt-1",
-                        message.role === "user"
-                          ? "text-white/70"
-                          : "text-gray-400"
+                        "text-[10px] mt-1.5 opacity-60",
+                        message.role === "user" ? "text-right" : "text-left"
                       )}
                     >
                       {message.timestamp.toLocaleTimeString("es-MX", {
@@ -254,22 +249,40 @@ export const Chatbot = () => {
                       })}
                     </p>
                   </div>
+                  {message.role === "user" && (
+                    <div className="flex-shrink-0 h-7 w-7 rounded-lg bg-slate-700 flex items-center justify-center">
+                      <User className="h-3.5 w-3.5 text-slate-300" />
+                    </div>
+                  )}
                 </motion.div>
               ))}
               
               {isLoading && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex gap-3"
+                  className="flex gap-2.5"
                 >
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 flex items-center justify-center">
-                    <Bot className="h-4 w-4 text-white" />
+                  <div className="flex-shrink-0 h-7 w-7 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                    <Bot className="h-3.5 w-3.5 text-slate-900" />
                   </div>
-                  <div className="bg-white dark:bg-gray-700 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
-                    <div className="flex items-center gap-2">
-                      <Loader2 className="h-4 w-4 animate-spin text-amber-500" />
-                      <span className="text-sm text-gray-500">Escribiendo...</span>
+                  <div className="bg-slate-800 rounded-2xl rounded-bl-md px-4 py-3 border border-slate-700/50">
+                    <div className="flex items-center gap-1">
+                      <motion.span 
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+                        className="h-1.5 w-1.5 rounded-full bg-amber-400"
+                      />
+                      <motion.span 
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+                        className="h-1.5 w-1.5 rounded-full bg-amber-400"
+                      />
+                      <motion.span 
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+                        className="h-1.5 w-1.5 rounded-full bg-amber-400"
+                      />
                     </div>
                   </div>
                 </motion.div>
@@ -279,29 +292,33 @@ export const Chatbot = () => {
             </div>
 
             {/* Input */}
-            <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex gap-2">
+            <div className="p-3 bg-slate-800/50 border-t border-slate-700/50">
+              <div className="flex gap-2 items-center bg-slate-800 rounded-xl px-3 py-1 border border-slate-700/50 focus-within:border-amber-500/50 transition-colors">
                 <input
                   ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Escribe tu pregunta..."
+                  placeholder="Escribe un mensaje..."
                   disabled={isLoading}
-                  className="flex-1 px-4 py-2.5 rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent disabled:opacity-50 transition-all"
+                  className="flex-1 py-2.5 bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none disabled:opacity-50"
                 />
                 <Button
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading}
-                  className="h-10 w-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 hover:opacity-90 disabled:opacity-50 transition-all"
                   size="icon"
+                  className="h-8 w-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 disabled:opacity-30 disabled:cursor-not-allowed shadow-md shadow-amber-500/20 transition-all"
                 >
-                  <Send className="h-4 w-4 text-white" />
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 text-slate-900 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4 text-slate-900" />
+                  )}
                 </Button>
               </div>
-              <p className="text-[10px] text-gray-400 text-center mt-2">
-                Powered by OpenAI • Delicias Tour Connect
+              <p className="text-[10px] text-slate-500 text-center mt-2">
+                Powered by IDEA Delicias
               </p>
             </div>
           </motion.div>
