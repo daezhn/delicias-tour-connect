@@ -44,6 +44,9 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
+  // No interceptar llamadas a APIs externas
+  if (url.hostname === "api.openai.com") return;
+
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)

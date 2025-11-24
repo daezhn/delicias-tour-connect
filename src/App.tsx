@@ -13,6 +13,7 @@ import { ScrollManager } from "@/components/ScrollManager";
 import { PageTransition } from "@/components/PageTransition";
 import { SplashScreen } from "@/components/SplashScreen";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Chatbot } from "@/components/Chatbot";
 
 type LazyComponent = LazyExoticComponent<ComponentType<unknown>>;
 
@@ -46,7 +47,7 @@ const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -87,6 +88,7 @@ const App = () => (
           <AnimatedRoutes />
         </ScrollManager>
       </BrowserRouter>
+      <Chatbot />
     </TooltipProvider>
   </QueryClientProvider>
 );
