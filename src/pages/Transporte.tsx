@@ -471,7 +471,7 @@ const Transporte = () => {
                       <Phone className="mt-0.5 h-5 w-5 text-secondary" />
                       <span>
                         {locale === "es"
-                          ? "Módulo de información turística IDEA: (639) 474-0045."
+                          ? "Módulo de información turística IDEA: (639)474-0045."
                           : "IDEA tourist desk hotline: +52 639 474 0045."}
                       </span>
                     </li>
