@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { Hotels } from "@/components/Hotels";
 import { useLocale } from "@/hooks/use-locale";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -225,6 +226,13 @@ const Hospedaje = () => {
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Sección de todos los hoteles con tarjetas individuales */}
+        <section className="bg-[#f9fafb] py-16">
+          <div className="mx-auto max-w-7xl px-4">
+            <Hotels />
           </div>
         </section>
 

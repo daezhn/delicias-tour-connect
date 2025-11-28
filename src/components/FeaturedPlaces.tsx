@@ -5,7 +5,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 
-const featuredIds = [1, 4, 6, 5];
+const featuredIds = [1, 2, 3, 7]; // Museos primero según indicación de IDEA
 const featuredPlaces = featuredIds
   .map((id) => attractions.find((place) => place.id === id))
   .filter((place): place is NonNullable<typeof place> => Boolean(place));

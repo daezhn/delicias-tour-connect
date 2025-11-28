@@ -158,13 +158,15 @@ const ExperienciasQueHacer = () => {
               <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">{locale === "es" ? "Cuaderno de rutas" : "Routes notebook"}</p>
               <h2 className="text-3xl font-black text-secondary">{locale === "es" ? "Tres escapes esenciales" : "Three essential escapes"}</h2>
             </div>
-            <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {travelRoutes.map((route) => (
-                <article key={route.title.es} className="flex w-80 snap-center flex-col overflow-hidden rounded-[32px] border border-foreground/10 bg-[#f4f9ff] shadow-[0_20px_45px_rgba(6,27,51,0.12)]">
-                  <img src={route.image} alt={route.title[locale]} className="h-48 w-full object-cover" loading="lazy" decoding="async" />
+                <article key={route.title.es} className="flex flex-col overflow-hidden rounded-[24px] border border-foreground/10 bg-[#f4f9ff] shadow-[0_20px_45px_rgba(6,27,51,0.12)]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img src={route.image} alt={route.title[locale]} className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+                  </div>
                   <div className="flex flex-1 flex-col space-y-3 p-5">
-                    <h3 className="text-2xl font-semibold text-secondary">{route.title[locale]}</h3>
-                    <p className="text-sm text-foreground/70">{route.description[locale]}</p>
+                    <h3 className="text-xl font-semibold text-secondary">{route.title[locale]}</h3>
+                    <p className="text-sm text-foreground/70 line-clamp-3">{route.description[locale]}</p>
                     <a href={route.cta} className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-secondary">
                       {locale === "es" ? "Ver ruta" : "View route"}
                       <ArrowUpRight className="h-4 w-4" />

@@ -1,5 +1,6 @@
 import { tourCategories } from "@/data/tours";
 import { useLocale } from "@/hooks/use-locale";
+import { Search } from "lucide-react";
 
 interface TourFiltersProps {
   search: string;
@@ -16,6 +17,7 @@ interface TourFiltersProps {
   onMaxPrice: (value: string) => void;
   onDuration: (value: string) => void;
   onDate: (value: string) => void;
+  onSubmit?: () => void;
 }
 
 const durationOptions = [
@@ -40,6 +42,7 @@ export const TourFilters = ({
   onMaxPrice,
   onDuration,
   onDate,
+  onSubmit,
 }: TourFiltersProps) => {
   const { locale } = useLocale();
 
@@ -140,6 +143,21 @@ export const TourFilters = ({
           ))}
         </select>
       </label>
+
+      <div className="flex items-end">
+        <button
+          type="button"
+          onClick={onSubmit}
+          className={`flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition ${
+            light
+              ? "bg-white text-secondary shadow-lg hover:bg-white/90"
+              : "bg-primary text-white shadow-md hover:bg-primary/90"
+          }`}
+        >
+          <Search className="h-4 w-4" />
+          {label("Buscar", "Search")}
+        </button>
+      </div>
     </div>
   );
 };

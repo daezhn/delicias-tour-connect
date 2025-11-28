@@ -123,6 +123,7 @@ export const ToursExplorer = () => {
               onMaxPrice={setMaxPrice}
               onDuration={setDuration}
               onDate={setDate}
+              onSubmit={() => {/* El filtrado es automático, el botón da feedback visual */}}
             />
           </div>
         </div>
