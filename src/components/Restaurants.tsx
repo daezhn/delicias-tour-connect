@@ -1,91 +1,157 @@
 import { useState } from "react";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { restaurants, restaurantCategories } from "@/data/restaurants";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Phone, MapPin, Search } from "lucide-react";
+import { MotionReveal } from "@/components/MotionReveal";
 import { useLocale } from "@/hooks/use-locale";
 import { getTranslations } from "@/lib/i18n";
 
-const foodCategories = [
-  {
-    title: "Comer y Pasarla Bien",
-    image: "/images/comerbien.png",
-    description: "Restaurantes para disfrutar en familia y amigos"
-  },
-  {
-    title: "Comida Rápida",
-    image: "/images/comidarapida.png",
-    description: "Opciones rápidas y deliciosas"
-  },
-  {
-    title: "Para los Exigentes",
-    image: "/images/exigentes.png",
-    description: "Alta cocina y experiencias gourmet"
-  },
-  {
-    title: "Un Snack",
-    image: "/images/snack.png",
-    description: "Cafeterías, antojitos y bocadillos"
-  }
-];
+// Helper para generar URL de Google Maps
+const getGoogleMapsUrl = (restaurantName: string): string => {
+  const query = encodeURIComponent(`${restaurantName}, Delicias, Chihuahua`);
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+};
 
 export const Restaurants = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState("exigentes");
+  const [searchTerm, setSearchTerm] = useState("");
   const { locale } = useLocale();
   const copy = getTranslations(locale).sections.restaurants;
   const script = locale === "es" ? "Sabores que exploran" : "Flavors that explore";
 
-  return (
-    <>
-      <div className="space-y-8">
-        <div className="space-y-2">
-          <p className="font-script text-2xl text-secondary/80">{script}</p>
-          <h2 className="text-3xl font-extrabold tracking-tight">{copy.title}</h2>
-          {copy.intro && <p className="max-w-xl text-sm text-muted-foreground">{copy.intro}</p>}
-        </div>
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    const matchesCategory = restaurant.categoria === activeCategory;
+    const matchesSearch = restaurant.nombre
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchesCategory && (searchTerm === "" || matchesSearch);
+  });
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {foodCategories.map((category) => (
-            <Card
-              key={category.title}
-              className="overflow-hidden border border-black/5 bg-white/95 shadow-[0_15px_30px_rgba(4,18,42,0.08)] transition hover:shadow-[0_25px_45px_rgba(4,18,42,0.14)] cursor-pointer"
-              onClick={() => setSelectedImage(category.image)}
-            >
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                  <p className="text-xs tracking-wide text-white/70">{category.description}</p>
-                  <h3 className="text-xl font-bold">{category.title}</h3>
-                </div>
-              </div>
-              <CardHeader>
-                <CardTitle className="text-center text-xs tracking-wide text-muted-foreground">
-                  {copy.cardCta}
-                </CardTitle>
-              </CardHeader>
-            </Card>
-          ))}
+  const currentCategoryInfo = restaurantCategories.find(
+    (cat) => cat.id === activeCategory
+  );
+
+  return (
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <p className="font-script text-2xl text-secondary/80">{script}</p>
+        <h2 className="text-3xl font-extrabold tracking-tight">{copy.title}</h2>
+        {copy.intro && <p className="max-w-xl text-sm text-muted-foreground">{copy.intro}</p>}
+      </div>
+
+      {/* Buscador */}
+      <div className="max-w-md">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder={locale === "es" ? "Buscar restaurante..." : "Search restaurant..."}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 rounded-full border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+          />
         </div>
       </div>
 
-      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="w-[90vw] max-w-4xl border-none bg-transparent p-0 shadow-none">
-          {selectedImage && (
-            <img
-              src={selectedImage}
-              alt="Lista gastronómica"
-              className="max-h-[80vh] w-full rounded-3xl object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+      {/* Tabs de categorías */}
+      <div className="flex flex-wrap gap-2">
+        {restaurantCategories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => {
+              setActiveCategory(category.id);
+              setSearchTerm("");
+            }}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              activeCategory === category.id
+                ? "bg-primary text-white shadow-lg"
+                : "bg-muted/50 text-muted-foreground hover:bg-muted"
+            }`}
+          >
+            <span className="mr-2">{category.icon}</span>
+            {category.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Contador */}
+      <p className="text-sm text-muted-foreground">
+        {currentCategoryInfo?.icon} {filteredRestaurants.length}{" "}
+        {locale === "es" ? "restaurantes en" : "restaurants in"}{" "}
+        <strong>{currentCategoryInfo?.label}</strong>
+      </p>
+
+      {/* Grid de tarjetas */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {filteredRestaurants.map((restaurant, index) => (
+          <MotionReveal
+            key={restaurant.id}
+            variant="fade-up"
+            delay={index * 0.03}
+            duration={0.4}
+          >
+            <Card className="group h-full overflow-hidden border border-border/50 bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+              {/* Imagen */}
+              <div className="relative aspect-square overflow-hidden bg-muted">
+                <img
+                  src={restaurant.imagen}
+                  alt={restaurant.nombre}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Info */}
+              <div className="p-3 text-center">
+                <h3 className="font-semibold text-sm text-foreground line-clamp-2 mb-2 min-h-[2.5rem]">
+                  {restaurant.nombre}
+                </h3>
+
+                {/* Botones */}
+                <div className="flex gap-1 justify-center">
+                  {restaurant.telefono && (
+                    <a
+                      href={`tel:${restaurant.telefono.replace(/\s/g, "")}`}
+                      className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-secondary/10 text-secondary hover:bg-secondary hover:text-white transition-colors"
+                      title={`${locale === "es" ? "Llamar a" : "Call"} ${restaurant.nombre}`}
+                    >
+                      <Phone className="h-4 w-4" />
+                    </a>
+                  )}
+                  <a
+                    href={getGoogleMapsUrl(restaurant.nombre)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+                    title={`${locale === "es" ? "Ver ubicación de" : "View location of"} ${restaurant.nombre}`}
+                  >
+                    <MapPin className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </Card>
+          </MotionReveal>
+        ))}
+      </div>
+
+      {filteredRestaurants.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">
+            {locale === "es"
+              ? `No se encontraron restaurantes con "${searchTerm}"`
+              : `No restaurants found matching "${searchTerm}"`}
+          </p>
+          <Button
+            variant="outline"
+            className="mt-4"
+            onClick={() => setSearchTerm("")}
+          >
+            {locale === "es" ? "Limpiar búsqueda" : "Clear search"}
+          </Button>
+        </div>
+      )}
+    </div>
   );
 };
+

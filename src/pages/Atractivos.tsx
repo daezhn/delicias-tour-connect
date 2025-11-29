@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Clock, DollarSign, Phone, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { SEO } from "@/components/SEO";
 import { useLocale } from "@/hooks/use-locale";
@@ -98,14 +97,11 @@ const Atractivos = () => {
                     className="group h-full overflow-hidden border-0 bg-gradient-to-br from-[#1f242f] via-[#2c3140] to-[#1b1e26] shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
                     onClick={() => setSelectedAttraction(place)}
                   >
-                    <div className="relative aspect-[4/5] flex flex-col items-center justify-center overflow-hidden">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/20">
                       <img
                         src={place.image}
                         alt={place.name}
-                        className={cn(
-                          "max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105",
-                          place.imageClass,
-                        )}
+                        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
                       />

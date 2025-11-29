@@ -12,7 +12,6 @@ export interface Attraction {
   contact?: string;
   web?: string;
   highlights?: string[];
-  imageClass?: string;
 }
 
 export const attractions: Attraction[] = [
@@ -22,7 +21,7 @@ export const attractions: Attraction[] = [
     name: "Museo de Paleontología",
     nameEn: "Paleontology Museum",
     category: "Ciencia y descubrimiento",
-    image: "/atractivos/_paleontologia.png",
+    image: "/images/ATRACTIVOS/Museopaleontologia.png",
     description:
       "En sus recintos se pueden encontrar una colección de caracoles fosilizados, peces, plantas, esqueletos de dinosaurios del Estado de Chihuahua, un mamut, una ballena gris entre otros ejemplares, cada pieza acompañada de una explicación breve y de fácil comprensión; además de una pequeña tienda de recuerdos.",
     descriptionEn:
@@ -39,7 +38,7 @@ export const attractions: Attraction[] = [
     name: "Museo del Desierto Chihuahuense (MUDECH)",
     nameEn: "Chihuahuan Desert Museum (MUDECH)",
     category: "Ciencia y educación",
-    image: "/atractivos/_mudech.png",
+    image: "/images/ATRACTIVOS/Museodeldesierto.png",
     description:
       "Es un espacio cuya temática aborda específicamente esta región ecogeográfica del estado de Chihuahua. Se exhiben colecciones geológico-paleontológicas destacables del norte del país, especies de plantas y animales del desierto, e información sobre los grupos humanos actuales y antiguos.",
     descriptionEn:
@@ -56,7 +55,7 @@ export const attractions: Attraction[] = [
     name: "Museo del Sitio 'Huella de nuestros pasos'",
     nameEn: "Site Museum 'Footprints of our steps'",
     category: "Patrimonio histórico",
-    image: "/atractivos/_museo de sitio.png",
+    image: "/images/ATRACTIVOS/museodelsitio.png",
     description:
       "Este museo conserva y difunde la historia de los fundadores de la ciudad, como referente para las nuevas generaciones. Testimonio de cómo Delicias pasó de ser pionera a ser la tercera ciudad en importancia en el estado en 77 años.",
     descriptionEn:
@@ -69,25 +68,22 @@ export const attractions: Attraction[] = [
   },
   {
     id: 4,
-    name: "Museo de los Derechos Humanos",
-    nameEn: "Human Rights Museum",
-    category: "Memoria y cultura",
-    image: "/atractivos/_deny.png",
+    name: "Hacienda de Chihuahua",
+    nameEn: "Chihuahua Hacienda",
+    category: "Turismo gastronómico",
+    image: "/images/ATRACTIVOS/haciendadechihuahua.png",
     description:
-      "Recinto dedicado a promover la cultura de paz y los derechos humanos a través de exposiciones y actividades educativas.",
+      "Casa productora del sotol, bebida tradicional de Chihuahua destilada de una planta del mismo nombre. Ofrecen un recorrido para conocer el proceso de fabricación artesanal y degustación.",
     descriptionEn:
-      "Venue dedicated to promoting a culture of peace and human rights through exhibitions and educational activities.",
-    location: "Col. Revolución",
-    highlights: ["Exposiciones temáticas", "Programas educativos"],
-    imageClass: "scale-125",
+      "Producer of Sotol, the traditional drink of Chihuahua. They offer a tour to learn about the artisanal manufacturing process and tasting.",
+    highlights: ["Degustación de sotol", "Proceso artesanal", "Productos locales"],
   },
-  // OTROS ATRACTIVOS
   {
     id: 5,
     name: "Reloj Público",
     nameEn: "Public Clock",
     category: "Cultura y tradición",
-    image: "/atractivos/_benito juarez.png",
+    image: "/images/ATRACTIVOS/reloj.png",
     description:
       "Monumento típico situado en el centro del plano original de Delicias. Divide la ciudad en 4 sectores (norte, sur, oriente y poniente). Punto de reunión para el grito de independencia. Inaugurado en 1949.",
     descriptionEn:
@@ -97,14 +93,13 @@ export const attractions: Attraction[] = [
     cost: "Gratis",
     web: "https://share.google/YG8ApCly3XqNBHiXL",
     highlights: ["Eventos cívicos", "Fotografías emblemáticas", "Centro histórico"],
-    imageClass: "scale-125",
   },
   {
     id: 6,
     name: "Edificio Hotel del Norte (Histórico)",
     nameEn: "Hotel del Norte Building (Historic)",
     category: "Historia y cultura",
-    image: "/atractivos/_parque fundadores.png",
+    image: "/images/ATRACTIVOS/hoteldelnorte.png",
     description:
       "Construida por inmigrantes alemanes hacia 1888, es la edificación más antigua del sitio. Hoy aloja al Hotel del Norte, ambientado a principios del siglo XX con muebles originales. Cuenta con Bar 1888, Pub, discoteca, alberca y aviario.",
     descriptionEn:
@@ -118,7 +113,7 @@ export const attractions: Attraction[] = [
     name: "Teatro de la Ciudad de Delicias",
     nameEn: "Delicias City Theater",
     category: "Arte y espectáculos",
-    image: "/atractivos/_teatro.png",
+    image: "/images/ATRACTIVOS/Teatrociudad.png",
     description:
       "Diseñado por el arquitecto Miguel Ángel García Dorantes, inaugurado en 1992 y reinaugurado en 2010. Sede de obras de teatro, ópera, música, danza, festivales y conferencias.",
     descriptionEn:
@@ -130,20 +125,9 @@ export const attractions: Attraction[] = [
     web: "https://share.google/GX9kuChruPcJ90Dd8",
     highlights: ["Cartelera cultural", "Arquitectura moderna"],
   },
+  // OTROS ATRACTIVOS EXISTENTES
   {
     id: 8,
-    name: "Hacienda de Chihuahua",
-    nameEn: "Chihuahua Hacienda",
-    category: "Turismo gastronómico",
-    image: "/atractivos/_rosetilla.png",
-    description:
-      "Casa productora del sotol, bebida tradicional de Chihuahua destilada de una planta del mismo nombre. Ofrecen un recorrido para conocer el proceso de fabricación artesanal y degustación.",
-    descriptionEn:
-      "Producer of Sotol, the traditional drink of Chihuahua. They offer a tour to learn about the artisanal manufacturing process and tasting.",
-    highlights: ["Degustación de sotol", "Proceso artesanal", "Productos locales"],
-  },
-  {
-    id: 9,
     name: "Parque Ciudad Infantil",
     nameEn: "Children's City Park",
     category: "Familia y recreación",
@@ -154,10 +138,9 @@ export const attractions: Attraction[] = [
       "Interactive space for children with themed areas, games and educational activities.",
     location: "Av. 2a Sur y Calle 11",
     highlights: ["Juegos infantiles", "Talleres guiados"],
-    imageClass: "scale-125",
   },
   {
-    id: 10,
+    id: 9,
     name: "Parque el Colibrí",
     nameEn: "Hummingbird Park",
     category: "Naturaleza urbana",
@@ -168,7 +151,19 @@ export const attractions: Attraction[] = [
       "Resting area with fountains, vegetation and gathering spaces for the whole family.",
     location: "Col. del Empleado",
     highlights: ["Áreas verdes", "Ambiente relajante"],
-    imageClass: "scale-125",
+  },
+  {
+    id: 10,
+    name: "Parque Fundadores",
+    nameEn: "Founders Park",
+    category: "Historia y cultura",
+    image: "/atractivos/_parque fundadores.png",
+    description:
+      "Parque con esculturas y murales que narran la historia de la fundación de Delicias.",
+    descriptionEn:
+      "Park with sculptures and murals depicting the history of the founding of Delicias.",
+    location: "Av. 1a Oriente",
+    highlights: ["Esculturas históricas", "Áreas de picnic"],
   },
   {
     id: 11,
@@ -196,7 +191,6 @@ export const attractions: Attraction[] = [
     location: "Salida desde Plaza Benito Juarez",
     schedule: "Viernes a domingo, horarios vespertinos",
     highlights: ["Recorridos temáticos", "Guías especializados"],
-    imageClass: "scale-125",
   },
   {
     id: 13,
@@ -210,6 +204,18 @@ export const attractions: Attraction[] = [
       "Home of baseball in Delicias with games, tournaments and community sports activities.",
     location: "Calzada del Charro y 8a Oriente",
     highlights: ["Temporada estatal", "Ambiente familiar"],
-    imageClass: "scale-125",
+  },
+  {
+    id: 14,
+    name: "Museo de los Derechos Humanos",
+    nameEn: "Human Rights Museum",
+    category: "Memoria y cultura",
+    image: "/atractivos/_deny.png",
+    description:
+      "Recinto dedicado a promover la cultura de paz y los derechos humanos a través de exposiciones y actividades educativas.",
+    descriptionEn:
+      "Venue dedicated to promoting a culture of peace and human rights through exhibitions and educational activities.",
+    location: "Col. Revolución",
+    highlights: ["Exposiciones temáticas", "Programas educativos"],
   },
 ];
