@@ -13,7 +13,7 @@ interface SEOProps {
 export const SEO = ({ 
   title, 
   description, 
-  image = "/images/herook.png", 
+  image = "/images/HEROBUENO.jpg", 
   type = "website",
   canonical,
   jsonLd
@@ -36,7 +36,7 @@ export const SEO = ({
       {/* Security: Content Security Policy */}
       <meta 
         httpEquiv="Content-Security-Policy" 
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com https://*.googleapis.com; connect-src 'self' https://api.open-meteo.com https://nominatim.openstreetmap.org https://api.openai.com; frame-src 'self' https://www.google.com;" 
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google.com https://*.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://api.open-meteo.com https://nominatim.openstreetmap.org https://api.openai.com https://www.google-analytics.com https://analytics.google.com; frame-src 'self' https://www.google.com;" 
       />
 
       {/* Open Graph / Facebook */}
