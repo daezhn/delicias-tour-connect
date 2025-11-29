@@ -490,7 +490,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 171 6820",
     redesSociales: "@Boba Joy Delicias",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Boba Joy Delicias.jpg",
   },
   {
     id: 60,
@@ -498,7 +498,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: null,
     redesSociales: "@Boba Life",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Boba Life.jpg",
   },
   {
     id: 61,
@@ -506,7 +506,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 174 3311",
     redesSociales: "@DeliFritas",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/DeliFritas.jpg",
   },
   {
     id: 62,
@@ -514,7 +514,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: null,
     redesSociales: "@El estanquillo",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/El Estanquillo.png",
   },
   {
     id: 63,
@@ -522,7 +522,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 549 8329",
     redesSociales: "@Happy Snacks Delicias",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Happy Snacks Delicias.png",
   },
   {
     id: 64,
@@ -530,7 +530,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 472 6022",
     redesSociales: "@Helados Santi",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Helados Santi.jpg",
   },
   {
     id: 65,
@@ -538,7 +538,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 284 4082",
     redesSociales: "@ICY Boutique",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/ICY Boutique.jpg",
   },
   {
     id: 66,
@@ -546,7 +546,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "638 193 6565",
     redesSociales: "@YoDelight",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/YoDelight.jpg",
   },
 
   // ========== COMER Y PASARLA BIEN ==========
