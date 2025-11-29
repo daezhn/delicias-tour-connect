@@ -121,38 +121,44 @@ const corridors = [
 const busLines = [
   {
     line: "Ómnibus de México",
+    image: "/images/omnibus.jpg",
     schedule: { es: "Rutas todo el día", en: "All-day routes" },
-    perks: { es: "Wi-Fi, asientos reclinables, lockers", en: "Wi-Fi, reclining seats, lockers" }
+    perks: { es: "Wi-Fi, asientos reclinables, lockers", en: "Wi-Fi, reclining seats, lockers" },
+    web: "https://www.odm.com.mx/"
   },
   {
     line: "Transportes Chihuahuenses",
+    image: "/images/chihuahuenses.webp",
     schedule: { es: "Rutas todo el día", en: "All-day routes" },
-    perks: { es: "Preferencia por usuarios según Google", en: "Preference for users according to Google" }
+    perks: { es: "Preferencia por usuarios según Google", en: "Preference for users according to Google" },
+    web: "https://www.estrellablanca.com.mx/transporteschihuahuenses"
   },
-
 ] as const;
 
-const mobilityTips = [
+const mobilityServices = [
   {
-    title: { es: "Uber", en: "Uber" },
-    body: {
+    name: "Uber",
+    image: "/images/uber.webp",
+    description: {
       es: "Uber opera en Delicias con puntos preferentes afuera de la Central Camionera y Plaza Carranza.",
       en: "Uber operates in Delicias with preferred pick-ups at the bus terminal and Plaza Carranza."
     },
-    details: [
-      { es: "Operando desde 2025", en: "Operating since 2025" },
-    ]
+    badge: { es: "Operando desde 2025", en: "Operating since 2025" },
+    web: "https://www.uber.com/mx/es/"
   },
   {
-    title: { es: "Radio Taxis Delicias", en: "Radio Taxis Delicias" },
-    body: {
-      es: "Taxis locales con servicio por numero telefonico.",
+    name: "Radio Taxis Delicias",
+    image: "/images/taxis.webp",
+    description: {
+      es: "Taxis locales con servicio por número telefónico.",
       en: "Local taxis with phone service."
     },
-    details: [
-      { es: "Comunicate por telefono para más información", en: "Contact us for more information" },
-    ]
-  },
+    badge: { es: "Tel: 639 472 0000", en: "Phone: 639 472 0000" },
+    web: null
+  }
+] as const;
+
+const mobilityTips = [
   {
     title: { es: "Consejos de clima y ruta", en: "Weather & route tips" },
     body: {
@@ -419,21 +425,32 @@ const Transporte = () => {
                       ? "Compra boletos en línea o directamente en la Central Camionera de Chihuahua. Llegarás a Av. Sexta Norte y Calle 3ra, a pasos de cafés y taxis."
                       : "Purchase tickets online or at the Chihuahua bus station. You will arrive at 6th Ave North & 3rd Street, steps away from cafés and taxis."}
                   </p>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     {busLines.map((line) => (
-                      <div
+                      <a
                         key={line.line}
-                        className="rounded-2xl border border-muted/40 p-4 shadow-[0_6px_18px_rgba(15,23,42,0.04)]"
+                        href={line.web}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative overflow-hidden rounded-2xl border border-muted/40 shadow-[0_6px_18px_rgba(15,23,42,0.04)] transition hover:shadow-lg hover:-translate-y-1"
                       >
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h4 className="text-lg font-semibold">{line.line}</h4>
-                          <span className="text-xs uppercase tracking-[0.35em] text-primary">
-                            {locale === "es" ? "Horarios" : "Schedule"}
-                          </span>
+                        <div className="aspect-[16/9] w-full overflow-hidden">
+                          <img
+                            src={line.image}
+                            alt={line.line}
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
                         </div>
-                        <p className="text-sm text-muted-foreground">{line.schedule[locale]}</p>
-                        <p className="text-sm text-foreground">{line.perks[locale]}</p>
-                      </div>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between gap-2">
+                            <h4 className="text-lg font-semibold">{line.line}</h4>
+                            <ArrowUpRight className="h-4 w-4 text-secondary opacity-0 transition group-hover:opacity-100" />
+                          </div>
+                          <p className="text-sm text-muted-foreground">{line.schedule[locale]}</p>
+                          <p className="mt-1 text-sm text-foreground">{line.perks[locale]}</p>
+                        </div>
+                      </a>
                     ))}
                   </div>
                 </CardContent>
@@ -492,7 +509,51 @@ const Transporte = () => {
                 {locale === "es" ? "Servicios locales de movilidad" : "Local mobility services"}
               </h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
+            
+            {/* Servicios de movilidad con tarjetas */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl mx-auto">
+              {mobilityServices.map((service) => {
+                const Wrapper = service.web ? 'a' : 'div';
+                const wrapperProps = service.web ? {
+                  href: service.web,
+                  target: "_blank",
+                  rel: "noopener noreferrer"
+                } : {};
+                
+                return (
+                  <Card
+                    key={service.name}
+                    className="group relative overflow-hidden border border-black/5 shadow-sm transition hover:shadow-lg hover:-translate-y-1"
+                  >
+                    {service.image && (
+                      <Wrapper {...wrapperProps} className="block">
+                        <div className="aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                          <img
+                            src={service.image}
+                            alt={service.name}
+                            className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                      </Wrapper>
+                    )}
+                    <CardContent className="space-y-3 p-6">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-xl font-semibold text-foreground">{service.name}</h3>
+                        {service.web && <ArrowUpRight className="h-4 w-4 text-secondary opacity-0 transition group-hover:opacity-100" />}
+                      </div>
+                      <p className="text-sm text-muted-foreground">{service.description[locale]}</p>
+                      <Badge variant="secondary" className="text-xs">
+                        {service.badge[locale]}
+                      </Badge>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+
+            {/* Consejos adicionales */}
+            <div className="grid gap-6 md:grid-cols-1 max-w-2xl mx-auto">
               {mobilityTips.map((tip) => (
                 <Card key={tip.title.es} className="border border-black/5 shadow-sm">
                   <CardContent className="space-y-3 p-6">

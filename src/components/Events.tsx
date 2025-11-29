@@ -80,7 +80,7 @@ export const Events = () => {
                           <div className="flex flex-1 flex-col gap-3 px-5 py-5">
                             <p className="text-xs uppercase tracking-[0.35em] text-slate-500">{formatted}</p>
                             <h3 className="text-xl font-bold leading-tight text-slate-900">{event.label}</h3>
-                            <p className="text-sm text-slate-600">{note}</p>
+                            <p className="text-sm text-slate-600">{event.alt}</p>
                             <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
                               <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-primary/80">
                                 Delicias · Live
