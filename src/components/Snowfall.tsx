@@ -13,13 +13,14 @@ export const Snowfall = () => {
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
 
   useEffect(() => {
-    const flakes: Snowflake[] = Array.from({ length: 50 }, (_, i) => ({
+    // Reducido a 25 copos para mejor rendimiento
+    const flakes: Snowflake[] = Array.from({ length: 25 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 10,
-      duration: 8 + Math.random() * 12,
-      size: 4 + Math.random() * 8,
-      opacity: 0.4 + Math.random() * 0.6,
+      delay: Math.random() * 8,
+      duration: 10 + Math.random() * 10,
+      size: 3 + Math.random() * 5,
+      opacity: 0.3 + Math.random() * 0.5,
     }));
     setSnowflakes(flakes);
   }, []);
@@ -29,7 +30,7 @@ export const Snowfall = () => {
       {snowflakes.map((flake) => (
         <div
           key={flake.id}
-          className="absolute animate-snowfall"
+          className="absolute will-change-transform animate-snowfall"
           style={{
             left: `${flake.left}%`,
             animationDelay: `${flake.delay}s`,
@@ -37,7 +38,7 @@ export const Snowfall = () => {
           }}
         >
           <div
-            className="rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+            className="rounded-full bg-white/80"
             style={{
               width: flake.size,
               height: flake.size,
