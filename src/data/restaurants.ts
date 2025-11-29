@@ -556,7 +556,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 467 6368",
     redesSociales: "@Algarabía Café & Bistro",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Algarabia.jpg",
   },
   {
     id: 68,
@@ -564,7 +564,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: null,
     redesSociales: "@123 BAR",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Bar 123.webp",
   },
   {
     id: 69,
@@ -572,7 +572,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "614 378 0464",
     redesSociales: "@Bar Cuatro Ases",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Bar Cuatro Ases.png",
   },
   {
     id: 70,
@@ -580,7 +580,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 472 9256",
     redesSociales: "@Cantina La 3",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Cantina la 3.jpeg",
   },
   {
     id: 71,
@@ -588,7 +588,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: null,
     redesSociales: "@Cervecería 19 Delicias",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Cerveceria 19.jpg",
   },
   {
     id: 72,
@@ -596,7 +596,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 132 1429",
     redesSociales: "@Club Iberia",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Club Iberia.jpg",
   },
   {
     id: 73,
@@ -604,7 +604,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 214 8052",
     redesSociales: "@Escandell Cantina Tradicional",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Escandell Cantina.jpg",
   },
   {
     id: 74,
@@ -612,7 +612,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 171 5364",
     redesSociales: "@La Candelaria",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/La Candelaria.jpg",
   },
   {
     id: 75,
@@ -620,7 +620,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "614 101 6552",
     redesSociales: "@La Consentida",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/La Consentida.webp",
   },
   {
     id: 76,
@@ -628,7 +628,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 268 6438",
     redesSociales: "@La Malquerida",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/La Malquerida.jpg",
   },
   {
     id: 77,
@@ -636,7 +636,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 150 2990",
     redesSociales: "@La Última",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/La Ultima.webp",
   },
   {
     id: 78,
@@ -644,7 +644,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 119 2731",
     redesSociales: "@Los 3 García",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Los Tres Garcia.jpg",
   },
   {
     id: 79,
@@ -652,7 +652,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 474 0018",
     redesSociales: "@Maclovio's",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Maclovio's.webp",
   },
   {
     id: 80,
@@ -660,7 +660,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 124 4486",
     redesSociales: "@Cafe Maxim's",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Maxims.jpg",
   },
   {
     id: 81,
@@ -668,7 +668,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 465 6860",
     redesSociales: "@olayos.bar",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Olayos Bar.webp",
   },
   {
     id: 82,
@@ -676,7 +676,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 111 0922",
     redesSociales: "@Palmas Pub Delicias Chih",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Palmas Pub.jpg",
   },
   {
     id: 83,
@@ -684,7 +684,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 123 5226",
     redesSociales: "@Sportplanet Delicias",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Sportplanet Delicias.webp",
   },
   {
     id: 84,
@@ -692,7 +692,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 191 9117",
     redesSociales: "@Tex Mex",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Tex Mex.webp",
   },
   {
     id: 85,
@@ -700,7 +700,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "638 472 0007",
     redesSociales: "@15/20 The Lucky Ones",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/The Lucky Ones.webp",
   },
   {
     id: 86,
@@ -708,7 +708,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "638 467 7588",
     redesSociales: "@Trinken Bar",
-    imagen: "/images/que_comer/placeholder.png",
+    imagen: "/images/quecomer/Trinken.jpg",
   },
 ];
 
