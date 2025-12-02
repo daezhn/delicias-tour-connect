@@ -11,7 +11,7 @@ export const SplashScreen = () => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = "unset";
-    }, 2500);
+    }, 1200);
 
     return () => {
       clearTimeout(timer);

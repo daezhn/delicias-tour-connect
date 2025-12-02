@@ -7,12 +7,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { FullPageSkeleton } from "@/components/skeletons/FullPageSkeleton";
 import { routeLoaders } from "@/lib/route-preloader";
-import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollManager } from "@/components/ScrollManager";
 import { PageTransition } from "@/components/PageTransition";
 import { SplashScreen } from "@/components/SplashScreen";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { Chatbot } from "@/components/Chatbot";
 
 type LazyComponent = LazyExoticComponent<ComponentType<unknown>>;
@@ -78,9 +76,9 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <SplashScreen />
-      <SmoothScroll />
+      {/* SmoothScroll desactivado para mejor rendimiento */}
       <ScrollProgress />
-      <CursorFollower />
+      {/* CursorFollower desactivado para mejor rendimiento */}
       <Toaster />
       <Sonner />
       <BrowserRouter>

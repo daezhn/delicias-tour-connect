@@ -13,14 +13,14 @@ export const Snowfall = () => {
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
 
   useEffect(() => {
-    // Reducido a 25 copos para mejor rendimiento
-    const flakes: Snowflake[] = Array.from({ length: 25 }, (_, i) => ({
+    // Reducido a 15 copos para mejor rendimiento
+    const flakes: Snowflake[] = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 8,
-      duration: 10 + Math.random() * 10,
-      size: 3 + Math.random() * 5,
-      opacity: 0.3 + Math.random() * 0.5,
+      duration: 12 + Math.random() * 8,
+      size: 4 + Math.random() * 4,
+      opacity: 0.4 + Math.random() * 0.4,
     }));
     setSnowflakes(flakes);
   }, []);
