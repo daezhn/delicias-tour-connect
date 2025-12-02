@@ -1,6 +1,6 @@
 export const travelRoutes = [
   {
-    image: "/images/quehacer/presa.png",
+    image: "/images/quehacer/presa.webp",
     title: { es: "Desierto & Presa", en: "Desert & dam" },
     description: {
       es: "Miradores en la Presa Las Vírgenes, senderos interpretativos y picnic naranja al atardecer.",
@@ -9,7 +9,7 @@ export const travelRoutes = [
     cta: "https://maps.google.com/?q=Presa+Las+Virgenes"
   },
   {
-    image: "/images/quehacer/reloj.jpg",
+    image: "/images/quehacer/reloj.webp",
     title: { es: "Centro creativo", en: "Creative downtown" },
     description: {
       es: "Murales, concept stores y cafés de autor alrededor del reloj monumental.",
@@ -18,7 +18,7 @@ export const travelRoutes = [
     cta: "/experiencias/arte-cultura"
   },
   {
-    image: "/images/quehacer/museo.jpg",
+    image: "/images/quehacer/museo.webp",
     title: { es: "Museos táctiles", en: "Tactile museums" },
     description: {
       es: "MUDECH y Museo de Paleontología con laboratorios de fósiles y terrazas con vista.",

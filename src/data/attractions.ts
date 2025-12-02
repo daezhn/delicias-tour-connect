@@ -21,7 +21,7 @@ export const attractions: Attraction[] = [
     name: "Museo de Paleontología",
     nameEn: "Paleontology Museum",
     category: "Ciencia y descubrimiento",
-    image: "/images/ATRACTIVOS/Museopaleontologia.png",
+    image: "/images/ATRACTIVOS/Museopaleontologia.webp",
     description:
       "En sus recintos se pueden encontrar una colección de caracoles fosilizados, peces, plantas, esqueletos de dinosaurios del Estado de Chihuahua, un mamut, una ballena gris entre otros ejemplares, cada pieza acompañada de una explicación breve y de fácil comprensión; además de una pequeña tienda de recuerdos.",
     descriptionEn:
@@ -38,7 +38,7 @@ export const attractions: Attraction[] = [
     name: "Museo del Desierto Chihuahuense (MUDECH)",
     nameEn: "Chihuahuan Desert Museum (MUDECH)",
     category: "Ciencia y educación",
-    image: "/images/ATRACTIVOS/Museodeldesierto.png",
+    image: "/images/ATRACTIVOS/Museodeldesierto.webp",
     description:
       "Es un espacio cuya temática aborda específicamente esta región ecogeográfica del estado de Chihuahua. Se exhiben colecciones geológico-paleontológicas destacables del norte del país, especies de plantas y animales del desierto, e información sobre los grupos humanos actuales y antiguos.",
     descriptionEn:
@@ -55,7 +55,7 @@ export const attractions: Attraction[] = [
     name: "Museo del Sitio 'Huella de nuestros pasos'",
     nameEn: "Site Museum 'Footprints of our steps'",
     category: "Patrimonio histórico",
-    image: "/images/ATRACTIVOS/museodelsitio.png",
+    image: "/images/ATRACTIVOS/museodelsitio.webp",
     description:
       "Este museo conserva y difunde la historia de los fundadores de la ciudad, como referente para las nuevas generaciones. Testimonio de cómo Delicias pasó de ser pionera a ser la tercera ciudad en importancia en el estado en 77 años.",
     descriptionEn:
@@ -71,7 +71,7 @@ export const attractions: Attraction[] = [
     name: "Hacienda de Chihuahua",
     nameEn: "Chihuahua Hacienda",
     category: "Turismo gastronómico",
-    image: "/images/ATRACTIVOS/haciendadechihuahua.png",
+    image: "/images/ATRACTIVOS/haciendadechihuahua.webp",
     description:
       "Casa productora del sotol, bebida tradicional de Chihuahua destilada de una planta del mismo nombre. Ofrecen un recorrido para conocer el proceso de fabricación artesanal y degustación.",
     descriptionEn:
@@ -83,7 +83,7 @@ export const attractions: Attraction[] = [
     name: "Reloj Público",
     nameEn: "Public Clock",
     category: "Cultura y tradición",
-    image: "/images/ATRACTIVOS/reloj.png",
+    image: "/images/ATRACTIVOS/reloj.webp",
     description:
       "Monumento típico situado en el centro del plano original de Delicias. Divide la ciudad en 4 sectores (norte, sur, oriente y poniente). Punto de reunión para el grito de independencia. Inaugurado en 1949.",
     descriptionEn:
@@ -99,7 +99,7 @@ export const attractions: Attraction[] = [
     name: "Edificio Hotel del Norte (Histórico)",
     nameEn: "Hotel del Norte Building (Historic)",
     category: "Historia y cultura",
-    image: "/images/ATRACTIVOS/hoteldelnorte.png",
+    image: "/images/ATRACTIVOS/hoteldelnorte.webp",
     description:
       "Construida por inmigrantes alemanes hacia 1888, es la edificación más antigua del sitio. Hoy aloja al Hotel del Norte, ambientado a principios del siglo XX con muebles originales. Cuenta con Bar 1888, Pub, discoteca, alberca y aviario.",
     descriptionEn:
@@ -113,7 +113,7 @@ export const attractions: Attraction[] = [
     name: "Teatro de la Ciudad de Delicias",
     nameEn: "Delicias City Theater",
     category: "Arte y espectáculos",
-    image: "/images/ATRACTIVOS/Teatrociudad.png",
+    image: "/images/ATRACTIVOS/Teatrociudad.webp",
     description:
       "Diseñado por el arquitecto Miguel Ángel García Dorantes, inaugurado en 1992 y reinaugurado en 2010. Sede de obras de teatro, ópera, música, danza, festivales y conferencias.",
     descriptionEn:

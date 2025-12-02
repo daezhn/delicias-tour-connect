@@ -32,7 +32,7 @@ export const ToursExplorer = () => {
       <div className="overflow-hidden rounded-[40px] border border-white/40 bg-gradient-to-r from-[#f6b043]/30 via-transparent to-[#163d8b]/30 p-4 shadow-[0_30px_70px_rgba(4,18,42,0.25)]">
         <div className="relative h-48 w-full overflow-hidden rounded-3xl border border-white/50 shadow-[0_20px_45px_rgba(4,18,42,0.15)]">
           <img
-            src="/images/cavall.jpg"
+            src="/images/cavall.webp"
             alt="Vinícola CAVALL"
             className="h-full w-full object-cover"
             loading="lazy"

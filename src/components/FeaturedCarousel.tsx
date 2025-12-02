@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { FadeImage } from "@/components/FadeImage";
 
 const galleryImages = [
-  { src: "/images/Galería/1.jpg", alt: "Plaza central en Delicias" },
-  { src: "/images/Galería/2.jpg", alt: "Gastronomía local colorida" },
-  { src: "/images/Galería/3.jpg", alt: "Detalles arquitectónicos" },
-  { src: "/images/Galería/4.jpg", alt: "Ambiente nocturno" },
-  { src: "/images/Galería/5.jpg", alt: "Naturaleza en Delicias" },
-  { src: "/images/Galería/6.jpg", alt: "Arte urbano contemporáneo" }
+  { src: "/images/Galería/1.webp", alt: "Plaza central en Delicias" },
+  { src: "/images/Galería/2.webp", alt: "Gastronomía local colorida" },
+  { src: "/images/Galería/3.webp", alt: "Detalles arquitectónicos" },
+  { src: "/images/Galería/4.webp", alt: "Ambiente nocturno" },
+  { src: "/images/Galería/5.webp", alt: "Naturaleza en Delicias" },
+  { src: "/images/Galería/6.webp", alt: "Arte urbano contemporáneo" }
 ];
 
 export const FeaturedCarousel = () => {

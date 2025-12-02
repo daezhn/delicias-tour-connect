@@ -7,9 +7,9 @@ import { SEO } from "@/components/SEO";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const heroAlbums = [
-  { image: "/images/Familia/fundadores.jpg", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
-  { image: "/images/Familia/ciclopista.jpg", caption: { es: "Bici en la ciclopista", en: "Cycling in the bike path" } },
-  { image: "/images/Familia/parquevida.jpg", caption: { es: "Parque Vida", en: "Parque Vida" } }
+  { image: "/images/Familia/fundadores.webp", caption: { es: "Parque fundadores", en: "Parque Fundadores" } },
+  { image: "/images/Familia/ciclopista.webp", caption: { es: "Bici en la ciclopista", en: "Cycling in the bike path" } },
+  { image: "/images/Familia/parquevida.webp", caption: { es: "Parque Vida", en: "Parque Vida" } }
 ] as const;
 
 const parqueVidaHighlights = [

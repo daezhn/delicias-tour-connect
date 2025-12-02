@@ -32,7 +32,7 @@ export const hotels: Hotel[] = [
     direccion: "Ave. 6a ote. 601, centro. C.P 33000",
     telefono: "639 474 04 04",
     web: "https://www.facebook.com/p/Hotel-Casa-Grande-Delicias-100063469662128/",
-    imagen: "/images/hoteles/1.jpg"
+    imagen: "/images/hoteles/1.webp"
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ export const hotels: Hotel[] = [
     direccion: "Prol Ave. Rio Florido #1001 col centro sector oriente c.p. 33000",
     telefono: "639 470 80 90",
     web: "https://www.americaninn.com.mx/",
-    imagen: "/images/HOTELE/americaninn.png"
+    imagen: "/images/HOTELE/americaninn.webp"
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ export const hotels: Hotel[] = [
     direccion: "Av. Samuel Guzman n° 201, col Obrera, Cd. Delicias, Chihuahua",
     telefono: "639 195 0352",
     web: "https://www.loscedroshotel.com/destinos/hotel-delicias",
-    imagen: "/images/HOTELE/loscedros.png"
+    imagen: "/images/HOTELE/loscedros.webp"
   },
   {
     id: 4,
@@ -83,7 +83,7 @@ export const hotels: Hotel[] = [
     direccion: "Calle 2a. Nte. 313, Norte, 33000, Delicias, Chihuahua",
     telefono: "639 472 1000",
     web: "https://www.hotelbaeza.com/",
-    imagen: "/images/HOTELE/HOTELBAEZA.png"
+    imagen: "/images/HOTELE/HOTELBAEZA.webp"
   },
   {
     id: 5,
@@ -100,7 +100,7 @@ export const hotels: Hotel[] = [
     direccion: "2a Norte 309, Delicias 33000 México",
     telefono: "639 472 45 46",
     web: "http://oasissuites.com.mx/",
-    imagen: "/images/HOTELE/HOTELOASISSUITES.png"
+    imagen: "/images/HOTELE/HOTELOASISSUITES.webp"
   },
   {
     id: 6,
@@ -117,7 +117,7 @@ export const hotels: Hotel[] = [
     direccion: "Ave. 6a norte #102, Delicias",
     telefono: "639 472 12 08",
     web: "https://www.facebook.com/p/Dorado-Inn-Delicias-100046379665269/",
-    imagen: "/images/HOTELE/HOTELELDORADOINNDELICIAS.png"
+    imagen: "/images/HOTELE/HOTELELDORADOINNDELICIAS.webp"
   },
   {
     id: 7,
@@ -134,7 +134,7 @@ export const hotels: Hotel[] = [
     direccion: "Calle 2a nte. #306",
     telefono: "639 474 21 80",
     web: "https://www.facebook.com/Hotelonixdelicias/",
-    imagen: "/images/HOTELE/hotelonixsuites.png"
+    imagen: "/images/HOTELE/hotelonixsuites.webp"
   },
   {
     id: 8,
@@ -151,7 +151,7 @@ export const hotels: Hotel[] = [
     direccion: "Calle 5ta #506, Sector Norte",
     telefono: "639 268 95 30",
     web: "https://www.facebook.com/p/Downtown-Luxury-Suites-61558473443408/",
-    imagen: "/images/HOTELE/HOTELDOWNTOWNLUXURY.png"
+    imagen: "/images/HOTELE/HOTELDOWNTOWNLUXURY.webp"
   },
   {
     id: 9,
@@ -168,7 +168,7 @@ export const hotels: Hotel[] = [
     direccion: "Ave. Jessica Jurado #4 sector oriente c.p. 33000",
     telefono: "639 139 1200",
     web: "https://www.choicehotels.com/mexico/delicias/comfort-inn-hotels",
-    imagen: "/images/HOTELE/HOTELCOMFORTINN.png"
+    imagen: "/images/HOTELE/HOTELCOMFORTINN.webp"
   },
   {
     id: 10,
@@ -185,7 +185,7 @@ export const hotels: Hotel[] = [
     direccion: "Av. Río Florido Oriente #506",
     telefono: "639 472 02 27",
     web: "https://www.facebook.com/p/RIO-INN-100063969048437/",
-    imagen: "/images/HOTELE/HOTELRIOINN.png"
+    imagen: "/images/HOTELE/HOTELRIOINN.webp"
   },
   {
     id: 11,
@@ -202,6 +202,6 @@ export const hotels: Hotel[] = [
     direccion: "AUTOPISTA Delicias-Chihuahua KM 148, Genaro Vazquez, 33130",
     telefono: "639 141 1551",
     web: "https://www.hotelkaviameoqui.com/",
-    imagen: "/images/HOTELE/HOTELKAVIA.png"
+    imagen: "/images/HOTELE/HOTELKAVIA.webp"
   }
 ];

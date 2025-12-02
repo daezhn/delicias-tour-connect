@@ -21,7 +21,7 @@ import { SEO } from "@/components/SEO";
 const highlightTiles = [
   {
     id: "boutique",
-    image: "/images/hoteles/1.jpg",
+    image: "/images/hoteles/1.webp",
     eyebrow: { es: "Centro histórico", en: "Historic core" },
     title: { es: "Hoteles boutique", en: "Boutique stays" },
     description: {
@@ -35,7 +35,7 @@ const highlightTiles = [
   },
   {
     id: "pool",
-    image: "/images/comfort.jpg",
+    image: "/images/comfort.webp",
     eyebrow: { es: "Zona norte", en: "North district" },
     title: { es: "Escapadas con alberca", en: "Pool escapes" },
     description: {
@@ -49,7 +49,7 @@ const highlightTiles = [
   },
   {
     id: "creative",
-    image: "/images/hoteles/5.jpg",
+    image: "/images/hoteles/5.webp",
     eyebrow: { es: "Valle agrícola", en: "Agricultural valley" },
     title: { es: "Estancias creativas", en: "Creative lodgings" },
     description: {
@@ -143,7 +143,7 @@ const Hospedaje = () => {
         <section className="relative overflow-hidden bg-[#1a2451] text-white">
           <div className="absolute inset-0">
             <img
-              src="/images/hoteles/3.jpg"
+              src="/images/hoteles/3.webp"
               alt="Habitaciones de hotel en Delicias"
               className="h-full w-full object-cover opacity-40"
             />

@@ -2,30 +2,30 @@ import { useMemo } from "react";
 import { useLocale } from "@/hooks/use-locale";
 import { SEO } from "@/components/SEO";
 
-const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg";
-const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg";
+const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.webp";
+const HERO_IMAGE_MOBILE = "/images/relojnoche.webp";
 
 const quickLinks = [
-  { href: "/#eventos", image: "/images/event-2.jpg", label: { es: "Agenda", en: "Agenda" } },
-  { href: "/tours", image: "/images/tours/cavall7.jpg", label: { es: "Tours", en: "Tours" } },
-  { href: "/hospedaje", image: "/images/hotel-4.jpg", label: { es: "Hoteles", en: "Hotels" } },
-  { href: "/experiencias/que-comer", image: "/images/restaurant-1.jpg", label: { es: "Gastronomía", en: "Food" } }
+  { href: "/#eventos", image: "/images/event-2.webp", label: { es: "Agenda", en: "Agenda" } },
+  { href: "/tours", image: "/images/tours/cavall7.webp", label: { es: "Tours", en: "Tours" } },
+  { href: "/hospedaje", image: "/images/hotel-4.webp", label: { es: "Hoteles", en: "Hotels" } },
+  { href: "/experiencias/que-comer", image: "/images/restaurant-1.webp", label: { es: "Gastronomía", en: "Food" } }
 ] as const;
 
 const additionalTiles = [
   {
     href: "/Atractivos",
-    image: "/images/hero-delicias-3.jpg",
+    image: "/images/hero-delicias-3.webp",
     label: { es: "Atractivos", en: "Highlights" }
   },
   {
     href: "/experiencias/que-hacer",
-    image: "/images/hero-delicias-1.jpg",
+    image: "/images/hero-delicias-1.webp",
     label: { es: "Actividades", en: "Activities" }
   },
   {
     href: "/#plan-trip",
-    image: "/images/hotel-5.jpg",
+    image: "/images/hotel-5.webp",
     label: { es: "Stay & Dine", en: "Stay & Dine" }
   }
 ] as const;

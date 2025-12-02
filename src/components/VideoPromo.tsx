@@ -83,7 +83,7 @@ export const VideoPromo = () => {
           <video
             ref={videoRef}
             className="w-full h-full object-cover"
-            poster="/images/hero-delicias-1.jpg" // Fallback to a hero image
+            poster="/images/hero-delicias-1.webp" // Fallback to a hero image
             onClick={togglePlay}
             loop
             playsInline

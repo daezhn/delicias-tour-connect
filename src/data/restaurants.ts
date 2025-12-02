@@ -22,7 +22,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 268 6870",
     redesSociales: "@affogato.bistro",
-    imagen: "/images/quecomer/Affogato Bistro Cafe.jpg",
+    imagen: "/images/quecomer/Affogato Bistro Cafe.webp",
   },
   {
     id: 2,
@@ -86,7 +86,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 268 0818",
     redesSociales: "@doce&mimosas",
-    imagen: "/images/quecomer/Doce&Mimosas.jpg",
+    imagen: "/images/quecomer/Doce&Mimosas.webp",
   },
   {
     id: 10,
@@ -142,7 +142,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 132 6735",
     redesSociales: "@FogoGaucho",
-    imagen: "/images/quecomer/Fogo Gaucho Restaurant.jpg",
+    imagen: "/images/quecomer/Fogo Gaucho Restaurant.webp",
   },
   {
     id: 17,
@@ -150,7 +150,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 472 7390",
     redesSociales: "@Ostionerialacabañita",
-    imagen: "/images/quecomer/La Cabañita.jpg",
+    imagen: "/images/quecomer/La Cabañita.webp",
   },
   {
     id: 18,
@@ -158,7 +158,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 132 6199",
     redesSociales: "@RestauranntLosOlivosCdDelicias",
-    imagen: "/images/quecomer/Los Olivos Montesori.png",
+    imagen: "/images/quecomer/Los Olivos Montesori.webp",
   },
   {
     id: 19,
@@ -166,7 +166,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 132 6784",
     redesSociales: null,
-    imagen: "/images/quecomer/Los Olivos Plaza Bella.jpg",
+    imagen: "/images/quecomer/Los Olivos Plaza Bella.webp",
   },
   {
     id: 20,
@@ -174,7 +174,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 466 3857",
     redesSociales: "@mariscosensenadaendelicias",
-    imagen: "/images/quecomer/Mariscos Ensenada.jpg",
+    imagen: "/images/quecomer/Mariscos Ensenada.webp",
   },
   {
     id: 21,
@@ -182,7 +182,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 132 6874",
     redesSociales: "@matsurisushibardelicias",
-    imagen: "/images/quecomer/Matsuri.jpg",
+    imagen: "/images/quecomer/Matsuri.webp",
   },
   {
     id: 22,
@@ -190,7 +190,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 188 4688",
     redesSociales: "@Nudoss",
-    imagen: "/images/quecomer/Nudoss.jpg",
+    imagen: "/images/quecomer/Nudoss.webp",
   },
   {
     id: 23,
@@ -198,7 +198,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 129 9679",
     redesSociales: "@PapigochiRestaurantBar",
-    imagen: "/images/quecomer/Papigochi.jpg",
+    imagen: "/images/quecomer/Papigochi.webp",
   },
   {
     id: 24,
@@ -206,7 +206,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 123 4340",
     redesSociales: "@Pizzería La Sierra Delicias",
-    imagen: "/images/quecomer/Pizzería La Sierra Delicias.jpg",
+    imagen: "/images/quecomer/Pizzería La Sierra Delicias.webp",
   },
   {
     id: 25,
@@ -214,7 +214,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 149 7154",
     redesSociales: "@Rincon Gitano Restaurante",
-    imagen: "/images/quecomer/Rincon Gitano.jpg",
+    imagen: "/images/quecomer/Rincon Gitano.webp",
   },
   {
     id: 26,
@@ -230,7 +230,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 132 6385",
     redesSociales: "@simonlimonrest",
-    imagen: "/images/quecomer/Simon Limon.jpg",
+    imagen: "/images/quecomer/Simon Limon.webp",
   },
   {
     id: 28,
@@ -238,7 +238,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 160 0979",
     redesSociales: "@Taco Baja Delicias",
-    imagen: "/images/quecomer/Taco Baja Delicias.jpg",
+    imagen: "/images/quecomer/Taco Baja Delicias.webp",
   },
 
   // ========== COMIDA RÁPIDA ==========
@@ -248,7 +248,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 122 1309",
     redesSociales: "@Bananas Café Delicias",
-    imagen: "/images/quecomer/Bananas Cafe.jpg",
+    imagen: "/images/quecomer/Bananas Cafe.webp",
   },
   {
     id: 30,
@@ -256,7 +256,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "648 100 2180",
     redesSociales: "@Barbacoa La Placa Delicias",
-    imagen: "/images/quecomer/Barbacoa La Placa.jpg",
+    imagen: "/images/quecomer/Barbacoa La Placa.webp",
   },
   {
     id: 31,
@@ -264,7 +264,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 467 5838",
     redesSociales: "@Burger King Delicias",
-    imagen: "/images/quecomer/Burguer King.png",
+    imagen: "/images/quecomer/Burguer King.webp",
   },
   {
     id: 32,
@@ -272,7 +272,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 112 9186",
     redesSociales: "@Carnitas Lupita",
-    imagen: "/images/quecomer/Carnitas Lupita.jpg",
+    imagen: "/images/quecomer/Carnitas Lupita.webp",
   },
   {
     id: 33,
@@ -280,7 +280,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 133 3285",
     redesSociales: "@casadeljugodelicias",
-    imagen: "/images/quecomer/Casa del Jugo.png",
+    imagen: "/images/quecomer/Casa del Jugo.webp",
   },
   {
     id: 34,
@@ -288,7 +288,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: null,
     redesSociales: "@Costa Linda Mariscos",
-    imagen: "/images/quecomer/COSTA LINDA.jpg",
+    imagen: "/images/quecomer/COSTA LINDA.webp",
   },
   {
     id: 35,
@@ -296,7 +296,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 474 8505",
     redesSociales: "@Dinos Restaurant & Café",
-    imagen: "/images/quecomer/Dinos Restaurant.jpg",
+    imagen: "/images/quecomer/Dinos Restaurant.webp",
   },
   {
     id: 36,
@@ -312,7 +312,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 132 4093",
     redesSociales: "@Dr. Sushi Delicias",
-    imagen: "/images/quecomer/Dr.Sushi.png",
+    imagen: "/images/quecomer/Dr.Sushi.webp",
   },
   {
     id: 38,
@@ -320,7 +320,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 231 3336",
     redesSociales: "@Ebi sushi Delicias",
-    imagen: "/images/quecomer/Ebi Sushi.jpg",
+    imagen: "/images/quecomer/Ebi Sushi.webp",
   },
   {
     id: 39,
@@ -328,7 +328,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 688 6768",
     redesSociales: "@Gorditas Lily",
-    imagen: "/images/quecomer/Gorditas Lily.jpg",
+    imagen: "/images/quecomer/Gorditas Lily.webp",
   },
   {
     id: 40,
@@ -336,7 +336,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: null,
     redesSociales: "@KFC",
-    imagen: "/images/quecomer/KFC.jpeg",
+    imagen: "/images/quecomer/KFC.webp",
   },
   {
     id: 41,
@@ -344,7 +344,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 467 4590",
     redesSociales: "@Taqueria La Canasta",
-    imagen: "/images/quecomer/La Canasta.jpg",
+    imagen: "/images/quecomer/La Canasta.webp",
   },
   {
     id: 42,
@@ -352,7 +352,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 171 7883",
     redesSociales: "@La Manzana Roja",
-    imagen: "/images/quecomer/La Manzana Roja.jpg",
+    imagen: "/images/quecomer/La Manzana Roja.webp",
   },
   {
     id: 43,
@@ -376,7 +376,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 171 9995",
     redesSociales: "@Little Tonys Delicias",
-    imagen: "/images/quecomer/Little Tonys.jpg",
+    imagen: "/images/quecomer/Little Tonys.webp",
   },
   {
     id: 46,
@@ -400,7 +400,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 141 2036",
     redesSociales: "@Mr. Waffle",
-    imagen: "/images/quecomer/Mr.Wafle.jpg",
+    imagen: "/images/quecomer/Mr.Wafle.webp",
   },
   {
     id: 49,
@@ -416,7 +416,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 472 6300",
     redesSociales: "@Orsini's Pizzeria",
-    imagen: "/images/quecomer/Orsinis Pizzeria.png",
+    imagen: "/images/quecomer/Orsinis Pizzeria.webp",
   },
   {
     id: 51,
@@ -432,7 +432,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 474 0935",
     redesSociales: "@Chaconnis Pizzeria Delicias",
-    imagen: "/images/quecomer/Pizzeria Chaconnis.jpg",
+    imagen: "/images/quecomer/Pizzeria Chaconnis.webp",
   },
   {
     id: 53,
@@ -440,7 +440,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 472 5058",
     redesSociales: "@pollofelizdelicias",
-    imagen: "/images/quecomer/Pollo Feliz.jpeg",
+    imagen: "/images/quecomer/Pollo Feliz.webp",
   },
   {
     id: 54,
@@ -448,7 +448,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 472 1027",
     redesSociales: "@pollosinaloense",
-    imagen: "/images/quecomer/Pollo Sinaloense.jpg",
+    imagen: "/images/quecomer/Pollo Sinaloense.webp",
   },
   {
     id: 55,
@@ -456,7 +456,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 467 6666",
     redesSociales: "@SubDeliciasMx",
-    imagen: "/images/quecomer/Subway.jpeg",
+    imagen: "/images/quecomer/Subway.webp",
   },
   {
     id: 56,
@@ -464,7 +464,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 472 3420",
     redesSociales: "@El Borrego de Oro",
-    imagen: "/images/quecomer/Taqueria el Borrego de Oro.jpg",
+    imagen: "/images/quecomer/Taqueria el Borrego de Oro.webp",
   },
   {
     id: 57,
@@ -480,7 +480,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 148 7766",
     redesSociales: "@Restaurant Wings Station",
-    imagen: "/images/quecomer/Wings Station.jpg",
+    imagen: "/images/quecomer/Wings Station.webp",
   },
 
   // ========== UN SNACK ==========
@@ -490,7 +490,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 171 6820",
     redesSociales: "@Boba Joy Delicias",
-    imagen: "/images/quecomer/Boba Joy Delicias.jpg",
+    imagen: "/images/quecomer/Boba Joy Delicias.webp",
   },
   {
     id: 60,
@@ -498,7 +498,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: null,
     redesSociales: "@Boba Life",
-    imagen: "/images/quecomer/Boba Life.jpg",
+    imagen: "/images/quecomer/Boba Life.webp",
   },
   {
     id: 61,
@@ -506,7 +506,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 174 3311",
     redesSociales: "@DeliFritas",
-    imagen: "/images/quecomer/DeliFritas.jpg",
+    imagen: "/images/quecomer/DeliFritas.webp",
   },
   {
     id: 62,
@@ -514,7 +514,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: null,
     redesSociales: "@El estanquillo",
-    imagen: "/images/quecomer/El Estanquillo.png",
+    imagen: "/images/quecomer/El Estanquillo.webp",
   },
   {
     id: 63,
@@ -522,7 +522,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 549 8329",
     redesSociales: "@Happy Snacks Delicias",
-    imagen: "/images/quecomer/Happy Snacks Delicias.png",
+    imagen: "/images/quecomer/Happy Snacks Delicias.webp",
   },
   {
     id: 64,
@@ -530,7 +530,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 472 6022",
     redesSociales: "@Helados Santi",
-    imagen: "/images/quecomer/Helados Santi.jpg",
+    imagen: "/images/quecomer/Helados Santi.webp",
   },
   {
     id: 65,
@@ -538,7 +538,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "639 284 4082",
     redesSociales: "@ICY Boutique",
-    imagen: "/images/quecomer/ICY Boutique.jpg",
+    imagen: "/images/quecomer/ICY Boutique.webp",
   },
   {
     id: 66,
@@ -546,7 +546,7 @@ export const restaurants: Restaurant[] = [
     categoria: "snack",
     telefono: "638 193 6565",
     redesSociales: "@YoDelight",
-    imagen: "/images/quecomer/YoDelight.jpg",
+    imagen: "/images/quecomer/YoDelight.webp",
   },
 
   // ========== COMER Y PASARLA BIEN ==========
@@ -556,7 +556,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 467 6368",
     redesSociales: "@Algarabía Café & Bistro",
-    imagen: "/images/quecomer/Algarabia.jpg",
+    imagen: "/images/quecomer/Algarabia.webp",
   },
   {
     id: 68,
@@ -572,7 +572,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "614 378 0464",
     redesSociales: "@Bar Cuatro Ases",
-    imagen: "/images/quecomer/Bar Cuatro Ases.png",
+    imagen: "/images/quecomer/Bar Cuatro Ases.webp",
   },
   {
     id: 70,
@@ -580,7 +580,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 472 9256",
     redesSociales: "@Cantina La 3",
-    imagen: "/images/quecomer/Cantina la 3.jpeg",
+    imagen: "/images/quecomer/Cantina la 3.webp",
   },
   {
     id: 71,
@@ -588,7 +588,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: null,
     redesSociales: "@Cervecería 19 Delicias",
-    imagen: "/images/quecomer/Cerveceria 19.jpg",
+    imagen: "/images/quecomer/Cerveceria 19.webp",
   },
   {
     id: 72,
@@ -596,7 +596,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 132 1429",
     redesSociales: "@Club Iberia",
-    imagen: "/images/quecomer/Club Iberia.jpg",
+    imagen: "/images/quecomer/Club Iberia.webp",
   },
   {
     id: 73,
@@ -604,7 +604,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 214 8052",
     redesSociales: "@Escandell Cantina Tradicional",
-    imagen: "/images/quecomer/Escandell Cantina.jpg",
+    imagen: "/images/quecomer/Escandell Cantina.webp",
   },
   {
     id: 74,
@@ -612,7 +612,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 171 5364",
     redesSociales: "@La Candelaria",
-    imagen: "/images/quecomer/La Candelaria.jpg",
+    imagen: "/images/quecomer/La Candelaria.webp",
   },
   {
     id: 75,
@@ -628,7 +628,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 268 6438",
     redesSociales: "@La Malquerida",
-    imagen: "/images/quecomer/La Malquerida.jpg",
+    imagen: "/images/quecomer/La Malquerida.webp",
   },
   {
     id: 77,
@@ -644,7 +644,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 119 2731",
     redesSociales: "@Los 3 García",
-    imagen: "/images/quecomer/Los Tres Garcia.jpg",
+    imagen: "/images/quecomer/Los Tres Garcia.webp",
   },
   {
     id: 79,
@@ -660,7 +660,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 124 4486",
     redesSociales: "@Cafe Maxim's",
-    imagen: "/images/quecomer/Maxims.jpg",
+    imagen: "/images/quecomer/Maxims.webp",
   },
   {
     id: 81,
@@ -676,7 +676,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "639 111 0922",
     redesSociales: "@Palmas Pub Delicias Chih",
-    imagen: "/images/quecomer/Palmas Pub.jpg",
+    imagen: "/images/quecomer/Palmas Pub.webp",
   },
   {
     id: 83,
@@ -708,7 +708,7 @@ export const restaurants: Restaurant[] = [
     categoria: "pasarla-bien",
     telefono: "638 467 7588",
     redesSociales: "@Trinken Bar",
-    imagen: "/images/quecomer/Trinken.jpg",
+    imagen: "/images/quecomer/Trinken.webp",
   },
 ];
 

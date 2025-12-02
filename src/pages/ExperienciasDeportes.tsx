@@ -5,11 +5,11 @@ import { ArrowUpRight } from "lucide-react";
 import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { SEO } from "@/components/SEO";
 
-const heroShots = ["/images/Deportes/hero1.JPG", "/images/Deportes/hero2.JPG", "/images/Deportes/hero3.jpg"] as const;
+const heroShots = ["/images/Deportes/hero1.webp", "/images/Deportes/hero2.webp", "/images/Deportes/hero3.webp"] as const;
 
 const actionCards = [
   {
-    image: "/images/Deportes/presa1.jpg",
+    image: "/images/Deportes/presa1.webp",
     title: { es: "Kayak Presa Las Vírgenes", en: "Kayak Las Vírgenes dam" },
     description: {
       es: "Remo al amanecer con guía y parada fotográfica en el mirador superior.",
@@ -18,7 +18,7 @@ const actionCards = [
     stats: { es: "Duración 2.5 h", en: "2.5 h session" }
   },
   {
-    image: "/images/Deportes/poli.jpg",
+    image: "/images/Deportes/poli.webp",
     title: { es: "Polideportivo Bicentenario", en: "Bicentenario Sports Center" },
     description: {
       es: "Visita el polideportivo conociendo su infraestructura y actividades.",
@@ -27,7 +27,7 @@ const actionCards = [
     stats: { es: "Familiar ", en: "Family-friendly" }
   },
   {
-    image: "/images/Deportes/parquevida.jpg",
+    image: "/images/Deportes/parquevida.webp",
     title: { es: "Circuito Parque Vida", en: "Parque Vida circuit" },
     description: {
       es: "Funcional al aire libre, skate loop y canchas encendidas todas las tardes.",

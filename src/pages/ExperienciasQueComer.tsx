@@ -31,7 +31,7 @@ const tastingMenu = [
       es: "Laminitas crujientes con emulsión cítrica para abrir apetito.",
       en: "Crisp sheets with citrus emulsion to wake up your palate."
     },
-    image: "/images/restaurant-1.jpg"
+    image: "/images/restaurant-1.webp"
   },
   {
     course: { es: "Plato fuerte", en: "Main" },
@@ -41,7 +41,7 @@ const tastingMenu = [
       es: "Corte jugoso.",
       en: "Juicy cut."
     },
-    image: "/images/restaurant-2.jpg"
+    image: "/images/restaurant-2.webp"
   },
   {
     course: { es: "Postre", en: "Dessert" },
@@ -51,7 +51,7 @@ const tastingMenu = [
       es: "Base de galleta con queso de rancho y nube rosa.",
       en: "Cookie base, farmhouse cheese and fluffy pink cloud."
     },
-    image: "/images/restaurant-3.jpg"
+    image: "/images/restaurant-3.webp"
   }
 ] as const;
 
@@ -162,7 +162,7 @@ const ExperienciasQueComer = () => {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 h-full">
               <img
-                src="/images/restaurant-4.jpg"
+                src="/images/restaurant-4.webp"
                 alt=""
                 className="h-full min-h-[24rem] w-full rounded-[32px] border border-white object-cover shadow-[0_20px_55px_rgba(133,78,50,0.3)]"
                 loading="lazy"
@@ -170,14 +170,14 @@ const ExperienciasQueComer = () => {
               />
               <div className="grid gap-4 h-full">
                 <img
-                  src="/images/que_comer/agave.png"
+                  src="/images/que_comer/agave.webp"
                   alt="Agave"
                   className="h-52 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
                 <img
-                  src="/images/restaurant-2.jpg"
+                  src="/images/restaurant-2.webp"
                   alt=""
                   className="h-52 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"

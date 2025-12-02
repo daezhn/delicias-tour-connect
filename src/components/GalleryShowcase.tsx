@@ -6,26 +6,26 @@ import { Reveal } from "@/components/Reveal";
 import { MagneticButton } from "@/components/MagneticButton";
 
 const initialGalleryImages = [
-  { src: "/images/Galería/1.jpg", alt: "Vista aérea de Delicias" },
-  { src: "/images/Galería/2.jpg", alt: "Detalles urbanos y arquitectura" },
-  { src: "/images/Galería/3.jpg", alt: "Plaza principal al atardecer" },
-  { src: "/images/Galería/4.jpg", alt: "Ambiente nocturno con neones" },
-  { src: "/images/Galería/5.jpg", alt: "Paisaje desértico y nubes doradas" },
-  { src: "/images/Galería/6.jpg", alt: "Arte urbano contemporáneo" },
-  { src: "/images/Galería/7.jpg", alt: "Eventos culturales al aire libre" },
-  { src: "/images/Galería/8.jpg", alt: "Mercado local con colores vibrantes" },
-  { src: "/images/Galería/9.jpg", alt: "Escenarios creativos y gastronomía" },
-  { src: "/images/Galería/10.jpg", alt: "Cañones y formaciones rocosas" },
-  { src: "/images/Galería/11.jpg", alt: "Panorámica completa de la ciudad" },
-  { src: "/images/Galería/12.jpg", alt: "Vida nocturna con luces cálidas" },
-  { src: "/images/Galería/13.jpg", alt: "Hotel boutique con alberca" },
-  { src: "/images/Galería/14.jpg", alt: "Sabores regionales y mixología" },
-  { src: "/images/Galería/15.jpg", alt: "Rutas carreteras hacia el valle" },
-  { src: "/images/Galería/16.jpg", alt: "Escenarios para ciclismo" },
-  { src: "/images/Galería/17.jpg", alt: "Miradores naturales" },
-  { src: "/images/Galería/18.jpg", alt: "Festividades comunitarias" },
-  { src: "/images/Galería/19.jpg", alt: "Experiencias de aventura" },
-  { src: "/images/Galería/20.jpg", alt: "Atardeceres en Delicias" }
+  { src: "/images/Galería/1.webp", alt: "Vista aérea de Delicias" },
+  { src: "/images/Galería/2.webp", alt: "Detalles urbanos y arquitectura" },
+  { src: "/images/Galería/3.webp", alt: "Plaza principal al atardecer" },
+  { src: "/images/Galería/4.webp", alt: "Ambiente nocturno con neones" },
+  { src: "/images/Galería/5.webp", alt: "Paisaje desértico y nubes doradas" },
+  { src: "/images/Galería/6.webp", alt: "Arte urbano contemporáneo" },
+  { src: "/images/Galería/7.webp", alt: "Eventos culturales al aire libre" },
+  { src: "/images/Galería/8.webp", alt: "Mercado local con colores vibrantes" },
+  { src: "/images/Galería/9.webp", alt: "Escenarios creativos y gastronomía" },
+  { src: "/images/Galería/10.webp", alt: "Cañones y formaciones rocosas" },
+  { src: "/images/Galería/11.webp", alt: "Panorámica completa de la ciudad" },
+  { src: "/images/Galería/12.webp", alt: "Vida nocturna con luces cálidas" },
+  { src: "/images/Galería/13.webp", alt: "Hotel boutique con alberca" },
+  { src: "/images/Galería/14.webp", alt: "Sabores regionales y mixología" },
+  { src: "/images/Galería/15.webp", alt: "Rutas carreteras hacia el valle" },
+  { src: "/images/Galería/16.webp", alt: "Escenarios para ciclismo" },
+  { src: "/images/Galería/17.webp", alt: "Miradores naturales" },
+  { src: "/images/Galería/18.webp", alt: "Festividades comunitarias" },
+  { src: "/images/Galería/19.webp", alt: "Experiencias de aventura" },
+  { src: "/images/Galería/20.webp", alt: "Atardeceres en Delicias" }
 ];
 
 const additionalImages = [

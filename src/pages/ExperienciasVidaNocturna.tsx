@@ -114,7 +114,7 @@ const ExperienciasVidaNocturna = () => {
         <section className="relative isolate overflow-hidden px-4 py-20 sm:px-10 lg:px-20">
           <div className="absolute inset-0">
             <img
-              src="/images/Galería/17.jpg"
+              src="/images/Galería/17.webp"
               alt={
                 locale === "es"
                   ? "Personas brindando en un bar iluminado de Delicias"
@@ -186,7 +186,7 @@ const ExperienciasVidaNocturna = () => {
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <img
-                  src="/images/Galería/10.jpg"
+                  src="/images/Galería/10.webp"
                   alt={
                     locale === "es"
                       ? "Cocteles coloridos servidos en una barra local"
@@ -197,7 +197,7 @@ const ExperienciasVidaNocturna = () => {
                   decoding="async"
                 />
                 <img
-                  src="/images/Galería/1.jpg"
+                  src="/images/Galería/1.webp"
                   alt={
                     locale === "es"
                       ? "DJ y pista de baile iluminada en Delicias"

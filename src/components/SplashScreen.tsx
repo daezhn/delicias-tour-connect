@@ -34,7 +34,7 @@ export const SplashScreen = () => {
             className="relative flex flex-col items-center gap-6"
           >
             <img
-              src="/images/Logoideablanco.png"
+              src="/images/Logoideablanco.webp"
               alt="Idea Delicias"
               className="w-48 object-contain md:w-64"
             />

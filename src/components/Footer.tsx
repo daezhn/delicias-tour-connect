@@ -22,7 +22,7 @@ export const Footer = () => {
           <MotionReveal delay={0}>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img src="/images/IDEAICON.png" alt="IDEA Delicias" className="w-full h-full object-contain" />
+                <img src="/images/IDEAICON.webp" alt="IDEA Delicias" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="font-bold text-lg">IDEA Delicias</h3>

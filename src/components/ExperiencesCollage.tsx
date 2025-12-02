@@ -6,35 +6,35 @@ const experiences = [
   {
     id: "todo",
     href: "/experiencias/que-hacer",
-    image: "/images/experiencias/que hacer.jpg",
+    image: "/images/experiencias/que hacer.webp",
     title: { es: "Qué hacer en Delicias", en: "Things to do" },
     layout: "sm:col-span-3 sm:row-span-3"
   },
   {
     id: "nightlife",
     href: "/experiencias/vida-nocturna",
-    image: "/images/Galería/12.jpg",
+    image: "/images/Galería/12.webp",
     title: { es: "Vida nocturna", en: "Nightlife" },
     layout: "sm:col-span-3 sm:row-span-2"
   },
   {
     id: "art",
     href: "/experiencias/arte-cultura",
-    image: "/images/Galería/5.jpg",
+    image: "/images/Galería/5.webp",
     title: { es: "Arte y cultura", en: "Art & culture" },
     layout: "sm:col-span-3 sm:row-span-1"
   },
   {
     id: "family",
     href: "/experiencias/familia",
-    image: "/images/experiencias/familia.JPG",
+    image: "/images/experiencias/familia.webp",
     title: { es: "Diversión en familia", en: "Family fun" },
     layout: "sm:col-span-3 sm:row-span-1"
   },
   {
     id: "dine",
     href: "/experiencias/que-comer",
-    image: "/images/restaurant-3.jpg",
+    image: "/images/restaurant-3.webp",
     title: { es: "¿Qué comer?", en: "Where to eat" },
     layout: "sm:col-span-3 sm:row-span-1"
   }

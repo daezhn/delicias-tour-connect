@@ -6,8 +6,8 @@ import { MotionReveal } from "@/components/MotionReveal";
 import { Snowfall } from "@/components/Snowfall";
 
 // Single static hero background containing embedded text per client request
-const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.jpg"; // provided asset in public/images
-const HERO_IMAGE_MOBILE = "/images/relojnoche.jpg"; // mobile-only crop centered on the clock tower
+const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.webp"; // provided asset in public/images
+const HERO_IMAGE_MOBILE = "/images/relojnoche.webp"; // mobile-only crop centered on the clock tower
 
 // Stats removed for cleaner tourist-first visual hero
 
@@ -151,7 +151,7 @@ export const Hero = () => {
       >
         <MotionReveal variant="fade-down" delay={0.5}>
           <img
-            src="/images/Logoideablanco.png"
+            src="/images/Logoideablanco.webp"
             alt="Idea Delicias"
             className="h-12 w-auto object-contain drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)] lg:h-14"
             loading="lazy"
@@ -165,7 +165,7 @@ export const Hero = () => {
       >
         <MotionReveal variant="fade-left" delay={0.2}>
           <img
-            src="/images/recurso.png"
+            src="/images/recurso.webp"
             alt={locale === "es" ? "Sello turístico de Delicias" : "Delicias tourism seal"}
             className="h-36 w-36 object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
             loading="lazy"
@@ -174,7 +174,7 @@ export const Hero = () => {
         </MotionReveal>
         <MotionReveal variant="fade-down" delay={0.4}>
           <img
-            src="/images/Logoideablanco.png"
+            src="/images/Logoideablanco.webp"
             alt="Idea Delicias"
             className="h-10 w-auto object-contain drop-shadow-[0_12px_25px_rgba(0,0,0,0.25)]"
             loading="lazy"

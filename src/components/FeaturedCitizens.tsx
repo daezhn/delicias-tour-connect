@@ -14,7 +14,7 @@ export const FeaturedCitizens = () => {
     <section className="relative isolate overflow-hidden">
       <div className="relative h-[280px] md:h-[320px]">
         <img
-          src="/images/Galería/11.jpg"
+          src="/images/Galería/11.webp"
           alt="Panorámica de Delicias Chihuahua"
           className="h-full w-full object-cover"
         />

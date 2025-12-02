@@ -226,7 +226,7 @@ const ClimaTips = () => {
         <section className="relative overflow-hidden bg-[#0c2c68] text-white">
           <div className="absolute inset-0">
             <img
-              src="/images/hero-delicias-2.jpg"
+              src="/images/hero-delicias-2.webp"
               alt="Clima en Delicias Chihuahua"
               className="h-full w-full object-cover opacity-30"
             />

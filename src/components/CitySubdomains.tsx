@@ -7,7 +7,7 @@ const SUBDOMAINS = [
     id: "sabores",
     url: "delicias.travel/sabores",
     href: "#restaurantes",
-    image: "/images/restaurant-3.jpg",
+    image: "/images/restaurant-3.webp",
     accent: "from-[#d64089]/80 to-[#ed9533]/80",
     title: {
       es: "Sabores del Desierto",
@@ -26,7 +26,7 @@ const SUBDOMAINS = [
     id: "hospedaje",
     url: "delicias.travel/stay",
     href: "#hoteles",
-    image: "/images/hotel-4.jpg",
+    image: "/images/hotel-4.webp",
     accent: "from-[#00aec0]/80 to-[#0645ad]/70",
     title: {
       es: "Estadías Boutique",
@@ -45,7 +45,7 @@ const SUBDOMAINS = [
     id: "experiencias",
     url: "delicias.travel/experiencias",
     href: "/tours",
-    image: "/images/torre-reloj.jpg",
+    image: "/images/torre-reloj.webp",
     accent: "from-[#b7c95b]/80 to-[#00aec0]/80",
     title: {
       es: "Experiencias Vibrantes",
@@ -64,7 +64,7 @@ const SUBDOMAINS = [
     id: "eventos",
     url: "delicias.travel/eventos",
     href: "#eventos",
-    image: "/images/event-3.jpg",
+    image: "/images/event-3.webp",
     accent: "from-[#ed9533]/80 to-[#d64089]/70",
     title: {
       es: "Agenda de Eventos",

@@ -5,11 +5,11 @@ import { useSmartBackNavigation } from "@/hooks/use-smart-back-navigation";
 import { ArrowUpRight } from "lucide-react";
 import { SEO } from "@/components/SEO";
 
-const heroShots = ["/images/quehacer/hero1.jpg", "/images/Galería/11.jpg", "/images/Galería/18.jpg"] as const;
+const heroShots = ["/images/quehacer/hero1.webp", "/images/Galería/11.webp", "/images/Galería/18.webp"] as const;
 
 const travelRoutes = [
   {
-    image: "/images/quehacer/presa.png",
+    image: "/images/quehacer/presa.webp",
     title: { es: "Desierto & Presa", en: "Desert & dam" },
     description: {
       es: "Miradores en la Presa Las Vírgenes, senderos interpretativos y picnic naranja al atardecer.",
@@ -18,7 +18,7 @@ const travelRoutes = [
     cta: "https://maps.google.com/?q=Presa+Las+Virgenes"
   },
   {
-    image: "/images/quehacer/reloj.jpg",
+    image: "/images/quehacer/reloj.webp",
     title: { es: "Centro creativo", en: "Creative downtown" },
     description: {
       es: "Murales, concept stores y cafés de autor alrededor del reloj monumental.",
@@ -27,7 +27,7 @@ const travelRoutes = [
     cta: "/experiencias/arte-cultura"
   },
   {
-    image: "/images/quehacer/museo.jpg",
+    image: "/images/quehacer/museo.webp",
     title: { es: "Museos táctiles", en: "Tactile museums" },
     description: {
       es: "MUDECH y Museo de Paleontología con laboratorios de fósiles y terrazas con vista.",
@@ -36,7 +36,7 @@ const travelRoutes = [
     cta: "/experiencias/arte-cultura"
   },
   {
-    image: "/images/cavall.jpg",
+    image: "/images/cavall.webp",
     title: { es: "Ruta del Vino", en: "Wine Route" },
     description: {
       es: "Visita las vinícolas locales, catas de vinos premiados y recorridos por viñedos.",

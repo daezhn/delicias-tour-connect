@@ -1,4 +1,4 @@
-import { Suspense, type ComponentType, type LazyExoticComponent, type ReactNode, lazy } from "react";
+import { Suspense, type ComponentType, type LazyExoticComponent, type ReactNode, lazy, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
@@ -11,7 +11,9 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollManager } from "@/components/ScrollManager";
 import { PageTransition } from "@/components/PageTransition";
 import { SplashScreen } from "@/components/SplashScreen";
-import { Chatbot } from "@/components/Chatbot";
+
+// Lazy load Chatbot para mejor rendimiento
+const Chatbot = lazy(() => import("@/components/Chatbot").then(m => ({ default: m.Chatbot })));
 
 type LazyComponent = LazyExoticComponent<ComponentType<unknown>>;
 
@@ -86,7 +88,9 @@ const App = () => (
           <AnimatedRoutes />
         </ScrollManager>
       </BrowserRouter>
-      <Chatbot />
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
     </TooltipProvider>
   </QueryClientProvider>
 );

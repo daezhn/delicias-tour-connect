@@ -93,7 +93,7 @@ const culturalSpaces = [
 
 const editorialStories = [
   {
-    image: "/images/flyer1.jpg",
+    image: "/images/flyer1.webp",
     category: { es: "Relato del desierto", en: "Desert story" },
     title: {
       es: "Artesanías de ixtle que narran la vida algodonera",
@@ -106,7 +106,7 @@ const editorialStories = [
     link: "https://www.facebook.com/municipiodedelicias"
   },
   {
-    image: "/images/event-3.jpg",
+    image: "/images/event-3.webp",
     category: { es: "Entrevista", en: "Interview" },
     title: {
       es: "5 artistas delicienses que intervienen el desierto",
@@ -119,7 +119,7 @@ const editorialStories = [
     link: "https://www.instagram.com/explore/locations/225678326/delicias-chihuahua/"
   },
   {
-    image: "/images/flyer2.jpg",
+    image: "/images/flyer2.webp",
     category: { es: "Publicación destacada", en: "Featured post" },
     title: {
       es: "Rutas literarias: del ferrocarril a los clubes de lectura",
@@ -195,7 +195,7 @@ const ExperienciasArteCultura = () => {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 h-full">
               <img
-                src="/images/arte y cultura/mudech1.png"
+                src="/images/arte y cultura/mudech1.webp"
                 alt="MUDECH"
                 className="h-full min-h-[24rem] w-full rounded-[32px] border border-white/60 object-cover shadow-[0_30px_80px_rgba(120,82,55,0.25)]"
                 loading="lazy"
@@ -203,14 +203,14 @@ const ExperienciasArteCultura = () => {
               />
               <div className="grid gap-4 h-full">
                 <img
-                  src="/images/arte y cultura/teatro.png"
+                  src="/images/arte y cultura/teatro.webp"
                   alt="Teatro de la Ciudad"
                   className="h-52 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
                   loading="lazy"
                   decoding="async"
                 />
                 <img
-                  src="/images/arte y cultura/teatro2.png"
+                  src="/images/arte y cultura/teatro2.webp"
                   alt="Interior Teatro"
                   className="h-52 w-full rounded-[28px] object-cover shadow-[0_20px_50px_rgba(120,82,55,0.2)]"
                   loading="lazy"

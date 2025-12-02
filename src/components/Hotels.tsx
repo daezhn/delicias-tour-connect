@@ -37,7 +37,7 @@ export const Hotels = () => {
           >
             <div className="relative h-40 overflow-hidden">
               <img
-                src={hotel.imagen || "/images/hoteles/1.jpg"}
+                src={hotel.imagen || "/images/hoteles/1.webp"}
                 alt={hotel.nombre}
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
@@ -116,7 +116,7 @@ export const Hotels = () => {
               </DialogHeader>
               <div className="space-y-4">
                 <img
-                  src={selectedHotel.imagen || "/images/hoteles/1.jpg"}
+                  src={selectedHotel.imagen || "/images/hoteles/1.webp"}
                   alt={selectedHotel.nombre}
                   className="h-48 w-full rounded-xl object-cover"
                 />

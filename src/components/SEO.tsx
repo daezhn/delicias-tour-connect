@@ -13,7 +13,7 @@ interface SEOProps {
 export const SEO = ({ 
   title, 
   description, 
-  image = "/images/HEROBUENO.jpg", 
+  image = "/images/HEROBUENO.webp", 
   type = "website",
   canonical,
   jsonLd

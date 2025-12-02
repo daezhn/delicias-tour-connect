@@ -121,7 +121,7 @@ const corridors = [
 const busLines = [
   {
     line: "Ómnibus de México",
-    image: "/images/omnibus.jpg",
+    image: "/images/omnibus.webp",
     schedule: { es: "Rutas todo el día", en: "All-day routes" },
     perks: { es: "Wi-Fi, asientos reclinables, lockers", en: "Wi-Fi, reclining seats, lockers" },
     web: "https://www.odm.com.mx/"
@@ -220,7 +220,7 @@ const Transporte = () => {
         <section className="relative overflow-hidden bg-[#0c2c68] text-white pt-[64px] sm:pt-[80px] lg:pt-[90px]">
           <div className="absolute inset-0">
             <img
-              src="/images/hero-delicias-3.jpg"
+              src="/images/hero-delicias-3.webp"
               alt="Traslados a Delicias"
               className="h-full w-full origin-center scale-[1.12] object-cover opacity-40 sm:scale-[1.08] lg:scale-100"
               loading="eager"

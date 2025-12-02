@@ -22,7 +22,7 @@ const featuredCitizens = [
       { es: "PRI, generación 86", en: "PRI, class of ’86" },
       { es: "Impulsor de obra hidráulica", en: "Waterworks advocate" }
     ],
-    image: "/images/personasdestacadas/fernandobaeza.jpg"
+    image: "/images/personasdestacadas/fernandobaeza.webp"
   },
   {
     id: "chavez",
@@ -36,7 +36,7 @@ const featuredCitizens = [
       { es: "Récord 44-8", en: "Record 44-8" },
       { es: "Miembro Salón de la Fama de Texas", en: "Texas Hall of Fame" }
     ],
-    image: "/images/personasdestacadas/jesuschavez.jpg"
+    image: "/images/personasdestacadas/jesuschavez.webp"
   },
   {
     id: "gardea",
@@ -50,7 +50,7 @@ const featuredCitizens = [
       { es: "Sistema Nacional de Creadores", en: "National Creators System" },
       { es: "Crónica del desierto", en: "Desert chronicler" }
     ],
-    image: "/images/personasdestacadas/jesusgardea.jpg"
+    image: "/images/personasdestacadas/jesusgardea.webp"
   },
   {
     id: "maverick",
@@ -64,7 +64,7 @@ const featuredCitizens = [
       { es: "Latin Grammy 2021", en: "Latin Grammy 2021" },
       { es: "Mix Pa’ Llorar en tu Cuarto", en: "Mix Pa’ Llorar en tu Cuarto" }
     ],
-    image: "/images/personasdestacadas/edmaverick.jpg"
+    image: "/images/personasdestacadas/edmaverick.webp"
   },
   {
     id: "roel",
@@ -78,7 +78,7 @@ const featuredCitizens = [
       { es: "40 años de trayectoria", en: "40-year career" },
       { es: "Teatro · Cine · TV", en: "Stage · Film · TV" }
     ],
-    image: "/images/personasdestacadas/gabrielaroel.jpg"
+    image: "/images/personasdestacadas/gabrielaroel.webp"
   },
   {
     id: "mijares",
@@ -92,7 +92,7 @@ const featuredCitizens = [
       { es: "Juegos Olímpicos 1960", en: "1960 Olympics" },
       { es: "Oro CAC 1959", en: "CAC gold 1959" }
     ],
-    image: "/images/personasdestacadas/rodolfomijares.jpg"
+    image: "/images/personasdestacadas/rodolfomijares.webp"
   }
 ] as const;
 
@@ -237,7 +237,7 @@ const DeliciensesDestacados = () => {
         <section className="relative overflow-hidden bg-[#0c2c68] text-white">
           <div className="absolute inset-0">
             <img
-              src="/images/Galería/11.jpg"
+              src="/images/Galería/11.webp"
               alt="Panorámica de Delicias Chihuahua"
               className="h-full w-full object-cover opacity-50 animate-hero-pan"
             />

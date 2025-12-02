@@ -38,7 +38,7 @@ const Atractivos = () => {
         <section id="inicio" className="relative overflow-hidden" tabIndex={-1}>
           <div className="absolute inset-0">
             <img
-              src="/images/hero-delicias.jpg"
+              src="/images/hero-delicias.webp"
               alt="Atractivos turisticos en Delicias"
               className="h-full w-full object-cover"
             />

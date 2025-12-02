@@ -14,13 +14,13 @@ const mediaItems: MediaItem[] = [
   { type: "video", src: "/pantalla/test2.mp4" },
   {
     type: "image",
-    src: "/images/flyer1.jpg",
+    src: "/images/flyer1.webp",
     alt: "Flyer promocional 1",
     duration: 45_000
   },
   {
     type: "image",
-    src: "/images/flyer2.jpg",
+    src: "/images/flyer2.webp",
     alt: "Flyer promocional 2",
     duration: 45_000
   }
