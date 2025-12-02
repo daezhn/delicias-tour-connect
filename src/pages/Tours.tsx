@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { ToursExplorer } from "@/components/ToursExplorer";
-import { PlanYourTrip } from "@/components/PlanYourTrip";
 import { Footer } from "@/components/Footer";
 import { useLocale } from "@/hooks/use-locale";
 import { ArrowLeft } from "lucide-react";
@@ -17,8 +16,8 @@ const Tours = () => {
         title={locale === "es" ? "Tours y Recorridos" : "Tours & Trips"}
         description={
           locale === "es"
-            ? "Explora la presa Las Vírgenes, museos y la ruta del sotol con guías locales certificados."
-            : "Explore Las Vírgenes dam, museums and the sotol route with certified local guides."
+            ? "Descubre los paquetes de cata y recorridos en Vinícola CAVALL, Delicias Chihuahua."
+            : "Discover tasting packages and tours at CAVALL Winery, Delicias Chihuahua."
         }
       />
       <Navigation />
@@ -36,8 +35,6 @@ const Tours = () => {
             <ToursExplorer />
           </div>
         </section>
-
-        <PlanYourTrip compact showHeading={false} />
       </main>
       <Footer />
     </div>

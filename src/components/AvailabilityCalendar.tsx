@@ -16,9 +16,8 @@ import {
 } from "date-fns";
 import { es, enUS } from "date-fns/locale";
 
-const referenceDate = upcomingEvents.length
-  ? parseISO(upcomingEvents[0].date)
-  : new Date();
+// Usar diciembre 2025 como mes de referencia
+const referenceDate = new Date(2025, 11, 1); // Diciembre 2025
 
 const calendarRange = (() => {
   const monthStart = startOfMonth(referenceDate);
