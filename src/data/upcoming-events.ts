@@ -51,13 +51,27 @@ export const upcomingEvents: UpcomingEvent[] = [
   },
   {
     id: 7,
+    label: "Delicias-Con Vol. 4",
+    image: "/images/EVENTOS_NOVIEMBRE/deliciascon.jpg",
+    alt: "Salón Club Rotario · Cosplay, Mario Kart, invitados y stands",
+    date: "2025-12-14"
+  },
+  {
+    id: 8,
     label: "Temporada Navideña",
     image: "/images/navidenas.webp",
     alt: "Próximamente más detalles",
     date: "2025-12-15"
   },
   {
-    id: 8,
+    id: 9,
+    label: "GK Festival El Grinch",
+    image: "/images/EVENTOS_NOVIEMBRE/gkacademia.jpg",
+    alt: "Teatro de la Ciudad Manuel Talavera Trejo · 7:00 p.m · $180",
+    date: "2025-12-18"
+  },
+  {
+    id: 10,
     label: "Carrera San Silvestre",
     image: "/images/sansilvestre.webp",
     alt: "Próximamente más detalles",

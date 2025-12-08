@@ -3,22 +3,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const agendaItems = [
   {
-    date: "15 Nov",
-    title: "Festival de la Cosecha",
-    location: "Plaza Principal",
-    description: "Celebración anual de los productos locales"
+    date: "11 Dic",
+    title: "Carrera de Relevos Guadalupana",
+    location: "Iglesia Santuario",
+    description: "Tradición atlética con salida desde el Santuario"
   },
   {
-    date: "22 Nov",
-    title: "Noche de Tradiciones",
-    location: "Centro Cultural",
-    description: "Música y danza folklórica regional"
+    date: "14 Dic",
+    title: "Delicias-Con Vol. 4",
+    location: "Salón Club Rotario",
+    description: "Cosplay, Mario Kart, K-Pop y stands de coleccionables"
   },
   {
-    date: "28 Nov",
-    title: "Feria Gastronómica",
-    location: "Parque Central",
-    description: "Lo mejor de la cocina chihuahuense"
+    date: "18 Dic",
+    title: "GK Festival El Grinch",
+    location: "Teatro de la Ciudad Manuel Talavera Trejo",
+    description: "Función familiar 7:00 p.m · Boleto $180"
   }
 ];
 

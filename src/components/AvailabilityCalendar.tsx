@@ -134,19 +134,7 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
                     <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70">
                       {format(day, "MMM", { locale: formatterLocale })}
                     </p>
-                    {isEvent && (
-                      <span className={`mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[9px] font-semibold tracking-[0.12em] shadow-sm font-tourism whitespace-nowrap sm:text-[10px] sm:tracking-[0.2em] ${
-                        isRevolutionParade ? "text-[#CE1126]" : "text-primary"
-                      }`}>
-                        <span className={`h-1.5 w-1.5 rounded-full ${
-                          isRevolutionParade ? "bg-[#CE1126]" : "bg-primary"
-                        }`} />
-                        {isRevolutionParade 
-                          ? (locale === "es" ? "Desfile" : "Parade")
-                          : (locale === "es" ? "Agenda" : "Agenda")
-                        }
-                      </span>
-                    )}
+                    {/* no label or dot; color is conveyed by card background */}
                   </div>
                 );
               })}
