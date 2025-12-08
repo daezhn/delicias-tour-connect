@@ -59,7 +59,7 @@ const marketStops = [
   {
     title: { es: "Mercado Juárez", en: "Juárez Market" },
     description: {
-      es: "Vhiles secos y panadería tradicional desde las 7 am.",
+      es: "Chiles secos y panadería tradicional desde las 7 am.",
       en: "Dried chiles and traditional bread from 7 a.m."
     },
     tip: { es: "Pide jugo de betabel y zanahoria recién hecho.", en: "Order the fresh beet-carrot juice." }
@@ -170,7 +170,7 @@ const ExperienciasQueComer = () => {
               />
               <div className="grid gap-4 h-full">
                 <img
-                  src="/images/que_comer/agave.webp"
+                  src="/images/quecomer/El Agave.webp"
                   alt="Agave"
                   className="h-52 w-full rounded-[24px] object-cover shadow-[0_15px_45px_rgba(133,78,50,0.2)]"
                   loading="lazy"

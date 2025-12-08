@@ -222,7 +222,7 @@ export const restaurants: Restaurant[] = [
     categoria: "exigentes",
     telefono: "639 470 9190",
     redesSociales: "@samuelres",
-    imagen: "/images/quecomer/Samuel's.jpg",
+    imagen: "/images/quecomer/Samuel's.webp",
   },
   {
     id: 27,
@@ -304,7 +304,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 474 4070",
     redesSociales: null,
-    imagen: "/images/quecomer/Domino's Pizza.png",
+    imagen: "/images/quecomer/Domino's Pizza.webp",
   },
   {
     id: 37,
@@ -424,7 +424,7 @@ export const restaurants: Restaurant[] = [
     categoria: "rapida",
     telefono: "639 474 3333",
     redesSociales: "@Pepes Burger",
-    imagen: "/images/quecomer/Pepe's Burguer.jpg",
+    imagen: "/images/quecomer/Pepe's Burguer.webp",
   },
   {
     id: 52,

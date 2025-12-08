@@ -8,7 +8,7 @@ const CORE_ASSETS = [
   "/manifest.webmanifest",
   "/icons/app-icon-192.png",
   "/icons/app-icon-512.png",
-  "/images/Logo_IDEA.png"
+  "/images/Logo_IDEA.webp"
 ];
 
 const STATIC_DESTINATIONS = new Set(["style", "script", "font", "image"]);

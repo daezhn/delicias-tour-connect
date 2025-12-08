@@ -43,23 +43,23 @@
   ],
   "screenshots": [
     {
-      "src": "/images/hero-delicias-1.jpg",
+      "src": "/images/hero-delicias-1.webp",
       "sizes": "1920x1088",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Experiencias destacadas"
     },
     {
-      "src": "/images/hero-delicias-2.jpg",
+      "src": "/images/hero-delicias-2.webp",
       "sizes": "1920x1088",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Eventos y actividades"
     },
     {
-      "src": "/images/hero-delicias-3.jpg",
+      "src": "/images/hero-delicias-3.webp",
       "sizes": "1920x1088",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Servicios y conectividad turística"
     }

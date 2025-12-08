@@ -131,7 +131,7 @@ export const attractions: Attraction[] = [
     name: "Parque Ciudad Infantil",
     nameEn: "Children's City Park",
     category: "Familia y recreación",
-    image: "/atractivos/_ciudad infantil.png",
+    image: "/atractivos/_ciudad infantil.webp",
     description:
       "Espacio interactivo para niñas y niños con áreas temáticas, juegos y actividades educativas.",
     descriptionEn:
@@ -144,7 +144,7 @@ export const attractions: Attraction[] = [
     name: "Parque el Colibrí",
     nameEn: "Hummingbird Park",
     category: "Naturaleza urbana",
-    image: "/atractivos/_colibri.png",
+    image: "/atractivos/_colibri.webp",
     description:
       "Zona de descanso con fuentes, vegetación y espacios de convivencia para toda la familia.",
     descriptionEn:
@@ -157,7 +157,7 @@ export const attractions: Attraction[] = [
     name: "Parque Fundadores",
     nameEn: "Founders Park",
     category: "Historia y cultura",
-    image: "/atractivos/_parque fundadores.png",
+    image: "/atractivos/_parque fundadores.webp",
     description:
       "Parque con esculturas y murales que narran la historia de la fundación de Delicias.",
     descriptionEn:
@@ -170,7 +170,7 @@ export const attractions: Attraction[] = [
     name: "La Rosetilla",
     nameEn: "La Rosetilla",
     category: "Turismo gastronómico",
-    image: "/atractivos/_rosetilla.png",
+    image: "/atractivos/_rosetilla.webp",
     description:
       "Zona frutícola reconocida por la producción de manzana y tradiciones ganaderas.",
     descriptionEn:
@@ -183,7 +183,7 @@ export const attractions: Attraction[] = [
     name: "Trolebús El Encanto",
     nameEn: "El Encanto Trolley",
     category: "Experiencias guiadas",
-    image: "/atractivos/_trolebus.png",
+    image: "/atractivos/_trolebus.webp",
     description:
       "Recorrido narrado por los principales puntos de interés histórico y cultural de Delicias.",
     descriptionEn:
@@ -197,7 +197,7 @@ export const attractions: Attraction[] = [
     name: "Gran Estadio Delicias",
     nameEn: "Delicias Grand Stadium",
     category: "Deporte y eventos",
-    image: "/atractivos/_estadio.png",
+    image: "/atractivos/_estadio.webp",
     description:
       "Casa del béisbol en Delicias con partidos, torneos y actividades deportivas comunitarias.",
     descriptionEn:
@@ -210,7 +210,7 @@ export const attractions: Attraction[] = [
     name: "Museo de los Derechos Humanos",
     nameEn: "Human Rights Museum",
     category: "Memoria y cultura",
-    image: "/atractivos/_deny.png",
+    image: "/atractivos/_deny.webp",
     description:
       "Recinto dedicado a promover la cultura de paz y los derechos humanos a través de exposiciones y actividades educativas.",
     descriptionEn:

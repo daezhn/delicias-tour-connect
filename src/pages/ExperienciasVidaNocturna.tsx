@@ -7,7 +7,7 @@ import { SEO } from "@/components/SEO";
 
 const neonVenues = [
   {
-    image: "/vidanocturna/coctel.png",
+    image: "/vidanocturna/coctel.webp",
     label: { es: "Bares de autor", en: "Signature bars" },
     title: { es: "Cócteles", en: "Cocktails" },
     detail: {
@@ -16,7 +16,7 @@ const neonVenues = [
     }
   },
   {
-    image: "/vidanocturna/1.jpg",
+    image: "/vidanocturna/1.webp",
     label: { es: "Antros inmersivos", en: "Immersive clubs" },
     title: { es: "DJ sets", en: "DJ sets" },
     detail: {
@@ -26,7 +26,7 @@ const neonVenues = [
   },
 
   {
-    image: "/vidanocturna/2.jpg",
+    image: "/vidanocturna/2.webp",
     label: { es: "Afterhours criollo", en: "Criollo afterhours" },
     title: { es: "Tacos nocturnos", en: "Late-night tacos" },
     detail: {
