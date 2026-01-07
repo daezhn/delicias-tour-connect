@@ -67,15 +67,7 @@ const agenda = [
   }
 ] as const;
 
-const sanSilvestreHighlight = {
-  date: { es: "31 de diciembre · 16:00 h", en: "December 31 · 4:00 p.m." },
-  title: { es: "Carrera San Silvestre Delicias", en: "San Silvestre Delicias" },
-  description: {
-    es: "Tradición de fin de año con ruta céntrica, categorías familiares y medalla coleccionable. Perfecta para despedir el año corriendo.",
-    en: "Year-end tradition with downtown route, family categories and collectible medal. Perfect way to close the year running."
-  },
-  cta: "https://www.google.com/maps/search/san+silvestre+delicias"
-};
+
 
 const venues = [
   {
@@ -201,37 +193,7 @@ const ExperienciasDeportes = () => {
           </div>
         </section>
 
-        <section className="bg-white py-20 text-foreground">
-          <div className="mx-auto max-w-5xl grid gap-8 px-4 lg:grid-cols-[1fr,0.9fr]">
-            <div className="space-y-4">
-              <p className="text-[11px] uppercase tracking-[0.5em] text-secondary/70">
-                {locale === "es" ? "Gran fondo invernal" : "Winter highlight"}
-              </p>
-              <h2 className="text-3xl font-black text-secondary">{sanSilvestreHighlight.title[locale]}</h2>
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-secondary/70">{sanSilvestreHighlight.date[locale]}</p>
-              <p className="text-sm text-foreground/70">{sanSilvestreHighlight.description[locale]}</p>
-              <a
-                href={sanSilvestreHighlight.cta}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-secondary px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-secondary"
-              >
-                {locale === "es" ? "Ver ruta" : "View route"}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-            <div className="rounded-[32px] border border-black/5 bg-[#fef7ef] p-6 shadow-[0_20px_45px_rgba(4,18,42,0.08)]">
-              <h3 className="text-2xl font-semibold text-secondary">
-                {locale === "es" ? "Tips para la San Silvestre" : "San Silvestre tips"}
-              </h3>
-              <ul className="mt-4 space-y-3 text-sm text-foreground/70">
-                <li>· {locale === "es" ? "Entrega de paquetes 30 de diciembre en Plaza Benito Juárez." : "Packet pick-up on Dec 30 at Benito Juárez plaza."}</li>
-                <li>· {locale === "es" ? "Categorías 3K familiar, 5K recreativa y 10K competitiva." : "Categories: 3K family, 5K fun run, 10K competitive."}</li>
-                <li>· {locale === "es" ? "Medalla coleccionable inspirada en la Presa Las Vírgenes." : "Collectible medal inspired by Las Vírgenes dam."}</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+
 
         <section className="bg-white py-20 text-foreground">
           <div className="mx-auto max-w-6xl space-y-8 px-4">

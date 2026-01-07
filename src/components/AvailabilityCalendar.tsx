@@ -16,8 +16,8 @@ import {
 } from "date-fns";
 import { es, enUS } from "date-fns/locale";
 
-// Usar diciembre 2025 como mes de referencia
-const referenceDate = new Date(2025, 11, 1); // Diciembre 2025
+// Usar enero 2026 como mes de referencia
+const referenceDate = new Date(2026, 0, 1); // Enero 2026
 
 const calendarRange = (() => {
   const monthStart = startOfMonth(referenceDate);
@@ -103,43 +103,42 @@ export const AvailabilityCalendar = ({ compact = false }: AvailabilityCalendarPr
               </span>
             </div>
 
-          <div className="mt-6 overflow-x-auto pb-2">
-            <div className="min-w-[560px] grid grid-cols-7 gap-3 sm:min-w-0">
-              {calendarRange.map((day, index) => {
-                const iso = format(day, "yyyy-MM-dd");
-                const dayEvents = eventsByDate[iso];
-                const isEvent = Boolean(dayEvents?.length);
-                const isRevolutionParade = iso.endsWith("-11-20"); // Matches Nov 20
-                const inMonth = isSameMonth(day, referenceDate);
+            <div className="mt-6 overflow-x-auto pb-2">
+              <div className="min-w-[560px] grid grid-cols-7 gap-3 sm:min-w-0">
+                {calendarRange.map((day, index) => {
+                  const iso = format(day, "yyyy-MM-dd");
+                  const dayEvents = eventsByDate[iso];
+                  const isEvent = Boolean(dayEvents?.length);
+                  const isRevolutionParade = iso.endsWith("-11-20"); // Matches Nov 20
+                  const inMonth = isSameMonth(day, referenceDate);
 
-                return (
-                  <div
-                    key={iso}
-                    className={`min-h-[110px] rounded-[24px] border px-3 py-4 text-left transition ${
-                      isRevolutionParade
-                        ? "border-[#006847] bg-gradient-to-br from-[#006847]/10 via-white to-[#CE1126]/10 text-[#006847]"
-                        : isEvent
-                        ? "border-[#00aec0]/40 bg-gradient-to-br from-[#c9f1ff] to-white text-[#0645ad]"
-                        : "border-black/5 bg-gradient-to-br from-white to-[#fff7ef] text-foreground"
-                    } ${!inMonth ? "opacity-50" : ""}`}
-                  >
-                    {index < 7 && (
-                      <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px] sm:tracking-[0.4em]">
-                        {dayNames[index]}
+                  return (
+                    <div
+                      key={iso}
+                      className={`min-h-[110px] rounded-[24px] border px-3 py-4 text-left transition ${isRevolutionParade
+                          ? "border-[#006847] bg-gradient-to-br from-[#006847]/10 via-white to-[#CE1126]/10 text-[#006847]"
+                          : isEvent
+                            ? "border-[#00aec0]/40 bg-gradient-to-br from-[#c9f1ff] to-white text-[#0645ad]"
+                            : "border-black/5 bg-gradient-to-br from-white to-[#fff7ef] text-foreground"
+                        } ${!inMonth ? "opacity-50" : ""}`}
+                    >
+                      {index < 7 && (
+                        <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px] sm:tracking-[0.4em]">
+                          {dayNames[index]}
+                        </p>
+                      )}
+                      <p className="mt-1 text-2xl font-bold leading-none">
+                        {format(day, "d")}
                       </p>
-                    )}
-                    <p className="mt-1 text-2xl font-bold leading-none">
-                      {format(day, "d")}
-                    </p>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70">
-                      {format(day, "MMM", { locale: formatterLocale })}
-                    </p>
-                    {/* no label or dot; color is conveyed by card background */}
-                  </div>
-                );
-              })}
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70">
+                        {format(day, "MMM", { locale: formatterLocale })}
+                      </p>
+                      {/* no label or dot; color is conveyed by card background */}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
 
           </div>
         )}

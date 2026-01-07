@@ -3,7 +3,7 @@ import { useLocale } from "@/hooks/use-locale";
 import { quickLinks } from "@/data/hero-links";
 import { HeroTile } from "@/components/HeroTile";
 import { MotionReveal } from "@/components/MotionReveal";
-import { Snowfall } from "@/components/Snowfall";
+
 
 // Single static hero background containing embedded text per client request
 const HERO_IMAGE_DESKTOP = "/images/HEROBUENO.webp"; // provided asset in public/images
@@ -99,7 +99,7 @@ export const Hero = () => {
 
   return (
     <section className="relative isolate min-h-screen supports-[height:100svh]:min-h-[103svh] sm:min-h-[110vh] overflow-hidden bg-black text-white">
-      <Snowfall />
+
       <div className="absolute inset-0">
         <div
           className={`absolute inset-0 bg-gradient-to-b from-[#0f0501] via-[#12051a] to-[#03050a] transition-opacity duration-700 ${heroLoaded ? "opacity-0" : "opacity-100"

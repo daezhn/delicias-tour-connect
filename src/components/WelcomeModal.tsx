@@ -6,21 +6,21 @@ import { Button } from "@/components/ui/button";
 
 const modalCopy = {
   es: {
-    badge: "Próximo Evento",
-    title: "¡Encendido del Árbol Navideño! 🎄",
-    description: "Próximamente en Delicias, Chihuahua.",
-    body: "Prepárate para dar inicio a la temporada navideña con el tradicional encendido del árbol. Más detalles pronto.",
-    primaryCta: "Entendido",
-    footer: "Evento organizado por el Gobierno Municipal de Delicias. ¡Sigamos Construyendo!",
+    badge: "Invierno 2026",
+    title: "¡Bienvenidos a Delicias 2026!",
+    description: "La ciudad te recibe con los brazos abiertos.",
+    body: "Descubre la magia de nuestra ciudad este invierno. Visita museos, parques y disfruta de la gastronomía local.",
+    primaryCta: "Comenzar",
+    footer: "Gobierno Municipal de Delicias. ¡Sigamos Construyendo!",
     dismiss: "Cerrar"
   },
   en: {
-    badge: "Upcoming Event",
-    title: "Christmas Tree Lighting! 🎄",
-    description: "Coming soon to Delicias, Chihuahua.",
-    body: "Get ready to kick off the holiday season with the traditional tree lighting ceremony. More details coming soon.",
-    primaryCta: "Got it",
-    footer: "Event organized by the Municipal Government of Delicias. Let's Keep Building!",
+    badge: "Winter 2026",
+    title: "Welcome to Delicias 2026!",
+    description: "The city welcomes you with open arms.",
+    body: "Discover the magic of our city this winter. Visit museums, parks, and enjoy local gastronomoy.",
+    primaryCta: "Start",
+    footer: "Municipal Government of Delicias. Let's Keep Building!",
     dismiss: "Close"
   }
 } as const;
@@ -29,7 +29,7 @@ export const WelcomeModal = () => {
   const { locale } = useLocale();
   const [open, setOpen] = useState(false);
   const copy = modalCopy[locale] ?? modalCopy.es;
-  const storageKey = "welcome-modal-tree-lighting-2024";
+  const storageKey = "welcome-modal-winter-2026";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -49,17 +49,12 @@ export const WelcomeModal = () => {
       <DialogContent className="max-w-md overflow-hidden rounded-[32px] border-none bg-white/95 p-0 text-left text-foreground shadow-[0_30px_120px_rgba(9,16,29,0.35)] backdrop-blur">
         {/* Header con imagen del evento */}
         <div className="relative h-48 w-full overflow-hidden sm:h-56">
-          <img 
-            src="/images/encendidoarbol.webp" 
-            alt="Encendido del Árbol Navideño" 
+          <img
+            src="/images/winter_popup_2026.png"
+            alt="Invierno en Delicias"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          {/* Luces decorativas */}
-          <div className="absolute top-4 left-4 h-2 w-2 animate-pulse rounded-full bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.8)]" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-8 right-8 h-2 w-2 animate-pulse rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)]" style={{ animationDelay: '0.3s' }} />
-          <div className="absolute top-6 left-1/4 h-2 w-2 animate-pulse rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]" style={{ animationDelay: '0.6s' }} />
-          <div className="absolute top-10 right-1/4 h-2 w-2 animate-pulse rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.8)]" style={{ animationDelay: '0.9s' }} />
         </div>
 
         <div className="px-6 pb-6 pt-4 sm:px-8 sm:pb-8">
