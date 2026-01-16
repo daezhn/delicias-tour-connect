@@ -16,22 +16,8 @@ export const restaurantCategories = [
 
 export const restaurants: Restaurant[] = [
   // ========== PARA LOS MÁS EXIGENTES ==========
-  {
-    id: 1,
-    nombre: "Affogato Bistro Cafe",
-    categoria: "exigentes",
-    telefono: "639 268 6870",
-    redesSociales: "@affogato.bistro",
-    imagen: "/images/quecomer/Affogato Bistro Cafe.webp",
-  },
-  {
-    id: 2,
-    nombre: "Amor Puro Restaurant",
-    categoria: "exigentes",
-    telefono: "639 107 5924",
-    redesSociales: "@Amor puro",
-    imagen: "/images/quecomer/Amor Puro Restaurant.webp",
-  },
+
+
   {
     id: 3,
     nombre: "Applebees",
@@ -80,14 +66,7 @@ export const restaurants: Restaurant[] = [
     redesSociales: "@De los Santos",
     imagen: "/images/quecomer/De los Santos.webp",
   },
-  {
-    id: 9,
-    nombre: "Doce&Mimosas",
-    categoria: "exigentes",
-    telefono: "639 268 0818",
-    redesSociales: "@doce&mimosas",
-    imagen: "/images/quecomer/Doce&Mimosas.webp",
-  },
+
   {
     id: 10,
     nombre: "El Agave",
@@ -128,22 +107,8 @@ export const restaurants: Restaurant[] = [
     redesSociales: "@SamuelitoSeafoodandBeers",
     imagen: "/images/quecomer/El Samuelito.webp",
   },
-  {
-    id: 15,
-    nombre: "Enrizos Delicias",
-    categoria: "exigentes",
-    telefono: "639 171 5327",
-    redesSociales: "@Enrizos Delicias",
-    imagen: "/images/quecomer/Enrizos Delicias.webp",
-  },
-  {
-    id: 16,
-    nombre: "Fogo Gaucho Restaurant",
-    categoria: "exigentes",
-    telefono: "639 132 6735",
-    redesSociales: "@FogoGaucho",
-    imagen: "/images/quecomer/Fogo Gaucho Restaurant.webp",
-  },
+
+
   {
     id: 17,
     nombre: "La Cabañita",
@@ -232,14 +197,7 @@ export const restaurants: Restaurant[] = [
     redesSociales: "@simonlimonrest",
     imagen: "/images/quecomer/Simon Limon.webp",
   },
-  {
-    id: 28,
-    nombre: "Taco Baja Delicias",
-    categoria: "exigentes",
-    telefono: "639 160 0979",
-    redesSociales: "@Taco Baja Delicias",
-    imagen: "/images/quecomer/Taco Baja Delicias.webp",
-  },
+
 
   // ========== COMIDA RÁPIDA ==========
   {
